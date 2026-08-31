@@ -89,8 +89,6 @@
 | ch20 | 第33章 | 视觉大模型服务化设计占位实验 |
 | ch21 | 第34-35章 | 视觉抓取与智能产线综合实训合并 |
 
-第21章视觉 SLAM 导论保留理论讲授，不再单独维护没有对应源码的 ORB-SLAM2 实验手册。
-
 ---
 
 ## 课程资料索引
@@ -103,8 +101,6 @@
 | Part 2 | [ch10_SLAM基本概念与贝叶斯框架.md](teaching_docs/ch10_SLAM基本概念与贝叶斯框架.md) · [ch11_ICP与PLICP扫描匹配.md](teaching_docs/ch11_ICP与PLICP扫描匹配.md) · [ch12_Hector_SLAM.md](teaching_docs/ch12_Hector_SLAM.md) · [ch13_gmapping粒子滤波SLAM.md](teaching_docs/ch13_gmapping粒子滤波SLAM.md) · [ch14_AMCL定位.md](teaching_docs/ch14_AMCL定位.md) · [ch15_Cartographer图优化SLAM.md](teaching_docs/ch15_Cartographer图优化SLAM.md) · [ch16_Nav2架构与核心组件.md](teaching_docs/ch16_Nav2架构与核心组件.md) · [ch17_全局代价地图.md](teaching_docs/ch17_全局代价地图.md) · [ch18_全局路径规划.md](teaching_docs/ch18_全局路径规划.md) · [ch19_局部路径规划.md](teaching_docs/ch19_局部路径规划.md) · [ch20_行为树与恢复行为.md](teaching_docs/ch20_行为树与恢复行为.md) · [ch21_视觉SLAM导论.md](teaching_docs/ch21_视觉SLAM导论.md) · [ch22_多传感器融合SLAM.md](teaching_docs/ch22_多传感器融合SLAM.md) · [ch23_SLAM与导航综合实训.md](teaching_docs/ch23_SLAM与导航综合实训.md) |
 | Part 3 | [ch24_机械臂基础知识.md](teaching_docs/ch24_机械臂基础知识.md) · [ch25_ROS2机械臂建模.md](teaching_docs/ch25_ROS2机械臂建模.md) · [ch26_MoveIt2基础.md](teaching_docs/ch26_MoveIt2基础.md) · [ch27_MoveIt2_Python规划.md](teaching_docs/ch27_MoveIt2_Python规划.md) · [ch28_MoveIt2笛卡尔空间与避障.md](teaching_docs/ch28_MoveIt2笛卡尔空间与避障.md) · [ch29_抓取与放置编程.md](teaching_docs/ch29_抓取与放置编程.md) · [ch30_ROS2图像接口与相机标定.md](teaching_docs/ch30_ROS2图像接口与相机标定.md) · [ch31_颜色检测与YOLO检测.md](teaching_docs/ch31_颜色检测与YOLO检测.md) · [ch32_AR标签检测与手眼标定.md](teaching_docs/ch32_AR标签检测与手眼标定.md) · [ch33_视觉大模型与ROS2应用.md](teaching_docs/ch33_视觉大模型与ROS2应用.md) · [ch34_视觉抓取应用.md](teaching_docs/ch34_视觉抓取应用.md) · [ch35_综合实训.md](teaching_docs/ch35_综合实训.md) |
 
-> 理论章节链接使用 `teaching_docs/` 当前规范文件名，并与 `scripts/generate_textbook.py` 的 35 个章节清单保持一致；旧版重号文件不作为课程入口。
-
 ### 实验手册
 
 | 模块 | 手册 |
@@ -112,8 +108,6 @@
 | Part 1 | [ch01](lab_manuals/ch01_lab.md) · [ch02](lab_manuals/ch02_lab.md) · [ch03](lab_manuals/ch03_lab.md) · [ch04](lab_manuals/ch04_lab.md) · [ch05](lab_manuals/ch05_lab.md) · [ch06](lab_manuals/ch06_lab.md) · [ch07](lab_manuals/ch07_lab.md) · [ch08](lab_manuals/ch08_lab.md) · [ch09](lab_manuals/ch09_lab.md) |
 | Part 2 | [ch10](lab_manuals/ch10_lab.md) · [ch11](lab_manuals/ch11_lab.md) · [ch12](lab_manuals/ch12_lab.md) · [ch13](lab_manuals/ch13_lab.md) · [ch14](lab_manuals/ch14_lab.md) |
 | Part 3 | [ch15](lab_manuals/ch15_lab.md) · [ch16](lab_manuals/ch16_lab.md) · [ch17](lab_manuals/ch17_lab.md) · [ch18](lab_manuals/ch18_lab.md) · [ch19](lab_manuals/ch19_lab.md) · [ch20](lab_manuals/ch20_lab.md) · [ch21](lab_manuals/ch21_lab.md) |
-
-实际运行截图和原始录制见[实际运行证据索引](lab_manuals/runtime_evidence.md)。
 
 ---
 
@@ -125,8 +119,6 @@
 | Part 2 SLAM/导航（环境感知与决策） | 30 | 32 | 62 |
 | Part 3 机械臂（具身智能操作系统） | 26 | 26 | 52 |
 | **合计** | **74** | **76** | **150** |
-
-> 可根据教学计划灵活调整至 **144 学时**：合并 Part 1 概述性内容、精简 Part 2 部分实验课时即可对齐。
 
 ## 目录结构
 
@@ -157,7 +149,7 @@ ROS2/
     ├── slam_sim_demo_ros2/      # SLAM 仿真
     ├── urdf_demo_ros2/          # URDF 建模示例
     ├── tf_follower_ros2/        # TF 跟随机器人
-    ├── xarm/                    # xarm_ros2_arm_only：xArm6 + MoveIt2 仿真
+    ├── xarm/                    # xArm6 + MoveIt2 仿真
     ├── course_lab_interfaces/   # 课程实验共享接口
     ├── course_lab_utils/        # 课程实验共享实现
     └── lab_code/                # 实验代码（21 章，ch01_lab/ ~ ch21_lab/）
@@ -181,6 +173,12 @@ ROS2/
 
 - **Gazebo 仿真与 RViz2 可视化：** 运行在 Windows 主机的 WSL2（Ubuntu 22.04 + ROS2 Humble）内，或 Windows 原生 RViz2
 - **互联：** 主机与板卡处于同一局域网，共用 `ROS_DOMAIN_ID` 与 CycloneDDS，主机端 RViz2/Nav2 可视化并操控板卡上的课程节点
+
+
+**机器人端（K3/Licheepi4A Linux RISC-V）**
+
+- **机器人：** TurtleBot3 Burger
+- **开发板 + 操作系统：** K3/Licheepi4A + openEuler/openKylin/?
 
 安装器优先通过 `package.xml` 和 `rosdep` 解析 ROS 依赖。NumPy、OpenCV、SciPy
 
@@ -213,8 +211,6 @@ bash setup_course.sh --with-hardware
 # 启用全部 profile，并在编译后运行 colcon 测试
 bash setup_course.sh --all-profiles --run-tests
 ```
-
-> Gazebo、RViz2 运行在 Windows x86 主机端；CARLA 自动驾驶模块已从课程中整体移除，安装器不再提供 CARLA 相关 profile。
 
 ## 机械臂安装（Windows x86 主机端）
 
