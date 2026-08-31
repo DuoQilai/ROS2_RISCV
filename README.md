@@ -498,7 +498,7 @@ ros2 run turtlesim turtle_teleop_key   # 终端2
 | 环境变量 | `source /opt/ros/humble/setup.bash`（写入 `~/.bashrc`） |
 | 注意 | openEuler 24.03 需**手动**配置软件源（22.03 会自动配置）；x86/ARM 架构需将脚本中 `baseurl` 替换为对应 EulerMaker 源 |
 
-> openEuler 上 ROS 版本为 **Humble**。Gazebo、RViz2 没有 riscv64 软件包，统一运行在 Windows x86 主机端（见「机械臂安装」一节），与板卡共用同一局域网 DDS 域；RISC-V 源暂无 Noetic（ROS1）软件包。
+> openEuler 上 ROS 版本为 **Humble**。Gazebo、RViz2 openEuler RISC-V 有 riscv64 软件包，考虑到性能问题，统一运行在 Windows x86 主机端，与板卡共用同一局域网 DDS 域；RISC-V 源暂无 Noetic（ROS1）软件包。
 
 ---
 
