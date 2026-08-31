@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-7.4.4, pluggy-1.4.0
+cachedir: /home/xbot/full_src_build_20260831c/moveit_pick_place_lab/.pytest_cache
+rootdir: /mnt/c/Users/tiger/Desktop/robot/ROS2 RISC-V
+configfile: pytest.ini
+plugins: ament-flake8-0.17.4, launch-testing-3.4.10, ament-lint-0.17.4, ament-copyright-0.17.4, launch-testing-ros-0.26.11, ament-xmllint-0.17.4, ament-pep257-0.17.4, typeguard-4.1.5, colcon-core-0.20.1, cov-4.1.0
+collected 3 items
+
+test/test_pick_place_lab.py ...                                          [100%]
+
+- generated xml file: /home/xbot/full_src_test_results_20260831/moveit_pick_place_lab/pytest.xml -
+============================== 3 passed in 0.17s ===============================

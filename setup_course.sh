@@ -394,6 +394,47 @@ discover_source_package_names() {
   discover_package_names "${course_base_paths[@]}" "${LAB_SRC}"
 }
 
+discover_installed_package_names() {
+  [[ -d "${COURSE_WS}/install" ]] || return 0
+  find -L "${COURSE_WS}/install" \
+    -path '*/share/ament_index/resource_index/packages/*' \
+    -type f -printf '%f\n' | LC_ALL=C sort -u
+}
+
+verify_installed_packages() {
+  local source_packages=()
+  local installed_packages=()
+  local missing_packages unexpected_packages
+  local package_name metadata_missing=0
+
+  mapfile -t source_packages < <(discover_source_package_names)
+  mapfile -t installed_packages < <(discover_installed_package_names)
+
+  if [[ "${source_packages[*]}" != "${installed_packages[*]}" ]]; then
+    missing_packages="$(comm -23 \
+      <(printf '%s\n' "${source_packages[@]}") \
+      <(printf '%s\n' "${installed_packages[@]}"))"
+    unexpected_packages="$(comm -13 \
+      <(printf '%s\n' "${source_packages[@]}") \
+      <(printf '%s\n' "${installed_packages[@]}"))"
+    [[ -z "${missing_packages}" ]] || log_warn "Packages missing from install: ${missing_packages}"
+    [[ -z "${unexpected_packages}" ]] || log_warn "Unexpected installed packages: ${unexpected_packages}"
+    return 1
+  fi
+
+  for package_name in "${source_packages[@]}"; do
+    if ! find -L "${COURSE_WS}/install" \
+      -path "*/share/${package_name}/package.xml" \
+      -type f -print -quit | grep -q .; then
+      log_warn "Installed package metadata is missing: ${package_name}/package.xml"
+      ((metadata_missing += 1))
+    fi
+  done
+
+  ((metadata_missing == 0)) || return 1
+  log_ok "All ${#source_packages[@]} source packages have install resources and package metadata"
+}
+
 assert_unique_packages() {
   local duplicate_names
   local course_base_paths=()
@@ -647,6 +688,9 @@ verify_installation() {
       log_ok "All ${#workspace_packages[@]} source packages are present in the workspace"
     else
       log_warn "Workspace package list differs from the source tree"
+      ((failures += 1))
+    fi
+    if ! verify_installed_packages; then
       ((failures += 1))
     fi
   fi

@@ -1,0 +1,14 @@
+test_clamps_speed_limits (test.test_controller.TfFollowerControllerTest.test_clamps_speed_limits) ... ok
+test_matches_ros1_control_shape_outside_threshold (test.test_controller.TfFollowerControllerTest.test_matches_ros1_control_shape_outside_threshold) ... ok
+test_stops_inside_distance_threshold (test.test_controller.TfFollowerControllerTest.test_stops_inside_distance_threshold) ... ok
+test_circle_target_position (test.test_fake_target.FakeTargetBroadcasterTest.test_circle_target_position) ... ok
+test_static_target_position (test.test_fake_target.FakeTargetBroadcasterTest.test_static_target_position) ... ok
+test_follower_publishes_twist_from_tf (test.test_integration.TfFollowerIntegrationTest.test_follower_publishes_twist_from_tf) ... [INFO] [1788173953.344025921] [tf_follower]: Following 'base_footprint' from 'mybot_link' and publishing Twist on '/mybot_cmd_vel'
+[WARN] [1788173953.396830986] [tf_follower]: Transform lookup failed: "mybot_link" passed to lookupTransform argument target_frame does not exist. 
+ok
+test_tf_follower_modules_import (test.test_smoke.TfFollowerSmokeTest.test_tf_follower_modules_import) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.276s
+
+OK

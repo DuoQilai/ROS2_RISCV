@@ -57,8 +57,7 @@
         </surface>
       </collision>
       <visual name="left_wheel_visual">
-        <pose>0 0 0 1.5708 0 0</pose>
-        <geometry><cylinder><radius>0.033</radius><length>0.022</length></cylinder></geometry>
+        <geometry><mesh><uri>model://turtlebot3_burger/meshes/left_tire.stl</uri><scale>0.001 0.001 0.001</scale></mesh></geometry>
         <material>
           <ambient>0.01 0.01 0.012 1</ambient>
           <diffuse>0.03 0.03 0.035 1</diffuse>
@@ -88,8 +87,7 @@
         </surface>
       </collision>
       <visual name="right_wheel_visual">
-        <pose>0 0 0 1.5708 0 0</pose>
-        <geometry><cylinder><radius>0.033</radius><length>0.022</length></cylinder></geometry>
+        <geometry><mesh><uri>model://turtlebot3_burger/meshes/right_tire.stl</uri><scale>0.001 0.001 0.001</scale></mesh></geometry>
         <material>
           <ambient>0.01 0.01 0.012 1</ambient>
           <diffuse>0.03 0.03 0.035 1</diffuse>

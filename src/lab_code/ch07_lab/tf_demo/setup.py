@@ -6,7 +6,7 @@ setup(name=pkg, version='0.1.0', packages=find_packages(exclude=['test']),
         ('share/ament_index/resource_index/packages', ['resource/'+pkg]),
         ('share/'+pkg, ['package.xml']),
     ],
-    install_requires=['setuptools'], zip_safe=True,
+    install_requires=['setuptools'], tests_require=['pytest'], zip_safe=True,
     maintainer='Student', description='TF2 坐标变换实验包',
     license='Apache-2.0',
     entry_points={'console_scripts': [

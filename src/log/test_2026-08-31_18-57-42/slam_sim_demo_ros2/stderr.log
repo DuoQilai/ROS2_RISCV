@@ -1,0 +1,11 @@
+test_command_sequence_cycles (test.test_slam_map_runner.SlamMapRunnerUnitTest.test_command_sequence_cycles) ... ok
+test_count_known_cells_ignores_unknown_values (test.test_slam_map_runner.SlamMapRunnerUnitTest.test_count_known_cells_ignores_unknown_values) ... ok
+test_planar_distance (test.test_slam_map_runner.SlamMapRunnerUnitTest.test_planar_distance) ... ok
+test_module_import (test.test_slam_save_reload_runner.SlamSaveReloadRunnerSmokeTest.test_module_import) ... ok
+test_assets_exist (test.test_smoke.SlamSimSmokeTest.test_assets_exist) ... ok
+test_modules_import (test.test_smoke.SlamSimSmokeTest.test_modules_import) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK

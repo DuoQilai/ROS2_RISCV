@@ -1,6 +1,6 @@
 # ROS 2 仿真与教学
 
-本工作区包含 44 个可由 colcon 发现和构建的 ROS 2 包，涵盖话题通信、服务通信、动作通信、参数系统、TF 坐标变换、URDF 建模、Gazebo 仿真、SLAM 建图、Nav2 自主导航和 xArm6 机械臂仿真，以及一个完整的 ISCAS Museum 仿真场景。
+本工作区包含 46 个可由 colcon 发现和构建的 ROS 2 包，涵盖话题通信、服务通信、动作通信、参数系统、TF 坐标变换、URDF 建模、Gazebo 仿真、SLAM 建图、Nav2 自主导航和 xArm6 机械臂仿真，以及一个完整的 ISCAS Museum 仿真场景。`lab_code/ch16_lab/` 是不带 `package.xml` 的纯文件示例。
 
 ## 环境
 
@@ -34,6 +34,8 @@
 │   │   └── urdf/                    TurtleBot3 Burger TF/模型描述
 
 │   ├── xarm/                        xArm6 + Gazebo Harmonic + MoveIt 2 仿真
+
+│   ├── xarm_description/             xArm6 URDF、mesh 和 ros2_control 描述
 
 │   ├── navigation_sim_demo_ros2/    Nav2 导航仿真
 
@@ -126,61 +128,87 @@
 
 ## 安装
 
-### 1. 安装 ROS 2 Jazzy
+### 1. 配置 ROS 2 官方软件源
 
-参考 [ROS 2 官方安装指南](https://docs.ros.org/en/jazzy/Installation.html)：
-
-```bash
-sudo apt update && sudo apt install -y \
-  ros-jazzy-desktop \
-  ros-jazzy-ros-gz-sim ros-jazzy-ros-gz-bridge ros-jazzy-ros-gz-image \
-  ros-jazzy-navigation2 ros-jazzy-nav2-bringup ros-jazzy-nav2-simple-commander \
-   ros-jazzy-slam-toolbox ros-jazzy-nav2-map-server \
-   ros-jazzy-robot-state-publisher ros-jazzy-joint-state-publisher-gui \
-   ros-jazzy-rviz2 ros-jazzy-ros2-control ros-jazzy-ros2-controllers \
-   ros-jazzy-gz-ros2-control ros-jazzy-moveit \
-   ros-jazzy-trac-ik-kinematics-plugin \
-   python3-colcon-common-extensions
-```
-
-### 2. 准备 xArm 描述底层
-
-`xarm_ros2_arm_only` 的运行依赖自定义 XBot Arm `xarm_description` `2.0.0`。该描述包不随本工作区提供，必须先在独立底层工作区中构建，并在构建或启动 xArm 前 source：
+Ubuntu 24.04 使用 ROS 2 Jazzy，Ubuntu 22.04 使用 ROS 2 Humble。当前仓库的 Gazebo、MoveIt 2
+和 xArm6 主机仿真优先使用 Jazzy。参考 [ROS 2 Jazzy 官方安装指南](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)：
 
 ```bash
+sudo apt install -y locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
-source /opt/ros/jazzy/setup.bash
-
-cd /path/to/xarm_description_workspace
-
-colcon build --symlink-install --packages-select xarm_description
-
-source install/setup.bash
+sudo apt update
+sudo apt install -y software-properties-common curl ca-certificates
+sudo add-apt-repository universe
+sudo curl -L https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
+  -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
+http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | \
+sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
+sudo apt update
 ```
 
-该描述包必须提供 `xarm_description/urdf/arm.urdf.xacro`，并采用 `arm_1_joint` 至 `arm_6_joint` 的关节命名。不要直接替换为使用 `joint1` 至 `joint6` 的 UFACTORY 官方描述包，除非同步迁移 Xacro、SRDF、控制器和 MoveIt 配置。
+### 2. 安装 ROS 2 和开发工具
 
-### 3. 克隆工作区
+根据 Ubuntu 版本选择一个发行版，不要同时安装两套 ROS 2：
+
+```bash
+# Ubuntu 24.04 LTS
+export ROS_DISTRO=jazzy
+sudo apt install -y ros-jazzy-desktop
+
+# Ubuntu 22.04 LTS：改用上一段后不要重复执行
+# export ROS_DISTRO=humble
+# sudo apt install -y ros-humble-desktop
+```
+
+```bash
+sudo apt install -y \
+  build-essential cmake git \
+  python3-pip python3-rosdep python3-colcon-common-extensions python3-vcstool \
+  python3-numpy python3-opencv python3-yaml ffmpeg
+```
+
+### 3. 初始化环境
+
+```bash
+sudo rosdep init
+rosdep update
+echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
+### 4. 克隆工作区并安装源码依赖
 
 ```bash
 git clone https://github.com/YunxiangLuo/ROS2.git
 cd ROS2
+rosdep install --from-paths src --ignore-src --rosdistro "${ROS_DISTRO}" -r -y
 ```
 
-### 4. 编译全部包
+### 5. 编译全部包
 
 ```bash
 
-source /opt/ros/jazzy/setup.bash
-
-source /path/to/xarm_description_workspace/install/setup.bash
-
-colcon build --symlink-install
+source /opt/ros/${ROS_DISTRO}/setup.bash
+colcon list --base-paths src --names-only | sort -u | wc -l  # 应为 46
+colcon build --base-paths src --symlink-install \
+  --event-handlers console_cohesion+ \
+  --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
 
 source install/setup.bash
+colcon test --base-paths src --executor sequential --return-code-on-test-failure
+colcon test-result --verbose
 ```
 
-源码树当前由 `setup_course.sh` 发现 44 个可构建包；其中包含核心仿真、`course_lab_*` 和实验包。
+源码树当前应发现并安装 46 个可构建包；构建后可检查：
+
+```bash
+find -L install -path '*/share/ament_index/resource_index/packages/*' -type f | wc -l  # 应为 46
+test -f install/setup.bash && echo 'ROS 2 workspace ready'
+```
 
 ## 包清单
 
@@ -190,6 +218,7 @@ source install/setup.bash
 |------|------|------|
 | `robot_sim_demo` | Python | ISCAS Museum / Campus PUCRS Gazebo 仿真：TurtleBot3 Burger 机器人、传感器桥、巡航驱动 |
 | `xarm_ros2_arm_only` | Python | xArm6 纯机械臂仿真：Gazebo Harmonic、ros2_control、MoveIt 2 和 RViz |
+| `xarm_description` | CMake | xArm6 URDF、mesh 和 ros2_control 描述 |
 | `navigation_sim_demo_ros2` | Python | Nav2 导航栈：地图、AMCL、规划、控制 |
 | `slam_sim_demo_ros2` | Python | slam_toolbox 在线建图 |
 | `tf_follower_ros2` | Python | TF 跟随控制器：基于坐标变换的速度控制 |
@@ -400,4 +429,3 @@ done
 | `vision_pickup_lab` | 5 | 通过 |
 
 运行截图和预期现象见各章节实验手册；当前源码目录不包含固定的 Nav2 GIF 资源。
-

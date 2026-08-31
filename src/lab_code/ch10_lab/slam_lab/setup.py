@@ -31,6 +31,7 @@ setup(
         ),
     ],
     install_requires=['setuptools'],
+    tests_require=['pytest'],
     zip_safe=True,
     maintainer='Student',
     maintainer_email='student@example.com',

@@ -128,7 +128,7 @@ ROS2/
 ├── teaching_docs/               # 教学文档（35 章，含 images/）
 ├── lecture_slides/              # 教学课件（35 章）
 ├── lab_manuals/                 # 实验手册（21 个，含 images/）
-└── src/                         # ROS2 课程源码（44 个可构建包 + 1 个嵌套资源包）
+└── src/                         # ROS2 课程源码（46 个可构建包；ch16_lab 为非功能包示例）
     ├── topic_demo_cpp/          # 话题通信 C++ 示例（车载传感器数据流）
     ├── topic_demo_py/           # 话题通信 Python 示例
     ├── topic_demo_interfaces/   # 话题通信自定义接口
@@ -150,6 +150,7 @@ ROS2/
     ├── urdf_demo_ros2/          # URDF 建模示例
     ├── tf_follower_ros2/        # TF 跟随机器人
     ├── xarm/                    # xArm6 + MoveIt2 仿真
+    ├── xarm_description/        # xArm6 URDF、mesh 和 ros2_control 描述
     ├── course_lab_interfaces/   # 课程实验共享接口
     ├── course_lab_utils/        # 课程实验共享实现
     └── lab_code/                # 实验代码（21 章，ch01_lab/ ~ ch21_lab/）
@@ -171,7 +172,7 @@ ROS2/
 
 **主机端（仿真与可视化平台，Windows x86）**
 
-- **Gazebo 仿真与 RViz2 可视化：** 运行在 Windows 主机的 WSL2（Ubuntu 22.04 + ROS2 Humble）内，或 Windows 原生 RViz2
+- **Gazebo 仿真与 RViz2 可视化：** 推荐使用 Windows 主机的 WSL2（Ubuntu 24.04 + ROS 2 Jazzy）；Ubuntu 22.04 + ROS 2 Humble 适用于课程兼容环境
 - **互联：** 主机与板卡处于同一局域网，共用 `ROS_DOMAIN_ID` 与 CycloneDDS，主机端 RViz2/Nav2 可视化并操控板卡上的课程节点
 
 
@@ -212,27 +213,112 @@ bash setup_course.sh --with-hardware
 bash setup_course.sh --all-profiles --run-tests
 ```
 
+## 纯净 Ubuntu 安装 ROS 2（主机端）
+
+以下步骤适用于新安装的 Ubuntu 主机或 WSL2。Ubuntu 24.04 使用 ROS 2 Jazzy，Ubuntu 22.04
+使用 ROS 2 Humble；当前仓库的 Gazebo、MoveIt 2 和 xArm6 主机仿真已在 Ubuntu 22.04 +
+ROS 2 Jazzy 环境中完成验证，优先推荐 Jazzy。`setup_course.sh` 是 openEuler RISC-V
+板卡端安装器，不要在 Ubuntu/WSL 主机端执行。
+
+### 1. 配置 ROS 2 官方软件源
+
+```bash
+sudo apt install -y locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+sudo apt update
+sudo apt install -y software-properties-common curl ca-certificates
+sudo add-apt-repository universe
+
+sudo curl -L https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
+  -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
+http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | \
+sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
+sudo apt update
+```
+
+### 2. 安装 ROS 2 和开发工具
+
+根据 Ubuntu 版本选择一个发行版，不要同时安装两套 ROS 2：
+
+```bash
+# Ubuntu 24.04 LTS：推荐用于 Gazebo、MoveIt 2 和 xArm6 主机仿真
+export ROS_DISTRO=jazzy
+sudo apt install -y ros-jazzy-desktop
+
+# Ubuntu 22.04 LTS：课程 Humble 兼容环境，改用上一段后不要重复执行
+# export ROS_DISTRO=humble
+# sudo apt install -y ros-humble-desktop
+```
+
+安装编译、依赖解析和课程 Python 节点所需工具：
+
+```bash
+sudo apt install -y \
+  build-essential cmake git \
+  python3-pip python3-rosdep python3-colcon-common-extensions python3-vcstool \
+  python3-numpy python3-opencv python3-yaml ffmpeg
+```
+
+### 3. 初始化环境并安装源码依赖
+
+```bash
+sudo rosdep init
+rosdep update
+echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+cd /path/to/ROS2
+rosdep install --from-paths src --ignore-src --rosdistro "${ROS_DISTRO}" -r -y
+```
+
+### 4. 编译和验证课程源码
+
+从仓库根目录使用 `--base-paths src`，避免把根目录中的非 ROS 文件夹当成软件包：
+
+```bash
+cd /path/to/ROS2
+colcon list --base-paths src --names-only | sort -u | wc -l  # 应为 46
+colcon build --base-paths src --symlink-install \
+  --event-handlers console_cohesion+ \
+  --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
+source install/setup.bash
+colcon test --base-paths src --executor sequential \
+  --return-code-on-test-failure
+colcon test-result --verbose
+```
+
+当前源码应发现并安装 46 个 ROS 2 包；`src/lab_code/ch16_lab/` 是不带 `package.xml` 的纯文件
+示例，不属于遗漏的构建包。安装后可检查：
+
+```bash
+find -L install -path '*/share/ament_index/resource_index/packages/*' -type f | wc -l  # 应为 46
+test -f install/setup.bash && echo 'ROS 2 workspace ready'
+```
+
 ## 机械臂安装（Windows x86 主机端）
 
-下面的 xArm6 机械臂仿真步骤在 **Windows x86 主机端**执行（WSL2 或 Windows 原生），不安装在 openEuler RISC-V 板卡上。主机端历史步骤基于 Ubuntu 24.04 / ROS 2 Jazzy 编写，在 WSL2 中对应 Humble 时将发行版名替换为 `humble` 即可。
+下面的 xArm6 机械臂仿真步骤在 **Windows x86 主机端**执行（WSL2 或 Windows 原生），不安装在 openEuler RISC-V 板卡上。本次验证环境为 WSL2 Ubuntu 22.04 + ROS 2 Jazzy；使用 Humble 时将发行版名替换为 `humble`。
 
 ### xArm6 机械臂仿真
 
-#### 1. 安装 ROS 2、Gazebo、MoveIt 2 和课程包
+#### 1. 安装依赖并编译课程包
 
 ```bash
-cd /path/to/Technologies-of-ROS2-Programming-master
+cd /path/to/ROS2
 
-# 如果使用外部兼容的 XBot Arm 描述包，请将实际路径替换到下一行后再执行
-# 要求：xarm_description 2.0.0，关节名为 arm_1_joint ~ arm_6_joint
-# source /path/to/xarm_description_workspace/install/setup.bash
-
-# 安装基础依赖、ros2_control、MoveIt 2、Gazebo Harmonic 并编译课程工作空间
-bash setup_course.sh
-source ~/.config/ros2-course/env.bash
+# 主机端需预先安装 ROS 2、ros2_control、MoveIt 2、Gazebo Harmonic 和 RViz2
+source /opt/ros/jazzy/setup.bash
+colcon build --base-paths src --symlink-install \
+  --packages-select xarm_description xarm_ros2_arm_only
+source install/setup.bash
 ```
 
-本项目的 `xarm_ros2_arm_only` 位于 `src/xarm/`，底层 `xarm_description` 不随本仓库提供，必须使用与本项目 SRDF、URDF 和控制器配置兼容的 XBot Arm 版本。安装后检查：
+本项目的 `xarm_ros2_arm_only` 位于 `src/xarm/`，兼容的 `xarm_description` 已包含在
+`src/xarm_description/`。安装后检查：
 
 ```bash
 ros2 pkg prefix xarm_description
@@ -244,8 +330,8 @@ ros2 pkg prefix gz_ros2_control
 如果只需要重新构建机械臂包：
 
 ```bash
-cd ~/ros2_course_ws
-colcon build --symlink-install --packages-select xarm_ros2_arm_only
+cd /path/to/ROS2
+colcon build --symlink-install --packages-select xarm_description xarm_ros2_arm_only
 source install/setup.bash
 ```
 
@@ -254,8 +340,15 @@ source install/setup.bash
 完整模式会启动 Gazebo、ros2_control、MoveIt 2 和 RViz2：
 
 ```bash
-source ~/ros2_course_ws/install/setup.bash
+source install/setup.bash
 ros2 launch xarm_ros2_arm_only arm_only.launch.py
+```
+
+完整模式启动后，另开一个终端执行动作序列；启动命令本身只负责保持仿真和 RViz2 运行：
+
+```bash
+source install/setup.bash
+ros2 run xarm_ros2_arm_only arm_only_moveit_sequence --timeout 60
 ```
 
 只查看 RViz2 中的机械臂和 MoveIt MotionPlanning 面板时，可使用轻量模式：
@@ -273,7 +366,7 @@ ros2 topic echo /joint_states --once
 ros2 run xarm_ros2_arm_only arm_only_runtime_smoke
 ```
 
-启动后的 xArm6 RViz/MoveIt 画面（30 秒录制）：
+启动后的 xArm6 Gazebo/MoveIt 动作画面（约 71 秒录制）：
 
 ![xArm6 RViz MoveIt2 启动画面](lab_manuals/images/runtime/xarm_startup.gif)
 
@@ -397,13 +490,13 @@ ros2 topic hz /camera/image_raw
 ## xArm MoveIt2 演示启动（xarm_ros2_arm_only）
 
 `xarm_ros2_arm_only` 包位于 `src/xarm/`，为 xArm6 纯机械臂提供 Gazebo Harmonic、
-ros2_control、MoveIt2 和 RViz 集成。启动前必须先 source 与本项目接口匹配的
-`xarm_description` 底层包，详见“环境要求”章节。
+ros2_control、MoveIt2 和 RViz 集成。兼容的 `xarm_description` 已包含在
+`src/xarm_description/`，不需要另外准备底层描述包。
 
 ### 完整 MoveIt2 演示（含 RViz、move_group 和 Gazebo）
 
 ```bash
-source ~/ros2_course_ws/install/setup.bash
+source install/setup.bash
 
 # 启动完整 xArm6 仿真环境
 ros2 launch xarm_ros2_arm_only arm_only.launch.py
@@ -464,7 +557,7 @@ src/xarm/
     └── arm_only.sdf
 ```
 
-> **前置依赖**：MoveIt2 依赖由 `setup_course.sh` 和 rosdep 安装。机械臂 URDF 模型定义在 `xarm_description` 包中，meshes 文件位于 `xarm_description/meshes/`。
+> **前置依赖**：板卡端依赖由 `setup_course.sh` 和 rosdep 安装；Ubuntu 主机端依赖由本节的 apt 和 rosdep 步骤安装。机械臂 URDF 模型定义在 `xarm_description` 包中，meshes 文件位于 `xarm_description/meshes/`。
 
 备注：
 
