@@ -1,39 +1,507 @@
-# 使用RuyiSDK在RISC-V环境下开发ROS2机器人操作系统
+# RISC-V ROS2 机器人操作系统编程技术
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+## 课程介绍
 
-#### 软件架构
-软件架构说明
+本课程以 RISC-V 开源硬件平台（openEuler 24.03 LTS）为硬件基础，以 ROS2（Robot Operating System 2）Humble 为技术平台，系统讲授机器人的软件开发框架、分布式通信机制、实时控制系统以及智能终端装调技术。课程 ROS2 程序运行在 openEuler RISC-V 板卡上，Gazebo、RViz2 等仿真与可视化环境运行在 Windows x86 主机上，两端通过局域网内同一 DDS 域互联。
 
+---
 
-#### 安装教程
+## 教学目标
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+| 目标维度 | 目标描述 |
+|:--------|---------|
+| **知识目标** | 掌握 ROS2 分布式通信机制（话题、服务、动作）、参数系统、TF2 坐标变换、URDF 建模、Gazebo 仿真等基础理论；理解 SLAM 建图与定位、自主导航、机械臂运动规划、视觉检测等核心技术原理 |
+| **技能目标** | 能够独立完成 ROS2 功能包的创建与调试；能够在 PAV-S RISC-V 机器人平台及 Windows 主机仿真环境中实现 SLAM 建图、自主导航、机械臂抓取等工程任务；能够集成激光雷达、深度相机等多传感器实现智能感知 |
+| **素养目标** | 培养系统化工程思维和跨领域技术整合能力；建立 RISC-V 开源软硬件平台与具身机器人统一的软件架构认知；形成规范的项目开发与文档编写习惯 |
 
-#### 使用说明
+---
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 课程大纲
 
-#### 参与贡献
+### Part 1: ROS2 编程基础（RISC-V 机器人终端软件平台，36 课时）
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+| 章节 | 内容 | 理论 | 实验 | 小计 |
+|:---:|------|:---:|:---:|:---:|
+| 1 | ROS2 概述与架构 | 2 | 2 | 4 |
+| 2 | 核心编程基础（Package/Node/Logger） | 2 | 2 | 4 |
+| 3 | 话题通信——RISC-V 机器人传感器数据分发 | 2 | 2 | 4 |
+| 4 | 服务通信——RISC-V 机器人远程诊断与指令 | 2 | 2 | 4 |
+| 5 | 动作通信——RISC-V 机器人路径规划与执行 | 2 | 2 | 4 |
+| 6 | 参数系统与 Launch 文件——RISC-V 机器人多节点管理 | 2 | 2 | 4 |
+| 7 | TF2 坐标变换——多传感器联合标定基础 | 2 | 2 | 4 |
+| 8 | URDF 机器人建模——RISC-V 机器人结构描述 | 2 | 2 | 4 |
+| 9 | Gazebo 仿真——机器人仿真环境搭建（Windows x86 主机运行） | 2 | 2 | 4 |
 
+### Part 2: SLAM 与自主导航（RISC-V 机器人环境感知与决策，62 课时）
 
-#### 特技
+| 章节 | 内容 | 理论 | 实验 | 小计 |
+|:---:|------|:---:|:---:|:---:|
+| 10 | SLAM 基本概念与贝叶斯框架 | 2 | 2 | 4 |
+| 11 | ICP 与 PLICP 扫描匹配 | 2 | 2 | 4 |
+| 12 | Hector-SLAM | 2 | 2 | 4 |
+| 13 | gmapping 粒子滤波 SLAM | 2 | 2 | 4 |
+| 14 | AMCL 自适应蒙特卡洛定位 | 2 | 2 | 4 |
+| 15 | Cartographer 图优化 SLAM | 4 | 2 | 6 |
+| 16 | Nav2 架构与核心组件 | 2 | 2 | 4 |
+| 17 | 全局代价地图 | 2 | 2 | 4 |
+| 18 | 全局路径规划（Dijkstra / A\*） | 2 | 2 | 4 |
+| 19 | 局部路径规划（DWA） | 2 | 2 | 4 |
+| 20 | 行为树与恢复行为 | 2 | 2 | 4 |
+| 21 | 视觉 SLAM 导论 | 2 | 2 | 4 |
+| 22 | 多传感器融合 SLAM | 2 | 2 | 4 |
+| 23 | SLAM 与导航综合实训 | 4 | 4 | 8 |
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### Part 3: 机械臂编程技术（具身智能机器人操作系统，52 课时）
+
+| 章节 | 内容 | 理论 | 实验 | 小计 |
+|:---:|------|:---:|:---:|:---:|
+| 24 | 机械臂基础知识与运动学 | 2 | 2 | 4 |
+| 25 | ROS2 机械臂建模（URDF/Xacro） | 2 | 2 | 4 |
+| 26 | MoveIt2 基础 | 2 | 2 | 4 |
+| 27 | MoveIt2 Python 关节空间规划 | 2 | 2 | 4 |
+| 28 | MoveIt2 笛卡尔空间与避障 | 2 | 2 | 4 |
+| 29 | 抓取与放置编程 | 2 | 2 | 4 |
+| 30 | ROS2 图像接口与相机标定 | 2 | 2 | 4 |
+| 31 | 颜色检测与 YOLO 物体检测 | 2 | 2 | 4 |
+| 32 | AR 标签检测与手眼标定 | 2 | 2 | 4 |
+| 33 | 视觉大模型与 ROS2 应用 | 2 | 2 | 4 |
+| 34 | 视觉抓取应用 | 2 | 2 | 4 |
+| 35 | 综合实训（集成机器人产线） | 4 | 4 | 8 |
+
+---
+
+## 理论章节与实验手册对照
+
+教学文档和课件仍按 35 个理论章节组织；实验代码和实验手册按 `src/lab_code/` 的 21 个实验组织。多个理论章节共用一个综合实验手册，实验手册编号与代码目录保持一致。
+
+| 实验手册 | 对应理论章节 | 合并/调整说明 |
+|:---:|:---|:---|
+| ch01 | 第1章 | ROS 2 环境与生命周期节点入门 |
+| ch02-ch09 | 第2-9章 | 与基础通信、TF、URDF、Gazebo 一一对应 |
+| ch10 | 第10-15章 | SLAM、扫描匹配、Hector、gmapping、AMCL、Cartographer 合并 |
+| ch11 | 第16-20章 | Nav2、代价地图、全局/局部规划、行为树合并 |
+| ch12 | 第22章 | RealSense 多传感器数据采集与融合 |
+| ch13、ch14 | 第23章 | SLAM 一键建图与 Nav2 一键导航拆分 |
+| ch15-ch16 | 第24-25章 | 机械臂基础/关节控制与 URDF 建模 |
+| ch17 | 第26-27章 | MoveIt2 配置、FK/IK 与关节空间规划合并 |
+| ch18 | 第28-29章 | 笛卡尔路径、避障与抓取放置合并 |
+| ch19 | 第30-32章 | 相机、标定、颜色/YOLO、AR 检测合并 |
+| ch20 | 第33章 | 视觉大模型服务化设计占位实验 |
+| ch21 | 第34-35章 | 视觉抓取与智能产线综合实训合并 |
+
+第21章视觉 SLAM 导论保留理论讲授，不再单独维护没有对应源码的 ORB-SLAM2 实验手册。
+
+---
+
+## 课程资料索引
+
+### 理论章节
+
+| 模块 | 文档 |
+|:---|:---|
+| Part 1 | [ch01_ROS2概述与架构.md](teaching_docs/ch01_ROS2概述与架构.md) · [ch02_核心编程基础.md](teaching_docs/ch02_核心编程基础.md) · [ch03_话题通信.md](teaching_docs/ch03_话题通信.md) · [ch04_服务通信.md](teaching_docs/ch04_服务通信.md) · [ch05_动作通信.md](teaching_docs/ch05_动作通信.md) · [ch06_参数与Launch.md](teaching_docs/ch06_参数与Launch.md) · [ch07_TF2坐标变换.md](teaching_docs/ch07_TF2坐标变换.md) · [ch08_URDF机器人建模.md](teaching_docs/ch08_URDF机器人建模.md) · [ch09_Gazebo仿真.md](teaching_docs/ch09_Gazebo仿真.md) |
+| Part 2 | [ch10_SLAM基本概念与贝叶斯框架.md](teaching_docs/ch10_SLAM基本概念与贝叶斯框架.md) · [ch11_ICP与PLICP扫描匹配.md](teaching_docs/ch11_ICP与PLICP扫描匹配.md) · [ch12_Hector_SLAM.md](teaching_docs/ch12_Hector_SLAM.md) · [ch13_gmapping粒子滤波SLAM.md](teaching_docs/ch13_gmapping粒子滤波SLAM.md) · [ch14_AMCL定位.md](teaching_docs/ch14_AMCL定位.md) · [ch15_Cartographer图优化SLAM.md](teaching_docs/ch15_Cartographer图优化SLAM.md) · [ch16_Nav2架构与核心组件.md](teaching_docs/ch16_Nav2架构与核心组件.md) · [ch17_全局代价地图.md](teaching_docs/ch17_全局代价地图.md) · [ch18_全局路径规划.md](teaching_docs/ch18_全局路径规划.md) · [ch19_局部路径规划.md](teaching_docs/ch19_局部路径规划.md) · [ch20_行为树与恢复行为.md](teaching_docs/ch20_行为树与恢复行为.md) · [ch21_视觉SLAM导论.md](teaching_docs/ch21_视觉SLAM导论.md) · [ch22_多传感器融合SLAM.md](teaching_docs/ch22_多传感器融合SLAM.md) · [ch23_SLAM与导航综合实训.md](teaching_docs/ch23_SLAM与导航综合实训.md) |
+| Part 3 | [ch24_机械臂基础知识.md](teaching_docs/ch24_机械臂基础知识.md) · [ch25_ROS2机械臂建模.md](teaching_docs/ch25_ROS2机械臂建模.md) · [ch26_MoveIt2基础.md](teaching_docs/ch26_MoveIt2基础.md) · [ch27_MoveIt2_Python规划.md](teaching_docs/ch27_MoveIt2_Python规划.md) · [ch28_MoveIt2笛卡尔空间与避障.md](teaching_docs/ch28_MoveIt2笛卡尔空间与避障.md) · [ch29_抓取与放置编程.md](teaching_docs/ch29_抓取与放置编程.md) · [ch30_ROS2图像接口与相机标定.md](teaching_docs/ch30_ROS2图像接口与相机标定.md) · [ch31_颜色检测与YOLO检测.md](teaching_docs/ch31_颜色检测与YOLO检测.md) · [ch32_AR标签检测与手眼标定.md](teaching_docs/ch32_AR标签检测与手眼标定.md) · [ch33_视觉大模型与ROS2应用.md](teaching_docs/ch33_视觉大模型与ROS2应用.md) · [ch34_视觉抓取应用.md](teaching_docs/ch34_视觉抓取应用.md) · [ch35_综合实训.md](teaching_docs/ch35_综合实训.md) |
+
+> 理论章节链接使用 `teaching_docs/` 当前规范文件名，并与 `scripts/generate_textbook.py` 的 35 个章节清单保持一致；旧版重号文件不作为课程入口。
+
+### 实验手册
+
+| 模块 | 手册 |
+|:---|:---|
+| Part 1 | [ch01](lab_manuals/ch01_lab.md) · [ch02](lab_manuals/ch02_lab.md) · [ch03](lab_manuals/ch03_lab.md) · [ch04](lab_manuals/ch04_lab.md) · [ch05](lab_manuals/ch05_lab.md) · [ch06](lab_manuals/ch06_lab.md) · [ch07](lab_manuals/ch07_lab.md) · [ch08](lab_manuals/ch08_lab.md) · [ch09](lab_manuals/ch09_lab.md) |
+| Part 2 | [ch10](lab_manuals/ch10_lab.md) · [ch11](lab_manuals/ch11_lab.md) · [ch12](lab_manuals/ch12_lab.md) · [ch13](lab_manuals/ch13_lab.md) · [ch14](lab_manuals/ch14_lab.md) |
+| Part 3 | [ch15](lab_manuals/ch15_lab.md) · [ch16](lab_manuals/ch16_lab.md) · [ch17](lab_manuals/ch17_lab.md) · [ch18](lab_manuals/ch18_lab.md) · [ch19](lab_manuals/ch19_lab.md) · [ch20](lab_manuals/ch20_lab.md) · [ch21](lab_manuals/ch21_lab.md) |
+
+实际运行截图和原始录制见[实际运行证据索引](lab_manuals/runtime_evidence.md)。
+
+---
+
+## 课时汇总
+
+| 模块 | 理论 | 实验 | 总课时 |
+|:----:|:----:|:----:|:------:|
+| Part 1 编程基础（RISC-V 机器人终端软件平台） | 18 | 18 | 36 |
+| Part 2 SLAM/导航（环境感知与决策） | 30 | 32 | 62 |
+| Part 3 机械臂（具身智能操作系统） | 26 | 26 | 52 |
+| **合计** | **74** | **76** | **150** |
+
+> 可根据教学计划灵活调整至 **144 学时**：合并 Part 1 概述性内容、精简 Part 2 部分实验课时即可对齐。
+
+## 目录结构
+
+```
+ROS2/
+├── README.md                    # 本文件，课程总览
+├── teaching_docs/               # 教学文档（35 章，含 images/）
+├── lecture_slides/              # 教学课件（35 章）
+├── lab_manuals/                 # 实验手册（21 个，含 images/）
+└── src/                         # ROS2 课程源码（44 个可构建包 + 1 个嵌套资源包）
+    ├── topic_demo_cpp/          # 话题通信 C++ 示例（车载传感器数据流）
+    ├── topic_demo_py/           # 话题通信 Python 示例
+    ├── topic_demo_interfaces/   # 话题通信自定义接口
+    ├── service_demo_cpp/        # 服务通信 C++ 示例（远程诊断指令）
+    ├── service_demo_py/         # 服务通信 Python 示例
+    ├── service_demo_interfaces/ # 服务通信自定义接口
+    ├── action_demo_cpp/         # 动作通信 C++ 示例（路径规划任务）
+    ├── action_demo_py/          # 动作通信 Python 示例
+    ├── action_demo_interfaces/  # 动作通信自定义接口
+    ├── msgs_demo_interfaces/    # 消息接口定义
+    ├── param_demo_cpp/          # 参数 C++ 示例
+    ├── param_demo_py/           # 参数 Python 示例
+    ├── tf_demo_cpp/             # TF2 C++ 示例（多传感器标定）
+    ├── tf_demo_py/              # TF2 Python 示例
+    ├── name_demo_cpp/           # 节点命名 C++ 示例
+    ├── robot_sim_demo/           # Wheeltec + ISCAS Museum Gazebo 仿真
+    ├── navigation_sim_demo_ros2/ # 导航仿真
+    ├── slam_sim_demo_ros2/      # SLAM 仿真
+    ├── urdf_demo_ros2/          # URDF 建模示例
+    ├── tf_follower_ros2/        # TF 跟随机器人
+    ├── xarm/                    # xarm_ros2_arm_only：xArm6 + MoveIt2 仿真
+    ├── course_lab_interfaces/   # 课程实验共享接口
+    ├── course_lab_utils/        # 课程实验共享实现
+    └── lab_code/                # 实验代码（21 章，ch01_lab/ ~ ch21_lab/）
+```
+
+---
+
+## 环境要求
+
+课程采用**板卡 + 主机**双端架构：
+
+**板卡端（课程程序运行平台）**
+
+- **操作系统：** openEuler 24.03 LTS（riscv64），桌面环境可选
+- **ROS2 版本：** Humble（openEuler ROS SIG 软件源）
+- **Python：** 3.11（openEuler 系统 Python）
+- **磁盘空间：** 至少 15GB
+- **可选硬件：** RealSense、USB 摄像头、串口机械臂或 PAV-S 实训平台
+
+**主机端（仿真与可视化平台，Windows x86）**
+
+- **Gazebo 仿真与 RViz2 可视化：** 运行在 Windows 主机的 WSL2（Ubuntu 22.04 + ROS2 Humble）内，或 Windows 原生 RViz2
+- **互联：** 主机与板卡处于同一局域网，共用 `ROS_DOMAIN_ID` 与 CycloneDDS，主机端 RViz2/Nav2 可视化并操控板卡上的课程节点
+
+安装器优先通过 `package.xml` 和 `rosdep` 解析 ROS 依赖。NumPy、OpenCV、SciPy
+
+等 ABI 敏感依赖由 dnf 安装；ML 依赖进入独立 venv，不会覆盖 `cv_bridge` 使用的
+
+系统 Python 包。Gazebo、RViz2 没有 riscv64 软件包，一律不安装到板卡。
+
+## 快速开始
+
+```bash
+# 板卡端默认：配置 RISC-V 软件源 + ROS2 Humble + src/lab 依赖 + 编译课程包 + ~/.bashrc 配置
+bash setup_course.sh
+
+# 先检查将执行的安装命令
+bash setup_course.sh --dry-run
+
+# 安装后验证
+bash setup_course.sh --verify
+```
+
+默认安装不包含体积较大或依赖硬件的组件，可按需组合 profile：
+
+```bash
+# FilterPy、OpenAI、EVO（安装到独立 venv，riscv64 上部分需要源码编译）
+bash setup_course.sh --with-ml
+
+# USB Camera 和串口依赖
+bash setup_course.sh --with-hardware
+
+# 启用全部 profile，并在编译后运行 colcon 测试
+bash setup_course.sh --all-profiles --run-tests
+```
+
+> Gazebo、RViz2 运行在 Windows x86 主机端；CARLA 自动驾驶模块已从课程中整体移除，安装器不再提供 CARLA 相关 profile。
+
+## 机械臂安装（Windows x86 主机端）
+
+下面的 xArm6 机械臂仿真步骤在 **Windows x86 主机端**执行（WSL2 或 Windows 原生），不安装在 openEuler RISC-V 板卡上。主机端历史步骤基于 Ubuntu 24.04 / ROS 2 Jazzy 编写，在 WSL2 中对应 Humble 时将发行版名替换为 `humble` 即可。
+
+### xArm6 机械臂仿真
+
+#### 1. 安装 ROS 2、Gazebo、MoveIt 2 和课程包
+
+```bash
+cd /path/to/Technologies-of-ROS2-Programming-master
+
+# 如果使用外部兼容的 XBot Arm 描述包，请将实际路径替换到下一行后再执行
+# 要求：xarm_description 2.0.0，关节名为 arm_1_joint ~ arm_6_joint
+# source /path/to/xarm_description_workspace/install/setup.bash
+
+# 安装基础依赖、ros2_control、MoveIt 2、Gazebo Harmonic 并编译课程工作空间
+bash setup_course.sh
+source ~/.config/ros2-course/env.bash
+```
+
+本项目的 `xarm_ros2_arm_only` 位于 `src/xarm/`，底层 `xarm_description` 不随本仓库提供，必须使用与本项目 SRDF、URDF 和控制器配置兼容的 XBot Arm 版本。安装后检查：
+
+```bash
+ros2 pkg prefix xarm_description
+ros2 pkg prefix xarm_ros2_arm_only
+ros2 pkg prefix moveit_ros_move_group
+ros2 pkg prefix gz_ros2_control
+```
+
+如果只需要重新构建机械臂包：
+
+```bash
+cd ~/ros2_course_ws
+colcon build --symlink-install --packages-select xarm_ros2_arm_only
+source install/setup.bash
+```
+
+#### 2. 启动和验证机械臂
+
+完整模式会启动 Gazebo、ros2_control、MoveIt 2 和 RViz2：
+
+```bash
+source ~/ros2_course_ws/install/setup.bash
+ros2 launch xarm_ros2_arm_only arm_only.launch.py
+```
+
+只查看 RViz2 中的机械臂和 MoveIt MotionPlanning 面板时，可使用轻量模式：
+
+```bash
+ros2 launch xarm_ros2_arm_only arm_only.launch.py \
+  use_gazebo:=false use_sim_time:=false
+```
+
+完整模式启动后，在另一个已加载环境的终端中验证规划链路：
+
+```bash
+ros2 control list_controllers
+ros2 topic echo /joint_states --once
+ros2 run xarm_ros2_arm_only arm_only_runtime_smoke
+```
+
+启动后的 xArm6 RViz/MoveIt 画面（30 秒录制）：
+
+![xArm6 RViz MoveIt2 启动画面](lab_manuals/images/runtime/xarm_startup.gif)
+
+源码会使用 `rsync --delete` 同步到脚本管理的 `~/ros2_course_ws`：课程 ROS 包位于
+
+`src/course/`，实验代码位于 `src/labs/`；源码树中的 `src/lab_code/` 不会再次复制到
+
+`src/course/`，以避免嵌套实验包重复发现。比如源码中的 `src/xarm/` 在托管工作空间中
+
+对应 `src/course/xarm/`。这样也能避开 WSL 中 `/mnt/c` 的编译性能和中文路径问题。
+
+脚本不会修改已有的非托管工作空间；可通过 `--workspace /absolute/path` 选择新的目标目录。
+
+安装完成后重新打开终端，或执行：
+
+```bash
+
+source ~/.config/ros2-course/env.bash
+
+cd ~/ros2_course_ws
+```
+
+---
+
+## Gazebo 仿真启动（robot_sim_demo）
+
+`robot_sim_demo` 使用 Gazebo Sim Harmonic 启动 Wheeltec 机器人。原有
+`gazebo2.launch.py` 继续使用 ISCAS Museum 的 `museum.sdf`；新增
+`campus_pucrs.launch.py` 使用 Campus PUCRS 的 `campus_pucrs.world.sdf`，并将车辆
+放在黄色 X 标志中心 `(20.0, 0.0)` 的无障碍区域。
+
+### 默认启动（Gazebo + 机器人 + 自动巡航）
+
+```bash
+source ~/ros2_course_ws/install/setup.bash
+ros2 launch robot_sim_demo gazebo2.launch.py
+```
+
+默认启动 GUI 和自动巡航，RViz 默认关闭。需要手动控制时，先关闭自动巡航：
+
+```bash
+
+ros2 launch robot_sim_demo gazebo2.launch.py rviz:=true drive:=false
+```
+
+然后在另一终端运行键盘控制：
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+### Campus PUCRS 世界
+
+```bash
+
+ros2 launch robot_sim_demo campus_pucrs.launch.py
+```
+
+Campus 入口默认启动 GUI、传感器桥和 RViz 可选项，但不自动巡航；车辆初始位姿
+为 `x=20.0, y=0.0, z=0.017, yaw=0.0`，对应世界中黄色标志的中心。
+
+### Launch 参数
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `gui` | `true` | 启动 Gazebo GUI；设为 `false` 使用无头模式 |
+| `rviz` | `false` | 启动 RViz2 |
+| `spawn_robot` | `true` | 在世界中生成 Wheeltec 机器人 |
+| `drive` | `true` | 启动自动巡航节点 |
+| `drive_linear_speed` | `0.18` | 巡航线速度（m/s） |
+| `drive_angular_speed` | `0.55` | 巡航角速度（rad/s） |
+| `drive_loop` | `true` | 是否循环巡航 |
+| `drive_duration` | `0.0` | 巡航持续时间（0 表示不限制） |
+| `world` | `museum.sdf` | Gazebo 世界文件路径 |
+| `world_name` | `default` | Gazebo 世界名称 |
+| `spawn_x/y/z/yaw` | `0/0/0.017/0` | 机器人生成位姿 |
+| `use_sim_time` | `true` | 使用 Gazebo 仿真时钟 |
+
+![Nav2 导航](lab_manuals/images/runtime/nav2.gif)
+
+### 常用启动方式
+
+```bash
+# 无 GUI、无 RViz、无自动巡航
+ros2 launch robot_sim_demo gazebo2.launch.py gui:=false rviz:=false drive:=false
+
+# 启动 RViz 并关闭自动巡航
+ros2 launch robot_sim_demo gazebo2.launch.py rviz:=true drive:=false
+
+# 自定义机器人生成位置
+ros2 launch robot_sim_demo gazebo2.launch.py \
+  spawn_x:=1.0 spawn_y:=0.5 spawn_z:=0.017 spawn_yaw:=1.57
+```
+
+### 仿真包关键节点与话题
+
+| 节点/组件 | 实现 | 功能 |
+|------|------|------|
+| `patrol_driver` | `robot_sim_demo/patrol_driver.py` | 自动巡航速度发布 |
+| `camera_info_publisher` | `robot_sim_demo/camera_info_publisher.py` | 发布相机内参 |
+| `parameter_bridge` | `ros_gz_bridge` | 桥接 `/cmd_vel`、`/odom`、`/scan`、`/clock` 等话题 |
+| `image_bridge` | `ros_gz_image` | 桥接 `/camera/image_raw` |
+| `create` | `ros_gz_sim` | 在 Gazebo 世界中生成机器人 |
+
+常用验证命令：
+
+```bash
+
+ros2 topic echo /odom --once
+
+ros2 topic echo /scan --once
+
+ros2 topic echo /camera/camera_info --once
+
+ros2 topic hz /camera/image_raw
+```
+
+---
+
+## xArm MoveIt2 演示启动（xarm_ros2_arm_only）
+
+`xarm_ros2_arm_only` 包位于 `src/xarm/`，为 xArm6 纯机械臂提供 Gazebo Harmonic、
+ros2_control、MoveIt2 和 RViz 集成。启动前必须先 source 与本项目接口匹配的
+`xarm_description` 底层包，详见“环境要求”章节。
+
+### 完整 MoveIt2 演示（含 RViz、move_group 和 Gazebo）
+
+```bash
+source ~/ros2_course_ws/install/setup.bash
+
+# 启动完整 xArm6 仿真环境
+ros2 launch xarm_ros2_arm_only arm_only.launch.py
+```
+
+此 Launch 文件启动：
+- `tf2_ros static_transform_publisher`（world → base_link 静态变换）
+- `robot_state_publisher`（发布机器人 TF）
+- `controller_manager` + ros2_control 控制器
+- `move_group`（MoveIt2 运动规划核心）
+- `RViz2`（含 MoveIt2 MotionPlanning 插件）
+
+启动后可在 RViz2 中通过 **Interact 模式**拖拽机械臂末端设定目标位姿，点击 **Plan & Execute** 执行运动规划。
+
+### 仅启动 MoveIt2（不含 Gazebo）
+
+```bash
+
+ros2 launch xarm_ros2_arm_only arm_only.launch.py \
+
+  use_gazebo:=false use_sim_time:=false
+```
+
+该模式使用 MoveIt mock components，适用于纯运动学验证和规划预览。
+
+### 常用启动变体
+
+```bash
+# Gazebo 无头运行，不启动 RViz
+ros2 launch xarm_ros2_arm_only arm_only.launch.py \
+  gz_headless:=true use_rviz:=false
+
+# 启动独立的 MoveIt2 + RViz launch
+ros2 launch xarm_ros2_arm_only arm_only_move_group.launch.py use_rviz:=true
+
+# 调整机械臂固定底座高度
+ros2 launch xarm_ros2_arm_only arm_only.launch.py base_height:=0.20
+```
+
+### 包结构与关键配置
+
+```
+src/xarm/
+├── config/
+│   ├── arm_only_kinematics.yaml # 运动学求解器配置
+│   ├── arm_only_joint_limits.yaml # 关节限位配置
+│   ├── arm_only_ompl_planning.yaml # OMPL 规划器参数
+│   ├── arm_only_controllers.yaml # ros2_control 控制器配置
+│   ├── moveit_controllers.yaml # MoveIt2 控制器映射
+│   ├── xarm.srdf              # 语义机器人描述（碰撞矩阵、组定义）
+│   └── arm_only_moveit.rviz   # RViz MotionPlanning 配置
+├── launch/
+│   ├── arm_only.launch.py      # Gazebo + ros2_control + MoveIt2
+│   └── arm_only_move_group.launch.py # MoveIt2 + RViz
+├── urdf/
+│   └── arm_only_xarm.urdf.xacro
+└── worlds/
+    └── arm_only.sdf
+```
+
+> **前置依赖**：MoveIt2 依赖由 `setup_course.sh` 和 rosdep 安装。机械臂 URDF 模型定义在 `xarm_description` 包中，meshes 文件位于 `xarm_description/meshes/`。
+
+备注：
+
+1. [openEuler(x86/arm/RISC-V)下ROS2的安装](https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/tools/application/ros/ros_user_guide.html)
+
+---
+
+## openEuler 24.03（x86 / ARM / RISC-V）安装 ROS2 Humble
+
+课程安装器 `setup_course.sh` 默认即面向 openEuler 24.03 RISC-V；如只需安装 ROS2 Humble 本体（不编译课程包），可直接使用官方 ROS SIG 软件源：
+
+```bash
+# RISC-V 板卡一键安装（配置软件源 + 安装 ros-humble-* + 写入 ~/.bashrc）
+sudo bash scripts/install_ros2_humble_riscv.sh
+
+# 激活环境
+source ~/.bashrc
+
+# 测试小乌龟
+ros2 run turtlesim turtlesim_node      # 终端1
+ros2 run turtlesim turtle_teleop_key   # 终端2
+```
+
+要点（依据 openEuler 24.03 LTS SP3 官方《安装与部署》文档）：
+
+| 项目 | 说明 |
+|------|------|
+| RISC-V 软件源 | `https://build-repo.tarsier-infra.isrc.ac.cn/openEuler:/ROS/24.03/` |
+| x86 / ARM 软件源 | EulerMaker `ROS-SIG-Multi-Version_ros-humble_openEuler-24.03-LTS-TEST4` 仓库（见官方文档） |
+| 安装命令 | `dnf install "ros-humble-*" --skip-broken --exclude=ros-humble-generate-parameter-library-example` |
+| 环境变量 | `source /opt/ros/humble/setup.bash`（写入 `~/.bashrc`） |
+| 注意 | openEuler 24.03 需**手动**配置软件源（22.03 会自动配置）；x86/ARM 架构需将脚本中 `baseurl` 替换为对应 EulerMaker 源 |
+
+> openEuler 上 ROS 版本为 **Humble**。Gazebo、RViz2 没有 riscv64 软件包，统一运行在 Windows x86 主机端（见「机械臂安装」一节），与板卡共用同一局域网 DDS 域；RISC-V 源暂无 Noetic（ROS1）软件包。
+
+---
+
