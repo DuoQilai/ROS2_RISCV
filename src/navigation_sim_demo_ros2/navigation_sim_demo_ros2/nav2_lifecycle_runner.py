@@ -25,14 +25,17 @@ class Nav2LifecycleRunner(Node):
         self.declare_parameter("activate_timeout_sec", 10.0)
         self.declare_parameter("service_wait_timeout_sec", 60.0)
         self.declare_parameter("retry_count", 20)
+        self.declare_parameter("use_localization", True)
 
         self.configure_timeout_sec = float(self.get_parameter("configure_timeout_sec").value)
         self.activate_timeout_sec = float(self.get_parameter("activate_timeout_sec").value)
         self.service_wait_timeout_sec = float(self.get_parameter("service_wait_timeout_sec").value)
         self.retry_count = int(self.get_parameter("retry_count").value)
+        self.use_localization = bool(self.get_parameter("use_localization").value)
 
         self.lifecycle_clients: dict[str, tuple] = {}
-        for node_name in LOCALIZATION_NODES + NAVIGATION_NODES:
+        managed_nodes = NAVIGATION_NODES + (LOCALIZATION_NODES if self.use_localization else [])
+        for node_name in managed_nodes:
             change_client = self.create_client(ChangeState, f"/{node_name}/change_state")
             state_client = self.create_client(GetState, f"/{node_name}/get_state")
             self.lifecycle_clients[node_name] = (change_client, state_client)
@@ -128,8 +131,11 @@ class Nav2LifecycleRunner(Node):
 
     def bringup(self) -> None:
         self.wait_for_services()
-        self.get_logger().info("Bringing up localization lifecycle nodes")
-        self.bringup_group(LOCALIZATION_NODES)
+        if self.use_localization:
+            self.get_logger().info("Bringing up localization lifecycle nodes")
+            self.bringup_group(LOCALIZATION_NODES)
+        else:
+            self.get_logger().info("Skipping localization lifecycle nodes (SLAM mode)")
         self.get_logger().info("Bringing up navigation lifecycle nodes")
         self.bringup_group(NAVIGATION_NODES)
         self.get_logger().info("Nav2 stack is active")

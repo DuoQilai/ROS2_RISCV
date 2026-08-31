@@ -31,9 +31,8 @@
         <material>
           <ambient>0.015 0.015 0.018 1</ambient>
           <diffuse>0.04 0.04 0.05 1</diffuse>
-          <specular>0.85 0.85 0.9 1</specular>
-          <shininess>110</shininess>
-          <pbr><metallic>1.0</metallic><roughness>0.35</roughness></pbr>
+          <specular>0.95 0.95 1.0 1</specular>
+          <shininess>140</shininess>
         </material>
       </visual>
     </link>
@@ -58,14 +57,12 @@
         </surface>
       </collision>
       <visual name="left_wheel_visual">
-        <pose>0 0 0 -1.5708 0 0</pose>
         <geometry><mesh><uri>model://turtlebot3_burger/meshes/left_tire.stl</uri><scale>0.001 0.001 0.001</scale></mesh></geometry>
         <material>
           <ambient>0.01 0.01 0.012 1</ambient>
           <diffuse>0.03 0.03 0.035 1</diffuse>
           <specular>0.5 0.5 0.55 1</specular>
           <shininess>60</shininess>
-          <pbr><metallic>0.9</metallic><roughness>0.55</roughness></pbr>
         </material>
       </visual>
     </link>
@@ -90,14 +87,12 @@
         </surface>
       </collision>
       <visual name="right_wheel_visual">
-        <pose>0 0 0 1.5708 0 0</pose>
         <geometry><mesh><uri>model://turtlebot3_burger/meshes/right_tire.stl</uri><scale>0.001 0.001 0.001</scale></mesh></geometry>
         <material>
           <ambient>0.01 0.01 0.012 1</ambient>
           <diffuse>0.03 0.03 0.035 1</diffuse>
           <specular>0.5 0.5 0.55 1</specular>
           <shininess>60</shininess>
-          <pbr><metallic>0.9</metallic><roughness>0.55</roughness></pbr>
         </material>
       </visual>
     </link>
@@ -143,7 +138,6 @@
           <diffuse>0.05 0.05 0.06 1</diffuse>
           <specular>0.8 0.8 0.85 1</specular>
           <shininess>100</shininess>
-          <pbr><metallic>1.0</metallic><roughness>0.4</roughness></pbr>
         </material>
       </visual>
       <sensor name="laser" type="gpu_lidar">

@@ -42,5 +42,5 @@
       <uri>model://ISCAS_Museum</uri>
       <pose>0 0 0 0 0 -1.57</pose>
     </include>
-  </world>
+</world>
 </sdf>

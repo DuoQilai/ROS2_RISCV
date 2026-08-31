@@ -69,6 +69,7 @@ setup(
     entry_points={
         "console_scripts": [
             "camera_info_publisher = robot_sim_demo.camera_info_publisher:main",
+            "circle_driver = robot_sim_demo.circle_driver:main",
             "patrol_driver = robot_sim_demo.patrol_driver:main",
         ],
     },

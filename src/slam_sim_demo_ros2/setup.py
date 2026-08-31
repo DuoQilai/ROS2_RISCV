@@ -29,7 +29,7 @@ setup(
             ],
         ),
     ],
-    install_requires=["setuptools"],
+    install_requires=["setuptools", "numpy"],
     zip_safe=True,
     maintainer="ROS Academy",
     maintainer_email="anchuanxu@todo.todo",
@@ -39,6 +39,7 @@ setup(
         "console_scripts": [
             "slam_map_runner = slam_sim_demo_ros2.slam_map_runner:main",
             "slam_save_reload_runner = slam_sim_demo_ros2.slam_save_reload_runner:main",
+            "light_slam_mapper = slam_sim_demo_ros2.light_slam_mapper:main",
         ],
     },
 )

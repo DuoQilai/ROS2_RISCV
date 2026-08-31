@@ -20,12 +20,23 @@ def generate_launch_description() -> LaunchDescription:
     default_rviz = os.path.join(nav_pkg_share, "rviz", "navigation.rviz")
     default_world = os.path.join(robot_sim_share, "worlds", "museum.sdf")
     robot_sim_launch = os.path.join(robot_sim_share, "launch", "gazebo2.launch.py")
+    try:
+        slam_sim_share = get_package_share_directory("slam_sim_demo_ros2")
+        slam_toolbox_share = get_package_share_directory("slam_toolbox")
+    except Exception:
+        slam_sim_share = ""
+        slam_toolbox_share = ""
+    slam_toolbox_launch = os.path.join(
+        slam_toolbox_share, "launch", "online_async_launch.py"
+    )
 
     map_yaml = LaunchConfiguration("map")
     params_file = LaunchConfiguration("params_file")
     rviz_config = LaunchConfiguration("rviz_config")
     use_rviz = LaunchConfiguration("use_rviz")
     use_gazebo = LaunchConfiguration("use_gazebo")
+    use_amcl = LaunchConfiguration("use_amcl")
+    use_slam = LaunchConfiguration("use_slam")
     gz_headless = LaunchConfiguration("gz_headless")
     world = LaunchConfiguration("world")
     spawn_x = LaunchConfiguration("spawn_x")
@@ -40,6 +51,13 @@ def generate_launch_description() -> LaunchDescription:
     use_sim_time = LaunchConfiguration("use_sim_time")
     lifecycle_delay_sec = LaunchConfiguration("lifecycle_delay_sec")
     log_level = LaunchConfiguration("log_level")
+
+    slam_params = RewrittenYaml(
+        source_file=os.path.join(slam_sim_share, "params", "slam_toolbox_params.yaml"),
+        root_key="",
+        param_rewrites={"use_sim_time": use_sim_time},
+        convert_types=True,
+    )
 
     remappings = [("/tf", "tf"), ("/tf_static", "tf_static")]
     param_substitutions = {"use_sim_time": use_sim_time, "yaml_filename": map_yaml}
@@ -68,6 +86,8 @@ def generate_launch_description() -> LaunchDescription:
             DeclareLaunchArgument("initial_pose_yaw", default_value="0.0"),
             DeclareLaunchArgument("use_rviz", default_value="true"),
             DeclareLaunchArgument("use_gazebo", default_value="false"),
+            DeclareLaunchArgument("use_amcl", default_value="true"),
+            DeclareLaunchArgument("use_slam", default_value="false"),
             DeclareLaunchArgument("gz_headless", default_value="true"),
             DeclareLaunchArgument("use_respawn", default_value="false"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
@@ -97,27 +117,40 @@ def generate_launch_description() -> LaunchDescription:
                 ],
                 condition=IfCondition(use_gazebo),
             ),
-            Node(
-                package="nav2_map_server",
-                executable="map_server",
-                name="map_server",
-                output="screen",
-                respawn=use_respawn,
-                respawn_delay=2.0,
-                parameters=[configured_params],
-                arguments=["--ros-args", "--log-level", log_level],
-                remappings=remappings,
+            GroupAction(
+                condition=IfCondition(use_amcl),
+                actions=[
+                    Node(
+                        package="nav2_map_server",
+                        executable="map_server",
+                        name="map_server",
+                        output="screen",
+                        respawn=use_respawn,
+                        respawn_delay=2.0,
+                        parameters=[configured_params],
+                        arguments=["--ros-args", "--log-level", log_level],
+                        remappings=remappings,
+                    ),
+                    Node(
+                        package="nav2_amcl",
+                        executable="amcl",
+                        name="amcl",
+                        output="screen",
+                        respawn=use_respawn,
+                        respawn_delay=2.0,
+                        parameters=[configured_params],
+                        arguments=["--ros-args", "--log-level", log_level],
+                        remappings=remappings,
+                    ),
+                ],
             ),
             Node(
-                package="nav2_amcl",
-                executable="amcl",
-                name="amcl",
+                package="slam_sim_demo_ros2",
+                executable="light_slam_mapper",
+                name="light_slam_mapper",
                 output="screen",
-                respawn=use_respawn,
-                respawn_delay=2.0,
-                parameters=[configured_params],
-                arguments=["--ros-args", "--log-level", log_level],
-                remappings=remappings,
+                condition=IfCondition(use_slam),
+                parameters=[{"use_sim_time": use_sim_time}],
             ),
             Node(
                 package="nav2_controller",
@@ -205,11 +238,19 @@ def generate_launch_description() -> LaunchDescription:
                         executable="nav2_lifecycle_runner",
                         name="nav2_lifecycle_runner",
                         output="screen",
+                        parameters=[
+                            {
+                                "use_localization": PythonExpression(
+                                    ["'", use_amcl, "' == 'true'"]
+                                )
+                            }
+                        ],
                     ),
                 ],
             ),
             TimerAction(
                 period=initial_pose_delay_sec,
+                condition=IfCondition(use_amcl),
                 actions=[
                     Node(
                         package="navigation_sim_demo_ros2",
