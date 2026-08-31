@@ -213,14 +213,14 @@ bash setup_course.sh --with-hardware
 bash setup_course.sh --all-profiles --run-tests
 ```
 
-## 纯净 Ubuntu 安装 ROS 2（主机端）
+## 纯净 Ubuntu 安装 ROS2（主机端）
 
 以下步骤适用于新安装的 Ubuntu 主机或 WSL2。Ubuntu 24.04 使用 ROS 2 Jazzy，Ubuntu 22.04
 使用 ROS 2 Humble；当前仓库的 Gazebo、MoveIt 2 和 xArm6 主机仿真已在 Ubuntu 22.04 +
 ROS 2 Jazzy 环境中完成验证，优先推荐 Jazzy。`setup_course.sh` 是 openEuler RISC-V
 板卡端安装器，不要在 Ubuntu/WSL 主机端执行。
 
-### 1. 配置 ROS 2 官方软件源
+### 1. 配置 ROS2 官方软件源
 
 ```bash
 sudo apt install -y locales
@@ -240,9 +240,9 @@ sudo tee /etc/apt/sources.list.d/ros2.list >/dev/null
 sudo apt update
 ```
 
-### 2. 安装 ROS 2 和开发工具
+### 2. 安装 ROS2 和开发工具
 
-根据 Ubuntu 版本选择一个发行版，不要同时安装两套 ROS 2：
+根据 Ubuntu 版本选择一个发行版，不要同时安装两套 ROS2：
 
 ```bash
 # Ubuntu 24.04 LTS：推荐用于 Gazebo、MoveIt 2 和 xArm6 主机仿真
