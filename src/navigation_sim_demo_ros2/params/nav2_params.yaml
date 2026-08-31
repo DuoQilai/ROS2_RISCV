@@ -63,7 +63,7 @@ bt_navigator_navigate_to_pose_rclcpp_node:
 controller_server:
   ros__parameters:
     use_sim_time: true
-    controller_frequency: 10.0
+    controller_frequency: 20.0
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.5
     min_theta_velocity_threshold: 0.001
@@ -78,29 +78,29 @@ controller_server:
     general_goal_checker:
       stateful: true
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      xy_goal_tolerance: 0.3
+      yaw_goal_tolerance: 0.3
     FollowPath:
       plugin: "dwb_core::DWBLocalPlanner"
       debug_trajectory_details: false
       min_vel_x: 0.0
       min_vel_y: 0.0
-      max_vel_x: 0.5
+      max_vel_x: 5.0
       max_vel_y: 0.0
-      max_vel_theta: 1.5
+      max_vel_theta: 2.5
       min_speed_xy: 0.0
-      max_speed_xy: 0.5
+      max_speed_xy: 5.0
       min_speed_theta: 0.0
-      acc_lim_x: 1.0
+      acc_lim_x: 2.5
       acc_lim_y: 0.0
-      acc_lim_theta: 2.0
-      decel_lim_x: -1.0
+      acc_lim_theta: 3.0
+      decel_lim_x: -3.0
       decel_lim_y: 0.0
-      decel_lim_theta: -2.0
-      vx_samples: 20
+      decel_lim_theta: -3.0
+      vx_samples: 25
       vy_samples: 1
-      vtheta_samples: 20
-      sim_time: 1.5
+      vtheta_samples: 25
+      sim_time: 3.0
       linear_granularity: 0.05
       angular_granularity: 0.025
       transform_tolerance: 0.2
@@ -121,14 +121,14 @@ controller_server:
 local_costmap:
   local_costmap:
     ros__parameters:
-      update_frequency: 5.0
-      publish_frequency: 2.0
+      update_frequency: 10.0
+      publish_frequency: 5.0
       global_frame: odom
       robot_base_frame: base_link
       use_sim_time: true
       rolling_window: true
-      width: 4
-      height: 4
+      width: 6
+      height: 6
       resolution: 0.05
       robot_radius: 0.25
       always_send_full_costmap: true
@@ -259,10 +259,10 @@ velocity_smoother:
     smoothing_frequency: 20.0
     scale_velocities: false
     feedback: "OPEN_LOOP"
-    max_velocity: [0.5, 0.0, 1.5]
-    min_velocity: [-0.2, 0.0, -1.5]
-    max_accel: [1.0, 0.0, 2.0]
-    max_decel: [-1.0, 0.0, -2.0]
+    max_velocity: [5.0, 0.0, 2.5]
+    min_velocity: [-0.5, 0.0, -2.5]
+    max_accel: [2.5, 0.0, 3.0]
+    max_decel: [-3.0, 0.0, -3.0]
     odom_topic: "odom"
     odom_duration: 0.1
     deadband_velocity: [0.0, 0.0, 0.0]

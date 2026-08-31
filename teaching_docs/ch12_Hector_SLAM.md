@@ -870,7 +870,7 @@ RViz 中可同时显示 LaserScan 和 TF；外部 Hector 节点应将激光 fram
 
 ### 源码与边界
 
-仿真模型与桥接配置位于 `src/robot_sim_demo/models/wheeltec_robot/model.sdf` 与 `src/robot_sim_demo/config/gazebo2_bridge.yaml`；可替代的在线建图示例见 `src/slam_sim_demo_ros2/`。
+仿真模型与桥接配置位于 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf` 与 `src/robot_sim_demo/config/gazebo2_bridge.yaml`；可替代的在线建图示例见 `src/slam_sim_demo_ros2/`。
 
 当前仓库没有 Hector SLAM 实现，不能把 `slam_toolbox` 输出标为 Hector 结果。
 

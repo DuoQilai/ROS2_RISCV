@@ -238,7 +238,7 @@ TF2 坐标系统呈树状结构（DAG），每个子系只有一个父系；`Sta
 
 ---
 
-## 仿真结合实例（当前仓库）：查询 Wheeltec 传感器坐标系
+## 仿真结合实例（当前仓库）：查询 TurtleBot3 Burger 传感器坐标系
 
 ### 目标与知识点对应
 
@@ -269,7 +269,7 @@ ros2 run tf2_tools view_frames
 
 ### 源码与边界
 
-TF 与状态发布配置位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，机器人模型为 `src/robot_sim_demo/models/wheeltec_robot/model.sdf`，RViz 配置为 `src/robot_sim_demo/rviz/museum.rviz`。具体 frame 名称以当前模型和 `ros2 topic echo /tf` 的输出为准；本实例不把实验示例中的 `laser_frame` 名称强行套用到 Wheeltec 模型。
+TF 与状态发布配置位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，机器人模型为 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf`，RViz 配置为 `src/robot_sim_demo/rviz/museum.rviz`。具体 frame 名称以当前模型和 `ros2 topic echo /tf` 的输出为准；本实例不把实验示例中的 `laser_frame` 名称强行套用到 TurtleBot3 Burger 模型。
 
 ![ch07 TF2 运行输出](../lab_manuals/images/runtime/ch07_tf.gif)
 

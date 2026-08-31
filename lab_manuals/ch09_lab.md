@@ -27,7 +27,7 @@ ros2 topic echo /odom --once
 
 ### 观察与验收
 
-Gazebo 应加载 Museum 场景并生成 Wheeltec；RViz 可显示 RobotModel、TF 和 LaserScan。终端证据：`images/runtime/ch09_gazebo_headless.png`。源码：`src/robot_sim_demo/`。
+Gazebo 应加载 Museum 场景并生成 TurtleBot3 Burger；RViz 可显示 RobotModel、TF 和 LaserScan。终端证据：`images/runtime/ch09_gazebo_headless.png`。源码：`src/robot_sim_demo/`。
 
 > **实验课时**：2 课时（90 分钟） | XBot-U Gazebo 仿真
 

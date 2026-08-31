@@ -1,6 +1,6 @@
 # robot_sim_demo
 
-ISCAS Museum Gazebo Sim 仿真包：使用 Wheeltec Mini AKM 机器人模型在 ISCAS Museum 场景中进行安全巡检仿真。
+ISCAS Museum Gazebo Sim 仿真包：使用 TurtleBot3 Burger 机器人模型在 ISCAS Museum 场景中进行巡航仿真。
 
 ## 目录结构
 
@@ -26,15 +26,13 @@ src/robot_sim_demo/
 
 ├── models/
 
-│   ├── wheeltec_robot/         Wheeltec Mini AKM 机器人 SDF 模型
+│   ├── turtlebot3_burger/      TurtleBot3 Burger SDF 模型（官方 STL 网格）
 
 │   ├── ISCAS_Museum/           博物馆场景模型（含 DAE 网格和纹理）
 
 │   ├── ISCAS_groundplane/      地面模型
 
-│   └── campus_patrol_robot/    备用巡逻机器人模型
-
-├── wheeltec_robot_urdf/        Wheeltec URDF 和 STL 网格资源
+│   └── campus_patrol_robot/    备用巡逻机器人模型（同 TurtleBot3 Burger 几何）
 
 ├── worlds/
 
@@ -50,6 +48,8 @@ src/robot_sim_demo/
 
 ├── urdf/
 
+│   ├── turtlebot3_burger.urdf  TF 树与 RViz 模型描述
+
 │   └── campus_patrol_robot.urdf
 
 └── robot_sim_demo/
@@ -60,14 +60,12 @@ src/robot_sim_demo/
 
 ## 环境
 
-- ROS 2 Jazzy
-- Gazebo Sim Harmonic (v8)
-- WSL2 / WSLg
+- ROS 2 Humble（openEuler 24.03 RISC-V）；主机端仿真可用 Ubuntu 22.04/24.04 WSL2
+- Gazebo Sim（ros_gz）
 
 ```bash
-sudo apt install -y ros-jazzy-ros-gz-sim ros-jazzy-ros-gz-bridge \
-  ros-jazzy-ros-gz-image ros-jazzy-robot-state-publisher \
-  ros-jazzy-rviz2 python3-colcon-common-extensions
+sudo dnf install -y ros-humble-ros-gz ros-humble-robot-state-publisher \
+  ros-humble-rviz2 python3-colcon-common-extensions
 ```
 
 ## 构建
@@ -76,7 +74,7 @@ sudo apt install -y ros-jazzy-ros-gz-sim ros-jazzy-ros-gz-bridge \
 
 cd robot_sim_demo
 
-source /opt/ros/jazzy/setup.bash
+source /opt/ros/humble/setup.bash
 
 colcon build --symlink-install --packages-select robot_sim_demo
 
@@ -91,7 +89,7 @@ source install/setup.bash
 ros2 launch robot_sim_demo gazebo2.launch.py
 ```
 
-启动 Gazebo 3D Scene 窗口、Wheeltec 机器人、传感器桥和自动巡航。
+启动 Gazebo 3D Scene 窗口、TurtleBot3 Burger 机器人、传感器桥和自动巡航。
 
 ### Campus PUCRS 启动（黄色标志中心）
 
@@ -100,8 +98,8 @@ ros2 launch robot_sim_demo gazebo2.launch.py
 ros2 launch robot_sim_demo campus_pucrs.launch.py
 ```
 
-该入口使用 `worlds/campus_pucrs.world.sdf`，将 Wheeltec 初始位置固定在世界中
-黄色 X 标志的中心 `(x=20.0, y=0.0, z=0.017)`。为避免车辆在启动后离开标志，
+该入口使用 `worlds/campus_pucrs.world.sdf`，将 TurtleBot3 Burger 初始位置固定在世界中
+黄色 X 标志的中心 `(x=20.0, y=0.0, z=0.010)`。为避免车辆在启动后离开标志，
 该入口默认关闭自动巡航；需要运动时显式设置 `drive:=true`。原有
 `gazebo2.launch.py` 仍使用 `museum.sdf`，其行为和默认位置不变。
 
@@ -118,10 +116,10 @@ ros2 launch robot_sim_demo gazebo2.launch.py rviz:=false
 ros2 launch robot_sim_demo gazebo2.launch.py drive:=false
 
 # 自定义生成位置
-ros2 launch robot_sim_demo gazebo2.launch.py spawn_x:=0.0 spawn_y:=0.0 spawn_z:=0.017 spawn_yaw:=0.0
+ros2 launch robot_sim_demo gazebo2.launch.py spawn_x:=0.0 spawn_y:=0.0 spawn_z:=0.010 spawn_yaw:=0.0
 
 # 自定义巡航速度
-ros2 launch robot_sim_demo gazebo2.launch.py drive_linear_speed:=0.18 drive_angular_speed:=0.55
+ros2 launch robot_sim_demo gazebo2.launch.py drive_linear_speed:=5.0 drive_angular_speed:=1.5
 ```
 
 ### Launch 参数
@@ -132,11 +130,11 @@ ros2 launch robot_sim_demo gazebo2.launch.py drive_linear_speed:=0.18 drive_angu
 | `rviz` | `false` | 启动 RViz2 |
 | `spawn_robot` | `true` | 在场景中生成机器人 |
 | `drive` | `true` | 启动自动巡航节点 |
-| `drive_linear_speed` | `0.18` | 巡航线速度 (m/s) |
-| `drive_angular_speed` | `0.55` | 巡航角速度 (rad/s) |
+| `drive_linear_speed` | `5.0` | 巡航线速度 (m/s) |
+| `drive_angular_speed` | `1.5` | 巡航角速度 (rad/s) |
 | `drive_loop` | `true` | 循环巡航 |
 | `world` | `museum.sdf` | 世界文件路径 |
-| `spawn_x/y/z/yaw` | `0/0/0.017/0` | 机器人生成位姿（z=0.017 为四轮准确接地高度） |
+| `spawn_x/y/z/yaw` | `0/0/0.010/0` | 机器人生成位姿（z=0.010 为 TurtleBot3 Burger 准确接地高度） |
 | `use_sim_time` | `true` | 使用仿真时钟 |
 | `gz_partition` | `robot_sim_demo` | Gazebo 分区名 |
 
@@ -185,26 +183,18 @@ cd src/robot_sim_demo
 python3 -m pytest test/ -v
 ```
 
-8 项测试全部通过：检查必需文件存在性、SDF/URDF 格式正确性、世界文件引用、Launch 引用、相机内参匹配、DiffDrive 插件配置、Wheeltec 模型网格引用，以及轮子碰撞几何与关节轴一致性（Y 轴、四轮驱动、最高 10 m/s）。
-
-## 截图录制
-
-```bash
-# 录制 Gazebo 3D Scene 帧（需 Gazebo GUI 运行中）
-bash tools/record_gazebo_scene.sh <时长秒> <帧率> <输出目录> <分区名>
-
-# 示例：录制 16 秒，6 FPS
-bash tools/record_gazebo_scene.sh 16 6
-```
+10 项测试全部通过：检查必需文件存在性、SDF/URDF 格式正确性、世界文件引用、Launch 引用、相机内参匹配、DiffDrive 插件配置、TurtleBot3 Burger 模型网格引用，以及轮子碰撞几何与关节轴一致性（Y 轴、双轮差速、最高 10 m/s）。
 
 ## 机器人模型
 
-Wheeltec Mini AKM 机器人使用 Gazebo Sim Harmonic 原生 `DiffDrive` 系统：
-- 初始位置：场景中心开放区域 `(0, 0, 0.017)`（四轮准确接地高度）
-- 坐标系：`base_link`（底盘）→ `laser_link`（激光雷达）→ `camera_link`（相机）
-- 四轮差速驱动：左右各两轮（`lb_joint`/`lf_point` 与 `rb_joint`/`rf_point`）共同驱动
-- 性能参数：最高线速度 `10.0 m/s`、线加速度 `1.0 m/s²`、最高角速度 `3.0 rad/s`
-- 轮子碰撞体为沿 Y 轴圆柱（半径 0.033 m），与关节轴一致，滚动摩擦 `mu=1.2`、侧向 `mu2=0.3`
-- 物理稳定性：世界步长 `1 ms`，实测静置与直行/转向时 `z` 稳定于 0.0168 m、roll/pitch≈0
-- 配色：石墨黑车体、黑色轮胎、银色轮毂/RGB-D 外壳、青色状态环、安全橙前部
+TurtleBot3 Burger 使用 Gazebo Sim 原生 `DiffDrive` 系统，网格取自
+ROBOTIS 官方 `turtlebot3_description`（humble 分支），质量/惯量按 5 m/s
+高速巡航调校：
+- 初始位置：场景中心开放区域 `(0, 0, 0.010)`（准确接地高度）
+- 坐标系：`base_footprint` → `base_link`（底盘）→ `laser_link`（激光雷达）→ `camera_link`（课程附加前向相机）
+- 双轮差速驱动：`wheel_left_joint` / `wheel_right_joint`（轴距 0.16 m，轮半径 0.033 m），后部万向球
+- 质量/惯量：底盘 `3.0 kg`（质心降低、惯量加大以保证高速平稳），驱动轮 `0.15 kg/只`
+- 性能参数：巡航速度 `5.0 m/s`、线加速度限幅 `2.5 m/s²`、最高角速度 `3.0 rad/s`（DiffDrive 上限 `10.0 m/s`）
+- 轮子碰撞体为沿 Y 轴圆柱（半径 0.033 m），与关节轴一致，滚动摩擦 `mu=1.5`、侧向 `mu2=1.0` 防止高速侧滑
+- 外观：金属黑 PBR 材质（`metallic=1.0`、`roughness≈0.35`）底座 `burger_base.stl`、黑色轮胎与 LDS 激光雷达网格
 - 两个原始门洞已用与相邻墙面对齐的墙体封闭

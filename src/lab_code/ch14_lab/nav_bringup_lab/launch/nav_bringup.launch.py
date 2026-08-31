@@ -1,7 +1,7 @@
 """Nav2 导航一键启动 — robot_sim_demo (Gazebo) + navigation_sim_demo_ros2 (Nav2).
 
 移动机器人仿真统一使用 `robot_sim_demo/gazebo2.launch.py`（Gazebo Sim
-Harmonic + Wheeltec），Nav2 栈由 `navigation_sim_demo_ros2/nav2_demo.launch.py`
+Harmonic + TurtleBot3 Burger），Nav2 栈由 `navigation_sim_demo_ros2/nav2_demo.launch.py`
 提供，地图为 `Software_Museum.yaml`。
 """
 import os

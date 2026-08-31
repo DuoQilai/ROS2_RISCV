@@ -967,7 +967,7 @@ ros2 run tf2_ros tf2_echo base_link camera_link
 
 ### 源码与边界
 
-相机桥与 Gazebo 启动文件位于 `src/robot_sim_demo/launch/gazebo2.launch.py`，内参发布节点位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，模型 TF 由 `src/robot_sim_demo/models/wheeltec_robot/model.sdf` 提供。
+相机桥与 Gazebo 启动文件位于 `src/robot_sim_demo/launch/gazebo2.launch.py`，内参发布节点位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，模型 TF 由 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf` 提供。
 
 没有 ORB-SLAM/DSO 实现，不能由此实例宣称完成视觉里程计或地图构建。
 

@@ -4,7 +4,7 @@
 
 ### 实验目标
 
-验证 Xacro 展开、Robot State Publisher 和 RViz RobotModel，并将课程自定义 URDF 与 `robot_sim_demo` 的 Wheeltec SDF 模型进行对照。
+验证 Xacro 展开、Robot State Publisher 和 RViz RobotModel，并将课程自定义 URDF 与 `robot_sim_demo` 的 TurtleBot3 Burger SDF 模型进行对照。
 
 ### 运行步骤
 
@@ -26,7 +26,7 @@ ros2 launch robot_sim_demo gazebo2.launch.py \
 
 ### 观察与验收
 
-RViz 应显示 Xacro 模型及其 TF；Gazebo 显示 Wheeltec 传感器模型。源码：`src/urdf_demo_ros2/urdf/`、`src/robot_sim_demo/models/wheeltec_robot/model.sdf`。
+RViz 应显示 Xacro 模型及其 TF；Gazebo 显示 TurtleBot3 Burger 传感器模型。源码：`src/urdf_demo_ros2/urdf/`、`src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。
 
 ## 实际运行证据
 

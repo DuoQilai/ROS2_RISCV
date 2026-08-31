@@ -21,7 +21,7 @@ TF、URDF、Gazebo 仿真、SLAM、Nav2、MoveIt 2 与视觉等主题。
 
 | 仿真场景 | 对应包/工具 | 用于章节 |
 |----------|-------------|----------|
-| 移动机器人仿真 | `robot_sim_demo`（Wheeltec + ISCAS Museum） | ch09-ch11、ch13-ch14 |
+| 移动机器人仿真 | `robot_sim_demo`（TurtleBot3 Burger + ISCAS Museum） | ch09-ch11、ch13-ch14 |
 | xArm6 机械臂仿真 | `xarm_ros2_arm_only`（Gazebo + MoveIt 2 + RViz） | ch15、ch17-ch18、ch21 |
 
 `robot_sim_demo` 与 `xarm_ros2_arm_only` 均位于 `src/` 下，单独构建即可。

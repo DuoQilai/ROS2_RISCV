@@ -273,7 +273,7 @@ ros2 topic pub --rate 5 /cmd_vel geometry_msgs/msg/Twist \
 
 ### 观察结果
 
-Gazebo 中加载 ISCAS Museum 场景并生成 Wheeltec，RViz 可显示 RobotModel、TF 和 LaserScan；`/clock`、`/scan`、`/odom` 由 `ros_gz_bridge` 转成 ROS 2 消息，发布 `/cmd_vel` 后可在 `/odom` 观察运动变化；关闭终端 3 的发布命令后，机器人不再接受新的速度指令。
+Gazebo 中加载 ISCAS Museum 场景并生成 TurtleBot3 Burger，RViz 可显示 RobotModel、TF 和 LaserScan；`/clock`、`/scan`、`/odom` 由 `ros_gz_bridge` 转成 ROS 2 消息，发布 `/cmd_vel` 后可在 `/odom` 观察运动变化；关闭终端 3 的发布命令后，机器人不再接受新的速度指令。
 
 ### 源码与运行证据
 

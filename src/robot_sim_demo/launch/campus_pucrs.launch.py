@@ -1,4 +1,4 @@
-"""Launch Wheeltec at the yellow spawn marker in the Campus PUCRS world."""
+"""Launch TurtleBot3 Burger at the yellow spawn marker in the Campus PUCRS world."""
 
 from pathlib import Path
 
@@ -12,7 +12,7 @@ from launch.substitutions import LaunchConfiguration
 WORLD_NAME = "campus_pucrs"
 SPAWN_X = "20.0"
 SPAWN_Y = "0.0"
-SPAWN_Z = "0.017"
+SPAWN_Z = "0.010"
 SPAWN_YAW = "0.0"
 
 
@@ -43,8 +43,8 @@ def generate_launch_description() -> LaunchDescription:
             DeclareLaunchArgument("spawn_robot", default_value="true"),
             # Keep the robot centered on the marker until the operator commands it.
             DeclareLaunchArgument("drive", default_value="false"),
-            DeclareLaunchArgument("drive_linear_speed", default_value="0.18"),
-            DeclareLaunchArgument("drive_angular_speed", default_value="0.55"),
+            DeclareLaunchArgument("drive_linear_speed", default_value="5.0"),
+            DeclareLaunchArgument("drive_angular_speed", default_value="1.5"),
             DeclareLaunchArgument("drive_loop", default_value="true"),
             DeclareLaunchArgument("drive_duration", default_value="0.0"),
             DeclareLaunchArgument("gz_partition", default_value="robot_sim_demo"),

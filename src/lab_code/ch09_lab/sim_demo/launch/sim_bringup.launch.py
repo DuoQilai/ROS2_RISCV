@@ -1,7 +1,7 @@
 """Ch09 Gazebo 仿真启动 — 委托 robot_sim_demo 的 Gazebo Harmonic 入口.
 
 本工作区的移动机器人仿真统一使用 `robot_sim_demo/gazebo2.launch.py`（Gazebo
-Sim Harmonic + ros_gz 桥接 + Wheeltec 机器人）。此 launch 不再维护独立的
+Sim Harmonic + ros_gz 桥接 + TurtleBot3 Burger 机器人）。此 launch 不再维护独立的
 旧版 Gazebo 入口；它仅转发常用参数，便于教学时直接 `ros2 launch
 sim_demo sim_bringup.launch.py`。
 """

@@ -800,7 +800,7 @@ TF 查询应返回相机相对机器人基座的变换；ArUco 检测和手眼�
 
 ### 源码
 
-相机/TF：`src/robot_sim_demo/models/wheeltec_robot/model.sdf`、`src/robot_sim_demo/config/gazebo2_bridge.yaml`；xArm MoveIt：`src/xarm/launch/arm_only_move_group.launch.py`；视觉实验参考：`src/lab_code/ch19_lab/vision_detection_lab/`。
+相机/TF：`src/robot_sim_demo/models/turtlebot3_burger/model.sdf`、`src/robot_sim_demo/config/gazebo2_bridge.yaml`；xArm MoveIt：`src/xarm/launch/arm_only_move_group.launch.py`；视觉实验参考：`src/lab_code/ch19_lab/vision_detection_lab/`。
 
 学习材料：
 - OpenCV 官方文档 —— ArUco 模块教程：https://docs.opencv.org/

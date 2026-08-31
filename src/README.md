@@ -1,6 +1,6 @@
 # ROS 2 仿真与教学
 
-本工作区包含 44 个可由 colcon 发现和构建的 ROS 2 包，涵盖话题通信、服务通信、动作通信、参数系统、TF 坐标变换、URDF 建模、Gazebo 仿真、SLAM 建图、Nav2 自主导航和 xArm6 机械臂仿真，以及一个完整的 ISCAS Museum 仿真场景。`robot_sim_demo/wheeltec_robot_urdf/` 另含一个嵌套资源包 `package.xml`，不会被 colcon 作为独立包发现。
+本工作区包含 44 个可由 colcon 发现和构建的 ROS 2 包，涵盖话题通信、服务通信、动作通信、参数系统、TF 坐标变换、URDF 建模、Gazebo 仿真、SLAM 建图、Nav2 自主导航和 xArm6 机械臂仿真，以及一个完整的 ISCAS Museum 仿真场景。
 
 ## 环境
 
@@ -31,7 +31,7 @@
 
 │   │   ├── gui/                     Gazebo GUI 配置
 
-│   │   └── wheeltec_robot_urdf/     Wheeltec URDF/STL 资源
+│   │   └── urdf/                    TurtleBot3 Burger TF/模型描述
 
 │   ├── xarm/                        xArm6 + Gazebo Harmonic + MoveIt 2 仿真
 
@@ -180,7 +180,7 @@ colcon build --symlink-install
 source install/setup.bash
 ```
 
-源码树当前由 `setup_course.sh` 发现 44 个可构建包；其中包含核心仿真、`course_lab_*` 和实验包。嵌套目录 `robot_sim_demo/wheeltec_robot_urdf/` 作为 `robot_sim_demo` 的数据资源安装，不单独计入构建包。
+源码树当前由 `setup_course.sh` 发现 44 个可构建包；其中包含核心仿真、`course_lab_*` 和实验包。
 
 ## 包清单
 
@@ -188,7 +188,7 @@ source install/setup.bash
 
 | 包名 | 类型 | 说明 |
 |------|------|------|
-| `robot_sim_demo` | Python | ISCAS Museum / Campus PUCRS Gazebo 仿真：Wheeltec 机器人、传感器桥、巡航驱动 |
+| `robot_sim_demo` | Python | ISCAS Museum / Campus PUCRS Gazebo 仿真：TurtleBot3 Burger 机器人、传感器桥、巡航驱动 |
 | `xarm_ros2_arm_only` | Python | xArm6 纯机械臂仿真：Gazebo Harmonic、ros2_control、MoveIt 2 和 RViz |
 | `navigation_sim_demo_ros2` | Python | Nav2 导航栈：地图、AMCL、规划、控制 |
 | `slam_sim_demo_ros2` | Python | slam_toolbox 在线建图 |
@@ -274,7 +274,7 @@ lab_code 详细说明见 [lab_code/README.md](src/lab_code/README.md)。
 ros2 launch robot_sim_demo gazebo2.launch.py
 ```
 
-Gazebo 打开后，Wheeltec Mini AKM 机器人在 ISCAS Museum 场景中心自动巡航。
+Gazebo 打开后，TurtleBot3 Burger 机器人在 ISCAS Museum 场景中心自动巡航。
 
 ### 2. 检查话题
 
@@ -401,6 +401,3 @@ done
 
 运行截图和预期现象见各章节实验手册；当前源码目录不包含固定的 Nav2 GIF 资源。
 
-## 嵌套包说明
-
-`src/robot_sim_demo/wheeltec_robot_urdf/` 是一个独立的 ament_cmake 包，包含 Wheeltec 机器人的 URDF 和 STL 网格资源。由于它嵌套在 `robot_sim_demo` 包内部，colcon 不会单独发现它，而是作为 `robot_sim_demo` 的数据文件安装到 `share/robot_sim_demo/wheeltec_robot_urdf/`。

@@ -4,7 +4,7 @@
 
 ### 实验目标
 
-一键启动 Gazebo（Wheeltec + ISCAS Museum）、Nav2 导航栈与 RViz，再用 `nav_goal_runner` 依次发送 4 个目标点完成自动巡航，观察 AMCL 粒子云、全局/局部路径与 Nav2 生命周期节点状态。本章与第13章同属第23章综合实训的「先建图、后导航」流程。
+一键启动 Gazebo（TurtleBot3 Burger + ISCAS Museum）、Nav2 导航栈与 RViz，再用 `nav_goal_runner` 依次发送 4 个目标点完成自动巡航，观察 AMCL 粒子云、全局/局部路径与 Nav2 生命周期节点状态。本章与第13章同属第23章综合实训的「先建图、后导航」流程。
 
 ### 运行步骤
 
@@ -50,7 +50,7 @@ RViz 中依次出现地图、粒子云、全局路径与局部路径，机器人
 ## 实验环境
 - ROS 2 Jazzy + Gazebo Sim Harmonic + Nav2
 - `navigation_sim_demo_ros2`（Nav2 栈，默认地图 `Software_Museum.yaml`）
-- `robot_sim_demo`（Wheeltec + ISCAS Museum）
+- `robot_sim_demo`（TurtleBot3 Burger + ISCAS Museum）
 - RViz2、nav2_simple_commander
 
 ## 参考代码说明

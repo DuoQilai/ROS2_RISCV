@@ -9,7 +9,7 @@
 
 本包通过 `sim_bringup.launch.py` 委托启动 `robot_sim_demo` 的 Gazebo Harmonic
 
-入口，统一在 ISCAS Museum 场景中加载 Wheeltec 移动机器人。本包不再维护独立的
+入口，统一在 ISCAS Museum 场景中加载 TurtleBot3 Burger 移动机器人。本包不再维护独立的
 
 Gazebo Sim Harmonic 转发入口；移动机器人仿真以 `robot_sim_demo/gazebo2.launch.py` 为准。
 
@@ -17,7 +17,7 @@ Gazebo Sim Harmonic 转发入口；移动机器人仿真以 `robot_sim_demo/gaze
 
 | 文件 | 功能 |
 | --- | --- |
-| `sim_bringup.launch.py` | 委托 `robot_sim_demo/gazebo2.launch.py`，启动 Gazebo + Wheeltec + 桥接 |
+| `sim_bringup.launch.py` | 委托 `robot_sim_demo/gazebo2.launch.py`，启动 Gazebo + TurtleBot3 Burger + 桥接 |
 
 ### Launch 参数
 
@@ -61,9 +61,9 @@ ros2 topic echo /odom --once
 
 ## 运行结果
 
-启动 Gazebo 后，可见 ISCAS Museum 场景与 Wheeltec 机器人在中心位置自动巡航。
+启动 Gazebo 后，可见 ISCAS Museum 场景与 TurtleBot3 Burger 机器人在中心位置自动巡航。
 
-运行后可将截图保存至 `docs/images/gazebo_wheeltec.png`（首次运行前需创建该目录）：
+运行后可将截图保存至 `docs/images/gazebo_turtlebot3.png`（首次运行前需创建该目录）：
 
 ```bash
 mkdir -p docs/images

@@ -7,7 +7,7 @@
 
 本章练习 Nav2 自主导航。移动机器人仿真统一使用 `robot_sim_demo`
 
-（Wheeltec + ISCAS Museum），Nav2 栈由 `navigation_sim_demo_ros2` 提供，
+（TurtleBot3 Burger + ISCAS Museum），Nav2 栈由 `navigation_sim_demo_ros2` 提供，
 
 地图为 `Software_Museum.yaml`。`nav_bringup_lab` 的 launch 一键启动两者；
 

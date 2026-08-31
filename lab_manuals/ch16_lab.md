@@ -1,6 +1,6 @@
 # 第16章 实验：机械臂 URDF 建模与状态发布
 
-## 当前仓库仿真验证：自定义 URDF 与课程 Wheeltec TF 对照
+## 当前仓库仿真验证：自定义 URDF 与课程 TurtleBot3 Burger TF 对照
 
 ### 实验目标
 
@@ -18,7 +18,7 @@ ros2 run robot_state_publisher robot_state_publisher --ros-args \
 ```
 
 ```bash
-# 终端 2：另行启动 Gazebo Wheeltec 对照 TF
+# 终端 2：另行启动 Gazebo TurtleBot3 Burger 对照 TF
 ros2 launch robot_sim_demo gazebo2.launch.py \
   gui:=true rviz:=true drive:=false
 ros2 run tf2_ros tf2_echo base_link laser
@@ -26,7 +26,7 @@ ros2 run tf2_ros tf2_echo base_link laser
 
 ### 观察与验收
 
-自定义模型的关节角变化应反映到 RViz RobotModel；Wheeeltec 侧可看到独立的传感器 TF。源码：`src/lab_code/ch16_lab/`、`src/robot_sim_demo/models/wheeltec_robot/model.sdf`。两套模型不能混用 frame 或关节名。
+自定义模型的关节角变化应反映到 RViz RobotModel；TurtleBot3 Burger 侧可看到独立的传感器 TF。源码：`src/lab_code/ch16_lab/`、`src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。两套模型不能混用 frame 或关节名。
 
 ## 实际运行证据
 

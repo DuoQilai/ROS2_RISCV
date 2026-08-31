@@ -4,7 +4,7 @@
 
 ### 实验目标
 
-一键启动 Gazebo（Wheeltec + ISCAS Museum）、slam_toolbox 在线建图与 RViz，再用 `slam_map_runner` 自动遍历环境，观察 `/map` 的实时生长过程与建图质量指标（已知栅格、占据率、探索率）。
+一键启动 Gazebo（TurtleBot3 Burger + ISCAS Museum）、slam_toolbox 在线建图与 RViz，再用 `slam_map_runner` 自动遍历环境，观察 `/map` 的实时生长过程与建图质量指标（已知栅格、占据率、探索率）。
 
 ### 运行步骤
 
@@ -48,7 +48,7 @@ RViz 中 `/map` 随机器人运动逐渐扩展，扫描点云与墙体对齐；`
 ## 实验环境
 - ROS 2 Jazzy + Gazebo Sim Harmonic
 - slam_toolbox（`slam_sim_demo_ros2`）
-- `robot_sim_demo`（Wheeltec + ISCAS Museum）
+- `robot_sim_demo`（TurtleBot3 Burger + ISCAS Museum）
 - RViz2、tf2_tools、nav2_map_server
 
 ## 参考代码说明

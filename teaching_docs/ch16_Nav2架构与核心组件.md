@@ -665,7 +665,7 @@ Simple Commander API 的官方文档强调它是"生产级"封装而非玩具：
 
 ### 目标与知识点对应
 
-用 `navigation_sim_demo_ros2` 在 Gazebo Wheeltec 场景中启动 Nav2，观察 `map_server`、`amcl`、`planner_server`、`controller_server` 和 `bt_navigator` 的生命周期编排，对应本章的组件分层与行为树入口。
+用 `navigation_sim_demo_ros2` 在 Gazebo TurtleBot3 Burger 场景中启动 Nav2，观察 `map_server`、`amcl`、`planner_server`、`controller_server` 和 `bt_navigator` 的生命周期编排，对应本章的组件分层与行为树入口。
 
 ### 运行步骤
 

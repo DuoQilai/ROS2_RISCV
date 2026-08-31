@@ -1,7 +1,7 @@
 """SLAM 建图一键启动 — robot_sim_demo (Gazebo) + slam_sim_demo_ros2 (slam_toolbox).
 
 移动机器人仿真统一使用 `robot_sim_demo/gazebo2.launch.py`（Gazebo Sim
-Harmonic + Wheeltec），SLAM 使用 `slam_sim_demo_ros2/slam_demo.launch.py`。
+Harmonic + TurtleBot3 Burger），SLAM 使用 `slam_sim_demo_ros2/slam_demo.launch.py`。
 """
 import os
 

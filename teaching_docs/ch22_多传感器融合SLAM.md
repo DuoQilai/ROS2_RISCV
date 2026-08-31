@@ -882,7 +882,7 @@ ros2 topic echo /odom --once
 
 ### 源码与边界
 
-Bridge 配置文件位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，相机内参发布脚本位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，模型文件位于 `src/robot_sim_demo/models/wheeltec_robot/model.sdf`。当前仓库没有 FAST-LIO/VINS 等完整融合算法，本例只验证输入和标定信息。
+Bridge 配置文件位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，相机内参发布脚本位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，模型文件位于 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。当前仓库没有 FAST-LIO/VINS 等完整融合算法，本例只验证输入和标定信息。
 
 学习材料：
 - Robot Localization 官方 Wiki 与文档：https://github.com/cra-ros-pkg/robot_localization

@@ -23,8 +23,8 @@ class Nav2LifecycleRunner(Node):
         super().__init__("nav2_lifecycle_runner")
         self.declare_parameter("configure_timeout_sec", 10.0)
         self.declare_parameter("activate_timeout_sec", 10.0)
-        self.declare_parameter("service_wait_timeout_sec", 20.0)
-        self.declare_parameter("retry_count", 5)
+        self.declare_parameter("service_wait_timeout_sec", 60.0)
+        self.declare_parameter("retry_count", 20)
 
         self.configure_timeout_sec = float(self.get_parameter("configure_timeout_sec").value)
         self.activate_timeout_sec = float(self.get_parameter("activate_timeout_sec").value)
@@ -51,7 +51,7 @@ class Nav2LifecycleRunner(Node):
         for attempt in range(1, self.retry_count + 1):
             request = GetState.Request()
             future = state_client.call_async(request)
-            rclpy.spin_until_future_complete(self, future, timeout_sec=2.0)
+            rclpy.spin_until_future_complete(self, future, timeout_sec=5.0)
             response = future.result()
             if response is not None:
                 return int(response.current_state.id)
@@ -60,7 +60,7 @@ class Nav2LifecycleRunner(Node):
                 f"Failed to get lifecycle state for {node_name} "
                 f"on attempt {attempt}/{self.retry_count}"
             )
-            time.sleep(0.2)
+            time.sleep(1.0)
 
         raise RuntimeError(f"Failed to get lifecycle state for {node_name}")
 

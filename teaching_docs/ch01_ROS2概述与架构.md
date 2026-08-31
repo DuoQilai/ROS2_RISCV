@@ -334,7 +334,7 @@ source install/setup.bash
 ros2 launch robot_sim_demo gazebo2.launch.py gui:=true rviz:=true drive:=false
 ```
 
-等待 Gazebo 3D 场景出现 Wheeltec 机器人、RViz 显示机器人模型与激光雷达点云。随后在**独立终端**（同样先 source 环境）观察：
+等待 Gazebo 3D 场景出现 TurtleBot3 Burger 机器人、RViz 显示机器人模型与激光雷达点云。随后在**独立终端**（同样先 source 环境）观察：
 
 ```bash
 # 查看自动发现到的所有节点（DDS 去中心化发现）
@@ -351,7 +351,7 @@ ros2 topic info /scan
 
 ### 源码与相关位置
 
-本实例涉及的关键文件包括：启动入口位于 `src/robot_sim_demo/launch/gazebo2.launch.py`，桥配置位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，相机内参发布器位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，世界与模型文件则位于 `src/robot_sim_demo/worlds/museum.sdf` 和 `src/robot_sim_demo/models/wheeltec_robot/model.sdf`。
+本实例涉及的关键文件包括：启动入口位于 `src/robot_sim_demo/launch/gazebo2.launch.py`，桥配置位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，相机内参发布器位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，世界与模型文件则位于 `src/robot_sim_demo/worlds/museum.sdf` 和 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。
 
 > 说明：真实运行证据（检测到 `/clock`、`/scan`、`/odom`、`/tf` 桥接）见 `lab_manuals/images/runtime/ch09_gazebo_headless.png` 及配套 `.cast`。
 

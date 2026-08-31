@@ -19,13 +19,17 @@ class SimulationAssetTest(unittest.TestCase):
             "rviz/museum.rviz",
             "rviz/campus_pucrs.rviz",
             "urdf/campus_patrol_robot.urdf",
-            "wheeltec_robot_urdf/urdf/mini_akm_robot.urdf",
+            "urdf/turtlebot3_burger.urdf",
             "worlds/museum.sdf",
             "worlds/campus_pucrs.world.sdf",
             "models/campus_patrol_robot/model.sdf",
             "models/campus_patrol_robot/model.config",
-            "models/wheeltec_robot/model.sdf",
-            "models/wheeltec_robot/model.config",
+            "models/turtlebot3_burger/model.sdf",
+            "models/turtlebot3_burger/model.config",
+            "models/turtlebot3_burger/meshes/burger_base.stl",
+            "models/turtlebot3_burger/meshes/left_tire.stl",
+            "models/turtlebot3_burger/meshes/right_tire.stl",
+            "models/turtlebot3_burger/meshes/lds.stl",
             "models/ISCAS_Museum/model.sdf",
             "models/ISCAS_Museum/model.config",
             "models/ISCAS_Museum/meshes/ISCAS_museum.dae",
@@ -52,10 +56,11 @@ class SimulationAssetTest(unittest.TestCase):
             "worlds/museum.sdf",
             "worlds/campus_pucrs.world.sdf",
             "models/campus_patrol_robot/model.sdf",
-            "models/wheeltec_robot/model.sdf",
+            "models/turtlebot3_burger/model.sdf",
             "models/ISCAS_Museum/model.sdf",
             "models/ISCAS_groundplane/model.sdf",
             "urdf/campus_patrol_robot.urdf",
+            "urdf/turtlebot3_burger.urdf",
         ):
             with self.subTest(relative_path=relative_path):
                 ElementTree.parse(self.package_root / relative_path)
@@ -80,7 +85,8 @@ class SimulationAssetTest(unittest.TestCase):
         self.assertIn('get_package_share_directory("robot_sim_demo")', launch_text)
         self.assertIn('"models" / ROBOT_NAME / "model.sdf"', launch_text)
         self.assertIn('"worlds" / "museum.sdf"', launch_text)
-        self.assertIn('"wheeltec_robot_urdf" / "urdf" / "mini_akm_robot.urdf"', launch_text)
+        self.assertIn('ROBOT_NAME = "turtlebot3_burger"', launch_text)
+        self.assertIn('"urdf" / "turtlebot3_burger.urdf"', launch_text)
         self.assertIn('"config" / "gazebo2_bridge.yaml"', launch_text)
         self.assertNotIn("robot_sim_demo_ros2", launch_text)
         self.assertNotIn("lost_found_ros", launch_text)
@@ -92,7 +98,7 @@ class SimulationAssetTest(unittest.TestCase):
         self.assertIn('WORLD_NAME = "campus_pucrs"', launch_text)
         self.assertIn('SPAWN_X = "20.0"', launch_text)
         self.assertIn('SPAWN_Y = "0.0"', launch_text)
-        self.assertIn('SPAWN_Z = "0.017"', launch_text)
+        self.assertIn('SPAWN_Z = "0.010"', launch_text)
         self.assertIn('"world": str(campus_world)', launch_text)
         self.assertIn('"gui_config": gui_config', launch_text)
         self.assertIn('"rviz_config": rviz_config', launch_text)
@@ -146,37 +152,36 @@ class SimulationAssetTest(unittest.TestCase):
         self.assertIn('DeclareLaunchArgument("rviz", default_value="false")', launch_text)
         self.assertIn('executable="patrol_driver"', launch_text)
 
-    def test_wheeltec_model_uses_bundled_meshes(self):
+    def test_turtlebot3_model_uses_bundled_meshes(self):
         model_text = (
-            self.package_root / "models/wheeltec_robot/model.sdf"
+            self.package_root / "models/turtlebot3_burger/model.sdf"
         ).read_text(encoding="utf-8")
         for mesh_name in (
-            "base_link.STL",
-            "lb_link.STL",
-            "rb_link.STL",
-            "laser.STL",
-            "camera_link.STL",
+            "burger_base.stl",
+            "left_tire.stl",
+            "right_tire.stl",
+            "lds.stl",
         ):
             self.assertIn(
-                f"model://wheeltec_robot/meshes/{mesh_name}",
+                f"model://turtlebot3_burger/meshes/{mesh_name}",
                 model_text,
             )
 
-    def test_wheeltec_wheels_match_joint_axis(self):
+    def test_turtlebot3_wheels_match_joint_axis(self):
         model_root = ElementTree.parse(
-            self.package_root / "models/wheeltec_robot/model.sdf"
+            self.package_root / "models/turtlebot3_burger/model.sdf"
         ).getroot()
         model = model_root.find("model")
         self.assertIsNotNone(model)
 
-        for link_name in ("lb_link", "rb_link", "lf_link", "rf_link"):
+        for link_name in ("left_wheel", "right_wheel"):
             with self.subTest(link_name=link_name):
                 collision = model.find(f"link[@name='{link_name}']/collision")
                 self.assertIsNotNone(collision)
                 self.assertEqual("0 0 0 1.5708 0 0", collision.findtext("pose"))
                 self.assertEqual("0.033", collision.findtext("geometry/cylinder/radius"))
 
-        for joint_name in ("lb_joint", "rb_joint", "lf_point", "rf_point"):
+        for joint_name in ("wheel_left_joint", "wheel_right_joint"):
             with self.subTest(joint_name=joint_name):
                 self.assertEqual(
                     "0 1 0",
@@ -185,11 +190,11 @@ class SimulationAssetTest(unittest.TestCase):
 
         plugin = model.find("plugin")
         self.assertEqual(
-            ["lb_joint", "lf_point"],
+            ["wheel_left_joint"],
             [element.text for element in plugin.findall("left_joint")],
         )
         self.assertEqual(
-            ["rb_joint", "rf_point"],
+            ["wheel_right_joint"],
             [element.text for element in plugin.findall("right_joint")],
         )
 

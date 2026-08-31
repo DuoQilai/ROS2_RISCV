@@ -4,7 +4,7 @@
 
 ### 实验目标
 
-在当前 Wheeltec Gazebo 场景中启动 Nav2，检查定位组、规划组和控制组的生命周期，并发送一个 `NavigateToPose` 目标。
+在当前 TurtleBot3 Burger Gazebo 场景中启动 Nav2，检查定位组、规划组和控制组的生命周期，并发送一个 `NavigateToPose` 目标。
 
 ### 运行步骤
 

@@ -11,8 +11,8 @@ from rclpy.node import Node
 class PatrolDriver(Node):
     def __init__(self) -> None:
         super().__init__("patrol_driver")
-        self.declare_parameter("linear_speed", 0.18)
-        self.declare_parameter("angular_speed", 0.55)
+        self.declare_parameter("linear_speed", 5.0)
+        self.declare_parameter("angular_speed", 1.5)
         self.declare_parameter("loop", True)
         self.declare_parameter("duration", 0.0)
 

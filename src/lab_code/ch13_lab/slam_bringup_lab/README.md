@@ -7,7 +7,7 @@
 
 本章练习 SLAM 在线建图。移动机器人仿真统一使用 `robot_sim_demo`
 
-（Wheeltec + ISCAS Museum），SLAM 由 `slam_sim_demo_ros2`（slam_toolbox）
+（TurtleBot3 Burger + ISCAS Museum），SLAM 由 `slam_sim_demo_ros2`（slam_toolbox）
 
 提供。`slam_bringup_lab` 的 launch 一键启动两者；`slam_map_runner` 转发
 

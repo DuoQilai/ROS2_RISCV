@@ -27,7 +27,7 @@
 阶段6: 项目文档与评估    → 撰写设计文档和性能评估
 ```
 
-实训环境包括：ROS 2 Jazzy、Gazebo Sim Harmonic 仿真环境、Wheeltec 机器人模型（课程包 `robot_sim_demo`）以及 Nav2 导航框架。
+实训环境包括：ROS 2 Jazzy、Gazebo Sim Harmonic 仿真环境、TurtleBot3 Burger 机器人模型（课程包 `robot_sim_demo`）以及 Nav2 导航框架。
 
 ### 23.1.2 项目要求
 
@@ -58,7 +58,7 @@ ros2 pkg create slam_nav_project \
 ### 23.2.2 使用slam_toolbox建图
 
 ```bash
-# 启动课程 Wheeltec 仿真环境
+# 启动课程 TurtleBot3 Burger 仿真环境
 ros2 launch robot_sim_demo gazebo2.launch.py drive:=false
 
 # 启动slam_toolbox在线建图
@@ -769,7 +769,7 @@ class ConflictResolver:
 ### 23.4.2 多机器人仿真启动
 
 ```bash
-# 多机器人启动是设计扩展，本仓库当前只提供单 Wheeltec 仿真入口：
+# 多机器人启动是设计扩展，本仓库当前只提供单 TurtleBot3 Burger 仿真入口：
 ros2 launch robot_sim_demo gazebo2.launch.py drive:=false
 
 # 分别为每个机器人启动SLAM和导航
@@ -832,7 +832,7 @@ slam_nav_project/
 
 ## 1. 项目概述
 - 项目目标：
-- 技术栈：ROS 2 Jazzy, Wheeltec, Nav2, slam_toolbox
+- 技术栈：ROS 2 Jazzy, TurtleBot3 Burger, Nav2, slam_toolbox
 - 实现功能：
 
 ## 2. 系统架构

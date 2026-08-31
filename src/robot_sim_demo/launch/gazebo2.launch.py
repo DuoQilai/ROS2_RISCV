@@ -16,7 +16,7 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 
-ROBOT_NAME = "wheeltec_robot"
+ROBOT_NAME = "turtlebot3_burger"
 WORLD_NAME = "default"
 
 
@@ -24,7 +24,7 @@ def generate_launch_description() -> LaunchDescription:
     share = Path(get_package_share_directory("robot_sim_demo"))
     default_world = share / "worlds" / "museum.sdf"
     robot_sdf = share / "models" / ROBOT_NAME / "model.sdf"
-    robot_urdf = share / "wheeltec_robot_urdf" / "urdf" / "mini_akm_robot.urdf"
+    robot_urdf = share / "urdf" / "turtlebot3_burger.urdf"
     bridge_config = share / "config" / "gazebo2_bridge.yaml"
     default_gui_config = share / "gui" / "museum.gui.config"
     default_rviz_config = share / "rviz" / "museum.rviz"
@@ -65,14 +65,12 @@ def generate_launch_description() -> LaunchDescription:
             "GZ_SIM_RESOURCE_PATH": os.pathsep.join(
                 filter(None, [
                     str(share / "models"),
-                    str(share / "wheeltec_robot_urdf"),
                     os.environ.get("GZ_SIM_RESOURCE_PATH", ""),
                 ])
             ),
             "IGN_GAZEBO_RESOURCE_PATH": os.pathsep.join(
                 filter(None, [
                     str(share / "models"),
-                    str(share / "wheeltec_robot_urdf"),
                     os.environ.get("IGN_GAZEBO_RESOURCE_PATH", ""),
                 ])
             ),
@@ -91,14 +89,12 @@ def generate_launch_description() -> LaunchDescription:
             "GZ_SIM_RESOURCE_PATH": os.pathsep.join(
                 filter(None, [
                     str(share / "models"),
-                    str(share / "wheeltec_robot_urdf"),
                     os.environ.get("GZ_SIM_RESOURCE_PATH", ""),
                 ])
             ),
             "IGN_GAZEBO_RESOURCE_PATH": os.pathsep.join(
                 filter(None, [
                     str(share / "models"),
-                    str(share / "wheeltec_robot_urdf"),
                     os.environ.get("IGN_GAZEBO_RESOURCE_PATH", ""),
                 ])
             ),
@@ -134,8 +130,8 @@ def generate_launch_description() -> LaunchDescription:
             DeclareLaunchArgument("rviz", default_value="false"),
             DeclareLaunchArgument("spawn_robot", default_value="true"),
             DeclareLaunchArgument("drive", default_value="true"),
-            DeclareLaunchArgument("drive_linear_speed", default_value="0.18"),
-            DeclareLaunchArgument("drive_angular_speed", default_value="0.55"),
+            DeclareLaunchArgument("drive_linear_speed", default_value="5.0"),
+            DeclareLaunchArgument("drive_angular_speed", default_value="1.5"),
             DeclareLaunchArgument("drive_loop", default_value="true"),
             DeclareLaunchArgument("drive_duration", default_value="0.0"),
             DeclareLaunchArgument("gz_partition", default_value="robot_sim_demo"),
@@ -146,15 +142,13 @@ def generate_launch_description() -> LaunchDescription:
             SetEnvironmentVariable(name="GZ_PARTITION", value=gz_partition),
             DeclareLaunchArgument("spawn_x", default_value="0.0"),
             DeclareLaunchArgument("spawn_y", default_value="0.0"),
-            DeclareLaunchArgument("spawn_z", default_value="0.017"),
+            DeclareLaunchArgument("spawn_z", default_value="0.010"),
             DeclareLaunchArgument("spawn_yaw", default_value="0.0"),
             DeclareLaunchArgument("use_sim_time", default_value="true"),
             SetEnvironmentVariable(
                 name="GZ_SIM_RESOURCE_PATH",
                 value=[
                     str(share / "models"),
-                    os.pathsep,
-                    str(share / "wheeltec_robot_urdf"),
                     os.pathsep,
                     os.environ.get("GZ_SIM_RESOURCE_PATH", ""),
                 ],
@@ -163,8 +157,6 @@ def generate_launch_description() -> LaunchDescription:
                 name="IGN_GAZEBO_RESOURCE_PATH",
                 value=[
                     str(share / "models"),
-                    os.pathsep,
-                    str(share / "wheeltec_robot_urdf"),
                     os.pathsep,
                     os.environ.get("IGN_GAZEBO_RESOURCE_PATH", ""),
                 ],

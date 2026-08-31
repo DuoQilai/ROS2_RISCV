@@ -249,11 +249,11 @@ ros2 launch robot_sim_demo gazebo2.launch.py gui:=true rviz:=false drive:=false
 
 ### 观察结果
 
-在 RViz 中，RobotModel 能显示 Xacro 展开的连杆和关节，TF 面板能看到模型的坐标树；`xmllint` 通过表示 Xacro 输出是合法 XML，Gazebo 侧则使用其 SDF Wheeltec 模型和传感器配置。
+在 RViz 中，RobotModel 能显示 Xacro 展开的连杆和关节，TF 面板能看到模型的坐标树；`xmllint` 通过表示 Xacro 输出是合法 XML，Gazebo 侧则使用其 SDF TurtleBot3 Burger 模型和传感器配置。
 
 ### 源码与边界
 
-Xacro 模型位于 `src/urdf_demo_ros2/urdf/mybot.xacro`，Launch 文件为 `src/urdf_demo_ros2/launch/display_xacro.launch.py`，Gazebo 模型为 `src/robot_sim_demo/models/wheeltec_robot/model.sdf`。这两个入口用于对比 URDF/Xacro 与 SDF 的建模路径；不要把 Wheeltec 的 SDF 文件当作 `urdf_demo_ros2` 的 Xacro 源文件。
+Xacro 模型位于 `src/urdf_demo_ros2/urdf/mybot.xacro`，Launch 文件为 `src/urdf_demo_ros2/launch/display_xacro.launch.py`，Gazebo 模型为 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。这两个入口用于对比 URDF/Xacro 与 SDF 的建模路径；不要把 TurtleBot3 Burger 的 SDF 文件当作 `urdf_demo_ros2` 的 Xacro 源文件。
 
 ![ch08 URDF 与 RViz 运行输出](../lab_manuals/images/runtime/ch08_urdf.gif)
 

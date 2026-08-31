@@ -8,7 +8,6 @@ package_name = "robot_sim_demo"
 
 
 def package_data_files():
-    nested_package = "wheeltec_robot_urdf"
     data_files = [
         (
             "share/ament_index/resource_index/packages",
@@ -52,27 +51,6 @@ def package_data_files():
                     [path],
                 )
             )
-    for path in glob("wheeltec_robot_urdf/**/*", recursive=True):
-        if Path(path).is_file():
-            data_files.append(
-                (
-                    "share/" + package_name + "/" + Path(path).parent.as_posix(),
-                    [path],
-                )
-            )
-            relative_parent = Path(path).parent.relative_to(nested_package)
-            data_files.append(
-                (
-                    "share/" + nested_package + "/" + relative_parent.as_posix(),
-                    [path],
-                )
-            )
-    data_files.append(
-        (
-            "share/ament_index/resource_index/packages",
-            [nested_package + "/resource/" + nested_package],
-        )
-    )
     return data_files
 
 
@@ -86,7 +64,7 @@ setup(
     zip_safe=True,
     maintainer="tiger",
     maintainer_email="dev@example.com",
-    description="ISCAS Museum Gazebo Sim demo with the safety inspection robot model.",
+    description="ISCAS Museum Gazebo Sim demo with the TurtleBot3 Burger robot model.",
     license="Apache-2.0",
     entry_points={
         "console_scripts": [

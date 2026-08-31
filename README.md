@@ -152,7 +152,7 @@ ROS2/
     ├── tf_demo_cpp/             # TF2 C++ 示例（多传感器标定）
     ├── tf_demo_py/              # TF2 Python 示例
     ├── name_demo_cpp/           # 节点命名 C++ 示例
-    ├── robot_sim_demo/           # Wheeltec + ISCAS Museum Gazebo 仿真
+    ├── robot_sim_demo/           # TurtleBot3 Burger + ISCAS Museum Gazebo 仿真
     ├── navigation_sim_demo_ros2/ # 导航仿真
     ├── slam_sim_demo_ros2/      # SLAM 仿真
     ├── urdf_demo_ros2/          # URDF 建模示例
@@ -304,7 +304,8 @@ cd ~/ros2_course_ws
 
 ## Gazebo 仿真启动（robot_sim_demo）
 
-`robot_sim_demo` 使用 Gazebo Sim Harmonic 启动 Wheeltec 机器人。原有
+`robot_sim_demo` 使用 Gazebo Sim 启动 TurtleBot3 Burger 机器人（官方
+ROBOTIS 网格与尺寸参数）。原有
 `gazebo2.launch.py` 继续使用 ISCAS Museum 的 `museum.sdf`；新增
 `campus_pucrs.launch.py` 使用 Campus PUCRS 的 `campus_pucrs.world.sdf`，并将车辆
 放在黄色 X 标志中心 `(20.0, 0.0)` 的无障碍区域。
@@ -337,7 +338,7 @@ ros2 launch robot_sim_demo campus_pucrs.launch.py
 ```
 
 Campus 入口默认启动 GUI、传感器桥和 RViz 可选项，但不自动巡航；车辆初始位姿
-为 `x=20.0, y=0.0, z=0.017, yaw=0.0`，对应世界中黄色标志的中心。
+为 `x=20.0, y=0.0, z=0.010, yaw=0.0`，对应世界中黄色标志的中心。
 
 ### Launch 参数
 
@@ -345,15 +346,15 @@ Campus 入口默认启动 GUI、传感器桥和 RViz 可选项，但不自动巡
 |------|--------|------|
 | `gui` | `true` | 启动 Gazebo GUI；设为 `false` 使用无头模式 |
 | `rviz` | `false` | 启动 RViz2 |
-| `spawn_robot` | `true` | 在世界中生成 Wheeltec 机器人 |
+| `spawn_robot` | `true` | 在世界中生成 TurtleBot3 Burger 机器人 |
 | `drive` | `true` | 启动自动巡航节点 |
-| `drive_linear_speed` | `0.18` | 巡航线速度（m/s） |
-| `drive_angular_speed` | `0.55` | 巡航角速度（rad/s） |
+| `drive_linear_speed` | `5.0` | 巡航线速度（m/s） |
+| `drive_angular_speed` | `1.5` | 巡航角速度（rad/s） |
 | `drive_loop` | `true` | 是否循环巡航 |
 | `drive_duration` | `0.0` | 巡航持续时间（0 表示不限制） |
 | `world` | `museum.sdf` | Gazebo 世界文件路径 |
 | `world_name` | `default` | Gazebo 世界名称 |
-| `spawn_x/y/z/yaw` | `0/0/0.017/0` | 机器人生成位姿 |
+| `spawn_x/y/z/yaw` | `0/0/0.010/0` | 机器人生成位姿 |
 | `use_sim_time` | `true` | 使用 Gazebo 仿真时钟 |
 
 ![Nav2 导航](lab_manuals/images/runtime/nav2.gif)
@@ -369,7 +370,7 @@ ros2 launch robot_sim_demo gazebo2.launch.py rviz:=true drive:=false
 
 # 自定义机器人生成位置
 ros2 launch robot_sim_demo gazebo2.launch.py \
-  spawn_x:=1.0 spawn_y:=0.5 spawn_z:=0.017 spawn_yaw:=1.57
+  spawn_x:=1.0 spawn_y:=0.5 spawn_z:=0.010 spawn_yaw:=1.57
 ```
 
 ### 仿真包关键节点与话题
