@@ -20,6 +20,10 @@
 
 - 方法4
 1. [K1 ROS2 安装教程](https://docs.bit-brick.com/zh/docs/k1/news/ros2)
+
+- 方法5
+1. [Licheepi4A + RevyOS](https://github.com/lalafua/recording/blob/main/riscv/ros2/tutorial/first.md)
+
 ## 教学目标
 
 | 目标维度 | 目标描述 |
