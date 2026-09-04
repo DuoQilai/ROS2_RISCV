@@ -24,6 +24,9 @@
 - 方法5
 1. [Licheepi4A + RevyOS](https://github.com/lalafua/recording/blob/main/riscv/ros2/tutorial/first.md)
 
+- 方法6
+1. [revyOS ROS2 源](https://mirror.iscas.ac.cn/revyos/revyos-ros2/)
+
 ## 教学目标
 
 | 目标维度 | 目标描述 |
