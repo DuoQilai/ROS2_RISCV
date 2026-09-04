@@ -14,7 +14,9 @@
 - 方法2
 1. [Docker RISC-V](https://github.com/RLC-Lab/riscv-ros2)
 
-
+- 方法3
+1. [openEuler RISC-V 24.03 Humble](https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/tools/application/ros/ros_user_guide.html)
+曾经完成小车和四旋翼RISC-V实例
 
 ## 教学目标
 
