@@ -6,8 +6,15 @@
 
 ## 教学资源
 
+- 方法1
+
 1. [Bianbu for K3 镜像](https://spacemit.com/community/resources-download/Images%20Collects/K3/Bianbu)
 2. [Bianbu ROS2 开发入门指南 ](https://www.spacemit.com/community/document/info?lang=zh&nodepath=competition/%E7%AB%9E%E8%B5%9B%E6%95%99%E7%A8%8B/01_Bianbu_%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E5%8F%8A%E6%A1%88%E4%BE%8B%E9%9B%86/02_ROS2%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
+
+- 方法2
+1. [Docker RISC-V](https://github.com/RLC-Lab/riscv-ros2)
+
+
 
 ## 教学目标
 
