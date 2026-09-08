@@ -1,0 +1,14 @@
+ARG ROS_BASE_REF
+FROM ${ROS_BASE_REF}
+
+LABEL org.ros2-riscv.component="humble-graph-probe"
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ros-humble-rmw-cyclonedds-cpp \
+        ros-humble-demo-nodes-cpp \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp \
+    ROS_DOMAIN_ID=0 \
+    ROS_LOCALHOST_ONLY=0

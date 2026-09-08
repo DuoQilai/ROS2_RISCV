@@ -1,6 +1,6 @@
 # 第1章：ROS 2 概述与架构设计
 
-> **课程**：ROS2 Python 编程  
+> **课程**：ROS 2 C++17 编程
 > **章节**：第1章  
 > **课时**：2 课时（90 分钟）  
 > **教学方式**：讲授 + 演示  
@@ -30,7 +30,7 @@ ROS 2 自 2017 年底发布首个版本以来，以约半年一次的节奏迭�
 | Iron | Irwini | 2023.05 | EOL |
 | **Jazzy** | Jalisco | 2024.05 | **LTS (最新)** |
 
-本课程基于 **ROS 2 Humble** (Ubuntu 22.04) 或 **ROS 2 Jazzy** (Ubuntu 24.04)。
+本课程使用 **ROS 2 Humble**：C++ 节点在 K3 Pico-ITX（Bianbu >= 4.0.1 / riscv64）运行，Gazebo/RViz 在 x86 的 Ubuntu 22.04/Humble/Harmonic 课程容器运行。连接与环境加载见 [公共双端环境](../lab_manuals_k3_pico_itx/ch00_common_setup.md)。
 
 ---
 
@@ -116,24 +116,19 @@ QoS 定义了数据传输的质量保证机制，ROS 2 提供以下核心策略�
 
 ### 知识点 1.3.2：预定义 QoS 配置文件
 
-为了让常见场景开箱即用，ROS 2 在 rclpy.qos 模块中预置了若干配置文件，例如传感器数据流使用高频允许丢包的配置，服务通信则使用可靠传输的配置；同时用户也可以显式构造 QoSProfile 自定义每一维度的取值：
+为了让常见场景开箱即用，ROS 2 在 rclcpp 中预置了若干 QoS 类型，例如传感器数据流使用高频允许丢包的配置，服务通信则使用可靠传输的配置；同时用户也可以显式构造 rclcpp::QoS 自定义每一维度的取值：
 
-```python
-# ROS 2 预定义 QoS 配置文件
-from rclpy.qos import QoSProfile, qos_profile_sensor_data, qos_profile_services_default
+```cpp
+#include "rclcpp/rclcpp.hpp"
 
-# 传感器数据：高频，允许丢包
-qos_sensor = qos_profile_sensor_data  # BEST_EFFORT, KEEP_LAST(5)
+// Sensor data: BEST_EFFORT, KEEP_LAST(5).
+auto qos_sensor = rclcpp::SensorDataQoS();
 
-# 服务通信：可靠传输
-qos_service = qos_profile_services_default  # RELIABLE, KEEP_LAST(10)
+// Services: RELIABLE, KEEP_LAST(10).
+auto qos_service = rclcpp::ServicesQoS();
 
-# 自定义 QoS
-qos_custom = QoSProfile(
-    reliability=rclpy.qos.ReliabilityPolicy.RELIABLE,
-    durability=rclpy.qos.DurabilityPolicy.TRANSIENT_LOCAL,
-    depth=10
-)
+// Custom QoS.
+auto qos_custom = rclcpp::QoS(10).reliable().transient_local();
 ```
 
 ---
@@ -159,37 +154,50 @@ Unconfigured ──────────────────────�
 
 图 1-3：ROS 2 生命周期节点状态转换图。通过状态机管理节点的初始化和资源分配，确保确定的启动和关闭流程。
 
-### 知识点 1.4.2：生命周期 Python API
+### 知识点 1.4.2：生命周期 C++ API
 
-在 Python 中实现生命周期节点只需继承 rclpy.lifecycle 模块中的 LifecycleNode，并按需覆写 on_configure、on_activate 等回调，每个回调通过返回 TransitionCallbackReturn.SUCCESS 表示迁移成功：
+在 C++ 中实现生命周期节点只需继承 rclcpp_lifecycle::LifecycleNode，并按需覆写 on_configure、on_activate 等回调，每个回调通过返回 CallbackReturn::SUCCESS 表示迁移成功：
 
-```python
-import rclpy
-from rclpy.lifecycle import LifecycleNode, State, TransitionCallbackReturn
+```cpp
+#include "rclcpp/rclcpp.hpp"
+#include "rclcpp_lifecycle/lifecycle_node.hpp"
 
-class MyLifecycleNode(LifecycleNode):
-    def __init__(self):
-        super().__init__('my_lifecycle_node')
+using CallbackReturn =
+  rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn;
 
-    def on_configure(self, state: State):
-        # 分配资源、设置参数
-        self.get_logger().info('on_configure() called')
-        return TransitionCallbackReturn.SUCCESS
+class MyLifecycleNode : public rclcpp_lifecycle::LifecycleNode
+{
+public:
+  MyLifecycleNode() : LifecycleNode("my_lifecycle_node") {}
 
-    def on_activate(self, state: State):
-        # 开始处理数据
-        self.get_logger().info('on_activate() called')
-        return TransitionCallbackReturn.SUCCESS
+  CallbackReturn on_configure(const rclcpp_lifecycle::State &) override
+  {
+    // Allocate resources and set parameters.
+    RCLCPP_INFO(get_logger(), "on_configure() called");
+    return CallbackReturn::SUCCESS;
+  }
 
-    def on_deactivate(self, state: State):
-        # 停止处理
-        self.get_logger().info('on_deactivate() called')
-        return TransitionCallbackReturn.SUCCESS
+  CallbackReturn on_activate(const rclcpp_lifecycle::State &) override
+  {
+    // Start processing data.
+    RCLCPP_INFO(get_logger(), "on_activate() called");
+    return CallbackReturn::SUCCESS;
+  }
 
-    def on_cleanup(self, state: State):
-        # 释放资源
-        self.get_logger().info('on_cleanup() called')
-        return TransitionCallbackReturn.SUCCESS
+  CallbackReturn on_deactivate(const rclcpp_lifecycle::State &) override
+  {
+    // Stop processing data.
+    RCLCPP_INFO(get_logger(), "on_deactivate() called");
+    return CallbackReturn::SUCCESS;
+  }
+
+  CallbackReturn on_cleanup(const rclcpp_lifecycle::State &) override
+  {
+    // Release resources.
+    RCLCPP_INFO(get_logger(), "on_cleanup() called");
+    return CallbackReturn::SUCCESS;
+  }
+};
 ```
 
 ### 知识点 1.4.3：官方要点——生命周期节点设计动机
@@ -204,51 +212,32 @@ class MyLifecycleNode(LifecycleNode):
 
 ### 知识点 1.5.1：安装 ROS 2 Humble
 
-在 Ubuntu 22.04 上安装 ROS 2 Humble 分为三步：首先设置系统 locale 并为 apt 添加 ROS 2 软件源，然后安装 ros-humble-desktop-full 完整版，最后安装 colcon、rosdep、vcstool 等开发工具，具体命令如下：
+K3 使用 Bianbu 的 ROS 2 软件包及课程专用安装器，安装 ROS 2、colcon 和课程所需依赖；Gazebo/RViz 安装在 x86 课程容器中。安装前先预检并查看缺失项，具体双端准备步骤见 [公共环境](../lab_manuals_k3_pico_itx/ch00_common_setup.md)。
+
+【K3 板端，安装终端】
 
 ```bash
-# 设置 locale
-sudo apt update && sudo apt install locales
-sudo locale-gen en_US en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
-export LANG=en_US.UTF-8
-
-# 添加 ROS 2 仓库
-sudo apt install software-properties-common
-sudo add-apt-repository universe
-sudo apt update && sudo apt install curl -y
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
-  -o /usr/share/keyrings/ros-archive-keyring.gpg
-
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] \
-  http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
-  | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
-# 安装 ROS 2 Humble 完整版
-sudo apt update
-sudo apt install ros-humble-desktop-full
-
-# 安装开发工具
-sudo apt install python3-colcon-common-extensions python3-rosdep python3-vcstool
+cd ~/ROS2_RISCV
+bash setup_course_k3.sh --dry-run
+bash setup_course_k3.sh
 ```
 
 ### 知识点 1.5.2：配置开发环境
 
-安装完成后，需要把 ROS 2 的环境变量写入 `~/.bashrc` 以便每次新开终端自动加载，并初始化 rosdep 用于后续解析包的依赖：
+每次新开终端加载 ROS 2 和课程工作空间环境后，才能使用其中的包和节点。K3 安装器生成独立的课程环境文件；本课程使用已核对的显式依赖清单，rosdep 的初始化状态由安装检查记录。
+
+【K3 板端，各实验终端】
 
 ```bash
-# 将 ROS 2 环境变量添加到 ~/.bashrc
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-
-# 初始化 rosdep（用于安装包依赖）
-sudo rosdep init
-rosdep update
+source ~/.config/ros2-course/env.bash
+source ~/ros2_course_ws/install/setup.bash
 ```
 
 ### 知识点 1.5.3：工作空间与 colcon 构建
 
 开发机器人功能包时，通常先在主目录下创建 `~/ros2_ws` 工作空间并建立 `src` 子目录存放源码，随后用 colcon 构建整个空间，构建完成后加载 `install/setup.bash` 即可运行其中的节点，最后用官方的 talker/listener 示例节点验证整个环境是否可用：
+
+【K3 板端，终端 1；已有工作空间内容保留】
 
 ```bash
 # 创建工作空间
@@ -264,7 +253,7 @@ source install/setup.bash
 # 验证安装
 ros2 run demo_nodes_cpp talker
 # 在另一个终端：
-ros2 run demo_nodes_py listener
+ros2 run demo_nodes_cpp listener
 ```
 
 ### 知识点 1.5.4：官方要点——快速上手：turtlesim 与命令行工具
@@ -275,7 +264,7 @@ ros2 run demo_nodes_py listener
 
 ### 知识点 1.5.5：官方要点——工作区与 colcon 构建系统
 
-官方 colcon 教程介绍了标准工作区布局：`src/`（源码）、`build/`（中间产物）、`install/`（安装产物）、`log/`（日志）四个目录。构建命令 `colcon build` 会递归编译所有包，常用选项包括 `--packages-select <pkg>`（只编译指定包）、`--symlink-install`（Python 包以符号链接安装，改代码免重编）以及 `--merge-install`（合并安装，适合在嵌入式/容器中运行）。
+官方 colcon 教程介绍了标准工作区布局：`src/`（源码）、`build/`（中间产物）、`install/`（安装产物）、`log/`（日志）四个目录。构建命令 `colcon build` 会递归编译所有包，常用选项包括 `--packages-select <pkg>`（只编译指定包）、`--symlink-install`（适用文件以符号链接安装，C++ 源码修改后仍需重新编译）以及 `--merge-install`（合并安装，适合在嵌入式/容器中运行）。
 
 Articulated Robotics 强调初学者应形成「修改源码 → `colcon build --symlink-install` → `source install/setup.bash` → `ros2 run`」的日常循环，并提醒每次新开终端都要重新 source，否则会出现 `Package 'x' not found` 的错误——这是 ROS 2 初学者最高频的报错之一，根源正是环境变量（如 `AMENT_PREFIX_PATH`、`LD_LIBRARY_PATH`）未正确加载。
 
@@ -283,7 +272,7 @@ Articulated Robotics 强调初学者应形成「修改源码 → `colcon build -
 
 ## 1.6 本章小结
 
-本章围绕 ROS 2 的设计理念与核心机制展开。首先回顾了 ROS 1 在单点故障、实时性、安全性与嵌入式支持四方面的局限，以及 ROS 2 如何通过全新的通信架构解决这些问题。随后介绍了 DDS 中间件的去中心化自动发现机制：节点之间不再依赖中央 Master，而是通过对等发现直接通信，且底层 DDS 实现可以通过 RMW 抽象层自由切换。在通信质量层面，QoS 策略从可靠性、持久性、历史缓存、队列深度、截止时间、存活周期与存活检测等多个维度提供细粒度的保障。此外，生命周期节点通过标准状态机统一管理节点的配置、激活与关闭流程，保证系统启动和退出行为确定可控。在环境搭建方面，本章给出了 ROS 2 Humble/Jazzy 的 apt 安装步骤，并介绍了以 colcon 为标准构建工具的工作空间管理方式。
+本章围绕 ROS 2 的设计理念与核心机制展开。首先回顾了 ROS 1 在单点故障、实时性、安全性与嵌入式支持四方面的局限，以及 ROS 2 如何通过全新的通信架构解决这些问题。随后介绍了 DDS 中间件的去中心化自动发现机制：节点之间不再依赖中央 Master，而是通过对等发现直接通信，且底层 DDS 实现可以通过 RMW 抽象层自由切换。在通信质量层面，QoS 策略从可靠性、持久性、历史缓存、队列深度、截止时间、存活周期与存活检测等多个维度提供细粒度的保障。此外，生命周期节点通过标准状态机统一管理节点的配置、激活与关闭流程，保证系统启动和退出行为确定可控。在环境搭建方面，本章给出了 K3 上 ROS 2 Humble 的安装入口与环境加载步骤，并介绍了以 colcon 为标准构建工具的工作空间管理方式。
 
 ---
 
@@ -304,15 +293,23 @@ ros1多机器人、多实验环境相互干扰————通过ROS_DOMAIN_ID划
 可以。Publisher 使用 RELIABLE，提供可靠传输能力；Subscriber 使用 BEST_EFFORT，只要求尽力接收，因此发布者能力满足订阅者需求。两者 Durability 都为 VOLATILE，也能够匹配。
 **练习 1.4**：查看当前 ROS_DOMAIN_ID 环境变量值，将其修改为 42 并验证。
 
-![alt text](images/image-2.png)
+![K3 ROS_DOMAIN_ID 修改为 42 并恢复课程域](../lab_manuals_k3_pico_itx/images/ch01/ch01-domain-forty-two.png)
+
+K3 实测 ROS_DOMAIN_ID=42；观察后恢复为课程使用的 Domain 0。
 
 **练习 1.5**：创建一个 ROS 2 工作空间，使用 colcon build 编译，并验证 setup.bash 加载。
 
-![alt text](images/image.png)
+![K3 既有工作空间复编译通过，加载 setup.bash 后可查询 my_first_pkg。](../lab_manuals_k3_pico_itx/images/ch01/ch01-workspace-rebuild.png)
+
+K3 既有工作空间复编译通过，加载 setup.bash 后可查询 my_first_pkg。
 
 **练习 1.6**：运行 talker/listener 示例节点，使用 `ros2 node list` 和 `ros2 topic list` 查看运行状态。
 
-![alt text](images/image-1.png)
+![K3 talker、listener 与节点列表](../lab_manuals_k3_pico_itx/images/ch01/ch01-install-talker-listener.png)
+
+![K3 查看 ROS 2 节点和话题；/chatter 可见，查询退出码为 0。](../lab_manuals_k3_pico_itx/images/ch01/ch01-node-topic-list.png)
+
+K3 查看 ROS 2 节点和话题；/chatter 可见，查询退出码为 0。
 
 ---
 
@@ -320,21 +317,23 @@ ros1多机器人、多实验环境相互干扰————通过ROS_DOMAIN_ID划
 
 ### 目标与知识点对应
 
-本实例把第1章的三个核心概念——**DDS 分布式通信、去中心化自动发现、ROS_DOMAIN_ID 域隔离、QoS 策略**——放到一个真实的 Gazebo 仿真中验证。当前仓库使用 ROS 2 Jazzy + Gazebo Sim Harmonic，移动机器人入口为 `robot_sim_demo`。通过观察一个仿真世界里的节点、话题和桥接关系，你能直观理解 DDS 中间件如何在节点之间自动建立连接。
+本实例把第1章的三个核心概念——**DDS 分布式通信、去中心化自动发现、ROS_DOMAIN_ID 域隔离、QoS 策略**——放到一个真实的 Gazebo 仿真中验证。当前验证使用 K3 上的 ROS 2 Humble 与 x86 课程容器中的 ROS 2 Humble + Gazebo Sim Harmonic，移动机器人入口为 `robot_sim_demo`。通过观察一个仿真世界里的节点、话题和桥接关系，你能直观理解 DDS 中间件如何在节点之间自动建立连接。
 
 ### 运行命令
 
-在工作区根目录执行，先加载 ROS 2 与工作空间环境：
+先按公共环境启动并进入 x86 课程容器；下列命令对应容器内仿真进程，已经启动时不要重复启动。
+
+【x86 课程容器，仿真终端】
 
 ```bash
-source /opt/ros/jazzy/setup.bash
-source install/setup.bash
+source /opt/ros/humble/setup.bash
+source /workspace/install/setup.bash
 
 # 终端 1：启动 Gazebo + 机器人 + 传感器桥（带 RViz）
 ros2 launch robot_sim_demo gazebo2.launch.py gui:=true rviz:=true drive:=false
 ```
 
-等待 Gazebo 3D 场景出现 TurtleBot3 Burger 机器人、RViz 显示机器人模型与激光雷达点云。随后在**独立终端**（同样先 source 环境）观察：
+等待 Gazebo 3D 场景出现 TurtleBot3 Burger 机器人、RViz 显示机器人模型与激光雷达点云。随后在 **K3 独立终端**（先加载课程环境）观察：
 
 ```bash
 # 查看自动发现到的所有节点（DDS 去中心化发现）
@@ -351,11 +350,13 @@ ros2 topic info /scan
 
 ### 源码与相关位置
 
-本实例涉及的关键文件包括：启动入口位于 `src/robot_sim_demo/launch/gazebo2.launch.py`，桥配置位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，相机内参发布器位于 `src/robot_sim_demo/robot_sim_demo/camera_info_publisher.py`，世界与模型文件则位于 `src/robot_sim_demo/worlds/museum.sdf` 和 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。
+本实例涉及的关键文件包括：启动入口位于 `src/robot_sim_demo/launch/gazebo2.launch.py`，桥配置位于 `src/robot_sim_demo/config/gazebo2_bridge.yaml`，相机内参发布器位于 `src/robot_sim_demo/src/camera_info_publisher.cpp`，世界与模型文件则位于 `src/robot_sim_demo/worlds/museum.sdf` 和 `src/robot_sim_demo/models/turtlebot3_burger/model.sdf`。
 
-> 说明：真实运行证据（检测到 `/clock`、`/scan`、`/odom`、`/tf` 桥接）见 `lab_manuals/images/runtime/ch09_gazebo_headless.png` 及配套 `.cast`。
+> 本章既有运行通过结论保留；对应截图和连续 GUI 录像的交付状态见 [K3 实际运行证据](../lab_manuals_k3_pico_itx/runtime_evidence.md#ch01)。
 
-![ch01 生命周期节点运行输出](../lab_manuals/images/runtime/ch01_lifecycle.gif)
+![K3 生命周期状态迁移与速度输出](../lab_manuals_k3_pico_itx/images/ch01/debug-twist.png)
+
+K3 当前账号补验：configure、activate 成功，/cmd_vel 的 linear.x=0.1；均记录实际退出码。
 
 ---
 

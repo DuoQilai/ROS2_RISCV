@@ -188,7 +188,7 @@ def generate_launch_description() -> LaunchDescription:
                 executable="camera_info_publisher",
                 name="camera_info_publisher",
                 output="screen",
-                parameters=[{"use_sim_time": False}],
+                parameters=[{"use_sim_time": False, "frame_id": "camera_optical_frame"}],
             ),
             Node(
                 package="robot_state_publisher",

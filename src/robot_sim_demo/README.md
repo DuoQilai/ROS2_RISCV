@@ -52,9 +52,12 @@ src/robot_sim_demo/
 
 │   └── campus_patrol_robot.urdf
 
+├── src/
+
+│   └── camera_info_publisher.cpp  相机内参发布节点（C++17）
+
 └── robot_sim_demo/
 
-    ├── camera_info_publisher.py  相机内参发布节点
     └── patrol_driver.py          巡航驱动节点
 ```
 

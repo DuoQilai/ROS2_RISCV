@@ -1,5 +1,7 @@
 # RISC-V ROS2 机器人操作系统编程技术
 
+K3 Pico-ITX 第 1 章适配：先阅读[公共双端环境](lab_manuals_k3_pico_itx/ch00_common_setup.md)，再完成[第 1 章实验](lab_manuals_k3_pico_itx/ch01_lab.md)。[运行证据与交付状态](lab_manuals_k3_pico_itx/runtime_evidence.md)按章节记录；运行支持文件见 [course_support/k3](course_support/k3/README.md)。
+
 ## 课程介绍
 
 本课程以 RISC-V 开源硬件平台（openEuler 24.03 LTS）为硬件基础，以 ROS2（Robot Operating System 2）Humble 为技术平台，系统讲授机器人的软件开发框架、分布式通信机制、实时控制系统以及智能终端装调技术。课程 ROS2 程序运行在 openEuler RISC-V 板卡上，Gazebo、RViz2 等仿真与可视化环境运行在 Windows x86 主机上，两端通过局域网内同一 DDS 域互联。

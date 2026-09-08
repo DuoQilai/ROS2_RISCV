@@ -11,7 +11,7 @@ class SimulationAssetTest(unittest.TestCase):
         required = [
             "launch/gazebo2.launch.py",
             "launch/campus_pucrs.launch.py",
-            "robot_sim_demo/camera_info_publisher.py",
+            "src/camera_info_publisher.cpp",
             "robot_sim_demo/patrol_driver.py",
             "config/gazebo2_bridge.yaml",
             "gui/museum.gui.config",
@@ -127,12 +127,12 @@ class SimulationAssetTest(unittest.TestCase):
 
     def test_camera_info_node_matches_sensor(self):
         node_text = (
-            self.package_root / "robot_sim_demo/camera_info_publisher.py"
+            self.package_root / "src/camera_info_publisher.cpp"
         ).read_text(encoding="utf-8")
-        self.assertIn('self.declare_parameter("width", 320)', node_text)
-        self.assertIn('self.declare_parameter("height", 180)', node_text)
-        self.assertIn('self.declare_parameter("horizontal_fov", 1.0472)', node_text)
-        self.assertIn('self.create_subscription(ClockMessage, "/clock", self.on_clock, 10)', node_text)
+        self.assertIn('declare_parameter<int>("width", 320)', node_text)
+        self.assertIn('declare_parameter<int>("height", 180)', node_text)
+        self.assertIn('declare_parameter<double>("horizontal_fov", 1.0472)', node_text)
+        self.assertIn('"/clock", 10,', node_text)
 
     def test_drive_plugin_and_ros_interfaces_are_configured(self):
         model_text = (
@@ -188,7 +188,7 @@ class SimulationAssetTest(unittest.TestCase):
                     model.findtext(f"joint[@name='{joint_name}']/axis/xyz"),
                 )
 
-        plugin = model.find("plugin")
+        plugin = model.find("plugin[@name='gz::sim::systems::DiffDrive']")
         self.assertEqual(
             ["wheel_left_joint"],
             [element.text for element in plugin.findall("left_joint")],
