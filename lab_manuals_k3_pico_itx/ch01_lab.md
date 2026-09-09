@@ -23,7 +23,7 @@ ros2 launch robot_sim_demo gazebo2.launch.py \
 
 ```bash
 source /opt/ros/humble/setup.bash
-source ~/ros2_course_ws/install/setup.bash
+source ~/ros2_course_k3_ws/install/setup.bash
 ros2 node list
 ros2 topic echo /clock --once
 ros2 topic info /scan
@@ -34,7 +34,7 @@ ros2 topic echo /odom --once
 
 应能看到 Gazebo 桥接节点、`/clock` 仿真时钟、`/scan` 激光和 `/odom` 里程计。该验证证明环境和基础数据链路可用；RViz/Gazebo 图形界面在 x86 的 X11 桌面显示。
 
-源码：`src/robot_sim_demo/launch/gazebo2.launch.py`、`src/robot_sim_demo/config/gazebo2_bridge.yaml`。
+源码：`src_k3_pico_itx/robot_sim_demo/launch/gazebo2.launch.py`、`src_k3_pico_itx/robot_sim_demo/config/gazebo2_bridge.yaml`。
 
 > **实验课时**：2 课时（90 分钟）
 > **实验平台**：K3 Pico-ITX（Bianbu >= 4.0.1 / riscv64 / Humble）+ x86 Ubuntu 22.04/Humble/Harmonic 课程容器
@@ -206,8 +206,8 @@ K3 的 Domain 1 listener 在 10 秒观察窗口内未收到 Domain 0 消息，ti
 【K3 板端，构建终端】
 
 ```bash
-cd ~/ros2_course_ws
-ls src/course/ src/labs/
+cd ~/ros2_course_k3_ws
+ls src/course/
 ```
 
 **步骤2：安装系统依赖**
@@ -225,9 +225,9 @@ bash setup_course_k3.sh
 【K3 板端，构建终端】
 
 ```bash
-source ~/.config/ros2-course/env.bash
-cd ~/ros2_course_ws
-colcon build --base-paths src/course src/labs --symlink-install --executor sequential
+source ~/.config/ros2-course-k3/env.bash
+cd ~/ros2_course_k3_ws
+colcon build --base-paths src/course --symlink-install --executor sequential
 source install/setup.bash
 ros2 pkg list | grep demo
 ```
@@ -313,7 +313,7 @@ ros2 launch robot_sim_demo gazebo2.launch.py gui:=true rviz:=true drive:=false
 【K3 板端，遥控终端；先停止其他 `/cmd_vel` 发布者】
 ```bash
 # 新开终端
-source ~/ros2_course_ws/install/setup.bash
+source ~/ros2_course_k3_ws/install/setup.bash
 ros2 run teleop_twist_keyboard teleop_twist_keyboard
 # 按 i 前进，k 停止，j/l 左右转
 # 观察 RViz 和 Gazebo 中机器人运动
@@ -353,8 +353,8 @@ x86 RViz 的 Image/Camera 有实际相机画面，激光扫描可见，Global St
 【K3 板端，观察终端；每条频率命令分别观察后 Ctrl+C】
 
 ```bash
-source ~/.config/ros2-course/env.bash
-source ~/ros2_course_ws/install/setup.bash
+source ~/.config/ros2-course-k3/env.bash
+source ~/ros2_course_k3_ws/install/setup.bash
 ros2 topic list -t | grep -E "scan|rgbd|camera|image|depth|camera_info"
 ros2 topic hz /scan
 ros2 topic hz /camera/image_raw
@@ -386,7 +386,7 @@ ros2 topic hz /camera/camera_info
 
 **步骤3：创建测试节点**
 
-【本机访问端】在课程 `src/lifecycle_demo_cpp/src/lifecycle_demo.cpp` 创建 C++ 生命周期节点。该包已存在时核对已有文件，保留已有实现。包的 `CMakeLists.txt` 注册 `lifecycle_demo` 入口并声明 `rclcpp`、`rclcpp_lifecycle`、`lifecycle_msgs`、`geometry_msgs` 依赖。
+【本机访问端】在课程 `src_k3_pico_itx/lifecycle_demo_cpp/src/lifecycle_demo.cpp` 创建 C++ 生命周期节点。该包已存在时核对已有文件，保留已有实现。包的 `CMakeLists.txt` 注册 `lifecycle_demo` 入口并声明 `rclcpp`、`rclcpp_lifecycle`、`lifecycle_msgs`、`geometry_msgs` 依赖。
 
 ```cpp
 #include <chrono>
@@ -518,14 +518,14 @@ ROS 2 + LifecycleNode + QoS，可以体现生命周期节点的配置、激活�
 按第 0 章将本机源码同步到 K3；在 K3 构建终端执行：
 
 ```bash
-source ~/.config/ros2-course/env.bash
-cd ~/ros2_course_ws
-colcon build --base-paths src/course src/labs --packages-select lifecycle_demo_cpp
+source ~/.config/ros2-course-k3/env.bash
+cd ~/ros2_course_k3_ws
+colcon build --base-paths src/course --packages-select lifecycle_demo_cpp
 source install/setup.bash
 ```
 
 **步骤4：配置调试（launch.json）**
-- 先检查远程课程目录的 `.vscode/launch.json`，避免覆盖个人配置；采用下列已验证的 GDB 配置。先按[公共环境中的运行支持文件放置](ch00_common_setup.md#运行支持文件放置)安装仓库提供的 `gdb.bash` 到 K3 的 `~/.config/ros2-course/gdb.bash`，用于加载 ROS 环境。
+- 先检查远程课程目录的 `.vscode/launch.json`，避免覆盖个人配置；采用下列已验证的 GDB 配置。先按[公共环境中的运行支持文件放置](ch00_common_setup.md#运行支持文件放置)安装仓库提供的 `gdb.bash` 到 K3 的 `~/.config/ros2-course-k3/gdb.bash`，用于加载 ROS 环境。
 
 ```json
 {
@@ -535,11 +535,11 @@ source install/setup.bash
       "name": "K3: lifecycle C++ (GDB)",
       "type": "gdb",
       "request": "launch",
-      "target": "${env:HOME}/ros2_course_ws/install/lifecycle_demo_cpp/lib/lifecycle_demo_cpp/lifecycle_demo",
+      "target": "${env:HOME}/ros2_course_k3_ws/install/lifecycle_demo_cpp/lib/lifecycle_demo_cpp/lifecycle_demo",
       "cwd": "${workspaceFolder}",
-      "gdbpath": "${env:HOME}/.config/ros2-course/gdb.bash",
+      "gdbpath": "${env:HOME}/.config/ros2-course-k3/gdb.bash",
       "pathSubstitutions": {
-        "${env:HOME}/ros2_course_ws/src/course": "${workspaceFolder}/src"
+        "${env:HOME}/ros2_course_k3_ws/src/course": "${workspaceFolder}/src_k3_pico_itx"
       },
       "autorun": ["set debuginfod enabled off", "set non-stop on"],
       "stopAtEntry": true
@@ -551,16 +551,16 @@ source install/setup.bash
 【K3 板端，ch01 编译完成后】为 clangd 生成本包的实际编译参数：
 
 ```bash
-source ~/.config/ros2-course/env.bash
-source ~/ros2_course_ws/install/setup.bash
-cd ~/ros2_course_ws/build/lifecycle_demo_cpp
+source ~/.config/ros2-course-k3/env.bash
+source ~/ros2_course_k3_ws/install/setup.bash
+cd ~/ros2_course_k3_ws/build/lifecycle_demo_cpp
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
 # 课程根目录尚无编译数据库时建立链接；已有文件先检查，不覆盖。
 if [ -e ~/ROS2_RISCV/compile_commands.json ] || [ -L ~/ROS2_RISCV/compile_commands.json ]; then
   ls -ld ~/ROS2_RISCV/compile_commands.json
   printf '编译数据库已存在，请核对是否适用于本包。\n'
 else
-  ln -s ~/ros2_course_ws/build/lifecycle_demo_cpp/compile_commands.json \
+  ln -s ~/ros2_course_k3_ws/build/lifecycle_demo_cpp/compile_commands.json \
     ~/ROS2_RISCV/compile_commands.json
 fi
 ```

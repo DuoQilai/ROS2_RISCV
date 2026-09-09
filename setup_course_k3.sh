@@ -16,11 +16,10 @@ PLATFORM_VERSION=""
 ROSDEP_READY=false
 
 COURSE_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-COURSE_WS="${ROS2_COURSE_WS:-${HOME}/ros2_course_ws}"
-COURSE_SRC="${COURSE_ROOT}/src"
-LAB_SRC="${COURSE_ROOT}/src/lab_code"
-ML_VENV="${ROS2_COURSE_ML_VENV:-${HOME}/.venvs/ros2-course-ml}"
-ENV_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/ros2-course"
+COURSE_WS="${ROS2_K3_COURSE_WS:-${HOME}/ros2_course_k3_ws}"
+COURSE_SRC="${COURSE_ROOT}/src_k3_pico_itx"
+ML_VENV="${ROS2_K3_COURSE_ML_VENV:-${HOME}/.venvs/ros2-course-ml}"
+ENV_DIR="${XDG_CONFIG_HOME:-${HOME}/.config}/ros2-course-k3"
 ENV_FILE="${ENV_DIR}/env.bash"
 
 WITH_ML=false
@@ -33,8 +32,8 @@ REFRESH_ENV=false
 CURRENT_STEP="startup"
 LOCK_FD=9
 
-readonly BASHRC_BEGIN="# >>> ROS2 course environment >>>"
-readonly BASHRC_END="# <<< ROS2 course environment <<<"
+readonly BASHRC_BEGIN="# >>> ROS2 K3 course environment >>>"
+readonly BASHRC_END="# <<< ROS2 K3 course environment <<<"
 
 BASE_APT_PACKAGES=(
   ca-certificates
@@ -126,14 +125,14 @@ validation.
 
 Default action:
   Use the configured platform package repository to install ROS 2 Humble and
-  base dependencies, synchronize the course into ~/ros2_course_ws, build all
+  base dependencies, synchronize the course into ~/ros2_course_k3_ws, build all
   ROS packages, configure ~/.bashrc, and verify.
 
 Options:
   --with-ml             Install ML dependencies in an isolated venv
                         (wheels on riscv64 may need to compile)
   --with-hardware       Install camera / serial / fiducial dependencies
-  --workspace PATH      Use a managed workspace other than ~/ros2_course_ws
+  --workspace PATH      Use a managed workspace other than ~/ros2_course_k3_ws
   --run-tests           Run colcon tests after a successful build
   --verify              Verify an existing installation without changing it
   --refresh-env         Regenerate the shell environment without reinstalling
@@ -141,7 +140,7 @@ Options:
   --help                Show this help
 
 Environment overrides:
-  ROS2_COURSE_WS, ROS2_COURSE_ML_VENV
+  ROS2_K3_COURSE_WS, ROS2_K3_COURSE_ML_VENV
 EOF
 }
 
@@ -280,7 +279,6 @@ preflight() {
 
   [[ "${EUID}" -ne 0 ]] || die "Run this script as a normal user; sudo is invoked only when needed"
   [[ -d "${COURSE_SRC}" ]] || die "Course src directory not found: ${COURSE_SRC}"
-  [[ -d "${LAB_SRC}" ]] || die "Course lab_code directory not found: ${LAB_SRC}"
 
   if [[ -n "${ROS_DISTRO:-}" && "${ROS_DISTRO}" != "${TARGET_ROS_DISTRO}" ]]; then
     die "Another ROS distribution is active (${ROS_DISTRO}); start a clean shell"
@@ -300,7 +298,7 @@ preflight() {
 acquire_lock() {
   [[ "${DRY_RUN}" == true || "${VERIFY_ONLY}" == true ]] && return 0
   command -v flock >/dev/null 2>&1 || die "flock is required (package: util-linux)"
-  local lock_file="${XDG_RUNTIME_DIR:-/tmp}/ros2-course-setup-${UID}.lock"
+  local lock_file="${XDG_RUNTIME_DIR:-/tmp}/ros2-course-k3-setup-${UID}.lock"
   exec 9>"${lock_file}"
   flock -n "${LOCK_FD}" || die "Another setup_course_k3.sh process is running"
 }
@@ -398,14 +396,13 @@ discover_package_names() {
 }
 
 course_package_base_paths() {
-  find "${COURSE_SRC}" -mindepth 1 -maxdepth 1 -type d \
-    ! -path "${LAB_SRC}" -print | LC_ALL=C sort
+  find "${COURSE_SRC}" -mindepth 1 -maxdepth 1 -type d -print | LC_ALL=C sort
 }
 
 discover_source_package_names() {
   local course_base_paths=()
   mapfile -t course_base_paths < <(course_package_base_paths)
-  discover_package_names "${course_base_paths[@]}" "${LAB_SRC}"
+  discover_package_names "${course_base_paths[@]}"
 }
 
 discover_installed_package_names() {
@@ -453,14 +450,14 @@ assert_unique_packages() {
   local duplicate_names
   local course_base_paths=()
   mapfile -t course_base_paths < <(course_package_base_paths)
-  duplicate_names="$(colcon list --base-paths "${course_base_paths[@]}" "${LAB_SRC}" | \
+  duplicate_names="$(colcon list --base-paths "${course_base_paths[@]}" | \
     awk '{print $1}' | LC_ALL=C sort | uniq -d)"
   [[ -z "${duplicate_names}" ]] || die "Duplicate ROS package names detected: ${duplicate_names}"
 }
 
 sync_workspace() {
   CURRENT_STEP="managed workspace synchronization"
-  local marker="${COURSE_WS}/.ros2-course-managed"
+  local marker="${COURSE_WS}/.ros2-course-k3-managed"
   local managed_path
   local excludes=(
     --exclude=.git/
@@ -470,13 +467,11 @@ sync_workspace() {
     --exclude=build/
     --exclude=install/
     --exclude=log/
-    --exclude=lab_code/
   )
 
   if [[ "${DRY_RUN}" == true ]]; then
-    print_command mkdir -p "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs"
+    print_command mkdir -p "${COURSE_WS}/src/course"
     print_command rsync -a --delete "${excludes[@]}" "${COURSE_SRC}/" "${COURSE_WS}/src/course/"
-    print_command rsync -a --delete "${excludes[@]}" "${LAB_SRC}/" "${COURSE_WS}/src/labs/"
     return 0
   fi
 
@@ -485,8 +480,7 @@ sync_workspace() {
   for managed_path in \
     "${COURSE_WS}" \
     "${COURSE_WS}/src" \
-    "${COURSE_WS}/src/course" \
-    "${COURSE_WS}/src/labs"; do
+    "${COURSE_WS}/src/course"; do
     [[ ! -L "${managed_path}" ]] || \
       die "Refusing to use a symbolic link in the managed workspace: ${managed_path}"
   done
@@ -497,19 +491,17 @@ sync_workspace() {
     fi
   fi
 
-  mkdir -p "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs"
-  for managed_path in "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs"; do
-    [[ -d "${managed_path}" && ! -L "${managed_path}" ]] || \
-      die "Managed workspace target is not a regular directory: ${managed_path}"
-  done
+  mkdir -p "${COURSE_WS}/src/course"
+  managed_path="${COURSE_WS}/src/course"
+  [[ -d "${managed_path}" && ! -L "${managed_path}" ]] || \
+    die "Managed workspace target is not a regular directory: ${managed_path}"
   touch "${marker}"
 
   rsync -a --delete "${excludes[@]}" "${COURSE_SRC}/" "${COURSE_WS}/src/course/"
-  rsync -a --delete "${excludes[@]}" "${LAB_SRC}/" "${COURSE_WS}/src/labs/"
 
   mapfile -t source_packages < <(discover_source_package_names)
   mapfile -t workspace_packages < <(
-    discover_package_names "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs"
+    discover_package_names "${COURSE_WS}/src/course"
   )
   if [[ "${source_packages[*]}" != "${workspace_packages[*]}" ]]; then
     die "Workspace package discovery differs from the course source"
@@ -524,7 +516,7 @@ install_workspace_dependencies() {
   if [[ "${ROSDEP_READY}" == true && "${DRY_RUN}" == false ]]; then
     log_info "Checking the reviewed apt package list against rosdep metadata"
     run_best_effort rosdep check \
-      --from-paths "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs" \
+      --from-paths "${COURSE_WS}/src/course" \
       --ignore-src \
       --rosdistro "${TARGET_ROS_DISTRO}" \
       --skip-keys ament_python
@@ -555,7 +547,7 @@ build_workspace() {
   CURRENT_STEP="course workspace build"
   if [[ "${DRY_RUN}" == true ]]; then
     print_command colcon build \
-      --base-paths "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs" \
+      --base-paths "${COURSE_WS}/src/course" \
       --symlink-install \
       --cmake-clean-cache \
       --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo
@@ -565,7 +557,7 @@ build_workspace() {
   (
     cd "${COURSE_WS}"
     colcon build \
-      --base-paths "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs" \
+      --base-paths "${COURSE_WS}/src/course" \
       --symlink-install \
       --cmake-clean-cache \
       --event-handlers console_cohesion+ \
@@ -585,7 +577,7 @@ test_workspace() {
   CURRENT_STEP="course workspace tests"
   if [[ "${DRY_RUN}" == true ]]; then
     print_command colcon test \
-      --base-paths "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs" \
+      --base-paths "${COURSE_WS}/src/course" \
       --executor sequential
     print_command colcon test-result --test-result-base "${COURSE_WS}/build" --verbose
     return 0
@@ -596,7 +588,7 @@ test_workspace() {
   (
     cd "${COURSE_WS}"
     colcon test \
-      --base-paths "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs" \
+      --base-paths "${COURSE_WS}/src/course" \
       --executor sequential \
       --event-handlers console_cohesion+ \
       --return-code-on-test-failure
@@ -624,8 +616,8 @@ write_environment_file() {
     printf 'if [[ -f %q ]]; then\n' "${COURSE_WS}/install/setup.bash"
     printf '  source %q\n' "${COURSE_WS}/install/setup.bash"
     printf 'fi\n'
-    printf 'export ROS2_COURSE_ROOT=%q\n' "${COURSE_ROOT}"
-    printf 'export ROS2_COURSE_WS=%q\n' "${COURSE_WS}"
+    printf 'export ROS2_K3_COURSE_ROOT=%q\n' "${COURSE_ROOT}"
+    printf 'export ROS2_K3_COURSE_WS=%q\n' "${COURSE_WS}"
     printf 'export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\n'
     printf 'export RCUTILS_COLORIZED_OUTPUT=1\n'
     printf 'export RCUTILS_LOGGING_USE_STDOUT=1\n'
@@ -633,12 +625,12 @@ write_environment_file() {
     # shellcheck disable=SC2016
     printf 'export ROS_DOMAIN_ID="${ROS_DOMAIN_ID:-0}"\n'
     if [[ -x "${ML_VENV}/bin/python" ]]; then
-      printf 'export ROS2_COURSE_ML_PYTHON=%q\n' "${ML_VENV}/bin/python"
+      printf 'export ROS2_K3_COURSE_ML_PYTHON=%q\n' "${ML_VENV}/bin/python"
     fi
     printf "export PATH=\"\${HOME}/.local/bin:\${PATH}\"\n"
-    printf "alias cw='cd \"\${ROS2_COURSE_WS}\"'\n"
-    printf "alias cs='source \"\${ROS2_COURSE_WS}/install/setup.bash\"'\n"
-    printf "alias cb='cd \"\${ROS2_COURSE_WS}\" && colcon build --base-paths src/course src/labs --symlink-install'\n"
+    printf "alias k3cw='cd \"\${ROS2_K3_COURSE_WS}\"'\n"
+    printf "alias k3cs='source \"\${ROS2_K3_COURSE_WS}/install/setup.bash\"'\n"
+    printf "alias k3cb='cd \"\${ROS2_K3_COURSE_WS}\" && colcon build --base-paths src/course --symlink-install'\n"
   } > "${env_tmp}"
   install -m 0644 "${env_tmp}" "${ENV_FILE}"
   rm -f "${env_tmp}"
@@ -668,7 +660,7 @@ write_environment_file() {
   fi
   {
     printf '\n%s\n' "${BASHRC_BEGIN}"
-    printf 'source %q\n' "${ENV_FILE}"
+    printf 'alias k3env=%q\n' "source ${ENV_FILE}"
     printf '%s\n' "${BASHRC_END}"
   } >> "${bashrc_tmp}"
   chmod --reference="${bashrc_file}" "${bashrc_tmp}"
@@ -715,10 +707,10 @@ verify_installation() {
 
   if [[ -f "${COURSE_WS}/install/setup.bash" ]]; then
     check "Representative course package is discoverable" \
-      ros2 pkg prefix course_lab_utils >/dev/null || ((failures += 1))
+      ros2 pkg prefix lifecycle_demo_cpp >/dev/null || ((failures += 1))
     mapfile -t source_packages < <(discover_source_package_names)
     mapfile -t workspace_packages < <(
-      discover_package_names "${COURSE_WS}/src/course" "${COURSE_WS}/src/labs"
+      discover_package_names "${COURSE_WS}/src/course"
     )
     if [[ "${source_packages[*]}" == "${workspace_packages[*]}" ]]; then
       log_ok "All ${#workspace_packages[@]} source packages are present in the workspace"
@@ -785,7 +777,7 @@ main() {
   verify_installation
 
   log_ok "Setup completed"
-  log_info "Open a new terminal or run: source ${ENV_FILE}"
+  log_info "Activate the K3 environment: source ${ENV_FILE}"
 }
 
 main "$@"

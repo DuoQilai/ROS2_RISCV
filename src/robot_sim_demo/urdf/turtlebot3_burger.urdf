@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <robot name="turtlebot3_burger">
   <material name="turtlebot_orange">
-    <color rgba="0.65 0.65 0.70 1.0"/>
+    <color rgba="0.03 0.03 0.035 1.0"/>
   </material>
   <material name="black">
-    <color rgba="0.18 0.18 0.20 1.0"/>
+    <color rgba="0.02 0.02 0.024 1.0"/>
   </material>
 
   <link name="base_footprint"/>
@@ -136,10 +136,4 @@
       <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
     </inertial>
   </link>
-  <joint name="camera_optical_joint" type="fixed">
-    <parent link="camera_link"/>
-    <child link="camera_optical_frame"/>
-    <origin xyz="0.020 0 0" rpy="-1.5707963267948966 0 -1.5707963267948966"/>
-  </joint>
-  <link name="camera_optical_frame"/>
 </robot>

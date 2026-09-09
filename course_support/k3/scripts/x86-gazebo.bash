@@ -42,10 +42,10 @@ fi
 [[ "$(podman image inspect --format '{{index .Labels "org.ros2-riscv.component"}}' "$image")" == humble-gazebo ]]
 printf 'GAZEBO_IMAGE_ID=%s\n' "$(podman image inspect --format '{{.Id}}' "$image")"
 if [[ "$mode" == build ]]; then
-  [[ -f "$HOME/ROS2_RISCV/src/robot_sim_demo/package.xml" ]]
+  [[ -f "$HOME/ROS2_RISCV/src_k3_pico_itx/robot_sim_demo/package.xml" ]]
   mkdir -p "$workspace"
   podman run --rm --network none --cap-drop all --security-opt no-new-privileges \
-    --volume "$HOME/ROS2_RISCV/src/robot_sim_demo:/course-src/robot_sim_demo:ro" \
+    --volume "$HOME/ROS2_RISCV/src_k3_pico_itx/robot_sim_demo:/course-src/robot_sim_demo:ro" \
     --volume "$workspace:/workspace:rw" --workdir /workspace \
     "$image" bash --noprofile --norc -c '
       set -eo pipefail

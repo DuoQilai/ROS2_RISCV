@@ -63,9 +63,9 @@ K3 键盘控制 Burger 前进、左右转与停止；x86 Gazebo 显示真实位�
 
 ### 对应源码
 
-- [生命周期节点](../src/lifecycle_demo_cpp/src/lifecycle_demo.cpp)：K3 上的 C++17/rclcpp 实现。
-- [相机内参发布器](../src/robot_sim_demo/src/camera_info_publisher.cpp)：x86 课程容器中的 C++17 实现。
-- [仿真启动入口](../src/robot_sim_demo/launch/gazebo2.launch.py)：Python Launch，组织仿真、桥接与显示节点。
+- [生命周期节点](../src_k3_pico_itx/lifecycle_demo_cpp/src/lifecycle_demo.cpp)：K3 上的 C++17/rclcpp 实现。
+- [相机内参发布器](../src_k3_pico_itx/robot_sim_demo/src/camera_info_publisher.cpp)：x86 课程容器中的 C++17 实现。
+- [仿真启动入口](../src_k3_pico_itx/robot_sim_demo/launch/gazebo2.launch.py)：Python Launch，组织仿真、桥接与显示节点。
 
 ### 补充媒介
 

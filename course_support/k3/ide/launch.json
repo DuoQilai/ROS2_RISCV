@@ -5,11 +5,11 @@
       "name": "K3: lifecycle C++ (GDB)",
       "type": "gdb",
       "request": "launch",
-      "target": "${env:HOME}/ros2_course_ws/install/lifecycle_demo_cpp/lib/lifecycle_demo_cpp/lifecycle_demo",
+      "target": "${env:HOME}/ros2_course_k3_ws/install/lifecycle_demo_cpp/lib/lifecycle_demo_cpp/lifecycle_demo",
       "cwd": "${workspaceFolder}",
-      "gdbpath": "${env:HOME}/.config/ros2-course/gdb.bash",
+      "gdbpath": "${env:HOME}/.config/ros2-course-k3/gdb.bash",
       "pathSubstitutions": {
-        "${env:HOME}/ros2_course_ws/src/course": "${workspaceFolder}/src"
+        "${env:HOME}/ros2_course_k3_ws/src/course": "${workspaceFolder}/src_k3_pico_itx"
       },
       "autorun": ["set debuginfod enabled off", "set non-stop on"],
       "stopAtEntry": true

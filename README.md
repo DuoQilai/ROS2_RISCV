@@ -1,6 +1,8 @@
 # RISC-V ROS2 机器人操作系统编程技术
 
-K3 Pico-ITX 第 1 章适配：先阅读[公共双端环境](lab_manuals_k3_pico_itx/ch00_common_setup.md)，再完成[第 1 章实验](lab_manuals_k3_pico_itx/ch01_lab.md)。[运行证据与交付状态](lab_manuals_k3_pico_itx/runtime_evidence.md)按章节记录；运行支持文件见 [course_support/k3](course_support/k3/README.md)。
+K3 Pico-ITX 第 1 章适配：先阅读[公共双端环境](lab_manuals_k3_pico_itx/ch00_common_setup.md)，再完成[第 1 章实验](lab_manuals_k3_pico_itx/ch01_lab.md)。[运行证据与交付状态](lab_manuals_k3_pico_itx/runtime_evidence.md)按章节记录；运行支持文件见 [course_support/k3](course_support/k3/README.md)。 教师／课程文档见 [K3 第一章教案](teaching_docs_k3_pico_itx/ch01_ROS2概述与架构.md)。
+
+原版课程使用 `teaching_docs/`、`lab_manuals/` 和 `src/`；C++ / RISC-V K3 版使用 `teaching_docs_k3_pico_itx/`、`lab_manuals_k3_pico_itx/` 和 `src_k3_pico_itx/`。K3 第一章源码通过 `setup_course_k3.sh` 在独立工作区 `~/ros2_course_k3_ws` 构建。
 
 ## 课程介绍
 

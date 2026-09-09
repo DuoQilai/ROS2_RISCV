@@ -23,7 +23,7 @@ sha256_stream() {
 
 source_hash() {
   local repo=$1
-  git -C "$repo" ls-files --cached --others --exclude-standard -- setup_course_k3.sh src |
+  git -C "$repo" ls-files --cached --others --exclude-standard -- setup_course_k3.sh src_k3_pico_itx |
     LC_ALL=C sort |
     while IFS= read -r path; do
       case "$path" in
@@ -63,7 +63,7 @@ dpkg --compare-versions "${VERSION_ID:-0}" ge 4.0.1
 [ "$arch" = riscv64 ]
 remote_head=$(git -C "$repo" rev-parse HEAD)
 remote_source_hash=$({
-  git -C "$repo" ls-files --cached --others --exclude-standard -- setup_course_k3.sh src |
+  git -C "$repo" ls-files --cached --others --exclude-standard -- setup_course_k3.sh src_k3_pico_itx |
     LC_ALL=C sort |
     while IFS= read -r path; do
       case "$path" in

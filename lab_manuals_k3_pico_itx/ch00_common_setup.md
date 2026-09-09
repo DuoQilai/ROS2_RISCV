@@ -73,23 +73,25 @@ source /etc/os-release
 test "$ID" = bianbu
 dpkg --compare-versions "$VERSION_ID" ge 4.0.1
 test "$(uname -m)" = riscv64
-source ~/.config/ros2-course/env.bash
-cd ~/ros2_course_ws
+source ~/.config/ros2-course-k3/env.bash
+cd ~/ros2_course_k3_ws
 ```
 
-课程环境默认入口是 `~/.config/ros2-course/env.bash`。首次通过 `ssh pico` 连接后必须核对实际路径、Bianbu >= 4.0.1 和 `riscv64`；版本比较命令返回 0 才满足基线，检查通过后继续。
+K3 版只构建 `src_k3_pico_itx/`，默认工作区为 `~/ros2_course_k3_ws`；原版 `src/` 由原安装器使用。两个版本分别在独立终端中加载。
+
+课程环境默认入口是 `~/.config/ros2-course-k3/env.bash`。首次通过 `ssh pico` 连接后必须核对实际路径、Bianbu >= 4.0.1 和 `riscv64`；版本比较命令返回 0 才满足基线，检查通过后继续。
 
 ## 本地编辑、同步与 Remote-SSH
 
 本机 `/path/to/ROS2_RISCV` 是课程文件的唯一编辑源（请替换为自己的本地仓库路径）。在 VS Code 或
-VSCodium 中打开该本地仓库，并使用 RuyiSDK VSCode 插件。修改完成后把 `setup_course_k3.sh`、`src/` 和所需的 `course_support/k3/ide/`
+VSCodium 中打开该本地仓库，并使用 RuyiSDK VSCode 插件。修改完成后把 `setup_course_k3.sh`、`src_k3_pico_itx/` 和所需的 `course_support/k3/ide/`
 从本机单向同步到 K3 的 `~/ROS2_RISCV`。正式同步前先保存 itemized dry-run 清单；出现
 删除项或意外覆盖项时停止并确认，清单符合预期后才执行正式同步，最后核对 Git HEAD 与内容 SHA-256：
 
 【本机（访问端）】
 
 ```bash
-ssh pico 'test -d "$HOME/ROS2_RISCV/.git" && mkdir -p "$HOME/ROS2_RISCV/src"'
+ssh pico 'test -d "$HOME/ROS2_RISCV/.git" && mkdir -p "$HOME/ROS2_RISCV/src_k3_pico_itx"'
 sync_stamp=$(date -u +%Y%m%dT%H%M%SZ)
 sync_audit="${TMPDIR:-/tmp}/ros2-course-sync-audit/$sync_stamp"
 mkdir -p "$sync_audit"
@@ -98,7 +100,7 @@ rsync -ani setup_course_k3.sh pico:~/ROS2_RISCV/setup_course_k3.sh \
 rsync -ani --delete \
   --exclude=.git/ --exclude=.venv/ --exclude=__pycache__/ \
   --exclude='*.pyc' --exclude=build/ --exclude=install/ --exclude=log/ \
-  src/ pico:~/ROS2_RISCV/src/ \
+  src_k3_pico_itx/ pico:~/ROS2_RISCV/src_k3_pico_itx/ \
   | tee "$sync_audit/src-dry-run.txt"
 # 检查上面两份清单；确认无意外删除或覆盖后再执行以下两条命令。
 rsync -ai setup_course_k3.sh pico:~/ROS2_RISCV/setup_course_k3.sh \
@@ -106,7 +108,7 @@ rsync -ai setup_course_k3.sh pico:~/ROS2_RISCV/setup_course_k3.sh \
 rsync -ai --delete \
   --exclude=.git/ --exclude=.venv/ --exclude=__pycache__/ \
   --exclude='*.pyc' --exclude=build/ --exclude=install/ --exclude=log/ \
-  src/ pico:~/ROS2_RISCV/src/ \
+  src_k3_pico_itx/ pico:~/ROS2_RISCV/src_k3_pico_itx/ \
   | tee "$sync_audit/src-applied.txt"
 bash course_support/k3/scripts/check-course-sync.bash
 ```
@@ -165,14 +167,14 @@ rsync -ai course_support/k3/ide/ pico:~/ROS2_RISCV/course_support/k3/ide/
 
 ```bash
 cd ~/ROS2_RISCV
-mkdir -p ~/.config/ros2-course
+mkdir -p ~/.config/ros2-course-k3
 # 首次安装；已有脚本内容不同时先比较，保留原配置后再替换。
-if [ ! -e ~/.config/ros2-course/gdb.bash ]; then
-  install -m 0755 course_support/k3/ide/gdb.bash ~/.config/ros2-course/gdb.bash
+if [ ! -e ~/.config/ros2-course-k3/gdb.bash ]; then
+  install -m 0755 course_support/k3/ide/gdb.bash ~/.config/ros2-course-k3/gdb.bash
 else
-  diff -u ~/.config/ros2-course/gdb.bash course_support/k3/ide/gdb.bash
+  diff -u ~/.config/ros2-course-k3/gdb.bash course_support/k3/ide/gdb.bash
 fi
-~/.config/ros2-course/gdb.bash --version
+~/.config/ros2-course-k3/gdb.bash --version
 ```
 
 [launch.json 模板](../course_support/k3/ide/launch.json)在 ch01 指导书中给出；合并到 K3 工作副本的 `.vscode/launch.json`，保留已有其他调试配置。
@@ -211,7 +213,7 @@ ros2 topic list --no-daemon
 
 ## 启动与进入课程仿真容器
 
-完成 [容器安装](../course_support/k3/containers/README.md) 并把本机 `src/robot_sim_demo/` 按先 dry-run、后正式同步的方式
+完成 [容器安装](../course_support/k3/containers/README.md) 并把本机 `src_k3_pico_itx/robot_sim_demo/` 按先 dry-run、后正式同步的方式
 同步到 x86 同名课程路径后，从本机课程仓库执行以下命令。[仿真脚本](../course_support/k3/scripts/x86-gazebo.bash)在 x86 独立工作区构建，源码只读挂载。
 
 【本机（访问端），首次或仿真源码更新后】
