@@ -1,0 +1,15 @@
+flowchart LR
+    K3["K3 Pico-ITX\nBianbu >= 4.0.1\nriscv64 / ROS 2 Humble"]
+    LAN["同一局域网\nROS_DOMAIN_ID=0\nCycloneDDS / localhost-only=0"]
+    HOST["x86 宿主\nUbuntu 24.04 / rootless Podman\n宿主 Jazzy 不参与课程 DDS"]
+    SIM["x86 课程容器\nUbuntu 22.04 / ROS 2 Humble\nGazebo Harmonic 8.15.0 / RViz 11.2.28"]
+    CLOCK["/clock\n仿真时钟"]
+    TOPICS["课程 Topic（ch01–04 已有分项验证记录）\n/scan /odom /tf /camera/image_raw"]
+
+    K3 <--> LAN
+    HOST --> SIM
+    SIM <--> LAN
+    SIM --> CLOCK
+    CLOCK --> K3
+    K3 <--> TOPICS
+    SIM <--> TOPICS

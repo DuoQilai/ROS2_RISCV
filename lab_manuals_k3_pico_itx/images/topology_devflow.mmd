@@ -1,0 +1,13 @@
+flowchart LR
+    IDE["本机 ROS2_RISCV\nVS Code/VSCodium\n+ RuyiSDK VSCode 插件"]
+    SYNC["同步到 ~/ROS2_RISCV\n核对 SHA-256"]
+    SSH["Remote-SSH\n终端/构建/调试"]
+    K3["K3 板端\nC++17/rclcpp 编译与运行"]
+    DDS["局域网 DDS\n参数以实测合同为准"]
+    HOST["x86 主机\nGazebo / RViz2 仿真可视化"]
+    EVIDENCE["runtime/setup/\nruntime/chXX/"]
+
+    IDE --> SYNC --> SSH --> K3
+    K3 <--> DDS <--> HOST
+    K3 --> EVIDENCE
+    HOST --> EVIDENCE
