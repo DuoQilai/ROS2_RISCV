@@ -1,0 +1,43 @@
+name: Sync Gitee mirror
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-gitee-mirror
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout automation branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fast-forward course mirror
+        env:
+          GIT_TERMINAL_PROMPT: '0'
+        run: |
+          git fetch --no-tags origin master
+          mirror=$(git rev-parse FETCH_HEAD)
+          git fetch --no-tags https://gitee.com/yunxiangluo/ROS2_RISCV.git master
+          upstream=$(git rev-parse FETCH_HEAD)
+          if [ "$mirror" = "$upstream" ]; then
+            echo "Mirror is up to date: $upstream"
+            exit 0
+          fi
+          if ! git merge-base --is-ancestor "$mirror" "$upstream"; then
+            echo "::error::Mirror and upstream have diverged; refusing to overwrite master."
+            exit 1
+          fi
+          git push origin "$upstream:refs/heads/master"
+          echo "Synced master to $upstream"
