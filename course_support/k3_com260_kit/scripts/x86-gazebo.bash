@@ -7,9 +7,9 @@ mode=${1:-}
 run_id=${2:-}
 case "$mode" in
   build) [[ $# -eq 1 ]] || die 'Usage: x86-gazebo.bash build' ;;
-  start|observe-lifecycle|stop)
+  start|start-ch03|observe-lifecycle|stop)
     [[ $# -eq 2 && "$run_id" =~ ^[[:alnum:]_-]+$ ]] || die 'Provide one RUN_ID containing only letters, digits, underscores or hyphens.' ;;
-  *) printf 'Usage: x86-gazebo.bash build | start RUN_ID | observe-lifecycle RUN_ID | stop RUN_ID\n' >&2; exit 2 ;;
+  *) printf 'Usage: x86-gazebo.bash build | start RUN_ID | start-ch03 RUN_ID | observe-lifecycle RUN_ID | stop RUN_ID\n' >&2; exit 2 ;;
 esac
 [[ $(uname -s) == Linux && $(uname -m) == x86_64 ]] || die 'Run this helper on the x86_64 Linux simulation host.'
 # shellcheck disable=SC1091
@@ -92,10 +92,14 @@ auth_file="/run/user/$(id -u)/gdm/Xauthority"
 [[ -r "$auth_file" && -S /tmp/.X11-unix/X1 ]] || die 'The expected GDM X11 :1 session is unavailable; log in to the x86 desktop and check the session paths in chapter 0.'
 command -v xdpyinfo >/dev/null || die 'xdpyinfo is missing; install x11-utils on the simulation host.'
 DISPLAY=:1 XAUTHORITY="$auth_file" xdpyinfo >/dev/null || die 'Cannot access the X11 :1 session with the current GDM authority file.'
+rviz_config=museum.rviz
+[[ "$mode" != start-ch03 ]] || rviz_config=ch03_square.rviz
+[[ -r "$HOME/ROS2_RISCV_COM260/course_support/k3_com260_kit/rviz/$rviz_config" ]] || die "Missing RViz configuration: $rviz_config; sync the chapter support files."
 podman run --detach --rm --name "$name" --network host \
   --cap-drop all --security-opt no-new-privileges --hostname "$(hostname)" \
   --label org.ros2-riscv.component=chapter-gazebo --label "org.ros2-riscv.run-id=$run_id" \
   --env DISPLAY=:1 --env XAUTHORITY=/tmp/course.xauth \
+  --env CYCLONEDDS_URI \
   --env QT_X11_NO_MITSHM=1 --env LIBGL_ALWAYS_SOFTWARE=1 \
   --env QT_FONT_DPI=96 --env QT_ENABLE_HIGHDPI_SCALING=0 \
   --volume /tmp/.X11-unix:/tmp/.X11-unix:ro --volume "$auth_file:/tmp/course.xauth:ro" \
@@ -105,6 +109,6 @@ podman run --detach --rm --name "$name" --network host \
     source /workspace/install/setup.bash
     exec timeout --signal=INT --kill-after=5s 3600s ros2 launch robot_sim_demo \
       gazebo2.launch.py gui:=true rviz:=true drive:=false gz_partition:="$1" \
-      rviz_config:=/course-rviz/museum.rviz
-  ' bash "$run_id" >/dev/null
+      rviz_config:="/course-rviz/$2"
+  ' bash "$run_id" "$rviz_config" >/dev/null
 printf 'X86_GAZEBO_STARTED RUN_ID=%s RENDERER=software DRIVE=false\n' "$run_id"

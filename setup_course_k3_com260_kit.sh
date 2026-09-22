@@ -11,21 +11,24 @@ packages=(lifecycle_demo_cpp robot_sim_demo)
 dependencies=(
   build-essential cmake gdb clangd python3-colcon-common-extensions
   python3-pytest rsync
-  ros-humble-ros-base ros-humble-demo-nodes-cpp
+  ros-humble-ros-base ros-humble-demo-nodes-cpp ros-humble-example-interfaces
   ros-humble-rmw-cyclonedds-cpp ros-humble-teleop-twist-keyboard
   ros-humble-ament-cmake-python ros-humble-ament-cmake-pytest
   ros-humble-rclcpp-lifecycle ros-humble-geometry-msgs
   ros-humble-sensor-msgs ros-humble-rosgraph-msgs ros-humble-nav-msgs
+  ros-humble-rosidl-default-generators ros-humble-rosidl-default-runtime
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02) ;;
+  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02' \
-      '--dry-run       Resolve chapter 1-2 dependencies without installing them.' \
-      '--install-deps  Install chapter 1-2 dependencies; sudo may ask for your password.' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04' \
+      '--dry-run       Resolve chapter 1-4 dependencies without installing them.' \
+      '--install-deps  Install chapter 1-4 dependencies; sudo may ask for your password.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
-      '--build-ch02    Build the two chapter 2 packages in the same course workspace.'
+      '--build-ch02    Build the two chapter 2 packages in the same course workspace.' \
+      '--build-ch03    Build/test the four chapter 3 packages in the same course workspace.' \
+      '--build-ch04    Build the seven chapter 4 packages in the same course workspace.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -64,6 +67,16 @@ if [[ $mode == --build-ch02 ]]; then
   packages=(hello_pkg_cpp name_demo_cpp)
   source_root="$root/src_k3_com260_kit"
 fi
+if [[ $mode == --build-ch03 ]]; then
+  chapter=03
+  packages=(topic_demo_interfaces topic_demo_cpp sensor_interfaces sensor_pub_cpp)
+  source_root="$root/src_k3_com260_kit"
+fi
+if [[ $mode == --build-ch04 ]]; then
+  chapter=04
+  packages=(service_demo_interfaces service_demo_cpp service_demo_lab_cpp weather_interfaces weather_srv speed_interfaces speed_control)
+  source_root="$root/src_k3_com260_kit"
+fi
 # Chapter 1 packages are shared unchanged with the Pico edition.
 sources=()
 for package in "${packages[@]}"; do
@@ -81,10 +94,14 @@ python3 -m colcon list --base-paths "${sources[@]}"
 python3 -m colcon build --base-paths "${sources[@]}" --packages-select "${packages[@]}" \
   --executor sequential --symlink-install --event-handlers console_direct+ \
   --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-if [[ $chapter == 01 ]]; then
+if [[ $chapter == 01 || $chapter == 03 ]]; then
   python3 -m colcon test --base-paths "${sources[@]}" --packages-select "${packages[@]}" \
     --event-handlers console_direct+ --return-code-on-test-failure
-  python3 -m colcon test-result --verbose
+  if [[ $chapter == 03 ]]; then
+    python3 -m colcon test-result --test-result-base build/sensor_interfaces --verbose
+  else
+    python3 -m colcon test-result --verbose
+  fi
 fi
 mkdir -p "$env_dir"
 install -m 0755 "$root/course_support/k3_com260_kit/ide/gdb.bash" "$env_dir/gdb.bash"
@@ -101,7 +118,11 @@ set -u
 for package in "${packages[@]}"; do ros2 pkg prefix "$package"; done
 if [[ $chapter == 01 ]]; then
   printf 'COM260_CH01_BUILD_TEST_EXIT=0\n'
-else
+elif [[ $chapter == 02 ]]; then
   printf 'COM260_CH02_BUILD_EXIT=0\n'
+elif [[ $chapter == 03 ]]; then
+  printf 'COM260_CH03_BUILD_TEST_EXIT=0\n'
+else
+  printf 'COM260_CH04_BUILD_EXIT=0\n'
 fi
 printf 'Environment: source %s/env.bash\n' "$env_dir"

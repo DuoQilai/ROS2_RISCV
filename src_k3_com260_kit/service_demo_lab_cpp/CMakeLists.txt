@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.10)
+project(service_demo_lab_cpp)
+
+find_package(ament_cmake REQUIRED)
+find_package(example_interfaces REQUIRED)
+find_package(rclcpp REQUIRED)
+
+add_executable(server src/server.cpp)
+target_compile_features(server PUBLIC cxx_std_17)
+add_executable(client src/client.cpp)
+target_compile_features(client PUBLIC cxx_std_17)
+add_executable(client_wait src/client_wait.cpp)
+target_compile_features(client_wait PUBLIC cxx_std_17)
+ament_target_dependencies(server example_interfaces rclcpp)
+ament_target_dependencies(client example_interfaces rclcpp)
+ament_target_dependencies(client_wait example_interfaces rclcpp)
+
+install(TARGETS server client client_wait DESTINATION lib/${PROJECT_NAME})
+add_executable(teacher_server src/teacher_server.cpp)
+target_compile_features(teacher_server PUBLIC cxx_std_17)
+ament_target_dependencies(teacher_server example_interfaces rclcpp)
+add_executable(teacher_client src/teacher_client.cpp)
+target_compile_features(teacher_client PUBLIC cxx_std_17)
+ament_target_dependencies(teacher_client example_interfaces rclcpp)
+install(TARGETS teacher_server teacher_client DESTINATION lib/${PROJECT_NAME})
+
+ament_package()
