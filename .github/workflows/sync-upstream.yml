@@ -23,21 +23,26 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Fast-forward course mirror
+      - name: Merge Gitee course updates
         env:
           GIT_TERMINAL_PROMPT: '0'
         run: |
+          set -euo pipefail
           git fetch --no-tags origin master
           mirror=$(git rev-parse FETCH_HEAD)
           git fetch --no-tags https://gitee.com/yunxiangluo/ROS2_RISCV.git master
           upstream=$(git rev-parse FETCH_HEAD)
-          if [ "$mirror" = "$upstream" ]; then
-            echo "Mirror is up to date: $upstream"
+          if git merge-base --is-ancestor "$upstream" "$mirror"; then
+            echo "Mirror already includes upstream: $upstream"
             exit 0
           fi
-          if ! git merge-base --is-ancestor "$mirror" "$upstream"; then
-            echo "::error::Mirror and upstream have diverged; refusing to overwrite master."
+          git checkout --detach "$mirror"
+          git config user.name "DuoQilai"
+          git config user.email "duoqilai@outlook.com"
+          if ! git merge --no-edit --signoff -m "chore: merge Gitee course updates" "$upstream"; then
+            echo "::error::Upstream merge failed; resolve conflicts manually. The remote master has not been changed."
+            git merge --abort
             exit 1
           fi
-          git push origin "$upstream:refs/heads/master"
-          echo "Synced master to $upstream"
+          git push origin HEAD:refs/heads/master
+          echo "Synced upstream $upstream into master at $(git rev-parse HEAD)"
