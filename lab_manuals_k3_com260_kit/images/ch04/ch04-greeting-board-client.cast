@@ -1,0 +1,10 @@
+{"version":3,"term":{"cols":120,"rows":36},"timestamp":1790047915,"command":"ssh -tt -o BatchMode=yes com260 'bash ~/.local/state/ros2-course-com260/ch04/20260922T030220Z-validation/run-sim.bash greeting-client'","env":{"SHELL":"/bin/zsh"}}
+[1.812, "o", "USER=com260 HOST=ifx UTC=2026-09-22T03:31:57Z ROS=humble DOMAIN=0 MODE=greeting-client\r\n"]
+[3.293, "o", "SIM_READY {'scan': 5, 'tf': 37, 'odom': 28} INITIAL_ODOM {'wall': 2.448265791999802, 'sim': 119.365, 'x': 0.39999999995627344, 'y': 4.2533943070238074e-12, 'yaw': 0.9919999998771093, 'vx': 0.0, 'wz': 0.0}\r\n"]
+[3.001, "o", "GREETING_READY greeting-client\r\n"]
+[0.005, "o", "RUN service_demo_cpp client\r\n"]
+[4.281, "o", "[INFO] [1790047924.939079166] [greetings_client]: Response from server: Hi HAN. I'm server!\r\n\r\n"]
+[0.002, "o", "CH04_SIM_PASS {\"mode\": \"greeting-client\", \"sensor_samples\": {\"before\": {\"scan\": 5, \"tf\": 37, \"odom\": 28}, \"baseline\": {\"scan\": 11, \"tf\": 104, \"odom\": 83}, \"during\": {\"scan\": 15, \"tf\": 130, \"odom\": 103}, \"after\": {\"scan\": 23, \"tf\": 197, \"odom\": 153}}, \"odom_samples\": 153, \"clock_samples\": 561, \"sensor_counts\": {\"scan\": 23, \"tf\": 197}, \"pass\": true}\r\n"]
+[1.187, "o", "CH04_SIM_EXIT=0\r\n"]
+[0.001, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.001, "x", "0"]

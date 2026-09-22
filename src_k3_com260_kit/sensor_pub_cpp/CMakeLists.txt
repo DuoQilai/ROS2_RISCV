@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+project(sensor_pub_cpp)
+
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_interfaces REQUIRED)
+
+add_executable(sensor_publisher src/sensor_publisher.cpp)
+target_compile_features(sensor_publisher PUBLIC cxx_std_17)
+ament_target_dependencies(sensor_publisher rclcpp sensor_interfaces)
+install(TARGETS sensor_publisher DESTINATION lib/${PROJECT_NAME})
+
+add_executable(person_pub src/person_publisher.cpp)
+target_compile_features(person_pub PUBLIC cxx_std_17)
+ament_target_dependencies(person_pub rclcpp sensor_interfaces)
+add_executable(person_sub src/person_subscriber.cpp)
+target_compile_features(person_sub PUBLIC cxx_std_17)
+ament_target_dependencies(person_sub rclcpp sensor_interfaces)
+install(TARGETS person_pub person_sub DESTINATION lib/${PROJECT_NAME})
+ament_package()

@@ -136,7 +136,7 @@ K3 Pico-ITX 第 1 章适配：先阅读[公共双端环境](lab_manuals_k3_pico_
 
 原版课程使用 `teaching_docs/`、`lab_manuals/` 和 `src/`；C++ / RISC-V K3 版使用 `teaching_docs_k3_pico_itx/`、`lab_manuals_k3_pico_itx/` 和 `src_k3_pico_itx/`。K3 第一章源码通过 `setup_course_k3.sh` 在独立工作区 `~/ros2_course_k3_ws` 构建。
 
-COM260 Kit 第 1～2 章适配：[公共环境](lab_manuals_k3_com260_kit/ch00_common_setup.md)、[第一章实验](lab_manuals_k3_com260_kit/ch01_lab.md)、[第二章实验](lab_manuals_k3_com260_kit/ch02_lab.md)、[第一章教案](teaching_docs_k3_com260_kit/ch01_ROS2概述与架构.md)、[第二章教案](teaching_docs_k3_com260_kit/ch02_核心编程基础.md)及[COM260 实测证据](lab_manuals_k3_com260_kit/runtime_evidence.md)。
+COM260 Kit 第 1～4 章适配：[公共环境](lab_manuals_k3_com260_kit/ch00_common_setup.md)、[第一章实验](lab_manuals_k3_com260_kit/ch01_lab.md)、[第二章实验](lab_manuals_k3_com260_kit/ch02_lab.md)、[第三章实验](lab_manuals_k3_com260_kit/ch03_lab.md)、[第四章实验](lab_manuals_k3_com260_kit/ch04_lab.md)、[第一章教案](teaching_docs_k3_com260_kit/ch01_ROS2概述与架构.md)、[第二章教案](teaching_docs_k3_com260_kit/ch02_核心编程基础.md)、[第三章教案](teaching_docs_k3_com260_kit/ch03_话题通信.md)、[第四章教案](teaching_docs_k3_com260_kit/ch04_服务通信.md)及[COM260 实测证据](lab_manuals_k3_com260_kit/runtime_evidence.md)。
 
 ---
 

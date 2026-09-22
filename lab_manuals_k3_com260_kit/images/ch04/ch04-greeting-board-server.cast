@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":36},"timestamp":1790047720,"command":"ssh -tt -o BatchMode=yes com260 'bash ~/.local/state/ros2-course-com260/ch04/20260922T030220Z-validation/run-sim.bash greeting-server'","env":{"SHELL":"/bin/zsh"}}
+[1.794, "o", "USER=com260 HOST=ifx UTC=2026-09-22T03:28:42Z ROS=humble DOMAIN=0 MODE=greeting-server\r\n"]
+[3.133, "o", "SIM_READY {'scan': 5, 'tf': 42, 'odom': 34} INITIAL_ODOM {'wall': 2.2214398930000243, 'sim': 44.825, 'x': 0.39999999995627344, 'y': 4.2533943070238074e-12, 'yaw': 0.9919999998771093, 'vx': 0.0, 'wz': 0.0}\r\nRUN service_demo_cpp server\r\n"]
+[3.281, "o", "GREETING_READY greeting-server\r\n"]
+[20.859, "o", "[INFO] [1790047745.825047680] [greetings_server]: Request from HAN with age 20\r\n[INFO] [1790047748.952293968] [rclcpp]: signal_handler(SIGINT/SIGTERM)\r\n\r\n"]
+[0.002, "o", "CH04_SIM_PASS {\"mode\": \"greeting-server\", \"sensor_samples\": {\"before\": {\"scan\": 5, \"tf\": 42, \"odom\": 34}, \"baseline\": {\"scan\": 15, \"tf\": 120, \"odom\": 92}, \"during\": {\"scan\": 62, \"tf\": 468, \"odom\": 368}, \"after\": {\"scan\": 71, \"tf\": 538, \"odom\": 424}}, \"odom_samples\": 424, \"clock_samples\": 1382, \"sensor_counts\": {\"scan\": 71, \"tf\": 538}, \"pass\": true}\r\n"]
+[0.418, "o", "CH04_SIM_EXIT=0\r\n"]
+[0.003, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]
