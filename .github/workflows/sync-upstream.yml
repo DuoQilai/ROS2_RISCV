@@ -2,7 +2,7 @@ name: Sync Gitee mirror
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '17 0 * * *'
   workflow_dispatch:
 
 permissions:
