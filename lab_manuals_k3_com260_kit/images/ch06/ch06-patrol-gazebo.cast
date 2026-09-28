@@ -1,0 +1,4 @@
+{"version":3,"term":{"cols":150,"rows":42},"timestamp":1790081817,"command":"ssh -tt -o HostName=192.168.1.172 -o HostKeyAlias=192.168.1.4 -o BatchMode=yes duomaomao bash ROS2_RISCV_COM260/course_support/k3_com260_kit/scripts/x86-ch06.bash exec patrol-ui-03 python3 /evidence/check_patrol.py","env":{"SHELL":"/bin/zsh"}}
+[15.577, "o", "PATROL_PASS {\"pass\": true, \"utc\": \"2026-09-22T12:57:15.583409+00:00\", \"linear_speed\": 0.12, \"angular_speed\": 0.45, \"cmd_samples\": 246, \"odom_samples\": 392, \"initial\": [3426.093171939, -0.47734808095085146, 0.5592048677515596, 0.11999999998687505, -1.5265566588595902e-12], \"final\": [3439.976316155, -0.36786377520685326, 0.16639653611822947, 0.0, 0.0], \"feedback_stopped\": true}\r\n"]
+[0.248, "o", "Connection to 192.168.1.172 closed.\r\r\n"]
+[0.002, "x", "0"]

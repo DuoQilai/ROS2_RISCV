@@ -234,7 +234,7 @@ bash ~/ROS2_RISCV_COM260/course_support/k3_com260_kit/scripts/x86-gazebo.bash st
 # COM260 终端：
 DDS_PEER=192.168.1.4
 # x86 终端改用：DDS_PEER=192.168.1.88
-export CYCLONEDDS_URI="<CycloneDDS><Domain><General><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><Peers><Peer Address=\"127.0.0.1\"/><Peer Address=\"$DDS_PEER\"/></Peers></Discovery></Domain></CycloneDDS>"
+export CYCLONEDDS_URI="<CycloneDDS><Domain><General><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address=\"127.0.0.1\"/><Peer Address=\"$DDS_PEER\"/></Peers></Discovery></Domain></CycloneDDS>"
 ```
 
 两端都设置后，在 x86 停止原 RUN_ID 并启动新一轮。`x86-gazebo.bash` 将该可选环境变量传入容器；容器内的观察终端会继承它。每个 COM260 课程终端都需要相同配置，`env.bash` 本身不写入设备地址。只需在当前终端 `unset CYCLONEDDS_URI` 即可恢复默认；已启动节点需重新启动才会读取变化。
@@ -261,7 +261,7 @@ ros2 topic echo /odom nav_msgs/msg/Odometry --once --no-daemon --spin-time 10
 DDS_LOCAL=192.168.1.88
 DDS_PEER=192.168.1.172
 # x86 启动仿真的终端改用：DDS_LOCAL=192.168.1.172; DDS_PEER=192.168.1.88
-export CYCLONEDDS_URI="<CycloneDDS><Domain><General><Interfaces><NetworkInterface address=\"$DDS_LOCAL\"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><Peers><Peer Address=\"127.0.0.1\"/><Peer Address=\"$DDS_PEER\"/></Peers></Discovery></Domain></CycloneDDS>"
+export CYCLONEDDS_URI="<CycloneDDS><Domain><General><Interfaces><NetworkInterface address=\"$DDS_LOCAL\"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address=\"127.0.0.1\"/><Peer Address=\"$DDS_PEER\"/></Peers></Discovery></Domain></CycloneDDS>"
 ```
 
 两个地址都必须替换为实际值；所有 COM260 课程终端使用相同配置，x86 停止旧 RUN_ID 后用新 RUN_ID 启动仿真。停止先前 ROS CLI daemon，再查询话题。此配置只作用于本轮进程，不修改系统网络、SSH 别名或持久环境文件。网络条件变化后，应重新验证轨迹和停止反馈，不沿用历史数值。
@@ -285,3 +285,76 @@ cp -n course_support/k3_com260_kit/ide/settings.json .vscode/settings.json
 ```
 
 clangd 的编译数据库链接与具体调试步骤见[练习 1.6](ch01_lab.md#练习-16vs-code--ros-2-插件编程约-15-分钟)。本轮 Remote-SSH、clangd 语义补全、GDB 断点及 Watch 0→1 均已实测。RuyiSDK VSCode 扩展版本为 0.1.6；本轮使用板端原生 GCC/GDB，未安装 RuyiSDK CLI，界面中的 `<No RuyiSDK>` 对应这一实际状态。
+
+<a id="ch05"></a>
+## 第五章动作通信环境
+
+第五章节点在 COM260 执行，Gazebo 在 x86；先完成第一章公共环境。十个独立包如下，两个洗碗接口的字段不同，不混入原版同名包。
+
+【本机访问端，仓库根目录】先核对同步清单：
+
+```bash
+pkgs=(action_demo_interfaces action_demo_cpp action_demo_lab_interfaces action_demo_lab_cpp dishes_action_interfaces dishes_action_lab tracking_interfaces tracking_server pose_nav_interfaces pose_nav_action)
+sources=(); for package in "${pkgs[@]}"; do sources+=("src_k3_com260_kit/$package"); done
+rsync -anvi --relative "${sources[@]}" setup_course_k3_com260_kit.sh \
+  course_support/k3_com260_kit com260:ROS2_RISCV_COM260/
+# 核对后将 -anvi 改为 -avi 执行。
+```
+
+【COM260】
+
+```bash
+cd ~/ROS2_RISCV_COM260
+bash setup_course_k3_com260_kit.sh --dry-run
+# 确认缺失依赖后再运行 --install-deps。
+bash setup_course_k3_com260_kit.sh --build-ch05
+source ~/.config/ros2-course-com260/env.bash
+```
+
+入口显式构建上述十包；动作验收包括反馈、结果、取消、忙碌拒绝与异常停止，不以编译成功替代运行成功。Gazebo 的 `server_gazebo` 与基础计算 `server` 使用相同 `/tracking` 名称，两者只能择一启动。学生建包步骤见[第五章实验](ch05_lab.md)。
+
+<a id="ch06"></a>
+## 第六章参数与 Launch 环境
+
+本章的 `param_demo_cpp` 包含 C++ 参数生命周期、参数验证、速度控制和巡航节点。Python 文件仅组织 Launch。COM260 不安装图形界面或 Nav2；含 RViz、Gazebo、Nav2 的 Launch 在 x86 独立容器中运行。
+
+【本机访问端，仓库根目录】
+
+```bash
+for host in com260 duomaomao; do
+  rsync -anvi --relative src_k3_com260_kit/param_demo_cpp \
+    setup_course_k3_com260_kit.sh course_support/k3_com260_kit \
+    "$host:ROS2_RISCV_COM260/"
+done
+# 核对后将 -anvi 改为 -avi 执行。
+```
+
+【COM260】
+
+```bash
+cd ~/ROS2_RISCV_COM260
+bash setup_course_k3_com260_kit.sh --build-ch06
+source ~/.config/ros2-course-com260/env.bash
+ros2 run param_demo_cpp param_demo
+```
+
+核心例程循环三次，在第二轮删除 param5。详细参数 CRUD、YAML 与速度节点见[第六章实验](ch06_lab.md)。
+
+【x86】在已完成第一章共享仿真构建的基础上，增加本章独立 Nav2 镜像：
+
+```bash
+cd ~/ROS2_RISCV_COM260
+CH06=course_support/k3_com260_kit/scripts/x86-ch06.bash
+bash "$CH06" build-image
+bash "$CH06" build
+RUN_ID=$(date -u +%Y%m%dT%H%M%SZ)-ch06-demo
+bash "$CH06" start "$RUN_ID" demo.launch.py use_rviz:=false
+bash "$CH06" exec "$RUN_ID" ros2 node list
+bash "$CH06" stop "$RUN_ID"
+```
+
+镜像 `localhost/ros2-course-com260:ch06-nav2` 基于原有 Humble/Gazebo 镜像派生，安装 Humble Navigation2 与 Nav2 bringup；原镜像保留。本章脚本复用独立 Humble 工作区，只构建 `param_demo_cpp`。`start` 仅接受本章四个 Launch 入口，`exec` 在对应容器内加载 Humble 工作区后执行查询，`stop` 核对 RUN_ID 标签后停止容器。图形实验期间保持 x86 桌面会话，不要注销；注销会使窗口与 rootless 容器退出。
+
+`CYCLONEDDS_URI` 的接口绑定不能代替系统路由检查。即使两端已接有线，仍应确认 `ip -4 route get 对端地址` 的接口和源地址都是有线；若回程仍走 Wi-Fi，先调整课程网络，再复验。不要为通过导航验收而放宽 1 秒里程计超时。
+
+组合启动会同时创建多个 DDS participant。上面的 CycloneDDS 配置将自动分配索引上限设为 100；两端应使用同一设置。若已有自定义配置，也需合并此项并重启相关节点，否则可能出现 `Failed to find a free participant index`，导致部分 Nav2 节点启动失败。第六章脚本未收到自定义配置时采用相同上限和默认网络发现；跨机有线实验仍需显式设置接口和对端地址。

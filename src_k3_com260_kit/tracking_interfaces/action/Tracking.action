@@ -1,0 +1,6 @@
+geometry_msgs/Point target
+---
+bool success
+---
+float64 current_position
+float64 distance

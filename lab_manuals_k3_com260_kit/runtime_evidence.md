@@ -381,3 +381,113 @@ Greeting 使用真实 C++ `server`／`client` 双向跨机运行，固定请求 
 第三章素材共 34 份（19 PNG／6 CAST／5 MP4／4 GIF），第四章共 40 份（14 PNG／18 CAST／4 MP4／4 GIF）。74 份素材的哈希、格式、视频全量解码和 CAST 退出事件核对通过；GUI 画面完成首／中／末抽帧检查。各项数据按运行编号与采集时间对应，本地链接、锚点和完整 C++ 示例与源码一致性检查通过。
 
 结束检查：COM260 的 Domain 0／171／172／179／182 无其他节点，课程 C++ 进程为空；x86 仿真与录制进程已退出，活动课程仿真容器为 0。
+
+<a id="ch05"></a>
+
+## 第五章：动作通信与 Gazebo 导航
+
+验证日期：2026-09-22；记录组 `20260922T103700Z`。章节入口：[实验手册](ch05_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch05_动作通信.md)。动作服务与客户端在 COM260（riscv64／Bianbu 4.0.6／ROS 2 Humble）运行，Gazebo Burger/Museum 在 x86 Humble 容器运行。
+
+| 验证项 | 实际结果与证据 |
+|---|---|
+| 双端构建与源码身份 | 第五章十包、第六章一包均构建成功。58 个源码和支持文件在本地、COM260、x86 的 SHA-256 一致。[板端构建](images/ch05/ch05-ch06-board-build.cast)、[x86 构建](images/ch05/ch05-ch06-x86-build.cast)；本批包未注册单元测试，以下为独立运行验收 |
+| 学生从空目录建包 | 第五章 16 个创建／构建／查询阶段通过，其中 7 个编译阶段；按手册当时已有的文件逐步建包，不直接复制最终包配置。[命令、返回码与源码摘要](images/ch05/ch05-manual-build.json) |
+| 课程动作检查 | 31 项通过：核心五步反馈与结果 10、两种洗碗练习、取消与忙碌拒绝、最后一盘完成前取消、Tracking 进度、非法目标、无／过期里程计、取消及中断。[运行 CAST](images/ch05/ch05-action-contract.cast) |
+| 新练习工作区 | 26 项通过；八个学生新建包实际运行，核心两包使用课程工作区。[运行 CAST](images/ch05/ch05-manual-actions.cast) |
+| 基础 Tracking | 目标 `(2,1,0)`，90 次反馈，累计进度最终为 2.2360679775 m、剩余距离 0。本入口仅做向量进度计算，不控制机器人 |
+| Gazebo Tracking | 独立 `server_gazebo` 使用真实 `/odom`；正常到达、取消状态 5、进程中断状态 6 均通过；三次结束后的反馈速度均归零 |
+| 位姿导航 | 目标 `(2,1,1.57)` 正常结束；三秒自动取消、忙碌目标拒绝、中断后客户端失败退出均通过；均在验收清理补发零速之前检查停车反馈 |
+
+31 项动作检查中，控制器的异常输入与过期反馈使用隔离 Domain 197 的人工里程计；这些检查只证明控制逻辑。下表和 GUI 录像来自真实 Gazebo 里程计，没有注入人工位姿。
+
+| 真实 Gazebo 轮次 | 到达位置 x/y（m） | yaw（rad） | 到目标距离（m） | 正常运动采样 |
+|---|---:|---:|---:|---:|
+| `tracking-gazebo-wired-02` | 1.915284 / 0.955748 | 0.481367 | 0.095578 | 567 条 odom |
+| `pose-gazebo-wide-02` | 1.915074 / 0.955580 | 1.522078 | 0.095842 | 668 条 odom |
+
+两者位置误差均小于 0.10 m；位姿导航 yaw 误差约 2.75°，小于 3°。目标成功后及取消／中断后，末十个里程计样本的绝对线速度小于 0.01 m/s、角速度小于 0.02 rad/s；这不等同于地图或世界坐标的定位精度。
+
+![Tracking 使用真实里程计导航](images/ch05/ch05-tracking-gazebo.gif)
+
+[Tracking 原速录像](images/ch05/ch05-tracking-gazebo.mp4) · [同轮 COM260 CAST](images/ch05/ch05-tracking-gazebo.cast)。原片开始于 12:43:04.823 UTC，保留第 2.177 秒起约 42.083 秒的连续画面，覆盖正常目标、取消与中断；GIF 为同段 2 倍速。
+
+![位姿导航、取消及中断](images/ch05/ch05-pose-gazebo.gif)
+
+[位姿导航原速录像](images/ch05/ch05-pose-gazebo.mp4) · [同轮 COM260 CAST](images/ch05/ch05-pose-gazebo.cast)。原片开始于 12:45:58.644 UTC，保留第 0.356 秒起约 47.750 秒的连续画面；GIF 为同段 2 倍速。手册导航终端截图读取同轮保存的 C++ 日志，画面已注明其来源，见[已保存结果展示 CAST](images/ch05/ch05-ch06-saved-results.cast)。
+
+原手册 image-25～32、image-47 共九处截图均有对应素材。基础洗碗与 Tracking 的[终端 GIF](images/ch05/ch05-actions.gif)由[实际 SSH CAST](images/ch05/ch05-actions.cast)渲染，压缩空闲等待时间；GUI 录像没有拼接运动片段。
+
+链路曾因回程走 Wi-Fi 而出现超过一秒的里程计间隔，Tracking 正确中止。确认双向有线路由后重新验证，未放宽过期保护。GUI 采用 x86 容器内独立 Xvfb 显示会话，以 1280×800 固定画幅采集真实 Gazebo 窗口；画面中的机器人、场景和运动均来自本轮仿真。原速 MP4 为 12 fps，GIF 为 960×600／10 fps／2 倍速。课程桌面运行方法仍见公共环境。
+
+<a id="ch06"></a>
+
+## 第六章：参数、Launch 与动态调速
+
+验证日期：2026-09-22；记录组 `20260922T103700Z`。章节入口：[实验手册](ch06_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch06_参数与Launch.md)。参数与速度节点使用 C++17；Python 仅用于 Launch 和验收工具。
+
+| 验证项 | 实际结果与证据 |
+|---|---|
+| 独立学生建包 | 6 个创建／构建／查询阶段通过，其中 3 个编译阶段；先构建参数节点，之后添加 YAML/Launch，再添加速度节点。[逐步记录](images/ch06/ch06-manual-build.json) |
+| 参数与速度契约 | 课程工作区和新练习工作区各 48 项通过，覆盖参数类型、范围、NaN/Inf、枚举、启动覆盖值、YAML 启动／加载／Launch、禁用编辑与恢复、频率及中断零速。[课程 CAST](images/ch06/ch06-parameter-contract.cast)、[学生工作区 CAST](images/ch06/ch06-manual-parameters.cast) |
+| 核心参数生命周期 | param2 更新为 2、param4 为 4，param5 在第二轮删除，共执行三轮；结果由实际安装的 `param_demo` 核验 |
+| 两个完整教案示例 | 从教案代码独立编译并运行；max_speed 更新为 3.5，动态 speed 更新为 4.5，-1.0 被拒绝且保持原值。[教案运行记录位于此 CAST 末段](images/ch05/ch05-action-contract.cast) |
+| C++ talker/listener | `use_rviz=false` 时只有两个示例节点；`true` 时增加 RViz，实际 `/chatter` 收发通过。RViz 的独立演示尚未加载地图，因此固定坐标系警告符合该示例的数据内容 |
+| 仿真条件关闭 | 最终 Launch 的 gui/rviz/drive 均为 false 时，未启动巡航与 RViz，`/cmd_vel` 发布者为 0，229 条里程计反馈保持静止。[CAST](images/ch06/ch06-launch-off.cast) |
+| C++ 巡航开启 | `drive=true` 实际启动 C++ `patrol_driver`；观察到 0.12 m/s 直行与 0.45 rad/s 转向，246 条命令、392 条里程计；中断后零速及实际反馈归零。[CAST](images/ch06/ch06-patrol-gazebo.cast) |
+| 出生位置参数 | `spawn_x=0.5`、`spawn_y=-0.5` 时，Gazebo Scene 查询确认模型初始 x=0.5、y=-0.5、z≈0.0099902。该值来自模型世界位置，不把相对里程计原点当作出生坐标 |
+| Nav2 组合启动 | Humble Nav2 1.1.20，九个导航／定位生命周期节点及两个 costmap 节点均为 active，`/navigate_to_pose` Action 存在；实际收到地图、激光和里程计。[查询 CAST](images/ch06/ch06-nav2.cast) |
+
+Nav2 地图为 992×992、分辨率约 0.05 m/格，原点 `(-25,-25)`。RViz 使用 `map` 固定坐标系、`/robot_description` 模型与真实传感器；截图的 Global Status 为 Ok。
+
+![Burger 仿真与 Humble Nav2 的 RViz 显示](images/ch06/ch06-nav2.png)
+
+动态调速由 COM260 的 C++ `speed_ctrl` 控制 x86 Gazebo，10 项实际反馈检查通过。每阶段观察 2.2 秒，舍去前 0.7 秒，按余下里程计样本计算中位数：
+
+| 阶段 | 设置的线／角速度 | 实际反馈中位数（m/s，rad/s） |
+|---|---|---|
+| 默认 | 0.2 / 0.0 | 0.200 / 0.000 |
+| 加速直行 | 0.5 / 0.0 | 0.500 / 0.000 |
+| 左转 | 0.5 / 1.0 | 0.500 / 1.000 |
+| 右转 | 0.5 / -1.0 | 0.500 / -1.000 |
+| 停止转动 | 0.5 / 0.0 | 0.500 / 0.000 |
+| 倒车 | -0.3 / 0.0 | -0.300 / 0.000 |
+| 完全停止 | 0.0 / 0.0 | 0.000 / 0.000 |
+| 禁用后保存 0.4 / 0.5 | enable_control=false | 0.000 / 0.000 |
+| 恢复控制 | enable_control=true | 0.400 / 0.500 |
+
+第十项为运动中 SIGINT：程序退出 0，最后十个里程计样本停止；此断言在清理工具补发零速之前完成。独立参数契约检查覆盖约 10 Hz 发布频率；单独 SIGTERM 的验证见下方“巡航时限与信号停止”。
+
+![动态参数调速及停止](images/ch06/ch06-speed-gazebo.gif)
+
+[调速原速录像](images/ch06/ch06-speed-gazebo.mp4) · [同轮 COM260 CAST](images/ch06/ch06-speed-gazebo.cast)。原片始于 12:48:06.215 UTC，保留第 1.785 秒起约 33.167 秒连续画面，覆盖全部九组参数状态及中断；GIF 为同段 2 倍速。
+
+![C++ 巡航的直行、转弯和停止](images/ch06/ch06-patrol-gazebo.gif)
+
+[巡航原速录像](images/ch06/ch06-patrol-gazebo.mp4)始于原片 12:56:54.725 UTC 后第 0.275 秒，保留约 22.583 秒连续画面；GIF 为同段 2 倍速。这段记录展示巡航的一部分及中断停车，不作为完整闭环路线测量。
+
+原手册 image-48～72 共 25 处截图均有对应素材；参数操作见[真实 SSH CAST](images/ch06/ch06-parameters.cast)及[终端 GIF](images/ch06/ch06-parameters.gif)。image-60～62 读取已保存的 x86 talker/listener 日志，标明来源；image-63 和 Nav2 截图直接采集真实 RViz 窗口。GUI 采集方式、分辨率和帧率与第五章相同。
+
+Humble 适配包括：YAML 使用节点完整名称 `/param_demo`；Nav2 的 `use_composition` 使用 `False`；CycloneDDS 自动 participant 索引上限为 100；先解析 C++ 巡航条件，再包含固定关闭共享驱动的仿真。相关操作均体现在源码和公共环境中。
+
+### 巡航时限与信号停止
+
+记录组 `20260922T135846Z-followup`。`gazebo_ch06.launch.py` 将 `drive_loop`、`drive_duration` 显式传入 C++ 巡航节点；其余 C++ 源码与上述运行记录相同。两端重新安装第六章包，58 个源码和支持文件与本地指纹一致。[COM260 构建](images/ch06/ch06-launch-board-build.cast)，x86 构建及运行见[巡航 CAST](images/ch06/ch06-patrol-options.cast)。此前普通巡航录像保留原采集时间；本组单独验证时限参数。
+
+| 巡航配置 | 实际结果 |
+|---|---|
+| `drive=true, drive_loop=false, drive_duration=12.0` | C++ 节点自动退出 0；从 Launch 启动至观察到节点退出约 12.97 秒，其中包含节点启动开销。收到 6 条零速命令、309 条 odom，x 方向跨度约 0.27558 m，末十条反馈停车 |
+| `drive=true, drive_loop=true, drive_duration=3.0` | 观察至 Launch 启动后约 10.79 秒仍运行；最后用 SIGINT 停止并确认反馈归零 |
+| `drive=true, drive_loop=false, drive_duration=0.0` | 观察至 Launch 启动后约 10.42 秒仍运行；最后用 SIGINT 停止并确认反馈归零 |
+| `drive=false` | 无巡航进程，`/cmd_vel` 发布者为 0，115 条 odom 保持静止 |
+
+以上使用 x86 隔离 Domain 201 的真实 Gazebo。参数通过节点服务读取，停车断言在停止仿真之前执行；[结构化结果](images/ch06/ch06-patrol-options.json)与 CAST 对应。
+
+![定时巡航的实际运动与停止](images/ch06/ch06-patrol-timed.gif)
+
+[完整原速 MP4](images/ch06/ch06-patrol-timed.mp4)始于 14:07:42.449 UTC，长 15.5 秒、1280×800／12 fps，包含 Gazebo 启动等待、运动及停车。GIF 取原片第 8 秒起的 7.5 秒连续画面，保持原速，960×600／10 fps。画面来自独立 Xvfb :99 中的真实 Gazebo。
+
+COM260 课程与学生工作区分别在 Domain 198／199 重跑 48 项参数检查。每次只发送待测的 SIGINT 或 SIGTERM，随后等待退出与零速消息，断言前不发送另一信号。两份程序均退出 0、各收到 5 条零速消息；SIGTERM 后首条零速延迟分别约 19 ms／101 ms。忽略 SIGTERM 的替身被同一等待逻辑判为超时失败，清理发生在判定之后。
+
+[课程工作区 CAST](images/ch06/ch06-parameters-course-signal.cast) · [学生工作区 CAST](images/ch06/ch06-parameters-practice-signal.cast) · [信号结果与验收器负例](images/ch06/ch06-signal-results.json)。这两份记录提供独立 SIGTERM 证据；前面的参数记录保留其采集版本，不作为单独 TERM 停车的依据。
+
+两章共 35 PNG、19 CAST、5 MP4、7 GIF，以及两份逐步建包 JSON 和两份停止验证 JSON。文件指纹、格式、视频完整解码、CAST 退出事件、本地链接和章节锚点检查通过；五段 Gazebo 录像完成抽帧目检。结束时 COM260 课程 C++ 进程为 0，本组 CLI daemon 未运行，x86 活动课程仿真容器为 0。
