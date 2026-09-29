@@ -4,29 +4,6 @@
 
 本课程以 RISC-V 开源硬件平台（openEuler 24.03 LTS）为硬件基础，以 ROS2（Robot Operating System 2）Humble 为技术平台，系统讲授机器人的软件开发框架、分布式通信机制、实时控制系统以及智能终端装调技术。课程 ROS2 程序运行在 openEuler RISC-V 板卡上，Gazebo、RViz2 等仿真与可视化环境运行在 Windows x86 主机上，两端通过局域网内同一 DDS 域互联。
 
-## 教学资源
-
-- 方法1
-
-1. [Bianbu for K3 镜像](https://spacemit.com/community/resources-download/Images%20Collects/K3/Bianbu)
-2. [Bianbu ROS2 开发入门指南 ](https://www.spacemit.com/community/document/info?lang=zh&nodepath=competition/%E7%AB%9E%E8%B5%9B%E6%95%99%E7%A8%8B/01_Bianbu_%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E5%8F%8A%E6%A1%88%E4%BE%8B%E9%9B%86/02_ROS2%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
-
-- 方法2
-1. [Docker RISC-V](https://github.com/RLC-Lab/riscv-ros2)
-
-- 方法3
-1. [openEuler RISC-V 24.03 Humble](https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/tools/application/ros/ros_user_guide.html)
-曾经完成小车和四旋翼RISC-V实例
-
-- 方法4
-1. [K1 ROS2 安装教程](https://docs.bit-brick.com/zh/docs/k1/news/ros2)
-
-- 方法5
-1. [Licheepi4A + RevyOS](https://github.com/lalafua/recording/blob/main/riscv/ros2/tutorial/first.md)
-
-- 方法6
-1. [revyOS ROS2 源](https://mirror.iscas.ac.cn/revyos/revyos-ros2/)
-
 ## 教学目标
 
 | 目标维度 | 目标描述 |
