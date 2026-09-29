@@ -1,0 +1,41 @@
+{
+  "pass": true,
+  "utc": "2026-09-22T14:08:41.191376+00:00",
+  "domain": "201",
+  "checks": [
+    {
+      "case": "timed",
+      "loop": false,
+      "duration_s": 12.0,
+      "exit": 0,
+      "elapsed_from_launch_s": 12.97060559000056,
+      "zero_commands": 6,
+      "odom_samples": 309,
+      "x_span_m": 0.27557989455671605,
+      "feedback_stopped": true
+    },
+    {
+      "case": "loop",
+      "loop": true,
+      "duration_s": 3.0,
+      "still_running_after_s": 10.790366152000388,
+      "cleanup_signal": "SIGINT",
+      "feedback_stopped": true
+    },
+    {
+      "case": "unlimited",
+      "loop": false,
+      "duration_s": 0.0,
+      "still_running_after_s": 10.417292543000258,
+      "cleanup_signal": "SIGINT",
+      "feedback_stopped": true
+    },
+    {
+      "case": "disabled",
+      "drive": false,
+      "cmd_publishers": 0,
+      "odom_samples": 115,
+      "feedback_stopped": true
+    }
+  ]
+}

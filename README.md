@@ -4,29 +4,6 @@
 
 本课程以 RISC-V 开源硬件平台（openEuler 24.03 LTS）为硬件基础，以 ROS2（Robot Operating System 2）Humble 为技术平台，系统讲授机器人的软件开发框架、分布式通信机制、实时控制系统以及智能终端装调技术。课程 ROS2 程序运行在 openEuler RISC-V 板卡上，Gazebo、RViz2 等仿真与可视化环境运行在 Windows x86 主机上，两端通过局域网内同一 DDS 域互联。
 
-## 教学资源
-
-- 方法1
-
-1. [Bianbu for K3 镜像](https://spacemit.com/community/resources-download/Images%20Collects/K3/Bianbu)
-2. [Bianbu ROS2 开发入门指南 ](https://www.spacemit.com/community/document/info?lang=zh&nodepath=competition/%E7%AB%9E%E8%B5%9B%E6%95%99%E7%A8%8B/01_Bianbu_%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3%E5%8F%8A%E6%A1%88%E4%BE%8B%E9%9B%86/02_ROS2%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md)
-
-- 方法2
-1. [Docker RISC-V](https://github.com/RLC-Lab/riscv-ros2)
-
-- 方法3
-1. [openEuler RISC-V 24.03 Humble](https://docs.openeuler.org/zh/docs/24.03_LTS_SP3/tools/application/ros/ros_user_guide.html)
-曾经完成小车和四旋翼RISC-V实例
-
-- 方法4
-1. [K1 ROS2 安装教程](https://docs.bit-brick.com/zh/docs/k1/news/ros2)
-
-- 方法5
-1. [Licheepi4A + RevyOS](https://github.com/lalafua/recording/blob/main/riscv/ros2/tutorial/first.md)
-
-- 方法6
-1. [revyOS ROS2 源](https://mirror.iscas.ac.cn/revyos/revyos-ros2/)
-
 ## 教学目标
 
 | 目标维度 | 目标描述 |
@@ -136,7 +113,7 @@ K3 Pico-ITX 第 1 章适配：先阅读[公共双端环境](lab_manuals_k3_pico_
 
 原版课程使用 `teaching_docs/`、`lab_manuals/` 和 `src/`；C++ / RISC-V K3 版使用 `teaching_docs_k3_pico_itx/`、`lab_manuals_k3_pico_itx/` 和 `src_k3_pico_itx/`。K3 第一章源码通过 `setup_course_k3.sh` 在独立工作区 `~/ros2_course_k3_ws` 构建。
 
-COM260 Kit 第 1～4 章适配：[公共环境](lab_manuals_k3_com260_kit/ch00_common_setup.md)、[第一章实验](lab_manuals_k3_com260_kit/ch01_lab.md)、[第二章实验](lab_manuals_k3_com260_kit/ch02_lab.md)、[第三章实验](lab_manuals_k3_com260_kit/ch03_lab.md)、[第四章实验](lab_manuals_k3_com260_kit/ch04_lab.md)、[第一章教案](teaching_docs_k3_com260_kit/ch01_ROS2概述与架构.md)、[第二章教案](teaching_docs_k3_com260_kit/ch02_核心编程基础.md)、[第三章教案](teaching_docs_k3_com260_kit/ch03_话题通信.md)、[第四章教案](teaching_docs_k3_com260_kit/ch04_服务通信.md)及[COM260 实测证据](lab_manuals_k3_com260_kit/runtime_evidence.md)。
+COM260 Kit 第 1～6 章适配：[公共环境](lab_manuals_k3_com260_kit/ch00_common_setup.md)、[第一章实验](lab_manuals_k3_com260_kit/ch01_lab.md)、[第二章实验](lab_manuals_k3_com260_kit/ch02_lab.md)、[第三章实验](lab_manuals_k3_com260_kit/ch03_lab.md)、[第四章实验](lab_manuals_k3_com260_kit/ch04_lab.md)、[第五章实验](lab_manuals_k3_com260_kit/ch05_lab.md)、[第六章实验](lab_manuals_k3_com260_kit/ch06_lab.md)、[第一章教案](teaching_docs_k3_com260_kit/ch01_ROS2概述与架构.md)、[第二章教案](teaching_docs_k3_com260_kit/ch02_核心编程基础.md)、[第三章教案](teaching_docs_k3_com260_kit/ch03_话题通信.md)、[第四章教案](teaching_docs_k3_com260_kit/ch04_服务通信.md)、[第五章教案](teaching_docs_k3_com260_kit/ch05_动作通信.md)、[第六章教案](teaching_docs_k3_com260_kit/ch06_参数与Launch.md)及[COM260 实测证据](lab_manuals_k3_com260_kit/runtime_evidence.md)。
 
 ---
 

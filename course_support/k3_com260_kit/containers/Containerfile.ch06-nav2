@@ -1,0 +1,8 @@
+FROM localhost/ros2-course-humble:gazebo
+
+LABEL org.ros2-riscv.component="humble-gazebo-nav2"
+
+RUN apt-get update \
+    && apt-get install -y --no-remove --no-install-recommends \
+        ros-humble-navigation2 ros-humble-nav2-bringup \
+    && rm -rf /var/lib/apt/lists/*

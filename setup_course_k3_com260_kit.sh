@@ -15,20 +15,24 @@ dependencies=(
   ros-humble-rmw-cyclonedds-cpp ros-humble-teleop-twist-keyboard
   ros-humble-ament-cmake-python ros-humble-ament-cmake-pytest
   ros-humble-rclcpp-lifecycle ros-humble-geometry-msgs
+  ros-humble-rclcpp-action ros-humble-action-msgs ros-humble-rcl-interfaces
+  ros-humble-launch-ros
   ros-humble-sensor-msgs ros-humble-rosgraph-msgs ros-humble-nav-msgs
   ros-humble-rosidl-default-generators ros-humble-rosidl-default-runtime
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04) ;;
+  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04' \
-      '--dry-run       Resolve chapter 1-4 dependencies without installing them.' \
-      '--install-deps  Install chapter 1-4 dependencies; sudo may ask for your password.' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06' \
+      '--dry-run       Resolve chapter 1-6 dependencies without installing them.' \
+      '--install-deps  Install chapter 1-6 dependencies; sudo may ask for your password.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
       '--build-ch02    Build the two chapter 2 packages in the same course workspace.' \
       '--build-ch03    Build/test the four chapter 3 packages in the same course workspace.' \
-      '--build-ch04    Build the seven chapter 4 packages in the same course workspace.'
+      '--build-ch04    Build the seven chapter 4 packages in the same course workspace.' \
+      '--build-ch05    Build the ten chapter 5 action packages in the same course workspace.' \
+      '--build-ch06    Build the chapter 6 C++ parameter and Launch package.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -77,6 +81,16 @@ if [[ $mode == --build-ch04 ]]; then
   packages=(service_demo_interfaces service_demo_cpp service_demo_lab_cpp weather_interfaces weather_srv speed_interfaces speed_control)
   source_root="$root/src_k3_com260_kit"
 fi
+if [[ $mode == --build-ch05 ]]; then
+  chapter=05
+  packages=(action_demo_interfaces action_demo_cpp action_demo_lab_interfaces action_demo_lab_cpp dishes_action_interfaces dishes_action_lab tracking_interfaces tracking_server pose_nav_interfaces pose_nav_action)
+  source_root="$root/src_k3_com260_kit"
+fi
+if [[ $mode == --build-ch06 ]]; then
+  chapter=06
+  packages=(param_demo_cpp)
+  source_root="$root/src_k3_com260_kit"
+fi
 # Chapter 1 packages are shared unchanged with the Pico edition.
 sources=()
 for package in "${packages[@]}"; do
@@ -123,6 +137,6 @@ elif [[ $chapter == 02 ]]; then
 elif [[ $chapter == 03 ]]; then
   printf 'COM260_CH03_BUILD_TEST_EXIT=0\n'
 else
-  printf 'COM260_CH04_BUILD_EXIT=0\n'
+  printf 'COM260_CH%s_BUILD_EXIT=0\n' "$chapter"
 fi
 printf 'Environment: source %s/env.bash\n' "$env_dir"
