@@ -1,0 +1,8 @@
+{"version":3,"term":{"cols":150,"rows":42},"timestamp":1790081161,"command":"bash .work/ros2_k3/com260_kit/runtime/ch05-ch06/20260922T103700Z/run_pose_wide.sh","env":{"SHELL":"/bin/zsh"}}
+[2.484, "o", "RUN_ID=20260922T103700Z-ch05-pose HOST=ifx ARCH=riscv64\r\n"]
+[0.004, "o", "2026-09-22T12:46:06Z\r\n"]
+[28.361, "o", "PASS {\"case\": \"pose-normal\", \"exit\": 0, \"initial\": {\"t\": 35186.224805587, \"x\": -4.166888350916349e-21, \"y\": 7.4560380364514165e-37, \"yaw\": -4.3688743790156905e-20, \"vx\": 3.405433480741594e-22, \"wz\": -6.056039637067882e-21}, \"final\": {\"t\": 35212.96577232, \"x\": 1.9150737963647326, \"y\": 0.9555797762965338, \"yaw\": 1.5220783825350253, \"vx\": 0.0, \"wz\": 0.0}, \"distance\": 0.09584162111402791, \"feedback_stopped\": true, \"odom_samples\": 668}\r\n"]
+[4.809, "o", "PASS {\"case\": \"pose-cancel-busy\", \"cancel_exit\": 0, \"status\": 5, \"busy_exit\": 1, \"final\": {\"t\": 35217.834650281, \"x\": 1.9150737963644233, \"y\": 0.9555797762959638, \"yaw\": 0.022078382696582355, \"vx\": 0.0, \"wz\": 0.0}, \"feedback_stopped\": true}\r\n"]
+[3.265, "o", "PASS {\"case\": \"pose-interrupt\", \"client_exit\": 1, \"final\": {\"t\": 35221.163007129, \"x\": 1.9150737963643354, \"y\": 0.9555797762962898, \"yaw\": -0.4359216170831079, \"vx\": 0.0, \"wz\": 0.0}, \"feedback_stopped\": true}\r\n"]
+[3.093, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.003, "x", "0"]

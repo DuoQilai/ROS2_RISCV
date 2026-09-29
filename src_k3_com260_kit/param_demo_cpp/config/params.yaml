@@ -1,0 +1,7 @@
+/param_demo:
+  ros__parameters:
+    robot_name: 'burger'
+    max_speed: 3.5
+    sensor_list: ['lidar', 'camera', 'imu']
+    mode: 'hybrid'
+    enable_debug: true
