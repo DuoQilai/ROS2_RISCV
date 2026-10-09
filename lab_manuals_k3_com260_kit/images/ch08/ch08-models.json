@@ -1,0 +1,147 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "xacro_urdf_demo-simple_robot.urdf.urdf",
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "check_urdf_urdf_demo-simple_robot.urdf.urdf",
+      "passed": true
+    },
+    {
+      "name": "xacro_urdf_demo-simple_robot.urdf",
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "check_urdf_urdf_demo-simple_robot.urdf",
+      "passed": true
+    },
+    {
+      "name": "plain_dimensions",
+      "passed": true
+    },
+    {
+      "name": "plain_mass",
+      "passed": true
+    },
+    {
+      "name": "plain_left_joint",
+      "passed": true
+    },
+    {
+      "name": "plain_left_geometry",
+      "passed": true
+    },
+    {
+      "name": "plain_right_joint",
+      "passed": true
+    },
+    {
+      "name": "plain_right_geometry",
+      "passed": true
+    },
+    {
+      "name": "macro_dimensions",
+      "passed": true
+    },
+    {
+      "name": "macro_mass",
+      "passed": true
+    },
+    {
+      "name": "macro_left_joint",
+      "passed": true
+    },
+    {
+      "name": "macro_left_geometry",
+      "passed": true
+    },
+    {
+      "name": "macro_right_joint",
+      "passed": true
+    },
+    {
+      "name": "macro_right_geometry",
+      "passed": true
+    },
+    {
+      "name": "plain_xacro_topology",
+      "passed": true
+    },
+    {
+      "name": "xacro_urdf_demo-marked_robot.urdf",
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "check_urdf_urdf_demo-marked_robot.urdf",
+      "passed": true
+    },
+    {
+      "name": "marker_radius",
+      "passed": true
+    },
+    {
+      "name": "marker_position",
+      "passed": true
+    },
+    {
+      "name": "marker_red",
+      "passed": true
+    },
+    {
+      "name": "xacro_urdf_demo-teaching_robot-true.urdf",
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "check_urdf_urdf_demo-teaching_robot-true.urdf",
+      "passed": true
+    },
+    {
+      "name": "lidar_true",
+      "passed": true
+    },
+    {
+      "name": "four_wheel_true",
+      "passed": true
+    },
+    {
+      "name": "ten_kg_true",
+      "passed": true
+    },
+    {
+      "name": "xacro_urdf_demo-teaching_robot-false.urdf",
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "check_urdf_urdf_demo-teaching_robot-false.urdf",
+      "passed": true
+    },
+    {
+      "name": "lidar_false",
+      "passed": true
+    },
+    {
+      "name": "four_wheel_false",
+      "passed": true
+    },
+    {
+      "name": "ten_kg_false",
+      "passed": true
+    },
+    {
+      "name": "xacro_urdf_demo_ros2-mybot.urdf",
+      "passed": true,
+      "stderr": ""
+    },
+    {
+      "name": "check_urdf_urdf_demo_ros2-mybot.urdf",
+      "passed": true
+    }
+  ]
+}

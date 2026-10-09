@@ -16,23 +16,26 @@ dependencies=(
   ros-humble-ament-cmake-python ros-humble-ament-cmake-pytest
   ros-humble-rclcpp-lifecycle ros-humble-geometry-msgs
   ros-humble-rclcpp-action ros-humble-action-msgs ros-humble-rcl-interfaces
+  ros-humble-tf2 ros-humble-tf2-ros ros-humble-tf2-geometry-msgs ros-humble-tf2-tools
   ros-humble-launch-ros
   ros-humble-sensor-msgs ros-humble-rosgraph-msgs ros-humble-nav-msgs
   ros-humble-rosidl-default-generators ros-humble-rosidl-default-runtime
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06) ;;
+  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06' \
-      '--dry-run       Resolve chapter 1-6 dependencies without installing them.' \
-      '--install-deps  Install chapter 1-6 dependencies; sudo may ask for your password.' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08' \
+      '--dry-run       Resolve chapter 1-8 dependencies without installing them.' \
+      '--install-deps  Install chapter 1-8 dependencies; sudo may ask for your password.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
       '--build-ch02    Build the two chapter 2 packages in the same course workspace.' \
       '--build-ch03    Build/test the four chapter 3 packages in the same course workspace.' \
       '--build-ch04    Build the seven chapter 4 packages in the same course workspace.' \
       '--build-ch05    Build the ten chapter 5 action packages in the same course workspace.' \
-      '--build-ch06    Build the chapter 6 C++ parameter and Launch package.'
+      '--build-ch06    Build the chapter 6 C++ parameter and Launch package.' \
+      '--build-ch07    Build the two chapter 7 C++ TF packages.' \
+      '--build-ch08    Install the chapter 8 model packages; GUI runs on x86.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -89,6 +92,16 @@ fi
 if [[ $mode == --build-ch06 ]]; then
   chapter=06
   packages=(param_demo_cpp)
+  source_root="$root/src_k3_com260_kit"
+fi
+if [[ $mode == --build-ch07 ]]; then
+  chapter=07
+  packages=(tf_demo_cpp tf_demo_lab_cpp)
+  source_root="$root/src_k3_com260_kit"
+fi
+if [[ $mode == --build-ch08 ]]; then
+  chapter=08
+  packages=(urdf_demo_ros2 urdf_demo)
   source_root="$root/src_k3_com260_kit"
 fi
 # Chapter 1 packages are shared unchanged with the Pico edition.

@@ -1,0 +1,66 @@
+RUN_ID=20261004T061759Z-ch07-ch08 HOST=ifx ARCH=riscv64
+2026-10-04T07:16:26Z
+Starting >>> tf_demo_cpp
+Starting >>> tf_demo_lab_cpp
+[ 60%] Built target coordinate_transformation
+[ 60%] Built target euler_to_quaternion
+[ 60%] Built target quaternion_to_euler
+[ 16%] Built target static_tf_pub
+[ 33%] Built target tf_broadcaster
+[ 41%] Building CXX object CMakeFiles/tf_listener.dir/src/tf_listener.cpp.o
+[ 80%] Built target tf_broadcaster
+[100%] Built target tf_listener
+[ 91%] Built target tf_lookup
+[ 91%] Built target teaching_dynamic
+[ 91%] Built target time_query
+-- Install configuration: "Debug"
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/lib/tf_demo_cpp/coordinate_transformation
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/lib/tf_demo_cpp/euler_to_quaternion
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/lib/tf_demo_cpp/quaternion_to_euler
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/lib/tf_demo_cpp/tf_broadcaster
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/lib/tf_demo_cpp/tf_listener
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/ament_index/resource_index/package_run_dependencies/tf_demo_cpp
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/ament_index/resource_index/parent_prefix_path/tf_demo_cpp
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/environment/ament_prefix_path.sh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/environment/path.sh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/environment/path.dsv
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/local_setup.bash
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/local_setup.sh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/local_setup.zsh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/local_setup.dsv
+-- Installing: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/package.dsv
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/ament_index/resource_index/packages/tf_demo_cpp
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/cmake/tf_demo_cppConfig.cmake
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/cmake/tf_demo_cppConfig-version.cmake
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_cpp/share/tf_demo_cpp/package.xml
+Finished <<< tf_demo_cpp [0.37s]
+[100%] Linking CXX executable tf_listener
+[100%] Built target tf_listener
+-- Install configuration: "Debug"
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/tf_broadcaster
+-- Installing: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/tf_listener
+-- Set non-toolchain portion of runtime path of "/home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/tf_listener" to ""
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/tf_lookup
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/static_tf_pub
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/time_query
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/lib/tf_demo_lab_cpp/teaching_dynamic
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/ament_index/resource_index/package_run_dependencies/tf_demo_lab_cpp
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/ament_index/resource_index/parent_prefix_path/tf_demo_lab_cpp
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/environment/ament_prefix_path.sh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/environment/path.sh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/environment/path.dsv
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/local_setup.bash
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/local_setup.sh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/local_setup.zsh
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/local_setup.dsv
+-- Installing: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/package.dsv
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/ament_index/resource_index/packages/tf_demo_lab_cpp
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/cmake/tf_demo_lab_cppConfig.cmake
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/cmake/tf_demo_lab_cppConfig-version.cmake
+-- Up-to-date: /home/com260/ros2_course_com260_ch07_ch08_ws/install/tf_demo_lab_cpp/share/tf_demo_lab_cpp/package.xml
+Finished <<< tf_demo_lab_cpp [11.5s]
+
+Summary: 2 packages finished [11.8s]
+CH07_TF_BUILD_EXIT=0
