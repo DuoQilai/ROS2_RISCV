@@ -1,0 +1,437 @@
+{
+  "run_id": "20261004T103512Z-public-entry",
+  "pass": true,
+  "workspaces": {
+    "com260": "~/ros2_course_com260_ws",
+    "x86": "~/ros2_course_com260_humble_ws"
+  },
+  "public_builds": {
+    "com260": [
+      "bash setup_course_k3_com260_kit.sh --build-ch07",
+      "bash setup_course_k3_com260_kit.sh --build-ch08"
+    ],
+    "x86": [
+      "bash course_support/k3_com260_kit/scripts/x86-ch07-ch08.bash build-image",
+      "bash course_support/k3_com260_kit/scripts/x86-ch07-ch08.bash build"
+    ]
+  },
+  "native_tf": {
+    "pass": true,
+    "checks": [
+      {
+        "name": "rate_20.0",
+        "passed": true,
+        "actual_hz": 20.000882914923146,
+        "samples": 80
+      },
+      {
+        "name": "circle_and_quaternion_20.0",
+        "passed": true
+      },
+      {
+        "name": "historical_interpolation",
+        "passed": true
+      },
+      {
+        "name": "future_extrapolation_rejected",
+        "passed": true,
+        "error": "Lookup would require extrapolation into the future.  Requested time 1791110510.906086 but the latest data is at time 1791110500.902779, when looking up transform from frame [base_link] to frame [odom]"
+      },
+      {
+        "name": "static_laser_frame",
+        "passed": true,
+        "xyz": [
+          0.2,
+          0.0,
+          0.1
+        ]
+      },
+      {
+        "name": "static_camera_frame",
+        "passed": true,
+        "xyz": [
+          0.15,
+          0.0,
+          0.25
+        ]
+      },
+      {
+        "name": "static_imu_link",
+        "passed": true,
+        "xyz": [
+          0.0,
+          0.0,
+          0.05
+        ]
+      },
+      {
+        "name": "static_left_wheel",
+        "passed": true,
+        "xyz": [
+          0.0,
+          0.15,
+          -0.05
+        ]
+      },
+      {
+        "name": "static_right_wheel",
+        "passed": true,
+        "xyz": [
+          0.0,
+          -0.15,
+          -0.05
+        ]
+      },
+      {
+        "name": "point_in_base",
+        "passed": true,
+        "code": 0
+      },
+      {
+        "name": "history",
+        "passed": true,
+        "code": 0
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 122841,
+        "code": 0
+      },
+      {
+        "name": "laser_to_camera_point",
+        "passed": true
+      },
+      {
+        "name": "late_static_listener",
+        "passed": true,
+        "code": 0
+      },
+      {
+        "name": "missing_frame",
+        "passed": true,
+        "code": 1
+      },
+      {
+        "name": "exactly_three_timeouts",
+        "passed": true
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 122742,
+        "code": 0
+      },
+      {
+        "name": "rate_10.0",
+        "passed": true,
+        "actual_hz": 9.99999813590094,
+        "samples": 40
+      },
+      {
+        "name": "circle_and_quaternion_10.0",
+        "passed": true
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 122953,
+        "code": 0
+      },
+      {
+        "name": "rate_100.0",
+        "passed": true,
+        "actual_hz": 100.00524478636572,
+        "samples": 400
+      },
+      {
+        "name": "circle_and_quaternion_100.0",
+        "passed": true
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 123002,
+        "code": 0
+      },
+      {
+        "name": "teaching_static",
+        "passed": true,
+        "code": 0
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 123050,
+        "code": 0
+      },
+      {
+        "name": "euler_to_quaternion",
+        "passed": true
+      },
+      {
+        "name": "quaternion_to_euler",
+        "passed": true
+      },
+      {
+        "name": "coordinate_transformation",
+        "passed": true
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 123142,
+        "code": 0
+      },
+      {
+        "name": "node_exit",
+        "passed": true,
+        "pid": 123141,
+        "code": 0
+      },
+      {
+        "name": "core_translation",
+        "passed": true
+      }
+    ],
+    "domain": "180"
+  },
+  "teaching_dynamic": {
+    "passed": true,
+    "rate_hz": 10.00007816339951,
+    "samples": 44,
+    "translation_changed": true,
+    "exit_code": 0
+  },
+  "models": {
+    "simple": {
+      "x86": {
+        "pass": true,
+        "mode": "simple",
+        "share": "/workspace/install/urdf_demo/share/urdf_demo",
+        "joint_state_messages": 1,
+        "joint_names": [
+          "left_wheel_joint",
+          "right_wheel_joint"
+        ],
+        "joint_positions": [
+          0.0,
+          0.0
+        ],
+        "tf_parent": "base_link",
+        "tf_child": "left_wheel_link",
+        "translation": [
+          0.0,
+          0.15,
+          -0.024999999999999994
+        ],
+        "link_count": 4,
+        "nodes": [
+          "_ros2cli_daemon_0_6f6b6b3fa17f4d8a989c87d6686e9ed4",
+          "joint_state_publisher",
+          "public_model_probe",
+          "robot_state_publisher",
+          "rviz",
+          "transform_listener_impl_63bf02459ef0"
+        ]
+      },
+      "com260": {
+        "pass": true,
+        "model": "simple",
+        "translation": [
+          0.0,
+          0.15,
+          -0.025
+        ],
+        "point": [
+          1.0,
+          0.15,
+          -0.025
+        ],
+        "exit": 0
+      }
+    },
+    "mybot": {
+      "x86": {
+        "pass": true,
+        "mode": "mybot",
+        "share": "/workspace/install/urdf_demo_ros2/share/urdf_demo_ros2",
+        "joint_state_messages": 1,
+        "joint_names": [
+          "mybot_left_wheel_hinge",
+          "mybot_right_wheel_hinge"
+        ],
+        "joint_positions": [
+          0.0,
+          0.0
+        ],
+        "tf_parent": "mybot_link",
+        "tf_child": "mybot_left_wheel",
+        "translation": [
+          0.0,
+          0.125,
+          0.1
+        ],
+        "link_count": 5,
+        "nodes": [
+          "_ros2cli_daemon_0_56613b9079134f6ab237e014bb4cf9b9",
+          "joint_state_publisher",
+          "public_model_probe",
+          "robot_state_publisher",
+          "rviz",
+          "transform_listener_impl_632f598303c0"
+        ]
+      },
+      "com260": {
+        "pass": true,
+        "model": "mybot",
+        "translation": [
+          0.0,
+          0.125,
+          0.1
+        ],
+        "point": [
+          1.0,
+          0.125,
+          0.1
+        ],
+        "exit": 0
+      }
+    }
+  },
+  "model_start_exec_stop_and_repeated_stop": true,
+  "burger": {
+    "pass": true,
+    "samples": {
+      "laser_link": 4,
+      "camera_link": 4
+    },
+    "translation": {
+      "laser_link": [
+        -0.032,
+        0,
+        0.162
+      ],
+      "camera_link": [
+        0.045,
+        0,
+        0.12
+      ]
+    },
+    "node_exit": 0
+  },
+  "preserved_packages": {
+    "com260": {
+      "role": "board",
+      "old_package_count": 26,
+      "old_package_files": 1572,
+      "old_packages_unchanged": true,
+      "missing_old_files": [],
+      "changed_old_files": [],
+      "source_and_helpers_count": 40,
+      "source_and_helpers_match": true,
+      "source_mismatches": [],
+      "stage": "after-final"
+    },
+    "x86": {
+      "role": "x86",
+      "old_package_count": 23,
+      "old_package_files": 1539,
+      "old_packages_unchanged": true,
+      "missing_old_files": [],
+      "changed_old_files": [],
+      "source_and_helpers_count": 40,
+      "source_and_helpers_match": true,
+      "source_mismatches": [],
+      "stage": "after-final"
+    }
+  },
+  "source_sha256": {
+    "setup_course_k3_com260_kit.sh": "46d8556dbc678b61488689ad78dadd3a00c74b032d50614d3af9c603dd395a0b",
+    "course_support/k3_com260_kit/scripts/x86-ch07-ch08.bash": "205709b5b695816393470d8d4a2b55dc4ac4e3bcb17fbb211888f6a28cb57352",
+    "course_support/k3_com260_kit/scripts/x86-gazebo.bash": "b73fc3a41ca0acbfb99137141d9012871c687edf6779210d7c95d47af34e0116",
+    "course_support/k3_com260_kit/ide/gdb.bash": "6fd876a6539dc48f3ee6aa5d748ec07212ddec673287a2f604e77107e903782f",
+    "course_support/k3_com260_kit/containers/Containerfile.ch07-ch08": "a6ea13da681f275338684f38a0d1c5b3eb2e7068dccdd3d8a0157ce817632431",
+    "src_k3_com260_kit/tf_demo_cpp/CMakeLists.txt": "042604b804739dfa345fd6a7ddfcd3268f242fcfef29c4c36cecece4db162d63",
+    "src_k3_com260_kit/tf_demo_cpp/package.xml": "6e4662e23097425fa16a40a91dd429d7eae85e98fcf9d87e187abb1102db543f",
+    "src_k3_com260_kit/tf_demo_cpp/README.md": "ada1ae254af1bb4ed61ec5ebef42c7fc70cf61fe3ba127f7d1ec891ee469e2bf",
+    "src_k3_com260_kit/tf_demo_cpp/src/coordinate_transformation.cpp": "458e424a72db6a07136a2d61e9557b511678919a1069411628e585000aab7c2e",
+    "src_k3_com260_kit/tf_demo_cpp/src/tf_broadcaster.cpp": "7be9735e6e3c9bd6ead117de23ca0ae10ecf47c5c01e8bb1a589052d03b70cd1",
+    "src_k3_com260_kit/tf_demo_cpp/src/quaternion_to_euler.cpp": "1d975047b748c9a3e15cbe8a9a615449bdb68e0d623589ca9ca46e19f64e4fc0",
+    "src_k3_com260_kit/tf_demo_cpp/src/euler_to_quaternion.cpp": "98f4115978bf8519a5c5eb1bf4fb7a2268c51071cdcba7bbfeb3cb7c7125853f",
+    "src_k3_com260_kit/tf_demo_cpp/src/tf_listener.cpp": "64c3dfa47df472f6fe81dbef0ef41939517918d77faaf0dbaa83d02f529428e1",
+    "src_k3_com260_kit/tf_demo_lab_cpp/CMakeLists.txt": "b7100433ad3337ebe497c74b4832267435f9de987287d4a12b9c1fd7e84b3c47",
+    "src_k3_com260_kit/tf_demo_lab_cpp/package.xml": "ced4470a0d52d9aa4101539881666d51ccda389b39e299a025b41b28a11818b7",
+    "src_k3_com260_kit/tf_demo_lab_cpp/README.md": "6ed0e2c372ccb57dc86a092cf8ea2c2c4c66aa7f2f7c68279f1b2cd3ed78ae8b",
+    "src_k3_com260_kit/tf_demo_lab_cpp/src/time_query.cpp": "7f9057d9b886d82696f52d2078b749ae019d080d0daaf386cd4cb8c7eae0d541",
+    "src_k3_com260_kit/tf_demo_lab_cpp/src/tf_broadcaster.cpp": "951097406c03765b64f95d4b802518be376cbb731c43a6634223df239342c1c4",
+    "src_k3_com260_kit/tf_demo_lab_cpp/src/static_tf_pub.cpp": "60d7bab9b1a33e407a51012ddd982f227f2be4fdc0e9f9678693050aef66f56a",
+    "src_k3_com260_kit/tf_demo_lab_cpp/src/tf_listener.cpp": "bab7f112fa18665335dcf4759d5ee6a3310067ddf77035faf3a2d3b303325107",
+    "src_k3_com260_kit/tf_demo_lab_cpp/src/teaching_dynamic.cpp": "abf9ec38e60133760d46e03398fac2ef5284f3dca8fab0ab5cdffbccd6c1a13d",
+    "src_k3_com260_kit/tf_demo_lab_cpp/src/tf_lookup.cpp": "05f9c499e87028aac285da6f15dcf68309d85c50d813b3c7e5ad8b8e4969bd25",
+    "src_k3_com260_kit/urdf_demo/CMakeLists.txt": "41389211ad881c101eb7584acbdbaec988c8a909b27ec61e75235f82bf4c21ed",
+    "src_k3_com260_kit/urdf_demo/package.xml": "ae616f5a5cd20a4279f41673f072ae11a3f31c9dc41e4897a0172d52153d3846",
+    "src_k3_com260_kit/urdf_demo/README.md": "57fec85725415297e5ea7f5bec4800e8a1fdd47cca535bd7408a42afa8706660",
+    "src_k3_com260_kit/urdf_demo/urdf/teaching_robot.xacro": "40522c686205acb538326d5aa34f2bf9a0dc4c69923c512767663d719956e75a",
+    "src_k3_com260_kit/urdf_demo/urdf/marked_robot.xacro": "550ce622f7fbfa15df1bb31a6549f2f12a40aa64e555a67ecb34b1ee4de4da5b",
+    "src_k3_com260_kit/urdf_demo/urdf/simple_robot.urdf": "70c2f8dba4c9072763930b36cac13d3081be28f5296cb06f977d21f43e742f6d",
+    "src_k3_com260_kit/urdf_demo/urdf/simple_robot.xacro": "81f3e75267cb6084eb6bc5187cfb1654e42353bfa54b5b7324d236e9dae7fc0d",
+    "src_k3_com260_kit/urdf_demo/launch/display.launch.py": "858874ac84b12aa9274a76a53b4ce3d3b6299f08e71e350efe1449e25996146c",
+    "src_k3_com260_kit/urdf_demo/rviz/display.rviz": "749dfae61f935e179511dc6c3fc457ad030d83236b04b63542e33b4e91b5ae3d",
+    "src_k3_com260_kit/urdf_demo_ros2/CMakeLists.txt": "40f8eb609783647b07869b203c7730b7c6be2aae3ebfbf1dddacc8eafa725a51",
+    "src_k3_com260_kit/urdf_demo_ros2/package.xml": "fa3ece6af0daab93becc296890be1e3408207cb586a7e79206bfe5d6cbb26c17",
+    "src_k3_com260_kit/urdf_demo_ros2/README.md": "4d65b1d38e1df11ba9d1907e08e067000aa56c0f4d84c379200861469020041a",
+    "src_k3_com260_kit/urdf_demo_ros2/urdf/mybot.xacro": "470bb1e5a1ba8b4b64ae3d841672e3bc95c8aaac7284797c9bfe3b140517db57",
+    "src_k3_com260_kit/urdf_demo_ros2/urdf/macros.xacro": "9a8ae169128d86998d94df0f621cae6009153c570e09dbec15d97b4101f7fbfc",
+    "src_k3_com260_kit/urdf_demo_ros2/urdf/materials.xacro": "6b12c56e82374881d4f9a29ba81cb6178065fb8eb26c08ed7d31342400f58465",
+    "src_k3_com260_kit/urdf_demo_ros2/launch/display_xacro.launch.py": "bfd8ca0fdb66f32ac5f0469345f3eeb0fda5aeae467865a5b43af1b046e6b6ab",
+    "src_k3_com260_kit/urdf_demo_ros2/rviz/mybot_link.rviz": "14e2228d4979eb172d434f3badc6498dcd40d0321f43a6f8e146745273ad7c80",
+    "src_k3_com260_kit/urdf_demo_ros2/rviz/base_link.rviz": "98b35d8071f6a9b94b0e3f8e576190a0764159980c814973b3977403a35ffea4"
+  },
+  "casts": {
+    "ch07-public-board-build-02.cast": {
+      "exit": 0,
+      "started_utc": "2026-10-04T10:41:15+00:00",
+      "sha256": "ca177067a5a28f63bbdb5e0640d6b99ccb97932fa93a322ac64c747897e9899b"
+    },
+    "ch07-public-x86-build.cast": {
+      "exit": 0,
+      "started_utc": "2026-10-04T10:39:18+00:00",
+      "sha256": "8ae76d47171193056e9d2b055ad810c329173794bc0b7163191c1b76b524bfef"
+    },
+    "ch07-public-gazebo.cast": {
+      "exit": 0,
+      "started_utc": "2026-10-04T10:51:11+00:00",
+      "sha256": "f3447ab3bded21f4711eb921ff5c5b1d2402182ab391b1f58e7e2e61f106aa62"
+    },
+    "ch08-public-models-02.cast": {
+      "exit": 0,
+      "started_utc": "2026-10-04T10:47:48+00:00",
+      "sha256": "ce8f6eab3611bd2b0971db988ac0d4cbb31a6c95da5c7cb52f3637bbaf175746"
+    },
+    "ch08-public-simple-query.cast": {
+      "exit": 0,
+      "started_utc": "2026-10-04T10:48:25+00:00",
+      "sha256": "20168c27a51fa57043a01c7eebd571e3e75cbc6633d1b73f9f20d15f5b1de741"
+    },
+    "ch08-public-mybot-query.cast": {
+      "exit": 0,
+      "started_utc": "2026-10-04T10:49:31+00:00",
+      "sha256": "5d776250339a447dd82bb206468f86372a90fbf9b6e09eaebfca86092d38d419"
+    }
+  },
+  "cleanup": {
+    "board": {
+      "pass": true,
+      "course_tf_processes": []
+    },
+    "x86": {
+      "pass": true,
+      "course_containers": []
+    }
+  },
+  "rviz_visual_inspection": {
+    "simple": "Model visible; Global Status: Ok",
+    "mybot": "Model visible; Global Status: Ok"
+  }
+}

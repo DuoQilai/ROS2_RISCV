@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="teaching_robot">
+  <xacro:arg name="use_lidar" default="true"/>
+  <link name="base_link">
+    <visual><geometry><box size="0.4 0.3 0.15"/></geometry><material name="blue"><color rgba="0 0 0.8 1"/></material></visual>
+    <collision><geometry><box size="0.4 0.3 0.15"/></geometry></collision>
+    <inertial><mass value="10"/><inertia ixx="${10*(0.3**2+0.15**2)/12}" ixy="0" ixz="0" iyy="${10*(0.4**2+0.15**2)/12}" iyz="0" izz="${10*(0.4**2+0.3**2)/12}"/></inertial>
+  </link>
+  <xacro:macro name="mecanum_wheel" params="name x y">
+    <joint name="${name}_joint" type="continuous"><parent link="base_link"/><child link="${name}_link"/><origin xyz="${x} ${y} -0.1"/><axis xyz="0 1 0"/></joint>
+    <link name="${name}_link"><visual><origin rpy="1.5708 0 0"/><geometry><cylinder radius="0.05" length="0.03"/></geometry><material name="black"><color rgba="0.15 0.15 0.15 1"/></material></visual></link>
+  </xacro:macro>
+  <xacro:mecanum_wheel name="front_left" x="0.15" y="0.15"/>
+  <xacro:mecanum_wheel name="front_right" x="0.15" y="-0.15"/>
+  <xacro:mecanum_wheel name="rear_left" x="-0.15" y="0.15"/>
+  <xacro:mecanum_wheel name="rear_right" x="-0.15" y="-0.15"/>
+  <xacro:if value="$(arg use_lidar)">
+    <joint name="lidar_joint" type="fixed"><parent link="base_link"/><child link="lidar_link"/><origin xyz="0.15 0 0.125"/></joint>
+    <link name="lidar_link"><visual><geometry><cylinder radius="0.04" length="0.02"/></geometry></visual></link>
+  </xacro:if>
+</robot>

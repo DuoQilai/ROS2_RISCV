@@ -491,3 +491,92 @@ COM260 课程与学生工作区分别在 Domain 198／199 重跑 48 项参数检
 [课程工作区 CAST](images/ch06/ch06-parameters-course-signal.cast) · [学生工作区 CAST](images/ch06/ch06-parameters-practice-signal.cast) · [信号结果与验收器负例](images/ch06/ch06-signal-results.json)。这两份记录提供独立 SIGTERM 证据；前面的参数记录保留其采集版本，不作为单独 TERM 停车的依据。
 
 两章共 35 PNG、19 CAST、5 MP4、7 GIF，以及两份逐步建包 JSON 和两份停止验证 JSON。文件指纹、格式、视频完整解码、CAST 退出事件、本地链接和章节锚点检查通过；五段 Gazebo 录像完成抽帧目检。结束时 COM260 课程 C++ 进程为 0，本组 CLI daemon 未运行，x86 活动课程仿真容器为 0。
+
+<a id="ch07"></a>
+
+## 第七章：TF2 双端实测
+
+验证日期：2026-10-04；运行组 `20261004T061759Z-ch07-ch08`；章节入口：[实验手册](ch07_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch07_TF2坐标变换.md)。本组基于 `1e59d17` 的独立 COM260 源码目录验证，C++17／Humble，业务节点运行于 COM260；可视化运行于 x86。
+
+| 验证项 | 实际结果 |
+|---|---|
+| 两端构建 | COM260 两个 TF 包、x86 四个 TF／模型包成功；Debug 构建，两端 TF 包生成 `compile_commands.json` |
+| 源码身份 | COM260 的 17 个、x86 的 35 个源码／资源文件与本地 SHA-256 一致，包含最终 listener 位姿输出和模型 RViz 配置 |
+| 核心 C++ 示例 | 欧拉角转四元数、四元数转欧拉角、坐标转换、广播器和监听器通过 |
+| TF 综合检查 | COM260 与 x86 各 31 项通过：圆轨迹、单位四元数、五个静态 frame、最新变换、历史查询及插值、未来外推拒绝、晚加入监听器、三次超时 |
+| 20 Hz 练习 | COM260 实测 19.997649 Hz／80 样本；x86 20.000311 Hz／80 样本 |
+| 10／100 Hz 参数 | COM260 10.000529／100.009865 Hz；x86 9.999742／99.996276 Hz，分别 40／400 样本 |
+| 位置和点转换 | `laser_frame` 到 `base_link` 平移 `(0.2,0,0.1)`，四元数 `(0,0,0,1)`；激光点 `(1,0.5,0)` 到相机为 `(1.05,0.5,-0.15) m` |
+| 历史与失败路径 | 查询当前时钟两秒前的变换成功；未来时刻被拒绝；不存在的 frame 恰好尝试三次并退出 1（预期失败），整体验收退出 0 |
+| 教案 10 Hz 主示例 | 独立 `teaching_dynamic` 的 100 ms 定时器实测 COM260 10.001325 Hz／44 样本，x86 9.997412 Hz／47 样本；平移持续变化，节点退出 0 |
+| 独立学生包 | 从空目录建 `tf_demo_lab_cpp`，先编译 broadcaster/listener，再加入 lookup 编译；监听输出完整位姿及转换点，节点正常退出 |
+| 跨机教学 TF | COM260 广播，x86 查询最新／历史变换并执行 `tf2_monitor`、`view_frames`；RViz 显示真实圆轨迹 |
+| Burger 传感器 | x86 Gazebo 发布，COM260 C++ 每两秒查询；LiDAR 相对底盘 `(-0.032,0,0.162) m`，Camera `(0.045,0,0.120) m` |
+| 运动结束 | Gazebo 连续录像包含运动和停车；停止观察收到 87 条 odom，末 20 条线／角速度均为 0 |
+
+[COM260 构建日志](images/ch07/ch07-board-build.log) · [x86 构建日志](images/ch07/ch07-x86-build.log) · [COM260 源码指纹](images/ch07/board-source-match.json) · [x86 源码指纹](images/ch07/x86-source-match.json)。
+
+[板端 TF CAST](images/ch07/ch07-board-tf.cast)／[结果 JSON](images/ch07/ch07-board-tf.json) · [x86 TF CAST](images/ch07/ch07-x86-tf.cast)／[结果 JSON](images/ch07/ch07-x86-tf.json) · [学生建包 CAST](images/ch07/ch07-board-practice.cast) · [教案板端定时器](images/ch07/ch07-board-teaching-dynamic.json)／[x86 定时器](images/ch07/ch07-x86-teaching-dynamic.json)。
+
+![COM260 C++ 广播器与 x86 RViz 的真实 TF 运动](images/ch07/ch07-cross-tf.gif)
+
+[TF 原速 MP4](images/ch07/ch07-cross-tf.mp4) · [COM260 广播 CAST](images/ch07/ch07-board-cross-tf.cast) · [x86 查询 CAST](images/ch07/ch07-cross-query.cast)。跨机使用有线接口和显式 DDS peer；教学 TF 与 Gazebo TF 分轮运行，避免重复 `odom → base_link`。
+
+![Burger RobotModel 与 TF](images/ch07/ch07-burger-tf.png)
+
+[COM260 双传感器查询 CAST](images/ch07/ch07-board-burger-tf.cast) · [真实 TF 树 PDF](images/ch07/ch07-burger-frames.pdf)。传感器 frame 名称采用实际模型的 `laser_link` 和 `camera_link`。
+
+![Gazebo 中的 Burger 运动和停车](images/ch07/ch07-burger-gazebo.gif)
+
+[Gazebo 原速 MP4](images/ch07/ch07-burger-gazebo.mp4) · [停止反馈 JSON](images/ch07/ch07-burger-stop.json)。此录像中的短程运动由 x86 ROS CLI 发送速度指令，用于观察 TF 与仿真变化；不把它描述为 COM260 自动控制轨迹。
+
+<a id="ch08"></a>
+
+## 第八章：URDF／Xacro 与关节实测
+
+章节入口：[实验手册](ch08_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch08_URDF机器人建模.md)。验证日期及运行组同第七章。模型资源为 XML／Xacro，启动编排保留 Python Launch；本章业务状态发布使用 ROS 标准节点。建模练习使用原课程的 5 kg 双轮与 10 kg 四轮教学模型，Gazebo 运动仿真使用 Burger。
+
+| 验证项 | 实际结果 |
+|---|---|
+| 模型检查 | 34 项通过，包含普通 URDF、等价 Xacro、marker、10 kg 四轮教学模型、激光开关及 mybot 的展开和 `check_urdf` |
+| 实验模型参数 | 底盘 `0.4×0.3×0.15 m`／5 kg；双轮半径 `0.05 m`、宽 `0.03 m`；万向球半径 `0.02 m`；连续轮关节 Y 轴与圆柱视觉轴一致 |
+| 学生建包 | 空目录创建 ament_cmake 资源包，逐项保存模型／Launch／RViz，再复制 `simple_robot.xacro` 为 `marked_robot.xacro` 添加正文片段、重建并加载；运行 6 项通过 |
+| 关节 GUI | 201 个 JointState 样本；左右轮从 0 改到 `1.783168`／`-1.952814 rad`，Center 后归零，TF 四元数随之变化 |
+| 标记修改 | 红球半径 `0.03 m`、位置 `(0,0,0.3)`；另外实际加载绿色 `(0.1,0,0.4)` 变体，模型变化可见 |
+| 轮径修改 | 半径 `0.05→0.08 m` 的独立变体在 RViz 正常显示 |
+| 教案模型 | 10 kg 与四轮宏单独检查；`use_lidar` 两种值分别包含／移除激光 link，四轮宏展示几何组合，不代表滚子动力学 |
+| COM260 跨端查询 | C++ `time_query` 收到 x86 RSP 的左轮变换 `(0,0.15,-0.025) m`，点 `(1,0,0)` 变为 `(1,0.15,-0.025) m`，退出 0 |
+
+[模型 JSON](images/ch08/ch08-models.json) · [学生建包 CAST](images/ch08/ch08-practice.cast)／[运行 JSON](images/ch08/ch08-practice.json) · [关节与 TF 原始样本](images/ch08/ch08-joints.json) · [COM260 关节 TF CAST](images/ch08/ch08-board-joint-tf.cast)。
+
+![实际关节滑块操作与 RViz](images/ch08/ch08-joints.gif)
+
+[20 秒原速录像](images/ch08/ch08-joints.mp4)。轮子是均匀圆柱，绕轴转动时外观不易辨认；滑块角度和轮 frame 的 TF 旋转共同证明关节状态变化。
+
+![原始红色 marker](images/ch08/ch08-marker-red.png)
+
+![改变颜色与位置后的 marker](images/ch08/ch08-marker-changed.png)
+
+![四轮教案模型](images/ch08/ch08-teaching-model.png)
+
+第七、八章三段 MP4 都是 x86 私有 Xvfb `:99` 中真实应用的连续 20 秒画面，1280×800、12 fps；GIF 来自对应整段，保持原速、960×600、10 fps。三段视频均完整解码，并对首／中／末帧目检；原始失败尝试和被遮挡画面留在本地验证目录，不作为正文展示。
+
+上述视频与首组检查使用隔离工作区 `~/ros2_course_com260_ch07_ch08_ws`、`~/ros2_course_com260_ch07_ch08_humble_ws`；学生练习另建空目录。公开入口另在以下公共工作区完成实测。
+
+### 第七、八章公共工作区入口
+
+运行组 `20261004T103512Z-public-entry`。COM260 使用 `~/ros2_course_com260_ws`，x86 使用 `~/ros2_course_com260_humble_ws`；直接执行正文提供的脚本与固定路径，执行前保留工作区备份。
+
+| 验证项 | 实际结果 |
+|---|---|
+| COM260 构建 | `--build-ch07`、`--build-ch08` 成功，四个包均解析到公共工作区；C++ TF 检查 31 项通过，教学定时器 10.000078 Hz／44 样本 |
+| x86 构建 | `x86-ch07-ch08.bash build-image`、`build` 成功，四包完成构建 |
+| 模型入口 | 普通 URDF 默认 GUI 与 mybot Xacro 的 `use_gui:=false` 两种路径均通过 `start`、`exec`、`stop`；再次停止返回 0，RViz 显示模型且状态为 Ok |
+| 跨机查询 | Domain 0、有线接口及显式 DDS peer；COM260 C++ 收到普通模型左轮 `(0,0.15,-0.025) m`、mybot 左轮 `(0,0.125,0.1) m`，点转换正确，均退出 0 |
+| Gazebo 入口 | `x86-gazebo.bash start` 后收到 odom；COM260 每两秒查询激光与相机，各得到 4 个正确样本，节点退出 0，`stop` 成功 |
+| 原有包保留 | COM260 原 26 包的 1572 个安装文件、x86 原 23 包的 1539 个安装文件 SHA-256 均不变 |
+| 源码与清理 | 两端 40 个源码／资源／入口脚本与本地指纹一致；结束时本组 COM260 TF 进程与 x86 课程容器均为 0 |
+
+[完整结果与源码指纹](images/ch07/ch07-ch08-public-entry.json) · [COM260 构建及回归 CAST](images/ch07/ch07-public-board-build-02.cast) · [x86 构建 CAST](images/ch07/ch07-public-x86-build.cast) · [Gazebo 与板端传感器查询 CAST](images/ch07/ch07-public-gazebo.cast)。
+
+[模型启动／查询／停止 CAST](images/ch08/ch08-public-models-02.cast) · [COM260 普通模型查询 CAST](images/ch08/ch08-public-simple-query.cast) · [COM260 mybot 查询 CAST](images/ch08/ch08-public-mybot-query.cast) · [普通模型实际 RViz 窗口](images/ch08/simple-public-rviz.png) · [mybot 实际 RViz 窗口](images/ch08/mybot-public-rviz.png)。

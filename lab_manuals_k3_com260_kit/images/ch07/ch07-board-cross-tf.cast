@@ -1,0 +1,8 @@
+{"version":3,"term":{"cols":80,"rows":24},"timestamp":1791096951,"command":"ssh -tt -o BatchMode=yes com260 'bash ~/com260-evidence/20261004T061759Z-ch07-ch08/board_cross_tf.sh'","env":{"SHELL":"/bin/zsh"}}
+[1.514, "o", "COM260 cross-host TF broadcaster, domain=212\r\n"]
+[0.006, "o", "2026-10-04T06:55:53Z\r\n"]
+[0.641, "o", "\u001b[0m[INFO] [1791096953.706777268] [tf_broadcaster]: 已发送 5 个静态 TF 变换；动态频率 20.0 Hz，角步长 0.050 rad\u001b[0m\r\n"]
+[149.450, "o", "\u001b[0m[INFO] [1791097103.107044394] [rclcpp]: signal_handler(SIGINT/SIGTERM)\u001b[0m\r\n"]
+[0.152, "o", "BOUNDED_TF_BROADCAST_COMPLETE\r\n"]
+[0.000, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]

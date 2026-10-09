@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="marked_robot">
+  <xacro:include filename="simple_robot.xacro"/>
+  <link name="custom_marker"><visual><geometry><sphere radius="0.03"/></geometry><material name="red_marker"><color rgba="1.0 0.0 0.0 1.0"/></material></visual></link>
+  <joint name="marker_joint" type="fixed"><parent link="base_link"/><child link="custom_marker"/><origin xyz="0 0 0.3" rpy="0 0 0"/></joint>
+</robot>

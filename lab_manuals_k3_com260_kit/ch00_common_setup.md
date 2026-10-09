@@ -358,3 +358,61 @@ bash "$CH06" stop "$RUN_ID"
 `CYCLONEDDS_URI` 的接口绑定不能代替系统路由检查。即使两端已接有线，仍应确认 `ip -4 route get 对端地址` 的接口和源地址都是有线；若回程仍走 Wi-Fi，先调整课程网络，再复验。不要为通过导航验收而放宽 1 秒里程计超时。
 
 组合启动会同时创建多个 DDS participant。上面的 CycloneDDS 配置将自动分配索引上限设为 100；两端应使用同一设置。若已有自定义配置，也需合并此项并重启相关节点，否则可能出现 `Failed to find a free participant index`，导致部分 Nav2 节点启动失败。第六章脚本未收到自定义配置时采用相同上限和默认网络发现；跨机有线实验仍需显式设置接口和对端地址。
+
+<a id="ch07-ch08"></a>
+## 第七、八章 TF 与建模环境
+
+第七章业务节点使用 C++17；第八章为 XML/Xacro、配置和 Python Launch，无需把模型文件转换成 C++。COM260 运行 TF 广播、监听及查询；x86 运行 Xacro、RViz、关节 GUI 和 Gazebo。两章教学模型与 Gazebo 分轮运行，不能同时向同一 DDS 域发布同名机器人 frame。
+
+【本机访问端，仓库根目录】先预览两端同步清单，核对后将 `-anvi` 改为 `-avi`：
+
+```bash
+for host in com260 duomaomao; do
+  rsync -anvi --relative src_k3_com260_kit/tf_demo_cpp \
+    src_k3_com260_kit/tf_demo_lab_cpp src_k3_com260_kit/urdf_demo \
+    src_k3_com260_kit/urdf_demo_ros2 setup_course_k3_com260_kit.sh \
+    course_support/k3_com260_kit "$host:ROS2_RISCV_COM260/"
+done
+```
+
+【COM260】
+
+```bash
+cd ~/ROS2_RISCV_COM260
+bash setup_course_k3_com260_kit.sh --build-ch07
+source ~/.config/ros2-course-com260/env.bash
+ros2 run tf_demo_lab_cpp tf_broadcaster
+```
+
+确认广播器启动后按 `Ctrl+C` 停止，再继续 x86 模型入口，避免同时发布相同的 `base_link`。
+
+TF 包依赖 rclcpp、geometry_msgs、tf2、tf2_ros、tf2_geometry_msgs、tf2_tools。第八章建模和 GUI 依赖只在 x86 容器准备。`--build-ch08` 仅安装模型资源，不表示板端已安装图形程序。
+
+【x86】复用第六章镜像，并派生独立的第七、八章镜像：
+
+```bash
+cd ~/ROS2_RISCV_COM260
+CH08=course_support/k3_com260_kit/scripts/x86-ch07-ch08.bash
+bash "$CH08" build-image
+bash "$CH08" build
+RUN_ID=$(date -u +%Y%m%dT%H%M%SZ)-ch08
+bash "$CH08" start "$RUN_ID" urdf_demo display.launch.py
+bash "$CH08" exec "$RUN_ID" ros2 topic list
+bash "$CH08" stop "$RUN_ID"
+```
+
+第八章独立建包需可写且持久保存的练习目录。以下命令在 x86 主机启动带桌面访问的练习容器；已有目录先核对内容，所有编辑和生成物保存在主机的同名练习目录。进入后执行手册的建包步骤：
+
+```bash
+mkdir -p ~/my_urdf_com260_ws
+podman run --rm -it --network host --cap-drop all --security-opt no-new-privileges \
+  --env DISPLAY=:1 --env XAUTHORITY=/tmp/course.xauth --env QT_X11_NO_MITSHM=1 \
+  --env LIBGL_ALWAYS_SOFTWARE=1 --env RMW_IMPLEMENTATION=rmw_cyclonedds_cpp \
+  --volume /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  --volume "/run/user/$(id -u)/gdm/Xauthority:/tmp/course.xauth:ro" \
+  --volume "$HOME/my_urdf_com260_ws:/root/my_urdf_com260_ws:rw" \
+  --volume "$HOME/ROS2_RISCV_COM260/src_k3_com260_kit:/course-src:ro" \
+  localhost/ros2-course-com260:ch07-ch08 bash
+```
+
+原 XML/Xacro 对照源码在容器 `/course-src/urdf_demo/`。完成后退出容器；再次使用相同挂载可继续之前的练习。公共图形会话要求和有线 DDS 设置沿用前文。

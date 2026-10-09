@@ -75,6 +75,30 @@ chapters:
         zh:
           lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch06_%E5%8F%82%E6%95%B0%E4%B8%8ELaunch.md
           lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch06_lab.md
+  - id: ch07
+    title:
+      zh: TF2 坐标变换系统
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch07_TF2%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch07_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch07_TF2%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch07_lab.md
+  - id: ch08
+    title:
+      zh: URDF/Xacro 机器人建模
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch08_URDF%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BB%BA%E6%A8%A1.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch08_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch08_URDF%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BB%BA%E6%A8%A1.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch08_lab.md
 introduction_source: https://github.com/DuoQilai/ROS2_RISCV/blob/master/README.md
 editions:
   riscv:
