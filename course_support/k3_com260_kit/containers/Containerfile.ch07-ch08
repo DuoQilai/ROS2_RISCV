@@ -1,0 +1,6 @@
+FROM localhost/ros2-course-com260:ch06-nav2
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui \
+    && rm -rf /var/lib/apt/lists/*
+LABEL org.ros2-riscv.component="humble-tf-urdf"

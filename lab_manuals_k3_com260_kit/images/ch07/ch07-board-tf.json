@@ -1,0 +1,181 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "rate_20.0",
+      "passed": true,
+      "actual_hz": 19.997648565104118,
+      "samples": 80
+    },
+    {
+      "name": "circle_and_quaternion_20.0",
+      "passed": true
+    },
+    {
+      "name": "historical_interpolation",
+      "passed": true
+    },
+    {
+      "name": "future_extrapolation_rejected",
+      "passed": true,
+      "error": "Lookup would require extrapolation into the future.  Requested time 1791098217.985913 but the latest data is at time 1791098207.939306, when looking up transform from frame [base_link] to frame [odom]"
+    },
+    {
+      "name": "static_laser_frame",
+      "passed": true,
+      "xyz": [
+        0.2,
+        0.0,
+        0.1
+      ]
+    },
+    {
+      "name": "static_camera_frame",
+      "passed": true,
+      "xyz": [
+        0.15,
+        0.0,
+        0.25
+      ]
+    },
+    {
+      "name": "static_imu_link",
+      "passed": true,
+      "xyz": [
+        0.0,
+        0.0,
+        0.05
+      ]
+    },
+    {
+      "name": "static_left_wheel",
+      "passed": true,
+      "xyz": [
+        0.0,
+        0.15,
+        -0.05
+      ]
+    },
+    {
+      "name": "static_right_wheel",
+      "passed": true,
+      "xyz": [
+        0.0,
+        -0.15,
+        -0.05
+      ]
+    },
+    {
+      "name": "point_in_base",
+      "passed": true,
+      "code": 0
+    },
+    {
+      "name": "history",
+      "passed": true,
+      "code": 0
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36301,
+      "code": 0
+    },
+    {
+      "name": "laser_to_camera_point",
+      "passed": true
+    },
+    {
+      "name": "late_static_listener",
+      "passed": true,
+      "code": 0
+    },
+    {
+      "name": "missing_frame",
+      "passed": true,
+      "code": 1
+    },
+    {
+      "name": "exactly_three_timeouts",
+      "passed": true
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36202,
+      "code": 0
+    },
+    {
+      "name": "rate_10.0",
+      "passed": true,
+      "actual_hz": 10.00052925365037,
+      "samples": 40
+    },
+    {
+      "name": "circle_and_quaternion_10.0",
+      "passed": true
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36440,
+      "code": 0
+    },
+    {
+      "name": "rate_100.0",
+      "passed": true,
+      "actual_hz": 100.00986543432802,
+      "samples": 400
+    },
+    {
+      "name": "circle_and_quaternion_100.0",
+      "passed": true
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36524,
+      "code": 0
+    },
+    {
+      "name": "teaching_static",
+      "passed": true,
+      "code": 0
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36574,
+      "code": 0
+    },
+    {
+      "name": "euler_to_quaternion",
+      "passed": true
+    },
+    {
+      "name": "quaternion_to_euler",
+      "passed": true
+    },
+    {
+      "name": "coordinate_transformation",
+      "passed": true
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36686,
+      "code": 0
+    },
+    {
+      "name": "node_exit",
+      "passed": true,
+      "pid": 36685,
+      "code": 0
+    },
+    {
+      "name": "core_translation",
+      "passed": true
+    }
+  ],
+  "domain": "211"
+}
