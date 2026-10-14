@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "requested_spawn_z": 1.0,
+  "entity": "turtlebot3_burger",
+  "actual_model_z": 1.0,
+  "physics_paused": true,
+  "source_sha256": "41543b306e58501c1fcbb22bc9e5a1e99ea5952f1e88912aa488d374362e3f27",
+  "measurement": "Gazebo Scene model.pose.position.z, not 2D odometry"
+}

@@ -1,0 +1,8 @@
+{"version":3,"term":{"cols":80,"rows":24},"timestamp":1791099097,"command":"bash /tmp/ch10-carto1.bash","env":{"SHELL":"/bin/zsh"}}
+[0.015, "o", "COM260 Kit Chapter 10 | Cartographer first independent 2D run\r\nRUN_ID=20261004T063929Z DDS_DOMAIN=223\r\n"]
+[7.199, "o", "\u001b[0m[INFO] [1791099105.134630527] [slam_map_runner]: map_updates=14, known_cell_growth=4976, odom_distance=0.335, scan_updates=15, max_finite_ranges=360\u001b[0m\r\n"]
+[0.002, "o", "\u001b[0m[INFO] [1791099105.134886985] [slam_map_runner]: slam-map-updated\u001b[0m\r\n"]
+[1.165, "o", "\u001b[0m[INFO] [1791099106.302862357] [cartographer_state_saver]: Saved Cartographer state on server: /workspace/output/maps/floor1.pbstream\u001b[0m\r\n"]
+[0.282, "o", "CARTOGRAPHER_FLOOR1_SAVE_EXIT=0\r\n"]
+[0.001, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.003, "x", "0"]

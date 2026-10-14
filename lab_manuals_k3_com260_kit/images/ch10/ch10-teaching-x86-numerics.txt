@@ -1,0 +1,196 @@
+Starting >>> slam_teaching_cpp
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found tf2_ros: 0.25.22 (/opt/ros/humble/share/tf2_ros/cmake)
+-- Found tf2_geometry_msgs: 0.25.22 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found nav2_msgs: 1.1.20 (/opt/ros/humble/share/nav2_msgs/cmake)
+-- Found cartographer_ros_msgs: 2.0.9002 (/opt/ros/humble/share/cartographer_ros_msgs/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /workspace/build/slam_teaching_cpp
+[  3%] Building CXX object CMakeFiles/particle_demo.dir/src/particle_demo.cpp.o
+[  6%] Building CXX object CMakeFiles/hector_demo.dir/src/hector_demo.cpp.o
+[ 10%] Building CXX object CMakeFiles/bayes_demo.dir/src/bayes_demo.cpp.o
+[ 13%] Building CXX object CMakeFiles/icp_demo.dir/src/icp_demo.cpp.o
+[ 16%] Building CXX object CMakeFiles/graph_demo.dir/src/graph_demo.cpp.o
+[ 20%] Building CXX object CMakeFiles/analysis_demo.dir/src/analysis_demo.cpp.o
+[ 23%] Building CXX object CMakeFiles/tf_monitor.dir/src/tf_monitor.cpp.o
+[ 26%] Building CXX object CMakeFiles/sensor_monitor.dir/src/sensor_monitor.cpp.o
+[ 30%] Building CXX object CMakeFiles/hector_slam.dir/src/hector_slam.cpp.o
+[ 33%] Building CXX object CMakeFiles/hector_localization.dir/src/hector_localization.cpp.o
+[ 36%] Building CXX object CMakeFiles/cartographer_map_quality.dir/src/cartographer_map_quality.cpp.o
+[ 40%] Building CXX object CMakeFiles/scan_matcher.dir/src/scan_matcher.cpp.o
+[ 43%] Building CXX object CMakeFiles/map_quality_monitor.dir/src/map_quality_monitor.cpp.o
+[ 46%] Building CXX object CMakeFiles/amcl_monitor.dir/src/amcl_monitor.cpp.o
+[ 50%] Building CXX object CMakeFiles/amcl_interface.dir/src/amcl_interface.cpp.o
+[ 53%] Linking CXX executable tf_monitor
+[ 53%] Built target tf_monitor
+[ 56%] Linking CXX executable map_quality_monitor
+[ 56%] Built target map_quality_monitor
+[ 60%] Linking CXX executable amcl_monitor
+[ 63%] Linking CXX executable amcl_interface
+[ 66%] Linking CXX executable bayes_demo
+[ 70%] Linking CXX executable cartographer_map_quality
+[ 70%] Built target bayes_demo
+[ 70%] Built target amcl_monitor
+[ 70%] Built target amcl_interface
+[ 70%] Built target cartographer_map_quality
+[ 73%] Linking CXX executable sensor_monitor
+[ 73%] Built target sensor_monitor
+[ 76%] Linking CXX executable hector_demo
+[Processing: slam_teaching_cpp]
+[ 76%] Built target hector_demo
+[ 80%] Linking CXX executable icp_demo
+[ 80%] Built target icp_demo
+[ 83%] Linking CXX executable graph_demo
+[ 83%] Built target graph_demo
+[ 86%] Linking CXX executable particle_demo
+[ 86%] Built target particle_demo
+[ 90%] Linking CXX executable analysis_demo
+[ 90%] Built target analysis_demo
+[ 93%] Linking CXX executable hector_slam
+[Processing: slam_teaching_cpp]
+[ 96%] Linking CXX executable scan_matcher
+[100%] Linking CXX executable hector_localization
+[100%] Built target hector_slam
+[100%] Built target scan_matcher
+[100%] Built target hector_localization
+-- Install configuration: "Debug"
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/bayes_demo
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/icp_demo
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_demo
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/particle_demo
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/graph_demo
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/analysis_demo
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/sensor_monitor
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/sensor_monitor" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/tf_monitor
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/tf_monitor" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/scan_matcher
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/scan_matcher" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_slam
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_slam" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_localization
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_localization" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/map_quality_monitor
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/map_quality_monitor" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/cartographer_map_quality
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/cartographer_map_quality" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_interface
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_interface" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_monitor
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_monitor" to ""
+-- Installing: /workspace/install/slam_teaching_cpp/include
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/particles.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/teaching_fragments.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/bayes.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/hector.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/localization.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/scan_matching.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/analysis_examples.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/cartographer_concepts.hpp
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/launch
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/launch/cartographer_teaching.launch.py
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/launch/hector_teaching.launch.py
+-- Installing: /workspace/install/slam_teaching_cpp/share/ament_index/resource_index/package_run_dependencies/slam_teaching_cpp
+-- Installing: /workspace/install/slam_teaching_cpp/share/ament_index/resource_index/parent_prefix_path/slam_teaching_cpp
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/ament_prefix_path.sh
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/ament_prefix_path.dsv
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/path.sh
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/path.dsv
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.bash
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.sh
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.zsh
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.dsv
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/package.dsv
+-- Installing: /workspace/install/slam_teaching_cpp/share/ament_index/resource_index/packages/slam_teaching_cpp
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/cmake/slam_teaching_cppConfig.cmake
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/cmake/slam_teaching_cppConfig-version.cmake
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/package.xml
+Finished <<< slam_teaching_cpp [1min 13s]
+
+Summary: 1 package finished [1min 13s]
+=== bayes_demo ===
+bayes mean=0.110476 0.000000 0.025238 cov=0.052381 0.052381 0.052381
+ekf mean=0.100000 0.000000 0.000000 2.100000 0.000000
+graph pose1=1.000000 0.000000 0.000000
+information relative=1.999000 0.000000
+suggestion=slam_toolbox (ROS2推荐) / gmapping
+pass=true
+=== icp_demo ===
+source_to_target expected=-1.103097 -0.182148 -0.300000
+estimated=-0.607006 -0.617133 -0.151175 iterations=21 nearest_error=0.453940
+ICP pose=-0.540115 -0.222217 -0.149692 iterations=19 error=0.052824 ms=1251.748909
+PLICP pose=-0.543200 -0.224743 -0.150317 iterations=5 squared_line_error=0.002758 ms=782.290067
+PLICP angle_error_deg=0.018187 translation_error=0.004886
+known_input_error=0.000000 pass=true
+=== hector_demo ===
+bilinear=0.150000 occupied=0.993307 free=0.182426 unknown=0.500000
+levels=100,200,400 flat_map_pose=0.000000 0.000000 0.000000
+pass=true
+=== particle_demo ===
+rbpf pose=0.100000 0.000000 0.020000 trajectory=1
+Neff uniform=4.000000 single=1.000000
+proposal mean=0.000000 0.000000 0.000000 cov=0.006667 0.006667 0.005000
+distance(0,0)=0.282843 hit=1.000000 beam=3.790952 resampled=8 kld=100
+pass=true
+=== graph_demo ===
+graph before=21.992503610 after=0.000000000 pose2= 2.000000000  0.000000000 -0.000000000 jacobian_max_error=0.000000000
+voxel_count=2 motion=1,0,1 extrapolated=1.100000000 0.000000000 0.110000000
+pass=true
+=== analysis_demo ===
+init_offset=0.000000 final_error=0.000000 iterations=30 converged=1
+init_offset=0.500000 final_error=0.494434 iterations=17 converged=0
+init_offset=1.000000 final_error=0.494434 iterations=18 converged=0
+init_offset=2.000000 final_error=0.494434 iterations=20 converged=0
+noise=0.000000 angle_error=0.000000 translation_error=0.000000
+noise=0.050000 angle_error=0.003490 translation_error=0.028158
+noise=0.100000 angle_error=0.215198 translation_error=1.003007
+noise=0.200000 angle_error=0.000240 translation_error=0.059098
+noise=0.500000 angle_error=0.094060 translation_error=0.329297
+走廊 ICP误差=0.026757 迭代=30
+走廊 PLICP误差=0.000439 迭代=3
+offset=0.000000 0.000000 0.000000 final_error=0.000000 converged=1
+offset=0.100000 0.100000 0.050000 final_error=0.150000 converged=0
+offset=0.500000 0.500000 0.200000 final_error=0.734847 converged=0
+offset=1.000000 1.000000 0.500000 final_error=1.500000 converged=0
+robust error=0.000000 flat_gn=0.000000 0.000000 0.000000
+办公环境建图策略:
+1. 沿走廊中轴线前进，保证两侧墙壁被扫描到
+2. 在每个房间门口做“回”字形扫描
+3. 避免急转弯，保持匀速
+4. 完成所有房间后，沿外环走一圈巩固闭环
+imu_weights=1.000000,0.606531 recovery_after_11=1
+pass=true

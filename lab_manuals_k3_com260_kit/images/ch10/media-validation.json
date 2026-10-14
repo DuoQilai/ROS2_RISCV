@@ -1,0 +1,616 @@
+{
+  "run_id": "20261004T063929Z",
+  "files": 61,
+  "counts": {
+    ".png": 10,
+    ".gif": 3,
+    ".mp4": 4,
+    ".cast": 29,
+    ".json": 12,
+    ".txt": 3
+  },
+  "all_checks_pass": true,
+  "local_markdown_links_pass": true,
+  "items": [
+    {
+      "path": "images/ch09/ch09-campus-result.json",
+      "bytes": 1611,
+      "sha256": "e83c2d135cca2e44fd7dba252c5b09355eb13b8a56433600430880e7086c2087",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch09/ch09-campus.cast",
+      "bytes": 3049,
+      "sha256": "c12ab2b4749cc88bb03d461fcf22e1a2f2f2aac05f8ba449ea680cb1354679ec",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch09/ch09-campus.gif",
+      "bytes": 82222,
+      "sha256": "d13af1de14a387817f25bc51e6e068229a392071a120a1896432503d050a366f",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 1028,
+          "height": 1862,
+          "r_frame_rate": "100/1",
+          "nb_frames": "4"
+        }
+      ],
+      "format": {
+        "duration": "12.360000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch09/ch09-campus.png",
+      "bytes": 79550,
+      "sha256": "9463f62612eb9db054f8cf5429d96a72791fb105959400d1fbd35a70a736fd26",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch09/ch09-gazebo.cast",
+      "bytes": 3663,
+      "sha256": "dc86f12383377b354151b6bbce150bdae7f986b846addd60ff597ae2aebde975",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch09/ch09-gazebo.gif",
+      "bytes": 1048847,
+      "sha256": "16b0639408e4ac9d5e2b122293f30d3d0a1162bd680f3ef5cbf5a0db24c80ef4",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "10/1",
+          "nb_frames": "300"
+        }
+      ],
+      "format": {
+        "duration": "30.000000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch09/ch09-gazebo.mp4",
+      "bytes": 965844,
+      "sha256": "4661dbee2f5ebacdd8f399b87512e5181b23a218eae73bba7fc2e1ad44028b42",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "540"
+        }
+      ],
+      "format": {
+        "duration": "45.000000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch09/ch09-gui-resources.cast",
+      "bytes": 42705,
+      "sha256": "a72b125e20d952d02ef4a8ceb2f25875cdc2161e8f5901739d9dbde21d3e8cb8",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch09/ch09-spawn-z-result.json",
+      "bytes": 290,
+      "sha256": "e4366f5300bf2af99837f8afd27ffc066120e36ebcf5f472b12936dc5cac9e1b",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch09/ch09-spawn-z-scene.txt",
+      "bytes": 11724,
+      "sha256": "41543b306e58501c1fcbb22bc9e5a1e99ea5952f1e88912aa488d374362e3f27"
+    },
+    {
+      "path": "images/ch10/ch09-10-known-inputs.cast",
+      "bytes": 1592,
+      "sha256": "93dbd1403caec9da8497e2463042865f5ed9d2ad25550667cab4d92a3d5a254e",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-amcl-doc.cast",
+      "bytes": 3354,
+      "sha256": "35f9ad7051ba038f076c77cf45b08af05ff6756cc4882e9c9f152fc11b2ab86f",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-amcl-init.cast",
+      "bytes": 1560,
+      "sha256": "d93709b06ac2a661ea6481a5273a3127138c505df1d4b10dc5ec76a2bd245893",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-amcl-lifecycle.png",
+      "bytes": 74002,
+      "sha256": "f0d06e1de8de8842791384d1a960a42bb2c19f46de567a8ed8ff80dc2ea0b3c1",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1368,
+          "height": 717,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-amcl-output.png",
+      "bytes": 198740,
+      "sha256": "dade69c4f4a8958618fcf21a9923c3bb7895926001a6927f2823f2f3ca8326ee",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1368,
+          "height": 1008,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-amcl-params.cast",
+      "bytes": 4795,
+      "sha256": "8c9e247432a96874c03820b759a9eadf877ddc10cf925ae4acf74fc2bd78cea0",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-amcl-relocalize.png",
+      "bytes": 91978,
+      "sha256": "2b5f920f59021eb5b0d6d80e73c3d3ccfe3d9d516a9b10598ce1a27cd3c3dc67",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-amcl-rviz.png",
+      "bytes": 90768,
+      "sha256": "2a8b2d2b331d0873a927491f59edfe05be52277e85807d85ceb498f6b6e1edaf",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-amcl.cast",
+      "bytes": 2492,
+      "sha256": "5d429e74dea78a30d7cffb228c426c5a977ff3c7ed771a6d00bd130c90bd8c19",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-amcl.mp4",
+      "bytes": 469823,
+      "sha256": "ddfcbe54c1746a5133165cec0213611977929c97fa2576f7e8fa2da2fefb3454",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "240"
+        }
+      ],
+      "format": {
+        "duration": "20.000000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-bag-info.png",
+      "bytes": 88893,
+      "sha256": "87367608b1c148450168f2aab88bae2436a892fcb8eeee1abbfebb1ca5dae7a1",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1368,
+          "height": 560,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-bag-map.png",
+      "bytes": 54820,
+      "sha256": "6effea156d542bf18821eb6b58f83cf4883ff74a8713fa3e378326738d11bc51",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-bag-play-result.json",
+      "bytes": 657,
+      "sha256": "b34ad941bec6c6c93f8f4905cec576a3cee3f4eb7ae6804c6c6f9bc8e6dadf73",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-bag-play.cast",
+      "bytes": 2068,
+      "sha256": "d3655fad2897a049a1869b9be2641da58130522dcdc9902afc62c3508898700c",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-bag-play.mp4",
+      "bytes": 1468111,
+      "sha256": "7540a23c0bf3d0b5869159e139747c19a5de2d165816325081e0c3d12a652c0d",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "840"
+        }
+      ],
+      "format": {
+        "duration": "70.000000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-cartographer-floor1.cast",
+      "bytes": 845,
+      "sha256": "dd4011a7bb5d91639be84b63237d3317da5e7af855706da4fe4efa7744c21758",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-cartographer-floor2.cast",
+      "bytes": 830,
+      "sha256": "3fac603dca881df0be0e389c24f7fb0e53e29f07cf5e9f25479cb1d400e5e195",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-compile-commands.json",
+      "bytes": 4897,
+      "sha256": "1b6baa18999a8e7e9528c0b5835df26114089da2cba42f83562c72e8a7b54594",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-inputs.png",
+      "bytes": 108334,
+      "sha256": "0fbfd5f8d63cb2b4ce19e5052fe3557a53c54281bd3491dc5b123df352759383",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1416,
+          "height": 470,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-interface-bootstrap.cast",
+      "bytes": 719724,
+      "sha256": "4bfcf0f51792a1df769f890bab24bc6d18b6b948f74ee8982107d73790b61858",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-interface-bootstrap.json",
+      "bytes": 12617,
+      "sha256": "5ddcf0b730b94cae6663819795909a772450f6f18bf4e70b05a2eb4cb46c0e29",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-interface-recovery.json",
+      "bytes": 869,
+      "sha256": "0f29a5aac895187842b46627e1b1c1b7d22feabd814a78d51eafcc0632b74d92",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-monitor.png",
+      "bytes": 123772,
+      "sha256": "52a5c26bd37407e63e12749d1c4c4d2a7dff7366dbcfbd38eb157401eaa2df62",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1368,
+          "height": 493,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-online-monitor.cast",
+      "bytes": 2062,
+      "sha256": "3a7dbd9ba3bcdb5a156ce81911844cf97cb326a93fdd52c8621c918070a563c6",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-public-setup.cast",
+      "bytes": 401177,
+      "sha256": "b89727b74df80279c6485c7cc4d4d5ae348a2986e16a1f9d75a771ec142bfea6",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-public-x86-build.cast",
+      "bytes": 38128,
+      "sha256": "d9378fe5bb7ba72098756a78e94dff3eba337a7fff1eb601bd3c620af838aa25",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-slam.cast",
+      "bytes": 682,
+      "sha256": "f900a847ee871886e94acdb47a4278cf8e191da5707d3af2a35541cd8d9aa48d",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-slam.gif",
+      "bytes": 1208555,
+      "sha256": "1febff1a1e744101458a575e34a7faed47b6f5e5fb2f923a1fa5ceec0a9009ac",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "10/1",
+          "nb_frames": "280"
+        }
+      ],
+      "format": {
+        "duration": "28.000000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-slam.mp4",
+      "bytes": 1196111,
+      "sha256": "f33ccc0b3ff9b742cd84c3660cd37e3ead8abc6d2e48504b4c0c4cfa139e4a8d",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "480"
+        }
+      ],
+      "format": {
+        "duration": "40.000000"
+      },
+      "decoded": true
+    },
+    {
+      "path": "images/ch10/ch10-source-validation.json",
+      "bytes": 8484,
+      "sha256": "74d64021c9f6f7e67ca84e71bf2d84e75021abcd5e855e8b6a505e3f92a21c75",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-student-board-build.cast",
+      "bytes": 119126,
+      "sha256": "4d80f449f5a685f7251aa3bc502c1e6421b5f41b011763f4b276651765aab0ae",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-student-board-known.cast",
+      "bytes": 1896,
+      "sha256": "ce5b53d39549a6cd4f4a626847b31455fcb738ed461e757f94a333b8b014868c",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-student-resources.cast",
+      "bytes": 3939,
+      "sha256": "43ae6ea3fc15fbdc7551dddb8f1c747fac0152e5f23bfc710f4650a4065331c1",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-student-validation.json",
+      "bytes": 4143,
+      "sha256": "98b49ede78187db8bed300cb0fe108f175da789eb5a25a35da31d7dc84f417ea",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-student-x86-known.cast",
+      "bytes": 1911,
+      "sha256": "aa3481d5536f5b84fe0e16682aed7db22ebf3721183be01c64fa451ded805443",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-hector-live.cast",
+      "bytes": 14428,
+      "sha256": "cc694efe00912d46be543a930b6fd98246fab8b00c23a716f8824ae87ebe36db",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-hector-result.json",
+      "bytes": 12339,
+      "sha256": "65e9d6bbd57cdabf0266374686baf1f9837180de318d912d439b94ecd7caaa4f",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-teaching-interfaces.json",
+      "bytes": 201,
+      "sha256": "5ea4fe2011b55e5853011170da352a697a5f8e35a56b3e61292964e8dec52af8",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-teaching-live-amcl.cast",
+      "bytes": 57838,
+      "sha256": "38cca4a784088ed0be36ba6fcf0d6067cd33cb8de13d315f91986d597a4d6631",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-live-cartographer.cast",
+      "bytes": 3767,
+      "sha256": "b2fb372a99edeb1e2532c11d64e2ac9787faddfa8d44db53b4f101445877bec4",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-live-mapping.cast",
+      "bytes": 22827,
+      "sha256": "25177a7db2f8c8692776ba5af7232fa2936723cbc0101c2d93b7118ec7c36052",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-live-patrol.cast",
+      "bytes": 791,
+      "sha256": "5c85481c8e96ac101ef5df75f049e0ddaf00437fc850b274aa5ec7b22c2bdd7d",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-live-sensors.cast",
+      "bytes": 1729,
+      "sha256": "a4f8b9f03d92527c678cae3c9363ca31b9be634a9b33125b08c2be37240945c5",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-numerics.cast",
+      "bytes": 186607,
+      "sha256": "31b1e5b573eee87c3f33ecfc590189bff3e1e361db17daa469f6c1eee8374dbd",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-patrol-result.json",
+      "bytes": 206,
+      "sha256": "e66f85041bd4a9b4e5092c51ac150b283f5d6231e01241827b6b7f21bf5cbf14",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-teaching-pure-localization-result.json",
+      "bytes": 3040,
+      "sha256": "667a9b0f2a3d6c363921fbb42da9df685eadae4eaba9787fccffa0b3fa9605c1",
+      "json_valid": true
+    },
+    {
+      "path": "images/ch10/ch10-teaching-pure-localization.cast",
+      "bytes": 9498,
+      "sha256": "c55b9df33b99bca21a892c930262325c71c2b68ca56cea0d0a127bf7d2b6e1a8",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-ros.cast",
+      "bytes": 101558,
+      "sha256": "53cd004f89c85487ea5405faa5f7ab160cae3e7b02c8b5bba250d721cdf01c92",
+      "version": 3,
+      "exit_code": 0
+    },
+    {
+      "path": "images/ch10/ch10-teaching-x86-numerics.txt",
+      "bytes": 12662,
+      "sha256": "67a909105f00e6879ff24e7b84d15cdab5efe2e6854023f93f886392660adfac"
+    },
+    {
+      "path": "images/ch10/ch10-teaching-x86-ros.txt",
+      "bytes": 7246,
+      "sha256": "d176072c3a318352429ad42f8a26c9aaf36931d71dd510cf591829659b581b32"
+    },
+    {
+      "path": "images/ch10/ch10-tf.png",
+      "bytes": 153363,
+      "sha256": "26f71a99398b8ffe49f9752bd48409c1e1ef1410a5ddad15be4a01adae9b3718",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1416,
+          "height": 650,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "decoded": true
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "pass": true,
+  "counts": {
+    "clock": 2318,
+    "odom": 1450,
+    "scan": 231,
+    "map": 11
+  },
+  "sources": {
+    "/clock": [
+      "rosbag2_player"
+    ],
+    "/scan": [
+      "rosbag2_player"
+    ],
+    "/odom": [
+      "rosbag2_player"
+    ],
+    "/map": [
+      "slam_toolbox"
+    ],
+    "/tf": [
+      "rosbag2_player",
+      "slam_toolbox",
+      "slam_toolbox"
+    ]
+  },
+  "observed_clock_rate": 0.49999761637732576,
+  "first_map": {
+    "stamp": 568.75,
+    "known": 1640,
+    "width": 303,
+    "height": 265
+  },
+  "last_map": {
+    "stamp": 593.75,
+    "known": 13169,
+    "width": 303,
+    "height": 265
+  },
+  "known_growth": 11529
+}
