@@ -580,3 +580,80 @@ COM260 课程与学生工作区分别在 Domain 198／199 重跑 48 项参数检
 [完整结果与源码指纹](images/ch07/ch07-ch08-public-entry.json) · [COM260 构建及回归 CAST](images/ch07/ch07-public-board-build-02.cast) · [x86 构建 CAST](images/ch07/ch07-public-x86-build.cast) · [Gazebo 与板端传感器查询 CAST](images/ch07/ch07-public-gazebo.cast)。
 
 [模型启动／查询／停止 CAST](images/ch08/ch08-public-models-02.cast) · [COM260 普通模型查询 CAST](images/ch08/ch08-public-simple-query.cast) · [COM260 mybot 查询 CAST](images/ch08/ch08-public-mybot-query.cast) · [普通模型实际 RViz 窗口](images/ch08/simple-public-rviz.png) · [mybot 实际 RViz 窗口](images/ch08/mybot-public-rviz.png)。
+
+<a id="ch09"></a>
+
+## 第九章：Gazebo 与 ros2_control
+
+运行编号 `20261004T063929Z`。COM260 运行 C++17 课程节点，x86 独立 Humble / Harmonic 容器运行 Burger、Gazebo 和官方控制器；原版、Pico 和其他章节的仿真资源保持独立。图形采集使用同一课程镜像的派生采集镜像及独立 Xvfb 桌面，画面来自实际 Gazebo/RViz 窗口。
+
+| 项目 | 实际结果 |
+| --- | --- |
+| 官方控制插件 | gz_ros2_control Humble 固定源 `392112557b08830b9c7f9bf65ab2a8325c7a85f0`，按 `GZ_VERSION=harmonic` 构建成功 |
+| 控制器 | `joint_state_broadcaster`、`diff_drive_controller` 均 active；控制循环 50 Hz，指令超时 1 秒 |
+| 实验传感器 | `/scan` 360 点、180°、`laser_link`；RGB / CameraInfo 均 640×480；IMU 帧 `imu_link`；实际收到 scan、image、camera_info、imu、odom、独立 ground_truth 及 clock |
+| 直行与停止 | 单次 0.3 m/s 指令，150 条反馈；最大 vx 约 0.300，超时尾段线／角速度均接近 0 |
+| 旋转与停止 | 单次 0.8 rad/s 指令，150 条反馈；最大 wz 约 0.800，超时尾段线／角速度均接近 0 |
+| 非默认出生高度 | wrapper传入 `spawn_z:=1.0`；暂停物理后Gazebo Scene中Burger实体 `pose.position.z=1.0`。[结果](images/ch09/ch09-spawn-z-result.json)和[原始Scene响应](images/ch09/ch09-spawn-z-scene.txt)；二维里程计不用于高度判断 |
+| Campus 场景 | 独立 Campus GUI 启动成功，两控制器 active；COM260 六类输入、0.3 m/s 与 0.8 rad/s 的单次命令及超时停止均通过，读取节点退出 0。[CAST](images/ch09/ch09-campus.cast)与[结构化结果](images/ch09/ch09-campus-result.json) |
+| C++ 读取 | `sensor_reader` 跨机收到真实激光和相机，SIGINT 退出 0；已知输入检查独立验证范围边界、NaN/Inf 过滤和图像尺寸 |
+
+[COM260 实际控制与传感器记录](images/ch09/ch09-gazebo.cast)、[连续 Gazebo 录像](images/ch09/ch09-gazebo.mp4)。GIF 从同一原片第 6～36 秒截取，原速、连续，不拼接。
+
+![COM260 控制 Burger 的 Gazebo 实测](images/ch09/ch09-gazebo.gif)
+
+Campus 的[场景截图](images/ch09/ch09-campus.png)来自实际 Gazebo 窗口；[终端 GIF](images/ch09/ch09-campus.gif)由同轮 COM260 SSH CAST 渲染，原记录19.608秒，压缩超过2秒的空闲等待、末帧停留8秒后为12.36秒，输出内容不变。
+
+<a id="ch10"></a>
+
+## 第十章：SLAM 综合实验与第 10～15 章教案
+
+本章延续同一运行编号。仿真激光为独立的 360 点／360° profile；slam_toolbox、AMCL、Cartographer 和回放按顺序运行，每次切换退出上一套地图发布者。教材中的简化 ICP、Hector、粒子滤波和图优化示例用于展示算法结构；数值样例及真实输入接入分别记录，不能据此推断定位精度或生产环境稳定性。
+
+| 项目 | 实际结果 |
+| --- | --- |
+| C++ 帮助节点已知输入 | COM260 和 x86 均通过 7 项：地图分类、激光边界、初始位姿三次发布、非有限值拒绝、0.5 m／30°已知误差、Cartographer Finish→Write 顺序及服务拒绝 |
+| slam_toolbox 地图增长 | `slam_map_runner` 收到 5 次地图更新，已知栅格增加 3732，里程计位移 0.270 m，12 次激光消息，退出 0 |
+| 完整在线入口 | `online_mapping.launch.py` 与 COM260 `slam_monitor` 收到 9 次地图，末次 304×265、occupied=657、free=23235、unknown=56668、known=29.7%，节点退出 0；[真实统计](images/ch10/ch10-online-monitor.cast)与[连续RViz录像](images/ch10/ch10-slam.mp4)对应，GIF截取该40秒原片第7～35秒 |
+| 保存地图 | `lab10_map` 为 173×173、0.05 m/格，PGM/YAML 保存成功 |
+| AMCL 接口 | map_server 和 amcl 均 active；实际粒子接口为 `nav2_msgs/msg/ParticleCloud`，Best Effort；RViz 地图采用 Transient Local |
+| 初始位姿 | COM260 C++ 节点三次发布 (0,0,0)，收到 `/amcl_pose`；RViz `2D Pose Estimate` 另一次实际发布 (1.000,1.033,1.571 rad) |
+| AMCL 运动与停止 | 收到 456 条里程计／独立真值、5 次 AMCL 位姿与粒子云，末次 731 粒子；尾段线／角速度接近 0，评估节点退出 0 |
+| AMCL 误差 | 本段停稳后位置误差 0.117 m、偏航误差 8.83°。`map` 与 Gazebo `world` 的对齐基于建图首帧和同一仿真出生原点，未使用 AMCL 估计反推真值。运动时异步最新消息包含时间差，不能当成时间同步精度测试 |
+| 全局重定位 | 错误初始位姿后调用 `/reinitialize_global_localization` 返回成功，记录了粒子重置后的实际转动和粒子图；未单独量化全局重定位收敛精度。后续教学监控质量值 0.44，仅为教材公式输出 |
+| Cartographer 第一轮 | 新仿真／新后端 trajectory 0；14 次地图更新，已知栅格增长 4976，位移 0.335 m；保存 184395 字节 pbstream，并转换 PGM/YAML |
+| Cartographer 第二轮 | 重新启动仿真和后端；14 次地图更新，已知栅格增长 5019，位移 0.338 m；保存 171490 字节 pbstream，并转换 PGM/YAML |
+
+两次 Cartographer 使用同一个 Museum 世界，验证的是两次独立 2D 建图和导出流程，不代表真实多楼层或 3D 扫描。
+
+[SLAM 地图增长记录](images/ch10/ch10-slam.cast)、[AMCL 初始化记录](images/ch10/ch10-amcl-init.cast)、[AMCL 实际误差记录](images/ch10/ch10-amcl.cast)、[AMCL 连续界面录像](images/ch10/ch10-amcl.mp4)、[Cartographer 第一轮](images/ch10/ch10-cartographer-floor1.cast)、[第二轮](images/ch10/ch10-cartographer-floor2.cast)、[C++ 已知输入](images/ch10/ch09-10-known-inputs.cast)。
+
+教案节点的双端已知输入记录见 [COM260 数值](images/ch10/ch10-teaching-numerics.cast)、[COM260 ROS 输入](images/ch10/ch10-teaching-ros.cast)、[x86 数值](images/ch10/ch10-teaching-x86-numerics.txt)、[x86 ROS 输入](images/ch10/ch10-teaching-x86-ros.txt)。[接口清单](images/ch10/ch10-teaching-interfaces.json)记录两端 96 份 Cartographer/Nav2 消息与服务文件的逐文件 SHA-256 一致性。
+
+真实输入接入另见 [传感器](images/ch10/ch10-teaching-live-sensors.cast)、[TF 与地图](images/ch10/ch10-teaching-live-mapping.cast)、[巡航停止](images/ch10/ch10-teaching-live-patrol.cast)、[AMCL](images/ch10/ch10-teaching-live-amcl.cast)、[Cartographer](images/ch10/ch10-teaching-live-cartographer.cast)。Cartographer 地图含中间占据概率，原教案按严格等于 0／100 分类时两者可能均为 0%；这不等同于地图没有已知区域，其已知覆盖率实际为 33.5%。
+
+[Cartographer纯定位](images/ch10/ch10-teaching-pure-localization.cast)加载已保存pbstream后，旧轨迹0为FROZEN、新轨迹1为ACTIVE，地图TF可查询；仅证明入口和状态切换，不代表全局重定位精度通过。
+
+[简化Hector真实输入](images/ch10/ch10-teaching-hector-live.cast)收到37次地图、97次位姿与780次里程计消息。静止输入期间仍出现位置漂移，记录仅证明教材算法接入成功；[结果](images/ch10/ch10-teaching-hector-result.json)保留实际数值，不将其作为定位性能验收。
+
+### 录包与半速回放
+
+实际录制使用 `--use-sim-time`，话题为 `/scan /odom /tf /tf_static`。SQLite 包包含 3615 条消息、28.981 秒仿真时间：scan 231、odom 1450、tf 1933、tf_static 1。`ros2 bag info` 的 1970 日期是相对仿真时钟的格式化显示，实际采集身份由运行编号和 CAST 的 UTC 时间戳记录。
+
+退出实时 Gazebo、桥、RSP 和控制器后，以 `--clock --rate 0.5` 回放。实测时钟速率 0.4999976；scan、odom、clock 均只有 `rosbag2_player` 一个发布者，map 由 `slam_toolbox` 发布。11 次地图更新，已知格从1640增加到13169；离线303×265、0.05m/格地图已保存PGM/YAML。当前Humble的同一个slam_toolbox进程创建两个TF端点，因此回放期TF端点共3个，不能据此误判存在两个SLAM进程。
+
+[原始回放记录](images/ch10/ch10-bag-play.cast)、[实际来源与速率结果](images/ch10/ch10-bag-play-result.json)、[连续回放录像](images/ch10/ch10-bag-play.mp4)。
+
+![单源回放生成的真实地图](images/ch10/ch10-bag-map.png)
+
+### 构建与复现边界
+
+COM260 在没有 build/install 的新工作区，使用固定官方源码和原样公开 `prepare-ch09-ch10-interfaces.bash` 构建三个接口包成功；96份安装接口与已验证版本逐项一致，随后13项原生C++已知输入复测通过。Cartographer源码在板端直接获取；Nav2直连下载中途停滞，保留失败记录后改用访问端获取的固定提交Git源码缓存，编译仍在COM260完成。因此这里验证通过的是源码缓存恢复路径，不能视为板端直连下载全部成功。[构建与回归CAST](images/ch10/ch10-interface-bootstrap.cast)、[结构化结果](images/ch10/ch10-interface-bootstrap.json)及[源码获取恢复检查](images/ch10/ch10-interface-recovery.json)分别记录实际结果。
+
+公开板端setup和手册学生空目录建包另行实跑。学生两端28文件SHA-256一致，16份正文完整代码块与构建输入一致；双端各7项已知输入、4个Launch入口和资源检查通过。
+
+[公开板端setup记录](images/ch10/ch10-public-setup.cast)、[学生从空目录建包](images/ch10/ch10-student-board-build.cast)、[学生COM260已知输入](images/ch10/ch10-student-board-known.cast)、[学生x86已知输入](images/ch10/ch10-student-x86-known.cast)、[学生Launch和资源检查](images/ch10/ch10-student-resources.cast)、[公开x86构建入口](images/ch10/ch10-public-x86-build.cast)、[学生验收清单](images/ch10/ch10-student-validation.json)。这些CAST均以退出码0结束。
+
+Campus GUI资源独立安装与检查见[双端课程和练习目录验证](images/ch09/ch09-gui-resources.cast)。Harmonic要求`showTitleBar`属性声明布尔类型，本章使用独立GUI副本；原版和Pico文件保持原样。
+
+最终四个参考包共63个源码与资源文件在本地、COM260和x86逐项SHA-256一致，见[源文件清单](images/ch10/ch10-source-validation.json)。四包共21条编译命令，均为Debug并满足C++17；[编译记录](images/ch10/ch10-compile-commands.json)保留实际命令检查结果。Campus GUI资源的增量安装不改变已验证的C++程序。

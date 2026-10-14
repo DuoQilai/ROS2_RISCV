@@ -99,6 +99,90 @@ chapters:
         zh:
           lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch08_URDF%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%BB%BA%E6%A8%A1.md
           lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch08_lab.md
+  - id: ch09
+    title:
+      zh: Gazebo仿真
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch09_Gazebo%E4%BB%BF%E7%9C%9F.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch09_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch09_Gazebo%E4%BB%BF%E7%9C%9F.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch09_lab.md
+  - id: ch10
+    title:
+      zh: SLAM基本概念与贝叶斯框架
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch10_SLAM%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A1%86%E6%9E%B6.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch10_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch10_SLAM%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%A1%86%E6%9E%B6.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
+  - id: ch11
+    title:
+      zh: ICP与PLICP扫描匹配
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch11_ICP%E4%B8%8EPLICP%E6%89%AB%E6%8F%8F%E5%8C%B9%E9%85%8D.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch10_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch11_ICP%E4%B8%8EPLICP%E6%89%AB%E6%8F%8F%E5%8C%B9%E9%85%8D.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
+  - id: ch12
+    title:
+      zh: Hector_SLAM
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch12_Hector_SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch10_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch12_Hector_SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
+  - id: ch13
+    title:
+      zh: gmapping粒子滤波SLAM
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch13_gmapping%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch10_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch13_gmapping%E7%B2%92%E5%AD%90%E6%BB%A4%E6%B3%A2SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
+  - id: ch14
+    title:
+      zh: AMCL定位
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch14_AMCL%E5%AE%9A%E4%BD%8D.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch10_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch14_AMCL%E5%AE%9A%E4%BD%8D.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
+  - id: ch15
+    title:
+      zh: Cartographer图优化SLAM
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch15_Cartographer%E5%9B%BE%E4%BC%98%E5%8C%96SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch10_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch15_Cartographer%E5%9B%BE%E4%BC%98%E5%8C%96SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
 introduction_source: https://github.com/DuoQilai/ROS2_RISCV/blob/master/README.md
 editions:
   riscv:

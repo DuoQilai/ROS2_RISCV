@@ -1,0 +1,40 @@
+{
+  "pass": true,
+  "scope": "Actual local Git repositories; source acquisition fragment extracted from public script; platform guards and colcon build are tested separately on COM260.",
+  "low_speed_http_config": {
+    "bytes_per_second": 1024,
+    "seconds": 60
+  },
+  "checks": [
+    {
+      "name": "initial_fetch_failure",
+      "pass": true,
+      "exit_code": 128
+    },
+    {
+      "name": "retry_clean_without_head",
+      "pass": true,
+      "exit_code": 0
+    },
+    {
+      "name": "reuse_pinned_cache_without_network",
+      "pass": true,
+      "exit_code": 0
+    },
+    {
+      "name": "reject_wrong_head",
+      "pass": true,
+      "exit_code": 1
+    },
+    {
+      "name": "reject_dirty_pinned_source",
+      "pass": true,
+      "exit_code": 1
+    },
+    {
+      "name": "reject_dirty_without_head",
+      "pass": true,
+      "exit_code": 1
+    }
+  ]
+}

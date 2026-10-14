@@ -1,0 +1,96 @@
+Starting >>> slam_teaching_cpp
+Consolidate compiler generated dependencies of target bayes_demo
+Consolidate compiler generated dependencies of target particle_demo
+Consolidate compiler generated dependencies of target icp_demo
+Consolidate compiler generated dependencies of target hector_demo
+Consolidate compiler generated dependencies of target graph_demo
+Consolidate compiler generated dependencies of target sensor_monitor
+Consolidate compiler generated dependencies of target analysis_demo
+Consolidate compiler generated dependencies of target scan_matcher
+Consolidate compiler generated dependencies of target cartographer_map_quality
+Consolidate compiler generated dependencies of target hector_localization
+Consolidate compiler generated dependencies of target map_quality_monitor
+Consolidate compiler generated dependencies of target tf_monitor
+[  6%] Built target particle_demo
+[ 13%] Built target analysis_demo
+[ 20%] Built target sensor_monitor
+[ 26%] Built target icp_demo
+[ 33%] Built target bayes_demo
+Consolidate compiler generated dependencies of target hector_slam
+[ 40%] Built target cartographer_map_quality
+[ 46%] Built target map_quality_monitor
+[ 53%] Built target graph_demo
+[ 60%] Built target scan_matcher
+[ 66%] Built target hector_slam
+[ 73%] Built target hector_localization
+[ 80%] Built target tf_monitor
+[ 86%] Built target hector_demo
+Consolidate compiler generated dependencies of target amcl_monitor
+Consolidate compiler generated dependencies of target amcl_interface
+[ 90%] Building CXX object CMakeFiles/amcl_interface.dir/src/amcl_interface.cpp.o
+[ 96%] Built target amcl_monitor
+[100%] Linking CXX executable amcl_interface
+[Processing: slam_teaching_cpp]
+[100%] Built target amcl_interface
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/bayes_demo
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/icp_demo
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_demo
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/particle_demo
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/graph_demo
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/analysis_demo
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/sensor_monitor
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/tf_monitor
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/scan_matcher
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_slam
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/hector_localization
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/map_quality_monitor
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/cartographer_map_quality
+-- Installing: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_interface
+-- Set runtime path of "/workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_interface" to ""
+-- Up-to-date: /workspace/install/slam_teaching_cpp/lib/slam_teaching_cpp/amcl_monitor
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/particles.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/teaching_fragments.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/bayes.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/hector.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/localization.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/scan_matching.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/analysis_examples.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/include/slam_teaching_cpp/cartographer_concepts.hpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/launch
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/launch/cartographer_teaching.launch.py
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/launch/hector_teaching.launch.py
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/ament_index/resource_index/package_run_dependencies/slam_teaching_cpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/ament_index/resource_index/parent_prefix_path/slam_teaching_cpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/path.sh
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/environment/path.dsv
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.bash
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.sh
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.zsh
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/local_setup.dsv
+-- Installing: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/package.dsv
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/ament_index/resource_index/packages/slam_teaching_cpp
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/cmake/slam_teaching_cppConfig.cmake
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/cmake/slam_teaching_cppConfig-version.cmake
+-- Up-to-date: /workspace/install/slam_teaching_cpp/share/slam_teaching_cpp/package.xml
+Finished <<< slam_teaching_cpp [32.2s]
+
+Summary: 1 package finished [32.6s]
+1791097298.892782 [231]    python3: selected interface "lo" is not multicast-capable: disabling multicast
+{"name": "sensor_monitor", "passed": true, "exit": 0}
+{"name": "scan_matcher_stationary", "passed": true, "exit": 0}
+{"name": "hector_slam_map_and_tf_composition", "passed": true, "exit": 0, "map_messages": 6, "pose_messages": 26, "known_cells": 7188, "map_to_odom": [-0.6269052971877982, -0.45214773567281125]}
+{"name": "tf_monitor_composed_point", "passed": true, "exit": 0}
+{"name": "hector_localization_flat_map", "passed": true, "exit": 0}
+{"name": "map_quality_original_exact_cell_classes", "passed": true, "exit": 0}
+{"name": "cartographer_actual_message_fields", "passed": true, "exit": 0}
+{"name": "amcl_interface_initial_and_quality", "passed": true, "exit": 0, "initial_messages": 1}
+{"name": "amcl_monitor_actual_particle_cloud", "passed": true, "exit": 0}
+{"name": "amcl_invalid_nan,0,0", "passed": true, "exit": 2, "new_initial_messages": 0}
+{"name": "amcl_invalid_0,inf,0", "passed": true, "exit": 2, "new_initial_messages": 0}
+{"name": "amcl_invalid_0,0,1x", "passed": true, "exit": 2, "new_initial_messages": 0}
+{"name": "amcl_invalid_0", "passed": true, "exit": 2, "new_initial_messages": 0}
