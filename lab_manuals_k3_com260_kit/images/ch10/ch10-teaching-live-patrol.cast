@@ -1,0 +1,6 @@
+{"version":3,"term":{"cols":140,"rows":45},"timestamp":1791098089,"command":"ssh -tt -o BatchMode=yes -o ConnectTimeout=8 com260 'bash ~/com260-evidence/20261004T061759Z-ch09-ch10/teaching_patrol_live.sh'","env":{"SHELL":"/bin/zsh"}}
+[4.047, "o", "COM260 existing C++ patrol_driver | real Museum 360-degree SLAM | 0.12m/s, 0.45rad/s | SIGINT stop\r\n"]
+[0.033, "o", "\u001b[0m[INFO] [1791098093.434683929] [patrol_driver]: Patrol driver ready: speed=0.12 m/s, turn=0.45 rad/s\u001b[0m\r\n"]
+[25.799, "o", "{\"samples\": 469, \"node_exit\": 0, \"max_vx\": 0.11999999998700188, \"max_wz\": 0.4500000007095501, \"final_max_vx\": 1.1582956816378582e-13, \"final_max_wz\": 3.5971225018061506e-15, \"passed\": true}\r\n"]
+[0.334, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]

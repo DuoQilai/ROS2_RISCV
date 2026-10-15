@@ -1,0 +1,124 @@
+{
+  "pass": true,
+  "source_files_match": 28,
+  "markdown_files_match": 16,
+  "architectures": [
+    "riscv64",
+    "x86_64"
+  ],
+  "known_input_checks_per_host": 7,
+  "resources": {
+    "pass": true,
+    "resources": [
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/models/burger_lab.sdf",
+        "xml_root": "sdf"
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/models/burger_teacher.sdf",
+        "xml_root": "sdf"
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/urdf/burger_control.urdf",
+        "xml_root": "robot"
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/worlds/empty.sdf",
+        "xml_root": "sdf"
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/worlds/museum.sdf",
+        "xml_root": "sdf"
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/worlds/campus_pucrs.world.sdf",
+        "xml_root": "sdf"
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/config/bridge.yaml",
+        "yaml": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/config/diff_drive.yaml",
+        "yaml": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch09_ws/install/sim_demo/share/sim_demo/rviz/sensors.rviz",
+        "yaml": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch10_ws/install/slam_lab/share/slam_lab/config/mapper_params_online_async.yaml",
+        "yaml": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch10_ws/install/slam_lab/share/slam_lab/config/nav2_localization.yaml",
+        "yaml": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch10_ws/install/slam_lab/share/slam_lab/config/cartographer/burger_2d.lua",
+        "exists": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch10_ws/install/slam_lab/share/slam_lab/config/cartographer/map_builder.lua",
+        "exists": true
+      },
+      {
+        "file": "/workspace/output/exercises/ch10_ws/install/slam_lab/share/slam_lab/config/cartographer/trajectory_builder.lua",
+        "exists": true
+      },
+      {
+        "robot_state_publisher_exit": 0,
+        "student_urdf_loaded": true,
+        "mesh_uris_resolved": true
+      }
+    ]
+  },
+  "recordings": [
+    "ch10-public-setup.cast",
+    "ch10-student-board-build.cast",
+    "ch10-student-board-known.cast",
+    "ch10-student-x86-known.cast",
+    "ch10-student-resources.cast",
+    "ch10-public-x86-build.cast",
+    "../ch09/ch09-gui-resources.cast"
+  ],
+  "final_reference": {
+    "source_files": 63,
+    "local_com260_x86_identical": true,
+    "x86_public_build_packages": 5,
+    "x86_public_build_seconds": 1.19,
+    "compile_commands": {
+      "sim_demo": 1,
+      "slam_lab": 4,
+      "slam_teaching_cpp": 15,
+      "slam_sim_demo_ros2": 1
+    },
+    "cast": "../ch09/ch09-gui-resources.cast",
+    "compile_commands_total": 21,
+    "compile_commands_all_debug_and_cxx17": true,
+    "compile_commands_evidence": "ch10-compile-commands.json",
+    "source_manifest": "ch10-source-validation.json"
+  },
+  "amcl_document_validation": {
+    "valid_parameter_names": 9,
+    "absent_legacy_parameter_names": 9,
+    "yaml_values_checked": 28,
+    "initialpose_commands_received": 2,
+    "amcl_state": "inactive",
+    "casts": [
+      "ch10-amcl-params.cast",
+      "ch10-amcl-doc.cast"
+    ]
+  },
+  "gui_resource_fix": {
+    "pass": true,
+    "installed_copies_checked": 4,
+    "showTitleBar_properties": 8,
+    "gui_sha256": "b54e1b15fb2daf250ce8dc4db275a9cb4cdbbab852a0c0939be8f7d3f0a5ed02",
+    "student_source_files": 28,
+    "reference_source_files": 63,
+    "markdown_files_match": 16,
+    "cast": "../ch09/ch09-gui-resources.cast",
+    "scope": "Only affected resource and CMake install steps rebuilt; prior numerical/ROS checks retained. Campus graphical validation is recorded separately."
+  }
+}

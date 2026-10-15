@@ -1,0 +1,12 @@
+{"version":3,"term":{"cols":140,"rows":45},"timestamp":1791097334,"command":"ssh -tt -o BatchMode=yes -o ConnectTimeout=8 com260 'bash ~/com260-evidence/20261004T061759Z-ch09-ch10/teaching_sensor_live.sh'","env":{"SHELL":"/bin/zsh"}}
+[3.035, "o", "COM260 C++17 sensor_monitor | real x86 Gazebo Museum | ROS_DOMAIN_ID=223\r\n"]
+[0.108, "o", "\u001b[0m[INFO] [1791097337.612999787] [sensor_monitor]: IMU: acc=(0.00,0.00,9.80) gyro=(-0.00,-0.00,-0.00)\u001b[0m\r\n\u001b[0m[INFO] [1791097337.656861066] [sensor_monitor]: 里程计: pos=(0.30,0.00) vel=(0.00m/s)\u001b[0m\r\n"]
+[0.077, "o", "\u001b[0m[INFO] [1791097337.754087496] [sensor_monitor]: 激光: 360条射线, 360个有效点, 范围[0.12, 12.00]\u001b[0m\r\n"]
+[4.939, "o", "\u001b[0m[INFO] [1791097342.672555234] [sensor_monitor]: IMU: acc=(0.00,0.00,9.80) gyro=(-0.00,-0.00,-0.00)\u001b[0m\r\n\u001b[0m[INFO] [1791097342.685610980] [sensor_monitor]: 里程计: pos=(0.30,0.00) vel=(0.00m/s)\u001b[0m\r\n"]
+[0.127, "o", "\u001b[0m[INFO] [1791097342.821627399] [sensor_monitor]: 激光: 360条射线, 360个有效点, 范围[0.12, 12.00]\u001b[0m\r\n"]
+[4.852, "o", "\u001b[0m[INFO] [1791097347.642641080] [sensor_monitor]: IMU: acc=(0.00,0.00,9.80) gyro=(-0.00,-0.00,-0.00)\u001b[0m\r\n\u001b[0m[INFO] [1791097347.655474285] [sensor_monitor]: 里程计: pos=(0.30,0.00) vel=(0.00m/s)\u001b[0m\r\n"]
+[0.139, "o", "\u001b[0m[INFO] [1791097347.807069991] [sensor_monitor]: 激光: 360条射线, 360个有效点, 范围[0.12, 12.00]\u001b[0m\r\n"]
+[1.766, "o", "\u001b[0m[INFO] [1791097349.574138685] [rclcpp]: signal_handler(SIGINT/SIGTERM)\u001b[0m\r\n"]
+[0.208, "o", "sensor_monitor_exit=0\r\n"]
+[0.019, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.003, "x", "0"]

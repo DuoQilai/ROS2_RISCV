@@ -23,9 +23,9 @@ dependencies=(
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08) ;;
+  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10' \
       '--dry-run       Resolve chapter 1-8 dependencies without installing them.' \
       '--install-deps  Install chapter 1-8 dependencies; sudo may ask for your password.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
@@ -35,7 +35,9 @@ case "$mode" in
       '--build-ch05    Build the ten chapter 5 action packages in the same course workspace.' \
       '--build-ch06    Build the chapter 6 C++ parameter and Launch package.' \
       '--build-ch07    Build the two chapter 7 C++ TF packages.' \
-      '--build-ch08    Install the chapter 8 model packages; GUI runs on x86.'
+      '--build-ch08    Install the chapter 8 model packages; GUI runs on x86.' \
+      '--build-ch09    Build chapter 9 sensor_reader in the isolated ch09-ch10 workspace.' \
+      '--build-ch10    Build chapter 10 C++ SLAM helpers in the isolated ch09-ch10 workspace.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -104,6 +106,18 @@ if [[ $mode == --build-ch08 ]]; then
   packages=(urdf_demo_ros2 urdf_demo)
   source_root="$root/src_k3_com260_kit"
 fi
+if [[ $mode == --build-ch09 || $mode == --build-ch10 ]]; then
+  workspace="$HOME/ros2_course_com260_ch09_ch10_ws"
+  env_dir="$HOME/.config/ros2-course-com260-ch09-ch10"
+  source_root="$root/src_k3_com260_kit"
+  chapter=09
+  packages=(sim_demo)
+  if [[ $mode == --build-ch10 ]]; then
+    chapter=10
+    packages=(slam_lab slam_sim_demo_ros2 slam_teaching_cpp param_demo_cpp)
+    [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]] || die 'Prepare the chapter 10 interface underlay with prepare-ch09-ch10-interfaces.bash first.'
+  fi
+fi
 # Chapter 1 packages are shared unchanged with the Pico edition.
 sources=()
 for package in "${packages[@]}"; do
@@ -115,6 +129,9 @@ mkdir -p "$workspace"
 touch "$workspace/.com260-ch01-workspace"
 set +u
 source /opt/ros/humble/setup.bash
+if [[ $chapter == 10 ]]; then
+  source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
+fi
 set -u
 cd "$workspace"
 python3 -m colcon list --base-paths "${sources[@]}"
@@ -139,6 +156,18 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export ROS_DOMAIN_ID=0
 export ROS_LOCALHOST_ONLY=0
 EOF
+if [[ $chapter == 09 || $chapter == 10 ]]; then
+  cat >"$env_dir/env.bash" <<'EOF'
+source /opt/ros/humble/setup.bash
+if [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]]; then
+  source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
+fi
+source "$HOME/ros2_course_com260_ch09_ch10_ws/install/setup.bash"
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_DOMAIN_ID=0
+export ROS_LOCALHOST_ONLY=0
+EOF
+fi
 set +u
 source "$env_dir/env.bash"
 set -u

@@ -1,0 +1,161 @@
+{
+  "pass": true,
+  "workspace": "/home/duomaomao/ros2_course_com260_ch09_ch10_humble_ws",
+  "total_translation_units": 21,
+  "packages": {
+    "sim_demo": {
+      "entries": 1,
+      "cmake_build_type": "Debug",
+      "compiler_default_cxx_standard": 17,
+      "translation_units": [
+        {
+          "file": "/course-src/sim_demo/src/sensor_reader.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        }
+      ]
+    },
+    "slam_lab": {
+      "entries": 4,
+      "cmake_build_type": "Debug",
+      "compiler_default_cxx_standard": 17,
+      "translation_units": [
+        {
+          "file": "/course-src/slam_lab/src/slam_monitor.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_lab/src/initial_pose_setter.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_lab/src/amcl_evaluator.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_lab/src/cartographer_state_saver.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        }
+      ]
+    },
+    "slam_sim_demo_ros2": {
+      "entries": 1,
+      "cmake_build_type": "Debug",
+      "compiler_default_cxx_standard": 17,
+      "translation_units": [
+        {
+          "file": "/course-src/slam_sim_demo_ros2/src/slam_map_runner.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        }
+      ]
+    },
+    "slam_teaching_cpp": {
+      "entries": 15,
+      "cmake_build_type": "Debug",
+      "compiler_default_cxx_standard": 17,
+      "translation_units": [
+        {
+          "file": "/course-src/slam_teaching_cpp/src/bayes_demo.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/icp_demo.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/hector_demo.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/particle_demo.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/graph_demo.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/analysis_demo.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/sensor_monitor.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/tf_monitor.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/scan_matcher.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/hector_slam.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/hector_localization.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/map_quality_monitor.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/cartographer_map_quality.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/amcl_interface.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        },
+        {
+          "file": "/course-src/slam_teaching_cpp/src/amcl_monitor.cpp",
+          "debug_flag": "-g",
+          "standard_flag": null,
+          "effective_cxx_standard": 17
+        }
+      ]
+    }
+  }
+}
