@@ -109,9 +109,18 @@
 
 ### K3 平台适配
 
-K3 Pico-ITX 第 1 章适配：先阅读[公共双端环境](lab_manuals_k3_pico_itx/ch00_common_setup.md)，再完成[第 1 章实验](lab_manuals_k3_pico_itx/ch01_lab.md)。[运行证据与交付状态](lab_manuals_k3_pico_itx/runtime_evidence.md)按章节记录；运行支持文件见 [course_support/k3](course_support/k3/README.md)。 教师／课程文档见 [K3 第一章教案](teaching_docs_k3_pico_itx/ch01_ROS2概述与架构.md)。
+K3 Pico-ITX C++ / RISC-V 版：先阅读[公共双端环境](lab_manuals_k3_pico_itx/ch00_common_setup.md)，再按章节学习。
 
-原版课程使用 `teaching_docs/`、`lab_manuals/` 和 `src/`；C++ / RISC-V K3 版使用 `teaching_docs_k3_pico_itx/`、`lab_manuals_k3_pico_itx/` 和 `src_k3_pico_itx/`。K3 第一章源码通过 `setup_course_k3.sh` 在独立工作区 `~/ros2_course_k3_ws` 构建。
+| 章节 | 教师／课程文档 | 实验指导书 |
+|---|---|---|
+| 1 环境与入门 | [教案](teaching_docs_k3_pico_itx/ch01_ROS2概述与架构.md) | [实验](lab_manuals_k3_pico_itx/ch01_lab.md) |
+| 2 核心编程基础 | [教案](teaching_docs_k3_pico_itx/ch02_核心编程基础.md) | [实验](lab_manuals_k3_pico_itx/ch02_lab.md) |
+| 3 话题通信 | [教案](teaching_docs_k3_pico_itx/ch03_话题通信.md) | [实验](lab_manuals_k3_pico_itx/ch03_lab.md) |
+| 4 服务通信 | [教案](teaching_docs_k3_pico_itx/ch04_服务通信.md) | [实验](lab_manuals_k3_pico_itx/ch04_lab.md) |
+
+[运行证据与交付状态](lab_manuals_k3_pico_itx/runtime_evidence.md)按章节记录；运行支持文件见 [course_support/k3](course_support/k3/README.md)。
+
+原版课程使用 `teaching_docs/`、`lab_manuals/` 和 `src/`；C++ / RISC-V K3 版使用 `teaching_docs_k3_pico_itx/`、`lab_manuals_k3_pico_itx/` 和 `src_k3_pico_itx/`。K3 源码通过 `setup_course_k3.sh` 在独立工作区 `~/ros2_course_k3_ws` 构建。
 
 COM260 Kit 第 1～8 章适配：[公共环境](lab_manuals_k3_com260_kit/ch00_common_setup.md)、[第一章实验](lab_manuals_k3_com260_kit/ch01_lab.md)、[第二章实验](lab_manuals_k3_com260_kit/ch02_lab.md)、[第三章实验](lab_manuals_k3_com260_kit/ch03_lab.md)、[第四章实验](lab_manuals_k3_com260_kit/ch04_lab.md)、[第五章实验](lab_manuals_k3_com260_kit/ch05_lab.md)、[第六章实验](lab_manuals_k3_com260_kit/ch06_lab.md)、[第七章实验](lab_manuals_k3_com260_kit/ch07_lab.md)、[第八章实验](lab_manuals_k3_com260_kit/ch08_lab.md)、[第一章教案](teaching_docs_k3_com260_kit/ch01_ROS2概述与架构.md)、[第二章教案](teaching_docs_k3_com260_kit/ch02_核心编程基础.md)、[第三章教案](teaching_docs_k3_com260_kit/ch03_话题通信.md)、[第四章教案](teaching_docs_k3_com260_kit/ch04_服务通信.md)、[第五章教案](teaching_docs_k3_com260_kit/ch05_动作通信.md)、[第六章教案](teaching_docs_k3_com260_kit/ch06_参数与Launch.md)、[第七章教案](teaching_docs_k3_com260_kit/ch07_TF2坐标变换.md)、[第八章教案](teaching_docs_k3_com260_kit/ch08_URDF机器人建模.md)及[COM260 实测证据](lab_manuals_k3_com260_kit/runtime_evidence.md)。
 
