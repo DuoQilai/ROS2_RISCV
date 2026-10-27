@@ -1,0 +1,4 @@
+string city
+---
+float64 temperature
+string weather
