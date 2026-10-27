@@ -1,0 +1,7 @@
+uint32 total_dishes
+---
+uint32 cleaned_dishes
+bool success
+---
+float32 progress
+uint32 current_dish

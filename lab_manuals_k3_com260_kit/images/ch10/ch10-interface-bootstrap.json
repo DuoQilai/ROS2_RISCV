@@ -1,0 +1,204 @@
+{
+  "run_id": "20261004T061759Z-ch09-ch10",
+  "platform": "COM260 riscv64 / ROS 2 Humble",
+  "method": "Clean build/install using pinned source Git trees; Cartographer fetched directly on COM260, official Nav2 Git cache transferred after direct board download stalled.",
+  "direct_network_download_all_passed": false,
+  "failed_direct_attempt_preserved": true,
+  "source_revisions": {
+    "cartographer_ros": "43cd92bc8c4bf1a90f50eddbbbd724a899ceebe1",
+    "navigation2": "a097086719c88f781aa59788eca29ac6ca5e56db"
+  },
+  "public_script_sha256": "84cb8d799a4d1ea33591e0bbd13f1c5e08ed0582de7b9ccd010cb8f0b89530e6",
+  "build_packages": [
+    "cartographer_ros_msgs",
+    "nav2_common",
+    "nav2_msgs"
+  ],
+  "build_exit_code": 0,
+  "installed_interfaces_match": 96,
+  "interface_sha256": {
+    "cartographer_ros_msgs": {
+      "msg/BagfileProgress.msg": "27e4f85786b09b823b261d6976179b933ad80c0a971bd0ebc56b4139a0a705aa",
+      "msg/HistogramBucket.msg": "41892bd544515d5348229c9430efc7ffbac4f007b85c0548a24f0eca0c60643c",
+      "msg/LandmarkEntry.msg": "91b6a4bc81682f5ddce513709916cbe4b4fa1d660e4bee5032403e615228267d",
+      "msg/LandmarkList.msg": "6c2e603a56060f5903836d8fa2140bf8631d428e01c195f6ec36e52c59768441",
+      "msg/Metric.msg": "a0fcb60097d01c816a736258527268734f470ec9a498a24b4a532187c52e76c6",
+      "msg/MetricFamily.msg": "79eee88424648978eab0226d4a58c290bcbacd94e5b0cc161d309fae586cbd8e",
+      "msg/MetricLabel.msg": "dde7e8885e027db4b079a08f1b5f179d0ea7037699f3efe94dd6c28123d8fbbb",
+      "msg/StatusCode.msg": "935737a52bfc24e6783fb07164218cfb19c7560eb29c8865421e062a2bdb55f8",
+      "msg/StatusResponse.msg": "5e85640b05cf484b0cb7dba661321e5e13a572aeff512a181f409980d0140df6",
+      "msg/SubmapEntry.msg": "81d151e0d78db2b5bddb301d8a2c19d9f608489192b24234d3545cc509df4115",
+      "msg/SubmapList.msg": "8030bb475ec8204f0e42d2de7aa14a1966f530582b3e390972bf4916d15d2112",
+      "msg/SubmapTexture.msg": "c88ce7d8ce6a0db5602a5719c46246260e7e39c71a725f8a69c3f057a146fb32",
+      "msg/TrajectoryStates.msg": "3b833e7591568058bf4d4b560d8f02c08b636f75de911859476966a12dbbb2ea",
+      "srv/FinishTrajectory.srv": "5cca417c7d8bccb15321e38d0968bfa2bff018b6ebb3bec3a38487c87a5f9e45",
+      "srv/FinishTrajectory_Request.msg": "df5587d148761dc6beae2fda9a97a41fc926ff4c66658689c1d3560b503c3d9f",
+      "srv/FinishTrajectory_Response.msg": "61523013d914b3f8cd79e1f1bafe4a562f31c6c1d9a959d7a73b78825c6e237b",
+      "srv/GetTrajectoryStates.srv": "c5f8fae8914f57642914526367e382ba3c8338720383895079378cbfb35c9f98",
+      "srv/GetTrajectoryStates_Request.msg": "d18759df608bc9a9a206d88946526d8ee86b74e8ae53548f3e97bce8766b4652",
+      "srv/GetTrajectoryStates_Response.msg": "84e14c8959bac59c103d4988affb3a0d8189d5821f9fc78e1bfb52c9fc8c0a05",
+      "srv/ReadMetrics.srv": "1eccb6ebe28ef48bb665ad420442ba6704879f73d6244a4af0fc8774c8728d07",
+      "srv/ReadMetrics_Request.msg": "70f0a6b206d089baed2ec50b91de0695afc8ff033379a28700b7a5a999ac0c32",
+      "srv/ReadMetrics_Response.msg": "8d00d05419e5641ca3362d6d3b819dd92219f66c0e46a01193ea3f35f2e5edf7",
+      "srv/StartTrajectory.srv": "16a234930a3d589ab0e47767443bdd5362b0b8ab2cd000516ffb43a2f88606d4",
+      "srv/StartTrajectory_Request.msg": "4946f5c499e5610b429caea1288a5781d906deb2d55a78f20d05c836e21266ca",
+      "srv/StartTrajectory_Response.msg": "0ce7de7b6135ecd21f8539a3d44ee5af0d8061551a4bb0a94b00b2b43c3e24f8",
+      "srv/SubmapQuery.srv": "fc5405cad930d1a4ea037ba1efe8c5fa06ceedfd13b49bbe12f0cea8d98ce122",
+      "srv/SubmapQuery_Request.msg": "ed90b130dd0fe4d9c92420c3ab9e658218275ef79fb671da3324ffb55ea4ad9d",
+      "srv/SubmapQuery_Response.msg": "a7cc05afe1b6db52bf959469e0f9644d194d186cdc9f1e5e27d452e4bc80bdfe",
+      "srv/TrajectoryQuery.srv": "56894edf674df8e299cfc8bab5602f873d9db691a0e062f30851fa762074099c",
+      "srv/TrajectoryQuery_Request.msg": "46d65912850b934e3d21c92d38518245e1f5c54b4a87bfc6279d279ad72b86c5",
+      "srv/TrajectoryQuery_Response.msg": "c879955d3f78583901d5a9223d319d8906db6203cc2a67b089046e12dc97b390",
+      "srv/WriteState.srv": "b54dfaa1a6108a17e430b9a8d3f4dd4f55e170663392e6ad40ab5a5ebbb8eaaf",
+      "srv/WriteState_Request.msg": "0f26e27d11011b2ec633a8d0fed01312a1044bd10c7e5ae6e1700c2e5a0c154b",
+      "srv/WriteState_Response.msg": "61523013d914b3f8cd79e1f1bafe4a562f31c6c1d9a959d7a73b78825c6e237b"
+    },
+    "nav2_msgs": {
+      "action/AssistedTeleop.action": "83999da2df312a8108662c060e73bf0a9f121d4c1f5615e81c65d72e44a4f4e6",
+      "action/BackUp.action": "db4abd516a0e485c7f986900c027073c7484a604600ad44d92325885fb67205e",
+      "action/ComputeAndTrackRoute.action": "24323f139e901e65b113e7dfcbd39520c456b0fc3df6c385021addfed523c863",
+      "action/ComputePathThroughPoses.action": "de13660dbdb5f117e33ff844e0a5089c95df388b6644b608d796b808cf1a4f05",
+      "action/ComputePathToPose.action": "6e02f1450e980e9fc52cc6c7bd2c2c9f7e716be2209de10a59f60774761214aa",
+      "action/ComputeRoute.action": "4e2de878877dee3d00531c5926062b092562d6975ee493e37c7cdeaf5dcf850e",
+      "action/DriveOnHeading.action": "db4abd516a0e485c7f986900c027073c7484a604600ad44d92325885fb67205e",
+      "action/DummyBehavior.action": "d6ac120f6b46c365b3c0fa0234ebd25f599d6f6be968f9f1c7b51b679be98e37",
+      "action/FollowPath.action": "111ca563388f30fd5176121e47a5d272e5e1e81bbeaf7b4f86c5d6cb7a243e53",
+      "action/FollowWaypoints.action": "cdd2c915caf07c5d1948beff5a3b38a9d556ce3aa1f4c99102287932b8053f89",
+      "action/NavigateThroughPoses.action": "b5bb375c4dfbfca86e41b18c55d1bfadcb91e3f7156cb77d8793be9d27eb1576",
+      "action/NavigateToPose.action": "230afba4c69ab8ae9f680c257aad7b55353ab40dbc027614c51b763f153b18a0",
+      "action/SmoothPath.action": "c632a7365ca1e9b4352595edb548849488dea0c805cd09e1a658ebed4fc86a27",
+      "action/Spin.action": "cb3c0af5671030319e50e3cb5ae216a6a37bd11a39affae202d14684794740ce",
+      "action/Wait.action": "d8775103e91fd8cb593b4366881e7f9a8fffa76297b1919eb6055df7145cccb8",
+      "msg/BehaviorTreeLog.msg": "dfdec41db311f6a3de4cdba3cd8b0c7a17c7763159afb477fbd6cd417f2747a1",
+      "msg/BehaviorTreeStatusChange.msg": "73df12e7700c0c3045c4aa49233a517adf2d8d955411d590bd58ff5212ebb895",
+      "msg/CollisionMonitorState.msg": "382250693fb96e5f281cc9780a306e6c119279c23a48627564ebeefc853944e5",
+      "msg/Costmap.msg": "359c3ae99accc8f052691706b9eb277b0a1fe2313f151e4b4970f5eb6f898c47",
+      "msg/CostmapFilterInfo.msg": "5f12568bc1694203b3fd9cbe5ef4dc9429183a8fcaa8aaa1b1855162d6198e79",
+      "msg/CostmapMetaData.msg": "35db3946f56000d0e9e7ad4c823fdcc1815cbd480a2f799bc86eacd2b0afc3b1",
+      "msg/EdgeCost.msg": "b42ca253d9fcc0b609f1371a936ece4ca405d7221959c16f011e140dac618be3",
+      "msg/Particle.msg": "054202262debd3a15c1439fa3646eaa317093debdc22b660fb6cbfc91d57e902",
+      "msg/ParticleCloud.msg": "dce74d4dae900edae8a3c8ccdca8f6b5216b2667830b3ead9bed3760583178cd",
+      "msg/Route.msg": "61f8225fca779489aba7ed6dc82bb9c8306507f441f47549a8533f6253b2ecdf",
+      "msg/RouteEdge.msg": "e534239c87a4f0aa0ebdc9c53b35bbec102270c39143e7a04bec8e05eea28a14",
+      "msg/RouteNode.msg": "9c4fc8741ac7eb502afe6fb266945cf87a53a573e0e4221f7635dcc0dc50d381",
+      "msg/SpeedLimit.msg": "d5e16f9b93293d100135d2ce83e6a20b819e8243666aac84eae95f6bd1516e96",
+      "msg/VoxelGrid.msg": "6ea50cb0a94b7cb2cad53ac4ea0710f2a0301ac91a85edea2d4a158d8dcb5f18",
+      "srv/ClearCostmapAroundRobot.srv": "87753b4c81b14a14867f4cb0367d1ca0619bc9da3b7814e0290cc9b57ae817fb",
+      "srv/ClearCostmapAroundRobot_Request.msg": "a28e0f8e51e70424af58e1b514a1cbe949ec09e2fe6fa5d350ff8bf5b509610b",
+      "srv/ClearCostmapAroundRobot_Response.msg": "12da350c5a2034b935a274e0408a44b2bcce9f5743af1dc0b304880f67d47b6c",
+      "srv/ClearCostmapExceptRegion.srv": "5573acbc3c4c29dce9e215e07167fecb8b11c5aeefedba59aa537bfdd0ff6e14",
+      "srv/ClearCostmapExceptRegion_Request.msg": "ec4eed97a7dd987de30f4b9c7aa07e793d7c7e279092e965ac5f4debc7fd6bc7",
+      "srv/ClearCostmapExceptRegion_Response.msg": "12da350c5a2034b935a274e0408a44b2bcce9f5743af1dc0b304880f67d47b6c",
+      "srv/ClearEntireCostmap.srv": "559a98ea8d132a4851b5b6361f177a2c34b57f3c4b5da1abe824e7a41057e003",
+      "srv/ClearEntireCostmap_Request.msg": "1aff6fd30eabd66b6b644c8b59dac90ec3391727134f76787ca34d780ab3bd21",
+      "srv/ClearEntireCostmap_Response.msg": "12da350c5a2034b935a274e0408a44b2bcce9f5743af1dc0b304880f67d47b6c",
+      "srv/DynamicEdges.srv": "a603c6c6c78cc60d3138b11f330315909c20f8f4122874008a3b2fe52d1cbe42",
+      "srv/DynamicEdges_Request.msg": "b811f0cc29668affecca2643778c12d78e603b5496aeed3f88d41853e5e22888",
+      "srv/DynamicEdges_Response.msg": "7cbdbb4008a7ffae3e9de91d3f76c149468f7184c38af6a719008cfd65cb4340",
+      "srv/GetCostmap.srv": "898caf7bae5f0044569e6092cc5607192497d151034c9c881de12496b50998ed",
+      "srv/GetCostmap_Request.msg": "68846204e4d50bdbeb857260e58808fbaadb2fbeca70bc966f518c24d7444a24",
+      "srv/GetCostmap_Response.msg": "9b86c458a6d0dbba800a64afdf23f971443abebbd52b5eada705938a7a76ef22",
+      "srv/IsPathValid.srv": "bdbdca1e6a9cb90991973bc33025b337a6eda9359376a3e69b842629e0d28165",
+      "srv/IsPathValid_Request.msg": "1feffc0fea2a1b3dc526aae25d8571323227ff62176491fa269c6b084edda96e",
+      "srv/IsPathValid_Response.msg": "c006528cd66094b6e4f3233714b7f20edb9c08275c705a75eb216909b281fd7b",
+      "srv/LoadMap.srv": "301ea2a2226e8723ae8a421eefc4dfbc0e3ed7819402583bd13c034f0802d3aa",
+      "srv/LoadMap_Request.msg": "336146f12a36fc1d60dbc8d993f644391a10ad2b565565f8306eec9ae889e918",
+      "srv/LoadMap_Response.msg": "80fbe5e176706b8df3fac59fa9d962b3a1312bec08081eeb765a98a63c7f49ce",
+      "srv/ManageLifecycleNodes.srv": "04a631baee02cac52ccf2f23bfe3cc7f45c35b5bd51d2ac9de768bc6ea658d1f",
+      "srv/ManageLifecycleNodes_Request.msg": "ccdfba3762310ea15a1d93e823b0e934248d012f8dace220e0a8d5656afbc87d",
+      "srv/ManageLifecycleNodes_Response.msg": "7cbdbb4008a7ffae3e9de91d3f76c149468f7184c38af6a719008cfd65cb4340",
+      "srv/SaveMap.srv": "4dc44acee2cced14b95c74037145b0568844949e3051cf51006497475c8d664f",
+      "srv/SaveMap_Request.msg": "8afa7dcf44aba54dc000b3c52a41146b7ad60181413f4a8a51061b79d4857a20",
+      "srv/SaveMap_Response.msg": "91518f7343f32bc54776f4de1ec658703e5eb78e6530ff5c2a26f7e8eda0708b",
+      "srv/SetInitialPose.srv": "266e28482f7008b9290d1bda52a18bb0418cad468c78ccdb021faf5a21653b86",
+      "srv/SetInitialPose_Request.msg": "d3901bec0dc074d7e9f56c0e83c810d231d4bdb5414fb548d8ee4af7d0dff214",
+      "srv/SetInitialPose_Response.msg": "75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070",
+      "srv/SetRouteGraph.srv": "a41f5feb201658e1a49a3f036cfaf4028619157f81798f4c391c7ebd535533d1",
+      "srv/SetRouteGraph_Request.msg": "6b3f5676a2c1fad98b676e8937585936e82efb35f0302b7596097d8bce9ea980",
+      "srv/SetRouteGraph_Response.msg": "7cbdbb4008a7ffae3e9de91d3f76c149468f7184c38af6a719008cfd65cb4340"
+    }
+  },
+  "native_ros_regression": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "sensor_monitor",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "scan_matcher_stationary",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "hector_slam_map_and_tf_composition",
+        "passed": true,
+        "exit": 0,
+        "map_messages": 6,
+        "pose_messages": 23,
+        "known_cells": 7159,
+        "map_to_odom": [
+          -0.6466422810711211,
+          -0.44220066642612194
+        ]
+      },
+      {
+        "name": "tf_monitor_composed_point",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "hector_localization_flat_map",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "map_quality_original_exact_cell_classes",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "cartographer_actual_message_fields",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "amcl_interface_initial_and_quality",
+        "passed": true,
+        "exit": 0,
+        "initial_messages": 1
+      },
+      {
+        "name": "amcl_monitor_actual_particle_cloud",
+        "passed": true,
+        "exit": 0
+      },
+      {
+        "name": "amcl_invalid_nan,0,0",
+        "passed": true,
+        "exit": 2,
+        "new_initial_messages": 0
+      },
+      {
+        "name": "amcl_invalid_0,inf,0",
+        "passed": true,
+        "exit": 2,
+        "new_initial_messages": 0
+      },
+      {
+        "name": "amcl_invalid_0,0,1x",
+        "passed": true,
+        "exit": 2,
+        "new_initial_messages": 0
+      },
+      {
+        "name": "amcl_invalid_0",
+        "passed": true,
+        "exit": 2,
+        "new_initial_messages": 0
+      }
+    ]
+  },
+  "cast_exit_code": 0
+}

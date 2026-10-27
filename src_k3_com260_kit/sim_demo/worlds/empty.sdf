@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<sdf version="1.9"><world name="default">
+  <physics name="physics" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor></physics>
+  <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+  <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+  <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+  <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+  <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"/>
+  <light name="sun" type="directional"><pose>0 0 10 0 0 0</pose><diffuse>0.8 0.8 0.8 1</diffuse><direction>-0.5 0.1 -0.9</direction></light>
+  <include><uri>model://ISCAS_groundplane</uri></include>
+</world></sdf>

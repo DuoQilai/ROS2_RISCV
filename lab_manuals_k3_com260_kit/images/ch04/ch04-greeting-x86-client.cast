@@ -1,0 +1,7 @@
+{"version":3,"term":{"cols":120,"rows":36},"timestamp":1790047738,"command":"ssh -tt -o BatchMode=yes duomaomao 'bash ~/.local/state/ros2-course-com260/ch04/20260922T030220Z-validation/x86-greeting-client.bash'","env":{"SHELL":"/bin/zsh"}}
+[6.435, "o", "X86_GREETING_CLIENT ROS=humble RMW=rmw_cyclonedds_cpp DOMAIN=0 UTC=2026-09-22T03:29:04Z\r\n"]
+[0.849, "o", "[INFO] [1790047745.337006155] [greetings_client]: Waiting for service...\r\n"]
+[0.611, "o", "[INFO] [1790047745.871628789] [greetings_client]: Response from server: Hi HAN. I'm server!\r\n"]
+[0.162, "o", "X86_GREETING_CLIENT_EXIT=0\r\n"]
+[0.101, "o", "Connection to 192.168.1.4 closed.\r\r\n"]
+[0.002, "x", "0"]

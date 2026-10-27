@@ -1,0 +1,253 @@
+{
+  "pass": true,
+  "steps": [
+    {
+      "stage": 1,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create action_demo_lab_interfaces --build-type ament_cmake --license Apache-2.0\nmkdir -p action_demo_lab_interfaces/action",
+      "exit": 0,
+      "seconds": 1.69,
+      "log": "manual-ch05-v2/logs/01-create.log"
+    },
+    {
+      "file": "src/action_demo_lab_interfaces/action/DoDishes.action",
+      "sha256": "27257cc29781e2d5985ed81433c94beda9012ac70786f38b6c20049c8795212d"
+    },
+    {
+      "file": "src/action_demo_lab_interfaces/CMakeLists.txt",
+      "sha256": "fe8660f5e2d80eae42a6d5eafff65d8bac7a976e0f2f80749886131c76c5cb5d"
+    },
+    {
+      "file": "src/action_demo_lab_interfaces/package.xml",
+      "sha256": "76302948db9ca92cd07ca415d0dbbe79132edd59354c4eef87fef1c425d4df04"
+    },
+    {
+      "stage": 2,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select action_demo_lab_interfaces --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 21.0,
+      "log": "manual-ch05-v2/logs/02-build.log"
+    },
+    {
+      "stage": 3,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create action_demo_lab_cpp --build-type ament_cmake --license Apache-2.0\nmkdir -p action_demo_lab_cpp/src",
+      "exit": 0,
+      "seconds": 2.52,
+      "log": "manual-ch05-v2/logs/03-create.log"
+    },
+    {
+      "file": "src/action_demo_lab_cpp/src/dishes_server.cpp",
+      "sha256": "677e3c7bcb734fe3ec74d1c0e6bb90a95c2ae78a211109e49d96b6923247822e"
+    },
+    {
+      "file": "src/action_demo_lab_cpp/src/dishes_client.cpp",
+      "sha256": "a4465061269f4ca3681ade8b1ac49bb8283acead696bc2386833006a4d096ae8"
+    },
+    {
+      "file": "src/action_demo_lab_cpp/CMakeLists.txt",
+      "sha256": "1c0f0cf6d581eb4de206bff39971e1c263d39d9349873fa4b3791aba5bde6c03"
+    },
+    {
+      "file": "src/action_demo_lab_cpp/package.xml",
+      "sha256": "72d77af7263b3a023ef0dd7ca066ffd9e4e42d33025cad4f37e8b4c3a02267ec"
+    },
+    {
+      "stage": 4,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select action_demo_lab_interfaces action_demo_lab_cpp --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 21.88,
+      "log": "manual-ch05-v2/logs/04-build.log"
+    },
+    {
+      "stage": 5,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create tracking_interfaces --build-type ament_cmake --license Apache-2.0\nmkdir -p tracking_interfaces/action",
+      "exit": 0,
+      "seconds": 2.52,
+      "log": "manual-ch05-v2/logs/05-create.log"
+    },
+    {
+      "file": "src/tracking_interfaces/action/Tracking.action",
+      "sha256": "cb3965c47844c16a5a21807081134344dee6f006a8361ebc8f57f33b77ffb65b"
+    },
+    {
+      "file": "src/tracking_interfaces/CMakeLists.txt",
+      "sha256": "6735ee53d6f4d01454d925d5961696a22b999cd8c570d7cbd6d6cfb461e79429"
+    },
+    {
+      "file": "src/tracking_interfaces/package.xml",
+      "sha256": "76e3d1ea1203c87c55ca7d156f899d3ad1262af23570f865bdfd97c5ab92e7b3"
+    },
+    {
+      "stage": 6,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select tracking_interfaces --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 23.36,
+      "log": "manual-ch05-v2/logs/06-build.log"
+    },
+    {
+      "stage": 7,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create tracking_server --build-type ament_cmake --license Apache-2.0\nmkdir -p tracking_server/src",
+      "exit": 0,
+      "seconds": 2.53,
+      "log": "manual-ch05-v2/logs/07-create.log"
+    },
+    {
+      "file": "src/tracking_server/src/server.cpp",
+      "sha256": "d624f9a0b89bd84e57fd39f1f76c6de6b80017f305e336c5d4f2314f5d3af70b"
+    },
+    {
+      "file": "src/tracking_server/src/client.cpp",
+      "sha256": "deda9286bb3c315d8fa37dd1c17a01e51d252a0161dc48134c65b1e2d5161579"
+    },
+    {
+      "file": "src/tracking_server/CMakeLists.txt",
+      "sha256": "cb29ccf0912c1d330807d191597f6027fe33b71faf62a68c277a43c1822b3f6c"
+    },
+    {
+      "file": "src/tracking_server/package.xml",
+      "sha256": "5a961eb0679e4fe29a4ab8d66cbb6f2a3fc3d9ed0d8f61f73fd87bb8f8ccc1a7"
+    },
+    {
+      "stage": 8,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select tracking_interfaces tracking_server --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 22.86,
+      "log": "manual-ch05-v2/logs/08-build.log"
+    },
+    {
+      "file": "src/tracking_server/src/server_gazebo.cpp",
+      "sha256": "d0b1cfa5dd86f7931fe3936d10d8e4905cfa0525d551576868ebc3f196617670"
+    },
+    {
+      "file": "src/tracking_server/CMakeLists.txt",
+      "sha256": "8055e2aaf80dcccce85d731c4003208cc8fb3bf0529283225c10ab5753d6e83b"
+    },
+    {
+      "stage": 9,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select tracking_interfaces tracking_server --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 41.21,
+      "log": "manual-ch05-v2/logs/09-build.log"
+    },
+    {
+      "stage": 10,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create dishes_action_interfaces --build-type ament_cmake --license Apache-2.0\nmkdir -p dishes_action_interfaces/action",
+      "exit": 0,
+      "seconds": 2.54,
+      "log": "manual-ch05-v2/logs/10-create.log"
+    },
+    {
+      "file": "src/dishes_action_interfaces/action/DoDishes.action",
+      "sha256": "27257cc29781e2d5985ed81433c94beda9012ac70786f38b6c20049c8795212d"
+    },
+    {
+      "file": "src/dishes_action_interfaces/CMakeLists.txt",
+      "sha256": "9cb9608c16f70327fda3f516ed9aed9114cd45220dc2e3b130e8f8e0edc9bd08"
+    },
+    {
+      "file": "src/dishes_action_interfaces/package.xml",
+      "sha256": "6a2d5929b7f5140784c2626ecc1f21471ba6e39647293d88041bb862ee8494c4"
+    },
+    {
+      "stage": 11,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create dishes_action_lab --build-type ament_cmake --license Apache-2.0\nmkdir -p dishes_action_lab/src",
+      "exit": 0,
+      "seconds": 2.53,
+      "log": "manual-ch05-v2/logs/11-create.log"
+    },
+    {
+      "file": "src/dishes_action_lab/src/server.cpp",
+      "sha256": "9a548fbde1f486b2ec20e0b18e2663cccfc1db1d54a13909eddfeb52876aa1f0"
+    },
+    {
+      "file": "src/dishes_action_lab/src/client.cpp",
+      "sha256": "e6c1ad5ca41bd14c772f830b5c8b1ae607fc23cd7d92fd0564d97a9ab0640da8"
+    },
+    {
+      "file": "src/dishes_action_lab/CMakeLists.txt",
+      "sha256": "0ca8b555dd72ac65773b1c26dcfd5ad884b4005b682a5a27549815aba56a26a8"
+    },
+    {
+      "file": "src/dishes_action_lab/package.xml",
+      "sha256": "9b8d13d23721b0102b15063643fcf2ccf36382012dd15e523aa15f21ab2e7a37"
+    },
+    {
+      "stage": 12,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select dishes_action_interfaces dishes_action_lab --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 39.5,
+      "log": "manual-ch05-v2/logs/12-build.log"
+    },
+    {
+      "stage": 13,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create pose_nav_interfaces --build-type ament_cmake --license Apache-2.0\nmkdir -p pose_nav_interfaces/action",
+      "exit": 0,
+      "seconds": 2.55,
+      "log": "manual-ch05-v2/logs/13-create.log"
+    },
+    {
+      "file": "src/pose_nav_interfaces/action/MoveBase.action",
+      "sha256": "283a6fb3293223d53c9e6830909cce32fd97b1866138c4a28dc9c51c57b922cf"
+    },
+    {
+      "file": "src/pose_nav_interfaces/CMakeLists.txt",
+      "sha256": "23eaf9d0890f0ef2e78ecc4ac005def847676dfceaee1de2998cba5cf349ba04"
+    },
+    {
+      "file": "src/pose_nav_interfaces/package.xml",
+      "sha256": "3c66eaeba001f1c6ff4b32f016b806fcd821fab6f27e57db3ca921d3a3dc6ccf"
+    },
+    {
+      "stage": 14,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/src\nros2 pkg create pose_nav_action --build-type ament_cmake --license Apache-2.0\nmkdir -p pose_nav_action/src",
+      "exit": 0,
+      "seconds": 2.55,
+      "log": "manual-ch05-v2/logs/14-create.log"
+    },
+    {
+      "file": "src/pose_nav_action/src/nav_server.cpp",
+      "sha256": "61168570eb6b57bc5a04bce9d0c727a81446ee360b6735c4419178c427565b80"
+    },
+    {
+      "file": "src/pose_nav_action/src/nav_client.cpp",
+      "sha256": "a4a44b3f1f13884b4d273f2804f618b0adf3927195f6118ea9305272bbc349a7"
+    },
+    {
+      "file": "src/pose_nav_action/CMakeLists.txt",
+      "sha256": "2b51e0c9e39e03e87cb9effe3b1a9328f4307cd41c3000664ab1c11ac7621e8f"
+    },
+    {
+      "file": "src/pose_nav_action/package.xml",
+      "sha256": "bbe9ed8b373c00ce3db35fa04dfe97aaff1f1cdfbee9e9948a621c707e9f14f6"
+    },
+    {
+      "stage": 15,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select pose_nav_interfaces pose_nav_action --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 61.8,
+      "log": "manual-ch05-v2/logs/15-build.log"
+    },
+    {
+      "stage": 16,
+      "label": "prefixes",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch05-v2/install/setup.bash\nros2 pkg prefix action_demo_lab_cpp\nros2 pkg prefix action_demo_lab_interfaces\nros2 pkg prefix dishes_action_interfaces\nros2 pkg prefix dishes_action_lab\nros2 pkg prefix pose_nav_action\nros2 pkg prefix pose_nav_interfaces\nros2 pkg prefix tracking_interfaces\nros2 pkg prefix tracking_server",
+      "exit": 0,
+      "seconds": 7.55,
+      "log": "manual-ch05-v2/logs/16-prefixes.log"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "left_wheel_link",
+      "passed": true,
+      "xyz": [
+        0.0,
+        0.15,
+        -0.024999999999999994
+      ]
+    },
+    {
+      "name": "right_wheel_link",
+      "passed": true,
+      "xyz": [
+        0.0,
+        -0.15,
+        -0.024999999999999994
+      ]
+    },
+    {
+      "name": "caster_wheel_link",
+      "passed": true,
+      "xyz": [
+        0.15,
+        0.0,
+        -0.05499999999999999
+      ]
+    },
+    {
+      "name": "custom_marker",
+      "passed": true,
+      "xyz": [
+        0.0,
+        0.0,
+        0.3
+      ]
+    },
+    {
+      "name": "joint_states",
+      "passed": true,
+      "samples": 53
+    },
+    {
+      "name": "robot_description",
+      "passed": true
+    }
+  ]
+}

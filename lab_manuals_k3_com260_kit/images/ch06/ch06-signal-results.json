@@ -1,0 +1,53 @@
+{
+  "run_id": "20260922T135846Z-followup",
+  "scope": "COM260 C++ parameter checks on isolated ROS domains; no synthetic robot-motion claim",
+  "signal_wait": "Send the selected signal once, then wait for exit and observe zero commands before any cleanup",
+  "negative_control": {
+    "pass": true,
+    "case": "ignored-SIGTERM-must-fail",
+    "detected": "timeout",
+    "cleanup_after_assertion": true
+  },
+  "workspaces": {
+    "course": {
+      "domain": 198,
+      "pass": true,
+      "check_count": 48,
+      "signals": [
+        {
+          "case": "speed-stop-SIGINT",
+          "exit": 0,
+          "zero_count": 5,
+          "latency_s": 0.019
+        },
+        {
+          "case": "speed-stop-SIGTERM",
+          "exit": 0,
+          "zero_count": 5,
+          "latency_s": 0.019
+        }
+      ],
+      "utc": "2026-09-22T14:03:17.187645+00:00"
+    },
+    "practice": {
+      "domain": 199,
+      "pass": true,
+      "check_count": 48,
+      "signals": [
+        {
+          "case": "speed-stop-SIGINT",
+          "exit": 0,
+          "zero_count": 5,
+          "latency_s": 0.039
+        },
+        {
+          "case": "speed-stop-SIGTERM",
+          "exit": 0,
+          "zero_count": 5,
+          "latency_s": 0.101
+        }
+      ],
+      "utc": "2026-09-22T14:05:05.987956+00:00"
+    }
+  }
+}

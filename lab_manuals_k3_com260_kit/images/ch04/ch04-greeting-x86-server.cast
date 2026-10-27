@@ -1,0 +1,6 @@
+{"version":3,"term":{"cols":120,"rows":36},"timestamp":1790047909,"command":"ssh -tt -o BatchMode=yes duomaomao 'bash ~/.local/state/ros2-course-com260/ch04/20260922T030220Z-validation/x86-greeting-server.bash'","env":{"SHELL":"/bin/zsh"}}
+[3.111, "o", "X86_GREETING_SERVER UTC=2026-09-22T03:31:52Z\r\n"]
+[11.759, "o", "[INFO] [1790047924.844670470] [greetings_server]: Request from HAN with age 20\r\n"]
+[33.093, "o", "[INFO] [1790047957.875608358] [rclcpp]: signal_handler(SIGINT/SIGTERM)\r\n"]
+[0.413, "o", "Connection to 192.168.1.4 closed.\r\r\n"]
+[0.002, "x", "0"]

@@ -1,0 +1,12 @@
+{"version":3,"term":{"cols":80,"rows":24},"timestamp":1791098301,"command":"bash /tmp/ch10-amcl-init.bash","env":{"SHELL":"/bin/zsh"}}
+[0.008, "o", "COM260 Kit Chapter 10 | AMCL initialization on saved map\r\nRUN_ID=20261004T063929Z DDS_DOMAIN=223\r\n"]
+[6.041, "o", "active [3]\r\n"]
+[2.226, "o", "active [3]\r\n"]
+[1.532, "o", "Type: nav2_msgs/msg/ParticleCloud\r\n"]
+[0.007, "o", "Publisher count: 1\r\nSubscription count: 0\r\n"]
+[1.379, "o", "\u001b[0m[INFO] [1791098312.909218217] [initial_pose_setter]: Published initial pose: x=0.00, y=0.00, yaw=0.0 deg\u001b[0m\r\n"]
+[2.339, "o", "header:\r\n  stamp:\r\n    sec: 25\r\n    nanosec: 750000000\r\n  frame_id: map\r\npose:\r\n  pose:\r\n    position:\r\n      x: -0.004081457768882726\r\n      y: -0.0010810830436621007\r\n      z: 0.0\r\n    orientation:\r\n      x: 0.0\r\n      y: 0.0\r\n      z: 0.0025477235780447674\r\n      w: 0.9999967545470184\r\n  covariance:\r\n  - 0.18493667492767485\r\n  - 0.0027169431136930882\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0027169431136930874\r\n  - 0.22879404025808275\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.0\r\n  - 0.062071966473364854\r\n"]
+[0.029, "o", "---\r\n"]
+[0.435, "o", "AMCL_INITIALIZATION_EXIT=0\r\n"]
+[0.004, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.003, "x", "0"]

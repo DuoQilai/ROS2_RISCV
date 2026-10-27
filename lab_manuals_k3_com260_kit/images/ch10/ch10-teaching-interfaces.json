@@ -1,0 +1,14 @@
+{
+  "cartographer_ros_msgs": {
+    "board": 34,
+    "x86": 34,
+    "equal": true,
+    "different": []
+  },
+  "nav2_msgs": {
+    "board": 62,
+    "x86": 62,
+    "equal": true,
+    "different": []
+  }
+}

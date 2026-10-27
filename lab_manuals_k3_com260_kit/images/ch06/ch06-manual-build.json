@@ -1,0 +1,85 @@
+{
+  "pass": true,
+  "steps": [
+    {
+      "stage": 1,
+      "label": "create",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2/src\nros2 pkg create param_demo_cpp --build-type ament_cmake --license Apache-2.0 \\\n  --dependencies rclcpp rcl_interfaces geometry_msgs",
+      "exit": 0,
+      "seconds": 1.68,
+      "log": "manual-ch06-v2/logs/01-create.log"
+    },
+    {
+      "stage": 2,
+      "label": "directories",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2/src/param_demo_cpp\nmkdir -p launch config maps rviz",
+      "exit": 0,
+      "seconds": 0.66,
+      "log": "manual-ch06-v2/logs/02-directories.log"
+    },
+    {
+      "file": "src/param_demo_cpp/package.xml",
+      "sha256": "20ff737a6e14ca755ce265115ee897c6822c3728abf55028f43644cf15d243b6"
+    },
+    {
+      "file": "src/param_demo_cpp/CMakeLists.txt",
+      "sha256": "cd6fb1706727953d99f49c3fd7f230043f25107e75ab6a3c7631d0e245694e24"
+    },
+    {
+      "file": "src/param_demo_cpp/src/param_node.cpp",
+      "sha256": "2f784e45a5b34407096970e5c4d1127f857e3d99c500e320689282bf6031036a"
+    },
+    {
+      "stage": 3,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --packages-select param_demo_cpp --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 15.93,
+      "log": "manual-ch06-v2/logs/03-build.log"
+    },
+    {
+      "file": "src/param_demo_cpp/config/params.yaml",
+      "sha256": "6a64f2f0c6619067c307d8d02db6e0d7b4adc1a94ea1da4913c806397527157b"
+    },
+    {
+      "file": "src/param_demo_cpp/launch/param_with_yaml.launch.py",
+      "sha256": "b5efef8b70dac61187a3ac38b57a8b5266869c1d5ffe7b1be822f877b513a8b0"
+    },
+    {
+      "stage": 4,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --base-paths src/param_demo_cpp --packages-select param_demo_cpp --symlink-install\nsource install/setup.bash",
+      "exit": 0,
+      "seconds": 4.34,
+      "log": "manual-ch06-v2/logs/04-build.log"
+    },
+    {
+      "file": "src/param_demo_cpp/src/speed_controller.cpp",
+      "sha256": "4b60991d43ac2af4162fef4dbea6d97d8221ee5063c609a37d19899a6bbe5039"
+    },
+    {
+      "file": "src/param_demo_cpp/config/speed_params.yaml",
+      "sha256": "676aff3688afef7195ff001745dce9ae2f6df02af6f709228d4231c156359c81"
+    },
+    {
+      "file": "src/param_demo_cpp/launch/speed.launch.py",
+      "sha256": "20e04663472f27443f0cfe7e0d7136da8af201be5895b793f71b235f0ee33665"
+    },
+    {
+      "stage": 5,
+      "label": "build",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2/install/setup.bash\ncd /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2\nsource /opt/ros/humble/setup.bash\npython3 -m colcon build --base-paths src/param_demo_cpp \\\n  --packages-select param_demo_cpp \\\n  --symlink-install\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2/install/setup.bash",
+      "exit": 0,
+      "seconds": 19.15,
+      "log": "manual-ch06-v2/logs/05-build.log"
+    },
+    {
+      "stage": 6,
+      "label": "prefixes",
+      "command": "set -e\nsource /opt/ros/humble/setup.bash\nsource /home/com260/com260-evidence/20260922T103700Z/manual-ch06-v2/install/setup.bash\nros2 pkg prefix param_demo_cpp",
+      "exit": 0,
+      "seconds": 2.23,
+      "log": "manual-ch06-v2/logs/06-prefixes.log"
+    }
+  ]
+}

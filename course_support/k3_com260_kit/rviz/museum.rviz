@@ -1,0 +1,89 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /RobotModel1
+        - /RobotModel1/Status1
+        - /TF1/Status1
+        - /LaserScan1
+        - /LaserScan1/Status1
+        - /Camera1
+        - /Camera1/Status1
+        - /Image1
+        - /Image1/Status1
+  - Class: rviz_common/Views
+    Name: Views
+  - Class: rviz_common/Time
+    Name: Time
+Visualization Manager:
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Enabled: true
+      Name: Grid
+      Plane: XY
+      Cell Size: 1
+      Plane Cell Count: 20
+      Reference Frame: <Fixed Frame>
+    - Class: rviz_default_plugins/RobotModel
+      Enabled: true
+      Name: RobotModel
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Durability Policy: Transient Local
+    - Class: rviz_default_plugins/TF
+      Enabled: false
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+    - Class: rviz_default_plugins/LaserScan
+      Enabled: true
+      Name: LaserScan
+      Topic:
+        Value: /scan
+      Size (m): 0.03
+      Style: Flat Squares
+      Color Transformer: FlatColor
+      Color: 0; 255; 0
+    - Class: rviz_default_plugins/Camera
+      Enabled: true
+      Name: Camera
+      Topic:
+        Value: /camera/image_raw
+    - Class: rviz_default_plugins/Image
+      Enabled: true
+      Name: Image
+      Topic:
+        Value: /camera/image_raw
+  Enabled: true
+  Global Options:
+    Background Color: 235; 235; 235
+    Fixed Frame: base_link
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 3
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Name: Current View
+      Pitch: 0.7
+      Target Frame: <Fixed Frame>
+      Yaw: 0.8
+Window Geometry:
+  Hide Left Dock: false
+  Hide Right Dock: false
+  Height: 1000
+  Width: 1900
+  X: 0
+  Y: 40

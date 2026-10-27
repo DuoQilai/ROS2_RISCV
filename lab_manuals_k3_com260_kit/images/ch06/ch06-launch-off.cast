@@ -1,0 +1,4 @@
+{"version":3,"term":{"cols":150,"rows":42},"timestamp":1790082556,"command":"ssh -tt -o HostName=192.168.1.172 -o HostKeyAlias=192.168.1.4 -o BatchMode=yes duomaomao bash ROS2_RISCV_COM260/course_support/k3_com260_kit/scripts/x86-ch06.bash exec launch-off-final python3 /evidence/check_launch_off.py","env":{"SHELL":"/bin/zsh"}}
+[6.832, "o", "LAUNCH_OFF_PASS {\"pass\": true, \"gui\": false, \"rviz\": false, \"drive\": false, \"cmd_publishers\": 0, \"odom_samples\": 229, \"nodes\": [\"camera_info_publisher\", \"gazebo2_bridge\", \"ch06_off_probe\", \"gazebo2_robot_state_publisher\", \"gazebo2_camera_bridge\"], \"utc\": \"2026-09-22T13:09:25.390658+00:00\"}\r\n"]
+[0.258, "o", "Connection to 192.168.1.172 closed.\r\r\n"]
+[0.002, "x", "0"]

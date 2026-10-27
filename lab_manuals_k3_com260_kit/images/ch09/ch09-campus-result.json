@@ -1,0 +1,76 @@
+{
+  "pass": true,
+  "profile": "lab",
+  "checks": [
+    {
+      "name": "all_real_inputs",
+      "pass": true,
+      "counts": {
+        "scan": 2,
+        "truth": 13,
+        "odom": 12,
+        "imu": 12,
+        "camera_info": 1,
+        "image": 1
+      }
+    },
+    {
+      "name": "sensor_values",
+      "pass": true,
+      "scan_points": 360,
+      "scan_angle": 3.141592025756836,
+      "scan_frame": "laser_link",
+      "image": [
+        640,
+        480,
+        "rgb8"
+      ],
+      "camera_info": [
+        640,
+        480
+      ],
+      "imu_frame": "imu_link"
+    },
+    {
+      "name": "forward_single_command_timeout_stop",
+      "pass": true,
+      "samples": 150,
+      "max_vx": 0.2999999998351803,
+      "max_wz": 1.4646270307657743e-10,
+      "final": {
+        "phase": "forward",
+        "wall": 1791101875.4699852,
+        "stamp": 284.62,
+        "x": 0.29999999933298416,
+        "y": -6.602685171386933e-12,
+        "vx": 6.66138238614558e-17,
+        "wz": -7.595783884192078e-27
+      }
+    },
+    {
+      "name": "turn_single_command_timeout_stop",
+      "pass": true,
+      "samples": 150,
+      "max_vx": 4.86528206606867e-11,
+      "max_wz": 0.7999999965720597,
+      "final": {
+        "phase": "turn",
+        "wall": 1791101882.9992266,
+        "stamp": 287.62,
+        "x": 0.2999999993309694,
+        "y": -7.056333945741189e-12,
+        "vx": 6.661382384295859e-17,
+        "wz": 1.0547240235832058e-16
+      }
+    }
+  ],
+  "counts": {
+    "scan": 55,
+    "truth": 339,
+    "odom": 338,
+    "imu": 338,
+    "camera_info": 27,
+    "image": 27
+  },
+  "reader_exit": 0
+}
