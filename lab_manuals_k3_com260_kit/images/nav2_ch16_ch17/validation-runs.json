@@ -1,0 +1,11 @@
+{
+  "current_acceptance_run": "20261108T142740Z-packages",
+  "runs": [
+    {
+      "run_id": "20261108T142740Z-packages",
+      "status": "passed",
+      "manifest": "20261108T142740Z-packages/manifest.json",
+      "manifest_sha256": "ce93b9457b45e7305c5d9be571f5985ef197c4b4fd0077c3656d213132ab4c5a"
+    }
+  ]
+}

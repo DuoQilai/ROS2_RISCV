@@ -1,0 +1,6 @@
+[INFO] [1794148875.382054156] [map_loader]: 地图已加载: /home/com260/ros2_course_com260_ch16_ch17_ws/runs/20261108T142740Z-packages/checks/grid.yaml (2x2)
+[INFO] [1794148875.387472694] [map_loader]: 地图已加载: /home/com260/ros2_course_com260_ch16_ch17_ws/runs/20261108T142740Z-packages/checks/grid.yaml (2x2)
+[INFO] [1794148875.389899317] [map_loader]: 地图已加载: /home/com260/ros2_course_com260_ch16_ch17_ws/runs/20261108T142740Z-packages/checks/grid.yaml (2x2)
+[ERROR] [1794148875.392217107] [map_loader]: 地图加载失败: bad file: /home/com260/ros2_course_com260_ch16_ch17_ws/runs/20261108T142740Z-packages/checks/missing.yaml
+[ERROR] [1794148875.393973731] [map_loader]: 地图加载失败: 地图分辨率或阈值无效
+[INFO] [1794148875.581391765] [rclcpp]: signal_handler(SIGINT/SIGTERM)

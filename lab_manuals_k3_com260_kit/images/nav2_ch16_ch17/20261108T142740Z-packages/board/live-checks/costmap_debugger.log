@@ -1,0 +1,3 @@
+[INFO] [1794148901.642279399] [costmap_debugger]: /global_costmap/costmap 992x992 resolution=0.050 未知=84.5% 空闲=9.8% 膨胀=2.4% 内切=2.7% 致命=0.5%
+[INFO] [1794148901.642903523] [costmap_debugger]: /local_costmap/costmap 60x60 resolution=0.050 未知=0.0% 空闲=100.0% 膨胀=0.0% 内切=0.0% 致命=0.0%
+[INFO] [1794148901.680390781] [rclcpp]: signal_handler(SIGINT/SIGTERM)

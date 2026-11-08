@@ -1,0 +1,6 @@
+{"version":3,"term":{"cols":140,"rows":36},"timestamp":1794148948,"command":"ssh -tt -o BatchMode=yes com260 'bash ~/ros2_course_com260_ch16_ch17_ws/planner.bash'","env":{"SHELL":"/bin/zsh"}}
+[3.538, "o", "RUN_ID=20261108T142740Z-packages\r\n"]
+[1.405, "o", "[INFO] [1794148951.916701079] [global_planner_client]: 路径规划成功: 313 个路径点\r\n\r\n"]
+[0.002, "o", "{\"run_id\": \"20261108T142740Z-packages\", \"start\": [0, 0], \"goal\": [3, 2], \"planner\": \"GridBased\", \"exit\": 0, \"duration_s\": 1.4060055700001612, \"path_points\": 313, \"passed\": true}\r\n"]
+[0.017, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]

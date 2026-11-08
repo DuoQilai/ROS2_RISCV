@@ -1,0 +1,6 @@
+[INFO] [1794149989.302764297] [bt_navigator_client]: 目标已接受: x=3.00 y=2.00 yaw=0.00
+[INFO] [1794149989.323378364] [bt_navigator_client]: 剩余距离: 0.00 m
+[INFO] [1794149992.140428792] [bt_navigator_client]: 剩余距离: 7.57 m
+[INFO] [1794149994.815691187] [bt_navigator_client]: 剩余距离: 7.62 m
+[INFO] [1794149995.321311888] [bt_navigator_client]: 已请求取消导航
+[INFO] [1794149995.564936475] [bt_navigator_client]: 导航结果: CANCELED

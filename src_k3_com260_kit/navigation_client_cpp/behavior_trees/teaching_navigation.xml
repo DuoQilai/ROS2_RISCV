@@ -1,0 +1,37 @@
+<!-- navigation_nav2/behavior_trees/navigate_to_pose.xml -->
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <PipelineSequence name="NavigateWithRecovery">
+      <!-- 全局规划阶段 -->
+      <RateController hz="1.0">
+        <RecoveryNode number_of_retries="1" name="ComputePath">
+          <ComputePathToPose
+            goal="{goal}"
+            path="{path}"
+            planner_id="GridBased"/>
+          <ClearEntireCostmap
+            service_name="global_costmap/clear_entirely_global_costmap"/>
+        </RecoveryNode>
+      </RateController>
+
+      <!-- 路径跟踪阶段 -->
+      <RateController hz="10.0">
+        <RecoveryNode number_of_retries="1" name="FollowPath">
+          <FollowPath
+            path="{path}"
+            controller_id="FollowPath"/>
+          <Sequence name="RecoveryActions">
+            <Spin
+              spin_dist="1.57"/>
+            <Wait
+              wait_duration="1.0"/>
+            <BackUp
+              backup_dist="0.15"/>
+            <ClearEntireCostmap
+              service_name="local_costmap/clear_entirely_local_costmap"/>
+          </Sequence>
+        </RecoveryNode>
+      </RateController>
+    </PipelineSequence>
+  </BehaviorTree>
+</root>

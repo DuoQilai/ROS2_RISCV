@@ -1,0 +1,38 @@
+{
+  "run_id": "20261108T142740Z-packages",
+  "events": [
+    {
+      "kind": "wait",
+      "id": "36d3c9551661b46b7b43586defe1a66a",
+      "status": 2,
+      "sim_time": 518.875,
+      "wall_time": 1794149640.3364139
+    },
+    {
+      "kind": "wait",
+      "id": "36d3c9551661b46b7b43586defe1a66a",
+      "status": 4,
+      "sim_time": 520.875,
+      "wall_time": 1794149645.3368633
+    },
+    {
+      "kind": "spin",
+      "id": "9d15afa9ce357db8353fefe0ec10fc74",
+      "status": 2,
+      "sim_time": 520.875,
+      "wall_time": 1794149645.3660557
+    },
+    {
+      "kind": "spin",
+      "id": "9d15afa9ce357db8353fefe0ec10fc74",
+      "status": 4,
+      "sim_time": 527.355,
+      "wall_time": 1794149664.1691432
+    }
+  ],
+  "odom_samples": 1602,
+  "wait_duration_sim_s": 2.0,
+  "spin_duration_sim_s": 6.480000000000018,
+  "spin_odom_yaw_rad": 6.305734496814507,
+  "passed": true
+}

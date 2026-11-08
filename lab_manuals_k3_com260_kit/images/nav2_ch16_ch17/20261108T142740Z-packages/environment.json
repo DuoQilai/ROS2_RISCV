@@ -1,0 +1,25 @@
+{
+  "run_id": "20261108T142740Z-packages",
+  "board": {
+    "architecture": "riscv64",
+    "system": "Bianbu 4.0.6"
+  },
+  "simulation": {
+    "architecture": "x86_64",
+    "image": "localhost/ros2-course-com260:ch06-nav2",
+    "image_id": "6f4e27397e362843826493e95cca34d145ab80385009dadede34cfa8e90999a4",
+    "nav2_version": "1.1.20-1jammy.20260908.021125",
+    "gui": "Gazebo Harmonic and RViz on X11 :1"
+  },
+  "nav2_interfaces_commit": "a097086719c88f781aa59788eca29ac6ca5e56db",
+  "ros_distribution": "humble",
+  "middleware": "rmw_cyclonedds_cpp",
+  "live_domain": 181,
+  "isolated_domains": [
+    182,
+    183,
+    184
+  ],
+  "network": "wired DDS peers",
+  "base_git_commit": "4e1540fba3709afb3ef071e8623341838c698be5"
+}

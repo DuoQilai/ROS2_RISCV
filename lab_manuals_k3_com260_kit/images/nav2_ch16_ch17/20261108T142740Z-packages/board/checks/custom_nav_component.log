@@ -1,0 +1,10 @@
+[INFO] [1794148874.694378143] [custom_nav_component]: 配置完成: param1=default
+[INFO] [1794148874.697068433] [custom_nav_component]: 已激活
+[INFO] [1794148874.699956097] [custom_nav_component]: Active: scan=2 frame=map
+[INFO] [1794148874.751492561] [custom_nav_component]: 已停用
+[INFO] [1794148874.755349183] [custom_nav_component]: 已清理
+[INFO] [1794148874.758155973] [custom_nav_component]: 配置完成: param1=default
+[INFO] [1794148874.760013930] [custom_nav_component]: 已激活
+[INFO] [1794148874.814225725] [custom_nav_component]: 已清理
+[INFO] [1794148874.814337017] [custom_nav_component]: 已关闭
+[INFO] [1794148874.996425097] [rclcpp]: signal_handler(SIGINT/SIGTERM)

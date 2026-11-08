@@ -1,0 +1,3 @@
+[INFO] [1794148899.778197966] [bt_navigator_client]: 目标已接受: x=3.00 y=2.00 yaw=0.00
+[INFO] [1794148900.791683174] [bt_navigator_client]: 已请求取消导航
+[ERROR] [1794148910.799127884] [bt_navigator_client]: 取消后未收到结果

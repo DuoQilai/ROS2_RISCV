@@ -1,0 +1,12 @@
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+[INFO] [1794149761.627221147] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1794149761.627329049] [rviz2]: OpenGl version: 4.5 (GLSL 4.5)
+[INFO] [1794149761.707499020] [rviz2]: Stereo is NOT SUPPORTED
+[INFO] [1794149762.573512766] [rviz2]: Trying to create a map of size 992 x 992 using 1 swatches
+[WARN] [1794149762.581858743] [rviz]: New publisher discovered on topic '/particle_cloud', offering incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY_QOS_POLICY
+[ERROR] [1794149762.597697134] [rviz2]: Vertex Program:rviz/glsl120/indexed_8bit_image.vert Fragment Program:rviz/glsl120/indexed_8bit_image.frag GLSL link result : 
+active samplers with a different type refer to the same texture image unit
+[INFO] [1794149764.088908267] [rviz2]: Trying to create a map of size 992 x 992 using 1 swatches
+[INFO] [1794149764.761347329] [rviz2]: Trying to create a map of size 60 x 60 using 1 swatches
+[INFO] [1794149786.921910721] [rviz]: Message Filter dropping message: frame 'odom' at time 563.500 for reason 'the timestamp on the message is earlier than all the data in the transform cache'
+[INFO] [1794149787.317691361] [rviz]: Message Filter dropping message: frame 'laser_link' at time 562.875 for reason 'the timestamp on the message is earlier than all the data in the transform cache'

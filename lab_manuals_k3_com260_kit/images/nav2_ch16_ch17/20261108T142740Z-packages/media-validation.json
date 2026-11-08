@@ -1,0 +1,398 @@
+{
+  "run_id": "20261108T142740Z-packages",
+  "media_count": 13,
+  "files": [
+    {
+      "file": "board/inflation_curves.svg",
+      "bytes": 6717,
+      "sha256": "e467029bfc0613f2d5fe63fd6dec10d94b06ab44a6def6ab79348e97ad317a9c",
+      "xml_valid": true
+    },
+    {
+      "file": "costmap-rviz.gif",
+      "bytes": 1819373,
+      "sha256": "4b4bb23e1839894a2aa8344f34f72f6527ddec5ad79b75ba76565a017cbc8464",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "1080"
+        }
+      ],
+      "format": {
+        "duration": "90.000000"
+      },
+      "derivation": {
+        "source": "x86/costmap-rviz.mp4",
+        "start_s": 0,
+        "duration_s": 90,
+        "speed": 1.0,
+        "fps": 12,
+        "width": 1280
+      }
+    },
+    {
+      "file": "original-tree-gazebo.gif",
+      "bytes": 745484,
+      "sha256": "f31c69a2b75972315837743bbb6dae31bf1eb263fc56def7060f1c909418d026",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "900"
+        }
+      ],
+      "format": {
+        "duration": "75.000000"
+      },
+      "derivation": {
+        "source": "x86/original-tree-gazebo.mp4",
+        "start_s": 25,
+        "duration_s": 75,
+        "speed": 1.0,
+        "fps": 12,
+        "width": 1280
+      }
+    },
+    {
+      "file": "planner-goal-rviz.gif",
+      "bytes": 3723111,
+      "sha256": "864e1b75f30ce14899d3ae28633b041625078cf550590cc9fb1b0570fe19d922",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "960"
+        }
+      ],
+      "format": {
+        "duration": "80.000000"
+      },
+      "derivation": {
+        "source": "x86/planner-goal-rviz.mp4",
+        "start_s": 100,
+        "duration_s": 80,
+        "speed": 1.0,
+        "fps": 12,
+        "width": 1280
+      }
+    },
+    {
+      "file": "x86/costmap-added.png",
+      "bytes": 80768,
+      "sha256": "ea406e6d3ac0e57fc3a616c4f8419f17b2bfdf3342de459cea0c2ea6b70908b3",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {}
+    },
+    {
+      "file": "x86/costmap-removed.png",
+      "bytes": 65630,
+      "sha256": "ef4d8f6fbe6fcff49afab7ebc9ab07ed63ec3a6b746d4380ecf95b7af862dfdb",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {}
+    },
+    {
+      "file": "x86/costmap-rviz.mp4",
+      "bytes": 1073185,
+      "sha256": "140c1cc2cac96c55ea31788fa3b2b72baa80001a2f4387891d4b45db0f06bb39",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "1440"
+        }
+      ],
+      "format": {
+        "duration": "120.000000"
+      },
+      "capture": {
+        "run_id": "20261108T142740Z-packages",
+        "start_utc": "2026-11-08T14:57:16.675308+00:00",
+        "window_id": "0x2200013",
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-f",
+          "x11grab",
+          "-framerate",
+          "12",
+          "-window_id",
+          "0x2200013",
+          "-i",
+          ":1.0",
+          "-t",
+          "120",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "ultrafast",
+          "-crf",
+          "23",
+          "-pix_fmt",
+          "yuv420p",
+          "-y",
+          "/home/duomaomao/ros2_course_com260_ch16_ch17_humble_ws/runs/20261108T142740Z-packages/costmap-rviz.mp4"
+        ],
+        "exit": 0,
+        "end_utc": "2026-11-08T14:59:16.919320+00:00"
+      },
+      "visually_inspected_frames_s": [
+        25,
+        85
+      ]
+    },
+    {
+      "file": "x86/five-goals-rviz.mp4",
+      "bytes": 14658476,
+      "sha256": "188fbe95932c60ece65bf114fbaeaccb63e24e679368a64766259e28845b4814",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "4320"
+        }
+      ],
+      "format": {
+        "duration": "360.000000"
+      },
+      "capture": {
+        "run_id": "20261108T142740Z-packages",
+        "start_utc": "2026-11-08T14:46:13.222021+00:00",
+        "window_id": "0x2200013",
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-f",
+          "x11grab",
+          "-framerate",
+          "12",
+          "-window_id",
+          "0x2200013",
+          "-i",
+          ":1.0",
+          "-t",
+          "360",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "ultrafast",
+          "-crf",
+          "23",
+          "-pix_fmt",
+          "yuv420p",
+          "-y",
+          "/home/duomaomao/ros2_course_com260_ch16_ch17_humble_ws/runs/20261108T142740Z-packages/five-goals-rviz.mp4"
+        ],
+        "exit": 0,
+        "end_utc": "2026-11-08T14:52:13.469046+00:00"
+      },
+      "visually_inspected_frames_s": [
+        30,
+        130
+      ]
+    },
+    {
+      "file": "x86/five-goals-rviz.png",
+      "bytes": 75237,
+      "sha256": "e67022e5839382c2103e8a9b8c53a8c4e06b5c4a6c8329adcb65378da41533ce",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {}
+    },
+    {
+      "file": "x86/inflation_curves.svg",
+      "bytes": 6717,
+      "sha256": "e467029bfc0613f2d5fe63fd6dec10d94b06ab44a6def6ab79348e97ad317a9c",
+      "xml_valid": true
+    },
+    {
+      "file": "x86/original-goal-rviz.png",
+      "bytes": 82621,
+      "sha256": "d167d167b922ccf9b84b19f6cc313da88c2e133219b25f15fd8001f38a0d776b",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {}
+    },
+    {
+      "file": "x86/original-tree-gazebo.mp4",
+      "bytes": 2763938,
+      "sha256": "a7b54bb1329113872c0ac4ab4f5cc06dcbe20e8d08043ef652db94eebf21f2ff",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "2160"
+        }
+      ],
+      "format": {
+        "duration": "180.000000"
+      },
+      "capture": {
+        "run_id": "20261108T142740Z-packages",
+        "start_utc": "2026-11-08T14:52:53.873053+00:00",
+        "window_id": "0x2c00012",
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-f",
+          "x11grab",
+          "-framerate",
+          "12",
+          "-window_id",
+          "0x2c00012",
+          "-i",
+          ":1.0",
+          "-t",
+          "180",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "ultrafast",
+          "-crf",
+          "23",
+          "-pix_fmt",
+          "yuv420p",
+          "-y",
+          "/home/duomaomao/ros2_course_com260_ch16_ch17_humble_ws/runs/20261108T142740Z-packages/original-tree-gazebo.mp4"
+        ],
+        "exit": 0,
+        "end_utc": "2026-11-08T14:55:54.117285+00:00"
+      },
+      "visually_inspected_frames_s": [
+        35,
+        80
+      ]
+    },
+    {
+      "file": "x86/planner-goal-rviz.mp4",
+      "bytes": 6356843,
+      "sha256": "aebafa7339c603ba66102dc0fd18bdd65370c02e77c1b2c0fc9cc9f10ae62e63",
+      "full_decode_passed": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "2160"
+        }
+      ],
+      "format": {
+        "duration": "180.000000"
+      },
+      "capture": {
+        "run_id": "20261108T142740Z-packages",
+        "start_utc": "2026-11-08T14:42:21.594925+00:00",
+        "window_id": "0x2200013",
+        "command": [
+          "ffmpeg",
+          "-hide_banner",
+          "-loglevel",
+          "error",
+          "-f",
+          "x11grab",
+          "-framerate",
+          "12",
+          "-window_id",
+          "0x2200013",
+          "-i",
+          ":1.0",
+          "-t",
+          "180",
+          "-c:v",
+          "libx264",
+          "-preset",
+          "ultrafast",
+          "-crf",
+          "23",
+          "-pix_fmt",
+          "yuv420p",
+          "-y",
+          "/home/duomaomao/ros2_course_com260_ch16_ch17_humble_ws/runs/20261108T142740Z-packages/planner-goal-rviz.mp4"
+        ],
+        "exit": 0,
+        "end_utc": "2026-11-08T14:45:21.858279+00:00"
+      },
+      "visually_inspected_frames_s": [
+        90,
+        170
+      ]
+    }
+  ]
+}

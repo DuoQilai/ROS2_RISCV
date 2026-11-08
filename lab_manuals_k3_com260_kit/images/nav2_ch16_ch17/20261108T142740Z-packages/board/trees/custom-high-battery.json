@@ -1,0 +1,8 @@
+{
+  "case": "custom-high-battery",
+  "exit": 0,
+  "stopped": true,
+  "odom_samples": 1113,
+  "duration_s": 64.99803371000007,
+  "passed": true
+}

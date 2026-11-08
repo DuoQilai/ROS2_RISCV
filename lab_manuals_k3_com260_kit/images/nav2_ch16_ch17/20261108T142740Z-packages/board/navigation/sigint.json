@@ -1,0 +1,23 @@
+{
+  "name": "sigint",
+  "exit": 1,
+  "duration_s": 9.557161603000168,
+  "odom_samples": 160,
+  "distance_m": 0.4846684718678497,
+  "stopped": true,
+  "position_error_m": null,
+  "feedback_lines": 3,
+  "result_lines": [
+    "[INFO] [1794150008.942207279] [bt_navigator_client]: 导航结果: CANCELED"
+  ],
+  "amcl_xy": [
+    0.8070980305368847,
+    -0.340569965570793
+  ],
+  "map_base_xy": [
+    0.9136210391653082,
+    -0.428952110295413
+  ],
+  "position_source": "latest map -> base_link TF after stop",
+  "passed": true
+}

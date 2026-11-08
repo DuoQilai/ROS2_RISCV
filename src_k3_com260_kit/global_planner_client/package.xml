@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>global_planner_client</name>
+  <version>0.1.0</version>
+  <description>请求全局路径并发布规划结果.</description>
+  <maintainer email="duoqilai@outlook.com">DuoQilai</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>nav2_msgs</depend>
+  <depend>nav_msgs</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
