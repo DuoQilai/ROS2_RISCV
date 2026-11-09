@@ -1,0 +1,26 @@
+<!-- custom_navigation.xml -->
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="CustomNavigate">
+      <!-- 步骤1: 检查电池电量 -->
+      <Inverter>
+        <IsBatteryLow min_battery="0.2" battery_topic="/battery_status" is_voltage="false"/>
+      </Inverter>
+
+      <PipelineSequence>
+        <!-- 步骤2: 跟踪期间每秒重新规划 -->
+        <RateController hz="1.0">
+          <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+        </RateController>
+        <!-- 步骤3: 使用本章配置的控制器跟踪路径 -->
+        <FollowPath path="{path}" controller_id="FollowPath"/>
+      </PipelineSequence>
+
+      <!-- 步骤4: 到达后执行额外动作 -->
+      <Sequence name="PostArrival">
+        <Wait wait_duration="2.0"/>
+        <Spin spin_dist="6.2832"/>
+      </Sequence>
+    </Sequence>
+  </BehaviorTree>
+</root>

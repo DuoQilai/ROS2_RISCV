@@ -1,0 +1,7 @@
+{"version":3,"term":{"cols":140,"rows":36},"timestamp":1794150114,"command":"ssh -tt -o BatchMode=yes duomaomao 'bash ~/ros2_course_com260_ch16_ch17_humble_ws/stop.bash'","env":{"SHELL":"/bin/zsh"}}
+[0.361, "o", "RUN_ID=20261108T142740Z-packages\r\n"]
+[3.751, "o", "X86_GAZEBO_STOP_EXIT=0 RUN_ID=20261108T142740Z-packages\r\n"]
+[1.757, "o", "X86_GAZEBO_ALREADY_ABSENT RUN_ID=20261108T142740Z-packages; the container may have stopped or reached its one-hour limit.\r\n"]
+[0.092, "o", "PUBLIC_STOP_PASSED course_containers=0 desktop_ready=true\r\n"]
+[0.001, "o", "Connection to 192.168.1.4 closed.\r\r\n"]
+[0.001, "x", "0"]

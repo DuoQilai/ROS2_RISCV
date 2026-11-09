@@ -1,0 +1,8 @@
+{"version":3,"term":{"cols":140,"rows":36},"timestamp":1794148895,"command":"ssh -tt -o BatchMode=yes com260 'bash ~/ros2_course_com260_ch16_ch17_ws/action-failures.bash'","env":{"SHELL":"/bin/zsh"}}
+[3.725, "o", "RUN_ID=20261108T142740Z-packages\r\n"]
+[0.618, "o", "SYNTHETIC CASE reject elapsed 0.23\r\n[ERROR] [1794148899.301222228] [bt_navigator_client]: 目标未接受\r\n\r\n"]
+[0.243, "o", "SYNTHETIC CASE abort elapsed 0.24\r\n[INFO] [1794148899.534167435] [bt_navigator_client]: 目标已接受: x=3.00 y=2.00 yaw=0.00\r\n[INFO] [1794148899.595038297] [bt_navigator_client]: 导航结果: ABORTED\r\n\r\n"]
+[11.266, "o", "SYNTHETIC CASE cancel-refused elapsed 11.26\r\n[INFO] [1794148899.778197966] [bt_navigator_client]: 目标已接受: x=3.00 y=2.00 yaw=0.00\r\n[INFO] [1794148900.791683174] [bt_navigator_client]: 已请求取消导航\r\n[ERROR] [1794148910.799127884] [bt_navigator_client]: 取消后未收到结果\r\n\r\n"]
+[2.778, "o", "SYNTHETIC_FAILURE_CASES_PASSED 3\r\n"]
+[0.171, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]

@@ -1,0 +1,20 @@
+[
+  {
+    "case": "reject",
+    "exit": 1,
+    "elapsed_s": 0.22997504299996763,
+    "passed": true
+  },
+  {
+    "case": "abort",
+    "exit": 1,
+    "elapsed_s": 0.24062640900001497,
+    "passed": true
+  },
+  {
+    "case": "cancel-refused",
+    "exit": 1,
+    "elapsed_s": 11.26413397500005,
+    "passed": true
+  }
+]

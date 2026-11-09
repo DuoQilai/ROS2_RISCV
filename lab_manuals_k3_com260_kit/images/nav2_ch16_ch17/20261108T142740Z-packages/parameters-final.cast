@@ -1,0 +1,4 @@
+{"version":3,"term":{"cols":140,"rows":36},"timestamp":1794150072,"command":"ssh -tt -o BatchMode=yes com260 'bash ~/ros2_course_com260_ch16_ch17_ws/parameters-final.bash'","env":{"SHELL":"/bin/zsh"}}
+[4.141, "o", "{\"run_id\": \"20261108T142740Z-packages\", \"actual\": {\"/planner_server\": {\"GridBased.tolerance\": 0.15}, \"/controller_server\": {\"general_goal_checker.xy_goal_tolerance\": 0.1, \"FollowPath.xy_goal_tolerance\": 0.1, \"progress_checker.required_movement_radius\": 0.1, \"progress_checker.movement_time_allowance\": 10.0}, \"/global_costmap/global_costmap\": {\"robot_radius\": 0.22, \"inflation_layer.inflation_radius\": 0.55, \"inflation_layer.cost_scaling_factor\": 3.0}, \"/local_costmap/local_costmap\": {\"robot_radius\": 0.22, \"inflation_layer.inflation_radius\": 0.55, \"inflation_layer.cost_scaling_factor\": 3.0}}, \"passed\": true}\r\n"]
+[0.316, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.001, "x", "0"]

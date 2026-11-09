@@ -1,0 +1,8 @@
+{
+  "case": "custom-low-battery",
+  "exit": 1,
+  "stopped": true,
+  "odom_samples": 59,
+  "duration_s": 3.399861537000106,
+  "passed": true
+}

@@ -1,0 +1,749 @@
+{
+  "run_id": "20261108T142740Z-packages",
+  "source_version_sha256": "4e948619a427bcff2851e515b481ea3a6af3b8fbde2e21153fdd068c6cb4752b",
+  "overall_status": "passed",
+  "scope": "Teaching chapters 16 and 17; Nav2 components and global costmap, not the complete lab 11 course",
+  "builds": {
+    "board": {
+      "packages": [
+        "custom_nav_component",
+        "navigation_client_cpp",
+        "global_planner_client",
+        "costmap_demo",
+        "map_loader",
+        "obstacle_layer_processor",
+        "costmap_debugger"
+      ],
+      "compile_units": 9,
+      "default_cpp": "#define __cplusplus 201703L",
+      "debug": true,
+      "binaries": [
+        {
+          "name": "custom_nav_component",
+          "package": "custom_nav_component",
+          "sha256": "fcd133095b8e09a0c94f8c86f8d2f5b34b8f8cba6a877311dd801f6d3381c162",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "bt_navigator_client",
+          "package": "navigation_client_cpp",
+          "sha256": "6987392bcd2d040f02dad14c85fcaf98e1849b83367923ec7113e7c3143f3a21",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "multi_goal_navigation",
+          "package": "navigation_client_cpp",
+          "sha256": "35a4a78a9534745e411a43c8735c5a5482fbed8695f1ac9ed89965106628adb6",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "global_planner_client",
+          "package": "global_planner_client",
+          "sha256": "b8c45391f11eeedab3b4ec5668496156334659c44a1483f5681dae2cd603daa2",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "costmap_demo",
+          "package": "costmap_demo",
+          "sha256": "dd185a5364767165080c27d7d9a9193b4f0f5c5a08f6a94e48db6ae37dcf6692",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "inflation_plot",
+          "package": "costmap_demo",
+          "sha256": "6fe5b53e26c950b522e8d09006627e2db0c588e946ebfed5b8d3568c686716d8",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "map_loader",
+          "package": "map_loader",
+          "sha256": "e61aea1513d9a9d0a26202c252a96e934534be90ca9a364cdfa0707a73ec35e4",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "obstacle_layer_processor",
+          "package": "obstacle_layer_processor",
+          "sha256": "28510bb0f6647bc4ac699c0b821ad5ef82ac9e52165d978c7793b8f362780a02",
+          "elf": "Machine:                           RISC-V"
+        },
+        {
+          "name": "costmap_debugger",
+          "package": "costmap_debugger",
+          "sha256": "99bfb919bc7bbab42247dbf28a85dfc1c17c99458058a6df947d757b209357d1",
+          "elf": "Machine:                           RISC-V"
+        }
+      ],
+      "passed": true
+    },
+    "x86": {
+      "packages": [
+        "custom_nav_component",
+        "navigation_client_cpp",
+        "global_planner_client",
+        "costmap_demo",
+        "map_loader",
+        "obstacle_layer_processor",
+        "costmap_debugger"
+      ],
+      "compile_units": 9,
+      "default_cpp": "#define __cplusplus 201703L",
+      "debug": true,
+      "binaries": [
+        {
+          "name": "custom_nav_component",
+          "package": "custom_nav_component",
+          "sha256": "cc338d40db99659bb86262bab10afdd1c5fb77a6b2a601d9578c99d3c127bb38",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "bt_navigator_client",
+          "package": "navigation_client_cpp",
+          "sha256": "6fb2414aa81bdac5a5dab6809b720817d0a40dd486ebb2ab3d3cf58711c6e176",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "multi_goal_navigation",
+          "package": "navigation_client_cpp",
+          "sha256": "15a0fc263baa260c875ff48314affad405e1f233b80ed71e54dda3187f5af224",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "global_planner_client",
+          "package": "global_planner_client",
+          "sha256": "f85c2b67a5d49bb87455b631c51f80a4323ec98eccc88eceaff93806b2c063b5",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "costmap_demo",
+          "package": "costmap_demo",
+          "sha256": "3ab1ec3b09abcf567428165cb9415062d449b33d9994b6296fda1e74942bc50d",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "inflation_plot",
+          "package": "costmap_demo",
+          "sha256": "637d53bb4c345d4991413bc038a7af57ac6b39d254748b37d7687285664fc232",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "map_loader",
+          "package": "map_loader",
+          "sha256": "35b9074e68618bd8011778e8feac01303b53beae7930767483c7abd8c6046371",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "obstacle_layer_processor",
+          "package": "obstacle_layer_processor",
+          "sha256": "fbe5dafe5fca689209af2d245bf41f1314ca53d9d776807c8eafdcb1bc50140e",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        },
+        {
+          "name": "costmap_debugger",
+          "package": "costmap_debugger",
+          "sha256": "fc4cd799f59ed8b00d04f0a723605b385f2c4fa3753b6ecd67628d62bb02e9cf",
+          "elf": "Machine:                           Advanced Micro Devices X86-64"
+        }
+      ],
+      "passed": true
+    }
+  },
+  "deterministic": {
+    "numeric_checks_per_host": 12,
+    "ros_checks_per_host": 31
+  },
+  "live_checks": {
+    "passed": true,
+    "checks": [
+      "Museum map loaded",
+      "Museum map geometry equals Nav2",
+      "Museum map pixels equal Nav2",
+      "map_loader clean exit",
+      "real LaserScan and TF produce teaching map",
+      "obstacle_layer_processor clean exit",
+      "C++ debugger receives both real costmaps",
+      "costmap_debugger clean exit",
+      "invalid-planner expected failure",
+      "negative-cancel expected failure",
+      "missing-server expected failure"
+    ]
+  },
+  "planner": {
+    "run_id": "20261108T142740Z-packages",
+    "start": [
+      0,
+      0
+    ],
+    "goal": [
+      3,
+      2
+    ],
+    "planner": "GridBased",
+    "exit": 0,
+    "duration_s": 1.4060055700001612,
+    "path_points": 313,
+    "passed": true
+  },
+  "navigation": {
+    "goal-3-2": {
+      "name": "goal-3-2",
+      "exit": 0,
+      "duration_s": 147.99052338299998,
+      "odom_samples": 2437,
+      "distance_m": 7.892712290164926,
+      "stopped": true,
+      "position_error_m": 0.17185033292469426,
+      "feedback_lines": 48,
+      "result_lines": [
+        "[INFO] [1794149110.767203685] [bt_navigator_client]: 导航结果: SUCCEEDED"
+      ],
+      "amcl_xy": [
+        3.171845603286866,
+        2.001274973443698
+      ],
+      "map_base_xy": [
+        3.171845603286922,
+        2.001274973443677
+      ],
+      "position_source": "latest map -> base_link TF after stop",
+      "passed": true
+    },
+    "five-goals": {
+      "name": "five-goals",
+      "exit": 0,
+      "duration_s": 224.4886895090001,
+      "odom_samples": 3873,
+      "distance_m": 11.823205841998327,
+      "stopped": true,
+      "position_error_m": 0.09780160735227612,
+      "feedback_lines": 73,
+      "result_lines": [
+        "[INFO] [1794149277.317561200] [bt_navigator_client]: 导航结果: SUCCEEDED",
+        "[INFO] [1794149305.614218530] [bt_navigator_client]: 导航结果: SUCCEEDED",
+        "[INFO] [1794149330.763709484] [bt_navigator_client]: 导航结果: SUCCEEDED",
+        "[INFO] [1794149372.299740545] [bt_navigator_client]: 导航结果: SUCCEEDED",
+        "[INFO] [1794149402.853382128] [bt_navigator_client]: 导航结果: SUCCEEDED"
+      ],
+      "amcl_xy": [
+        -0.08322918282519126,
+        -0.07469015316632102
+      ],
+      "map_base_xy": [
+        -0.06884079977715984,
+        -0.06947012801722607
+      ],
+      "position_source": "latest map -> base_link TF after stop",
+      "passed": true,
+      "arrivals": [
+        {
+          "target": [
+            1,
+            0
+          ],
+          "map_base_xy": [
+            1.0300165041302811,
+            -0.0776181361351731
+          ],
+          "position_error_m": 0.08321998304074237,
+          "stopped": true
+        },
+        {
+          "target": [
+            1,
+            -1
+          ],
+          "map_base_xy": [
+            1.0807755844786848,
+            -0.9461665025011965
+          ],
+          "position_error_m": 0.09707080148441566,
+          "stopped": true
+        },
+        {
+          "target": [
+            2,
+            -1
+          ],
+          "map_base_xy": [
+            1.9359607497323956,
+            -1.0728627936454171
+          ],
+          "position_error_m": 0.09700521775993036,
+          "stopped": true
+        },
+        {
+          "target": [
+            0,
+            -1
+          ],
+          "map_base_xy": [
+            0.08274962548707343,
+            -0.9465445841732558
+          ],
+          "position_error_m": 0.09851386704145282,
+          "stopped": true
+        },
+        {
+          "target": [
+            0,
+            0
+          ],
+          "map_base_xy": [
+            -0.06884079977715984,
+            -0.06947012801722607
+          ],
+          "position_error_m": 0.09780160735227612,
+          "stopped": true
+        }
+      ]
+    },
+    "cancel": {
+      "name": "cancel",
+      "exit": 1,
+      "duration_s": 9.5957392360001,
+      "odom_samples": 169,
+      "distance_m": 0.5436099088838852,
+      "stopped": true,
+      "position_error_m": null,
+      "feedback_lines": 3,
+      "result_lines": [
+        "[INFO] [1794149995.564936475] [bt_navigator_client]: 导航结果: CANCELED"
+      ],
+      "amcl_xy": [
+        0.35048526891251947,
+        -0.05803683905213995
+      ],
+      "map_base_xy": [
+        0.5299844905051001,
+        -0.15443262698196225
+      ],
+      "position_source": "latest map -> base_link TF after stop",
+      "passed": true
+    },
+    "sigint": {
+      "name": "sigint",
+      "exit": 1,
+      "duration_s": 9.557161603000168,
+      "odom_samples": 160,
+      "distance_m": 0.4846684718678497,
+      "stopped": true,
+      "position_error_m": null,
+      "feedback_lines": 3,
+      "result_lines": [
+        "[INFO] [1794150008.942207279] [bt_navigator_client]: 导航结果: CANCELED"
+      ],
+      "amcl_xy": [
+        0.8070980305368847,
+        -0.340569965570793
+      ],
+      "map_base_xy": [
+        0.9136210391653082,
+        -0.428952110295413
+      ],
+      "position_source": "latest map -> base_link TF after stop",
+      "passed": true
+    },
+    "sigterm": {
+      "name": "sigterm",
+      "exit": 1,
+      "duration_s": 9.516205080999953,
+      "odom_samples": 156,
+      "distance_m": 0.48112972633806067,
+      "stopped": true,
+      "position_error_m": null,
+      "feedback_lines": 2,
+      "result_lines": [
+        "[INFO] [1794150020.508337805] [bt_navigator_client]: 导航结果: CANCELED"
+      ],
+      "amcl_xy": [
+        1.2299208096343486,
+        -0.6827525541901487
+      ],
+      "map_base_xy": [
+        1.2652751417840236,
+        -0.7124154158527101
+      ],
+      "position_source": "latest map -> base_link TF after stop",
+      "passed": true
+    },
+    "home": {
+      "name": "home",
+      "exit": 0,
+      "duration_s": 34.57604803100003,
+      "odom_samples": 606,
+      "distance_m": 1.1420450408070482,
+      "stopped": true,
+      "position_error_m": 0.07080636605156587,
+      "feedback_lines": 11,
+      "result_lines": [
+        "[INFO] [1794149817.185610162] [bt_navigator_client]: 导航结果: SUCCEEDED"
+      ],
+      "amcl_xy": [
+        0.0191233867498104,
+        -0.06817505080779677
+      ],
+      "map_base_xy": [
+        0.019123386749925197,
+        -0.06817505080776343
+      ],
+      "position_source": "latest map -> base_link TF after stop",
+      "passed": true
+    }
+  },
+  "behavior_trees": {
+    "teaching-tree": {
+      "case": "teaching-tree",
+      "exit": 0,
+      "stopped": true,
+      "odom_samples": 356,
+      "duration_s": 18.38376130100005,
+      "passed": true
+    },
+    "custom-high-battery": {
+      "case": "custom-high-battery",
+      "exit": 0,
+      "stopped": true,
+      "odom_samples": 1113,
+      "duration_s": 64.99803371000007,
+      "passed": true
+    },
+    "custom-low-battery": {
+      "case": "custom-low-battery",
+      "exit": 1,
+      "stopped": true,
+      "odom_samples": 59,
+      "duration_s": 3.399861537000106,
+      "passed": true
+    },
+    "post-arrival": {
+      "run_id": "20261108T142740Z-packages",
+      "events": [
+        {
+          "kind": "wait",
+          "id": "36d3c9551661b46b7b43586defe1a66a",
+          "status": 2,
+          "sim_time": 518.875,
+          "wall_time": 1794149640.3364139
+        },
+        {
+          "kind": "wait",
+          "id": "36d3c9551661b46b7b43586defe1a66a",
+          "status": 4,
+          "sim_time": 520.875,
+          "wall_time": 1794149645.3368633
+        },
+        {
+          "kind": "spin",
+          "id": "9d15afa9ce357db8353fefe0ec10fc74",
+          "status": 2,
+          "sim_time": 520.875,
+          "wall_time": 1794149645.3660557
+        },
+        {
+          "kind": "spin",
+          "id": "9d15afa9ce357db8353fefe0ec10fc74",
+          "status": 4,
+          "sim_time": 527.355,
+          "wall_time": 1794149664.1691432
+        }
+      ],
+      "odom_samples": 1602,
+      "wait_duration_sim_s": 2.0,
+      "spin_duration_sim_s": 6.480000000000018,
+      "spin_odom_yaw_rad": 6.305734496814507,
+      "passed": true
+    }
+  },
+  "action_failures": [
+    {
+      "case": "reject",
+      "exit": 1,
+      "elapsed_s": 0.22997504299996763,
+      "passed": true
+    },
+    {
+      "case": "abort",
+      "exit": 1,
+      "elapsed_s": 0.24062640900001497,
+      "passed": true
+    },
+    {
+      "case": "cancel-refused",
+      "exit": 1,
+      "elapsed_s": 11.26413397500005,
+      "passed": true
+    }
+  ],
+  "costmap": {
+    "baseline": {
+      "stage": "baseline",
+      "size": [
+        992,
+        992
+      ],
+      "resolution": 0.05000000074505806,
+      "free": 96385,
+      "lethal": 5495,
+      "inscribed": 27155,
+      "unknown": 831346,
+      "inflated": 23683,
+      "inflated_sum": 3752742,
+      "box_region_max": 0,
+      "box_region_lethal": 0
+    },
+    "added": {
+      "stage": "added",
+      "size": [
+        992,
+        992
+      ],
+      "resolution": 0.05000000074505806,
+      "free": 95865,
+      "lethal": 5503,
+      "inscribed": 27276,
+      "unknown": 831346,
+      "inflated": 24074,
+      "inflated_sum": 3811535,
+      "box_region_max": 254,
+      "box_region_lethal": 9
+    },
+    "removed": {
+      "stage": "removed",
+      "size": [
+        992,
+        992
+      ],
+      "resolution": 0.05000000074505806,
+      "free": 96385,
+      "lethal": 5495,
+      "inscribed": 27155,
+      "unknown": 831346,
+      "inflated": 23683,
+      "inflated_sum": 3752742,
+      "box_region_max": 0,
+      "box_region_lethal": 0
+    },
+    "scale-1": {
+      "stage": "scale-1",
+      "size": [
+        992,
+        992
+      ],
+      "resolution": 0.05000000074505806,
+      "free": 95865,
+      "lethal": 5503,
+      "inscribed": 27276,
+      "unknown": 831346,
+      "inflated": 24074,
+      "inflated_sum": 5139580,
+      "box_region_max": 254,
+      "box_region_lethal": 9
+    },
+    "scale-10": {
+      "stage": "scale-10",
+      "size": [
+        992,
+        992
+      ],
+      "resolution": 0.05000000074505806,
+      "free": 95865,
+      "lethal": 5503,
+      "inscribed": 27276,
+      "unknown": 831346,
+      "inflated": 24074,
+      "inflated_sum": 1713890,
+      "box_region_max": 254,
+      "box_region_lethal": 9
+    }
+  },
+  "configuration_exercise": {
+    "/global_costmap/global_costmap": {
+      "robot_radius": 0.3,
+      "inflation_layer.inflation_radius": 0.6,
+      "resolution": 0.05,
+      "update_frequency": 1.0
+    },
+    "/local_costmap/local_costmap": {
+      "robot_radius": 0.3,
+      "inflation_layer.inflation_radius": 0.6,
+      "resolution": 0.05,
+      "update_frequency": 5.0,
+      "width": 3,
+      "height": 3
+    },
+    "/global_costmap/geometry": [
+      992,
+      992,
+      0.05000000074505806
+    ],
+    "/local_costmap/geometry": [
+      60,
+      60,
+      0.05000000074505806
+    ],
+    "passed": true,
+    "original_parameters_restored": true
+  },
+  "final_parameters": {
+    "run_id": "20261108T142740Z-packages",
+    "actual": {
+      "/planner_server": {
+        "GridBased.tolerance": 0.15
+      },
+      "/controller_server": {
+        "general_goal_checker.xy_goal_tolerance": 0.1,
+        "FollowPath.xy_goal_tolerance": 0.1,
+        "progress_checker.required_movement_radius": 0.1,
+        "progress_checker.movement_time_allowance": 10.0
+      },
+      "/global_costmap/global_costmap": {
+        "robot_radius": 0.22,
+        "inflation_layer.inflation_radius": 0.55,
+        "inflation_layer.cost_scaling_factor": 3.0
+      },
+      "/local_costmap/local_costmap": {
+        "robot_radius": 0.22,
+        "inflation_layer.inflation_radius": 0.55,
+        "inflation_layer.cost_scaling_factor": 3.0
+      }
+    },
+    "passed": true
+  },
+  "public_entry": {
+    "board_build_modes": [
+      "--build-ch16",
+      "--build-ch17"
+    ],
+    "x86_build": true,
+    "start": true,
+    "exec": true,
+    "stop": true,
+    "repeated_stop": true,
+    "remaining_course_containers": 0
+  },
+  "terminal_recordings": [
+    {
+      "file": "action-failures.cast",
+      "recording_start_utc": "2026-11-08T14:41:35+00:00",
+      "duration_s": 18.803,
+      "exit": 0,
+      "sha256": "e6148ad6018f81377ee382a416711492590763fbe937746007821fc6265fc2bb"
+    },
+    {
+      "file": "build-board.cast",
+      "recording_start_utc": "2026-11-08T14:36:18+00:00",
+      "duration_s": 256.824,
+      "exit": 0,
+      "sha256": "791e191038a56382203ebe9ef35d846d49c5610a426482aaea0e5857bb2e73b0"
+    },
+    {
+      "file": "build-x86.cast",
+      "recording_start_utc": "2026-11-08T14:30:40+00:00",
+      "duration_s": 56.825,
+      "exit": 0,
+      "sha256": "600e4923e33b21d79fb998daa6a8dc8a360da11adb8a45002c41bab73e7352d8"
+    },
+    {
+      "file": "cancel-signals.cast",
+      "recording_start_utc": "2026-11-08T14:59:42+00:00",
+      "duration_s": 41.916,
+      "exit": 0,
+      "sha256": "baaff278f43b35d8bddac6c936dc889169f34bcca96db2a6a855224842f39ef7"
+    },
+    {
+      "file": "checks-board.cast",
+      "recording_start_utc": "2026-11-08T14:41:08+00:00",
+      "duration_s": 7.903,
+      "exit": 0,
+      "sha256": "1cc1511062fba523ef795a5050192a28a28b9f3e9461d75f57fe5a5a039c0586"
+    },
+    {
+      "file": "checks-x86.cast",
+      "recording_start_utc": "2026-11-08T14:33:54+00:00",
+      "duration_s": 2.621,
+      "exit": 0,
+      "sha256": "ee237e0c0f97b36572e22c906c604470ac2f27cda60db42fb39c29b8bfc38ae9"
+    },
+    {
+      "file": "costmap.cast",
+      "recording_start_utc": "2026-11-08T14:57:20+00:00",
+      "duration_s": 74.37,
+      "exit": 0,
+      "sha256": "5f5f247ba3d29b6dec698f04593a70a46d049180757d4fe2caac8dde85965391"
+    },
+    {
+      "file": "five-goals.cast",
+      "recording_start_utc": "2026-11-08T14:46:17+00:00",
+      "duration_s": 232.008,
+      "exit": 0,
+      "sha256": "6843408c05aa1eb6ba1b755d2fad05b3f09a8e43e900979b08c5646163946a79"
+    },
+    {
+      "file": "home.cast",
+      "recording_start_utc": "2026-11-08T14:56:18+00:00",
+      "duration_s": 42.018,
+      "exit": 0,
+      "sha256": "07cfae6dcec9e18d2117e1d2cf054ad0445dc4058a54ef499ebf894a2ccfda56"
+    },
+    {
+      "file": "live-checks.cast",
+      "recording_start_utc": "2026-11-08T14:41:33+00:00",
+      "duration_s": 24.506,
+      "exit": 0,
+      "sha256": "a0b67d2015c2d04484bb2bbb557c317215f44d35bf51affa049d9d397941abd0"
+    },
+    {
+      "file": "original-goal.cast",
+      "recording_start_utc": "2026-11-08T14:42:39+00:00",
+      "duration_s": 154.769,
+      "exit": 0,
+      "sha256": "7a3027c748c176463b1f77277adf4c26a6bc4fec18f24cc82405d68b2972bb04"
+    },
+    {
+      "file": "original-trees.cast",
+      "recording_start_utc": "2026-11-08T14:52:58+00:00",
+      "duration_s": 96.363,
+      "exit": 0,
+      "sha256": "ed755eb6cef0834fceac0fc5ff952c7d0f9de68e7a4e7c18b5c1053b5921bf02"
+    },
+    {
+      "file": "parameters-final.cast",
+      "recording_start_utc": "2026-11-08T15:01:12+00:00",
+      "duration_s": 4.458,
+      "exit": 0,
+      "sha256": "ac2634668a6dbba7562d476ad0903a1b51251faaee093729c4c9100b9369e3cb"
+    },
+    {
+      "file": "planner.cast",
+      "recording_start_utc": "2026-11-08T14:42:28+00:00",
+      "duration_s": 4.964,
+      "exit": 0,
+      "sha256": "15f51d4e6ab91b6909b1977e02bd7622b3bb2731828f2abca50532cb3cdc7c80"
+    },
+    {
+      "file": "post-arrival.cast",
+      "recording_start_utc": "2026-11-08T14:52:49+00:00",
+      "duration_s": 95.224,
+      "exit": 0,
+      "sha256": "dad41284b3e4f244f3f08da3c4bd53c726b40198b35f49927cfde374a55dfb60"
+    },
+    {
+      "file": "start.cast",
+      "recording_start_utc": "2026-11-08T14:34:46+00:00",
+      "duration_s": 26.818,
+      "exit": 0,
+      "sha256": "0496d923ee75641985d742fdbda13050b57db4d48819269f81272318c9dc273f"
+    },
+    {
+      "file": "stop.cast",
+      "recording_start_utc": "2026-11-08T15:01:54+00:00",
+      "duration_s": 5.963,
+      "exit": 0,
+      "sha256": "48414df90d25e494356e1135bffc47c838422cdb9fe90c970f37c68d101a1c06"
+    }
+  ],
+  "limitations": [
+    "BatteryState inputs are synthetic; no physical battery or charging validation.",
+    "Simulation results do not establish physical robot positioning accuracy.",
+    "RViz logged GLSL and particle-cloud QoS warnings; changing the view caused exit -11 after SIGINT. A new RViz process completed the recordings; navigation and stop feedback were verified independently."
+  ]
+}

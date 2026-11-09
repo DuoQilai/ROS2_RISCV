@@ -1,0 +1,17 @@
+{
+  "run_id": "20261108T142740Z-packages",
+  "source_version_sha256": "4e948619a427bcff2851e515b481ea3a6af3b8fbde2e21153fdd068c6cb4752b",
+  "files_per_host": 47,
+  "hosts": [
+    "local",
+    "board",
+    "x86"
+  ],
+  "matched": true,
+  "rechecked_after_runtime": true,
+  "manifests": {
+    "local": "source-local.json",
+    "board": "source-board.json",
+    "x86": "source-x86.json"
+  }
+}
