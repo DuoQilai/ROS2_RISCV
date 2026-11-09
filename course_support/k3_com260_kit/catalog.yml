@@ -183,6 +183,30 @@ chapters:
         zh:
           lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch15_Cartographer%E5%9B%BE%E4%BC%98%E5%8C%96SLAM.md
           lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch10_lab.md
+  - id: ch16
+    title:
+      zh: Nav2架构与核心组件
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch16_Nav2%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/nav2_common_setup.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch16_Nav2%E6%9E%B6%E6%9E%84%E4%B8%8E%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch11_lab.md
+  - id: ch17
+    title:
+      zh: 全局代价地图
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch17_%E5%85%A8%E5%B1%80%E4%BB%A3%E4%BB%B7%E5%9C%B0%E5%9B%BE.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/nav2_common_setup.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch17_%E5%85%A8%E5%B1%80%E4%BB%A3%E4%BB%B7%E5%9C%B0%E5%9B%BE.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch11_lab.md
 introduction_source: https://github.com/DuoQilai/ROS2_RISCV/blob/master/README.md
 editions:
   riscv:
