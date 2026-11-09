@@ -1,0 +1,16 @@
+{
+  "stage": "added",
+  "size": [
+    992,
+    992
+  ],
+  "resolution": 0.05000000074505806,
+  "free": 95865,
+  "lethal": 5503,
+  "inscribed": 27276,
+  "unknown": 831346,
+  "inflated": 24074,
+  "inflated_sum": 3811535,
+  "box_region_max": 254,
+  "box_region_lethal": 9
+}

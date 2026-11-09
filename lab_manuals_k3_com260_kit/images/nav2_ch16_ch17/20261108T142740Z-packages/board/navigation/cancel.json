@@ -1,0 +1,23 @@
+{
+  "name": "cancel",
+  "exit": 1,
+  "duration_s": 9.5957392360001,
+  "odom_samples": 169,
+  "distance_m": 0.5436099088838852,
+  "stopped": true,
+  "position_error_m": null,
+  "feedback_lines": 3,
+  "result_lines": [
+    "[INFO] [1794149995.564936475] [bt_navigator_client]: 导航结果: CANCELED"
+  ],
+  "amcl_xy": [
+    0.35048526891251947,
+    -0.05803683905213995
+  ],
+  "map_base_xy": [
+    0.5299844905051001,
+    -0.15443262698196225
+  ],
+  "position_source": "latest map -> base_link TF after stop",
+  "passed": true
+}

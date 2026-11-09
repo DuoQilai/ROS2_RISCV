@@ -1,0 +1,2 @@
+[WARN] [1794148899.096922203] [obstacle_layer_processor]: "map" passed to lookupTransform argument target_frame does not exist. 
+[INFO] [1794148901.313870491] [rclcpp]: signal_handler(SIGINT/SIGTERM)

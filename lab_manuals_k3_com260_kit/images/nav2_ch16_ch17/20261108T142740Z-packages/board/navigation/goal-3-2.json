@@ -1,0 +1,23 @@
+{
+  "name": "goal-3-2",
+  "exit": 0,
+  "duration_s": 147.99052338299998,
+  "odom_samples": 2437,
+  "distance_m": 7.892712290164926,
+  "stopped": true,
+  "position_error_m": 0.17185033292469426,
+  "feedback_lines": 48,
+  "result_lines": [
+    "[INFO] [1794149110.767203685] [bt_navigator_client]: 导航结果: SUCCEEDED"
+  ],
+  "amcl_xy": [
+    3.171845603286866,
+    2.001274973443698
+  ],
+  "map_base_xy": [
+    3.171845603286922,
+    2.001274973443677
+  ],
+  "position_source": "latest map -> base_link TF after stop",
+  "passed": true
+}

@@ -1,0 +1,23 @@
+{
+  "name": "home",
+  "exit": 0,
+  "duration_s": 34.57604803100003,
+  "odom_samples": 606,
+  "distance_m": 1.1420450408070482,
+  "stopped": true,
+  "position_error_m": 0.07080636605156587,
+  "feedback_lines": 11,
+  "result_lines": [
+    "[INFO] [1794149817.185610162] [bt_navigator_client]: 导航结果: SUCCEEDED"
+  ],
+  "amcl_xy": [
+    0.0191233867498104,
+    -0.06817505080779677
+  ],
+  "map_base_xy": [
+    0.019123386749925197,
+    -0.06817505080776343
+  ],
+  "position_source": "latest map -> base_link TF after stop",
+  "passed": true
+}

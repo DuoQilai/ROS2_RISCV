@@ -1,0 +1,71 @@
+{
+  "packages": [
+    "custom_nav_component",
+    "navigation_client_cpp",
+    "global_planner_client",
+    "costmap_demo",
+    "map_loader",
+    "obstacle_layer_processor",
+    "costmap_debugger"
+  ],
+  "compile_units": 9,
+  "default_cpp": "#define __cplusplus 201703L",
+  "debug": true,
+  "binaries": [
+    {
+      "name": "custom_nav_component",
+      "package": "custom_nav_component",
+      "sha256": "fcd133095b8e09a0c94f8c86f8d2f5b34b8f8cba6a877311dd801f6d3381c162",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "bt_navigator_client",
+      "package": "navigation_client_cpp",
+      "sha256": "6987392bcd2d040f02dad14c85fcaf98e1849b83367923ec7113e7c3143f3a21",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "multi_goal_navigation",
+      "package": "navigation_client_cpp",
+      "sha256": "35a4a78a9534745e411a43c8735c5a5482fbed8695f1ac9ed89965106628adb6",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "global_planner_client",
+      "package": "global_planner_client",
+      "sha256": "b8c45391f11eeedab3b4ec5668496156334659c44a1483f5681dae2cd603daa2",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "costmap_demo",
+      "package": "costmap_demo",
+      "sha256": "dd185a5364767165080c27d7d9a9193b4f0f5c5a08f6a94e48db6ae37dcf6692",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "inflation_plot",
+      "package": "costmap_demo",
+      "sha256": "6fe5b53e26c950b522e8d09006627e2db0c588e946ebfed5b8d3568c686716d8",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "map_loader",
+      "package": "map_loader",
+      "sha256": "e61aea1513d9a9d0a26202c252a96e934534be90ca9a364cdfa0707a73ec35e4",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "obstacle_layer_processor",
+      "package": "obstacle_layer_processor",
+      "sha256": "28510bb0f6647bc4ac699c0b821ad5ef82ac9e52165d978c7793b8f362780a02",
+      "elf": "Machine:                           RISC-V"
+    },
+    {
+      "name": "costmap_debugger",
+      "package": "costmap_debugger",
+      "sha256": "99bfb919bc7bbab42247dbf28a85dfc1c17c99458058a6df947d757b209357d1",
+      "elf": "Machine:                           RISC-V"
+    }
+  ],
+  "passed": true
+}

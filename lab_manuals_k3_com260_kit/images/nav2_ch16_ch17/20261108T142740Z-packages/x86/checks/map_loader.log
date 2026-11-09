@@ -1,0 +1,6 @@
+[INFO] [1794148436.761055077] [map_loader]: 地图已加载: /workspace/runs/20261108T142740Z-packages/checks/grid.yaml (2x2)
+[INFO] [1794148436.764201284] [map_loader]: 地图已加载: /workspace/runs/20261108T142740Z-packages/checks/grid.yaml (2x2)
+[INFO] [1794148436.764923566] [map_loader]: 地图已加载: /workspace/runs/20261108T142740Z-packages/checks/grid.yaml (2x2)
+[ERROR] [1794148436.765455736] [map_loader]: 地图加载失败: bad file: /workspace/runs/20261108T142740Z-packages/checks/missing.yaml
+[ERROR] [1794148436.766135671] [map_loader]: 地图加载失败: 地图分辨率或阈值无效
+[INFO] [1794148436.965740555] [rclcpp]: signal_handler(SIGINT/SIGTERM)

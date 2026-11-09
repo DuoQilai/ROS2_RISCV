@@ -1,0 +1,8 @@
+{
+  "case": "teaching-tree",
+  "exit": 0,
+  "stopped": true,
+  "odom_samples": 356,
+  "duration_s": 18.38376130100005,
+  "passed": true
+}

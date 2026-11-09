@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>costmap_demo</name>
+  <version>0.1.0</version>
+  <description>代价地图数值、坐标与膨胀曲线.</description>
+  <maintainer email="duoqilai@outlook.com">DuoQilai</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>nav_msgs</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

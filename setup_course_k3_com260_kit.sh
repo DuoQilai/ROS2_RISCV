@@ -6,6 +6,7 @@ die() { printf 'Error: %s\n' "$*" >&2; exit 1; }
 
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 workspace="$HOME/ros2_course_com260_ws"
+workspace_marker=.com260-ch01-workspace
 env_dir="$HOME/.config/ros2-course-com260"
 packages=(lifecycle_demo_cpp robot_sim_demo)
 dependencies=(
@@ -23,9 +24,9 @@ dependencies=(
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10) ;;
+  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17' \
       '--dry-run       Resolve chapter 1-8 dependencies without installing them.' \
       '--install-deps  Install chapter 1-8 dependencies; sudo may ask for your password.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
@@ -37,7 +38,9 @@ case "$mode" in
       '--build-ch07    Build the two chapter 7 C++ TF packages.' \
       '--build-ch08    Install the chapter 8 model packages; GUI runs on x86.' \
       '--build-ch09    Build chapter 9 sensor_reader in the isolated ch09-ch10 workspace.' \
-      '--build-ch10    Build chapter 10 C++ SLAM helpers in the isolated ch09-ch10 workspace.'
+      '--build-ch10    Build chapter 10 C++ SLAM helpers in the isolated ch09-ch10 workspace.' \
+      '--build-ch16    Build the chapter 16 lifecycle, navigation and planning examples.' \
+      '--build-ch17    Build the chapter 17 costmap, map loading and obstacle examples.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -119,17 +122,30 @@ if [[ $mode == --build-ch09 || $mode == --build-ch10 ]]; then
   fi
 fi
 # Chapter 1 packages are shared unchanged with the Pico edition.
+if [[ $mode == --build-ch16 || $mode == --build-ch17 ]]; then
+  workspace="$HOME/ros2_course_com260_ch16_ch17_ws"
+  workspace_marker=.com260-ch16-ch17
+  env_dir="$HOME/.config/ros2-course-com260-ch16-ch17"
+  source_root="$root/src_k3_com260_kit"
+  chapter=16
+  packages=(custom_nav_component navigation_client_cpp global_planner_client)
+  if [[ $mode == --build-ch17 ]]; then
+    chapter=17
+    packages=(costmap_demo map_loader obstacle_layer_processor costmap_debugger)
+  fi
+  [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]] || die 'Prepare the chapter 10 Nav2 interface underlay first.'
+fi
 sources=()
 for package in "${packages[@]}"; do
   [[ -f "$source_root/$package/package.xml" ]] || die "Missing package source: $source_root/$package; sync the chapter files first."
   sources+=("$source_root/$package")
 done
-[[ ! -e $workspace || -f $workspace/.com260-ch01-workspace ]] || die "Refusing to reuse an unmarked workspace: $workspace"
+[[ ! -e $workspace || -f $workspace/$workspace_marker ]] || die "Refusing to reuse an unmarked workspace: $workspace"
 mkdir -p "$workspace"
-touch "$workspace/.com260-ch01-workspace"
+touch "$workspace/$workspace_marker"
 set +u
 source /opt/ros/humble/setup.bash
-if [[ $chapter == 10 ]]; then
+if [[ $chapter == 10 || $chapter == 16 || $chapter == 17 ]]; then
   source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
 fi
 set -u
@@ -167,6 +183,19 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export ROS_DOMAIN_ID=0
 export ROS_LOCALHOST_ONLY=0
 EOF
+fi
+if [[ $chapter == 16 || $chapter == 17 ]]; then
+  cat >"$env_dir/env.bash" <<'EOF'
+source /opt/ros/humble/setup.bash
+source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
+source "$HOME/ros2_course_com260_ch16_ch17_ws/install/setup.bash"
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_LOCALHOST_ONLY=0
+EOF
+  printf 'export ROS_DOMAIN_ID=%q\n' "${ROS_DOMAIN_ID:-0}" >>"$env_dir/env.bash"
+  if [[ -n ${CYCLONEDDS_URI:-} ]]; then
+    printf 'export CYCLONEDDS_URI=%q\n' "$CYCLONEDDS_URI" >>"$env_dir/env.bash"
+  fi
 fi
 set +u
 source "$env_dir/env.bash"

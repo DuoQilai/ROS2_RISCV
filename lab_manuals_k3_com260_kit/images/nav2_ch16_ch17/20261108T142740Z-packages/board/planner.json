@@ -1,0 +1,16 @@
+{
+  "run_id": "20261108T142740Z-packages",
+  "start": [
+    0,
+    0
+  ],
+  "goal": [
+    3,
+    2
+  ],
+  "planner": "GridBased",
+  "exit": 0,
+  "duration_s": 1.4060055700001612,
+  "path_points": 313,
+  "passed": true
+}

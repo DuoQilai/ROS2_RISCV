@@ -1,0 +1,89 @@
+{
+  "name": "five-goals",
+  "exit": 0,
+  "duration_s": 224.4886895090001,
+  "odom_samples": 3873,
+  "distance_m": 11.823205841998327,
+  "stopped": true,
+  "position_error_m": 0.09780160735227612,
+  "feedback_lines": 73,
+  "result_lines": [
+    "[INFO] [1794149277.317561200] [bt_navigator_client]: 导航结果: SUCCEEDED",
+    "[INFO] [1794149305.614218530] [bt_navigator_client]: 导航结果: SUCCEEDED",
+    "[INFO] [1794149330.763709484] [bt_navigator_client]: 导航结果: SUCCEEDED",
+    "[INFO] [1794149372.299740545] [bt_navigator_client]: 导航结果: SUCCEEDED",
+    "[INFO] [1794149402.853382128] [bt_navigator_client]: 导航结果: SUCCEEDED"
+  ],
+  "amcl_xy": [
+    -0.08322918282519126,
+    -0.07469015316632102
+  ],
+  "map_base_xy": [
+    -0.06884079977715984,
+    -0.06947012801722607
+  ],
+  "position_source": "latest map -> base_link TF after stop",
+  "passed": true,
+  "arrivals": [
+    {
+      "target": [
+        1,
+        0
+      ],
+      "map_base_xy": [
+        1.0300165041302811,
+        -0.0776181361351731
+      ],
+      "position_error_m": 0.08321998304074237,
+      "stopped": true
+    },
+    {
+      "target": [
+        1,
+        -1
+      ],
+      "map_base_xy": [
+        1.0807755844786848,
+        -0.9461665025011965
+      ],
+      "position_error_m": 0.09707080148441566,
+      "stopped": true
+    },
+    {
+      "target": [
+        2,
+        -1
+      ],
+      "map_base_xy": [
+        1.9359607497323956,
+        -1.0728627936454171
+      ],
+      "position_error_m": 0.09700521775993036,
+      "stopped": true
+    },
+    {
+      "target": [
+        0,
+        -1
+      ],
+      "map_base_xy": [
+        0.08274962548707343,
+        -0.9465445841732558
+      ],
+      "position_error_m": 0.09851386704145282,
+      "stopped": true
+    },
+    {
+      "target": [
+        0,
+        0
+      ],
+      "map_base_xy": [
+        -0.06884079977715984,
+        -0.06947012801722607
+      ],
+      "position_error_m": 0.09780160735227612,
+      "stopped": true
+    }
+  ]
+}

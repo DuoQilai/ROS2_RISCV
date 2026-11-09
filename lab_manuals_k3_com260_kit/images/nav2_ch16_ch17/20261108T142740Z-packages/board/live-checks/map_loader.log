@@ -1,0 +1,2 @@
+[INFO] [1794148898.499714070] [map_loader]: 地图已加载: /home/com260/ROS2_RISCV_COM260_CH16_CH17/src_k3_com260_kit/param_demo_cpp/maps/Software_Museum.yaml (992x992)
+[INFO] [1794148898.528705502] [rclcpp]: signal_handler(SIGINT/SIGTERM)

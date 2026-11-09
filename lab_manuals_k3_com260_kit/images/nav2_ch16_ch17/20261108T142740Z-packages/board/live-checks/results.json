@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "Museum map loaded",
+    "Museum map geometry equals Nav2",
+    "Museum map pixels equal Nav2",
+    "map_loader clean exit",
+    "real LaserScan and TF produce teaching map",
+    "obstacle_layer_processor clean exit",
+    "C++ debugger receives both real costmaps",
+    "costmap_debugger clean exit",
+    "invalid-planner expected failure",
+    "negative-cancel expected failure",
+    "missing-server expected failure"
+  ]
+}

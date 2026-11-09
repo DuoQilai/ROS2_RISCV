@@ -1,0 +1,23 @@
+{
+  "name": "sigterm",
+  "exit": 1,
+  "duration_s": 9.516205080999953,
+  "odom_samples": 156,
+  "distance_m": 0.48112972633806067,
+  "stopped": true,
+  "position_error_m": null,
+  "feedback_lines": 2,
+  "result_lines": [
+    "[INFO] [1794150020.508337805] [bt_navigator_client]: 导航结果: CANCELED"
+  ],
+  "amcl_xy": [
+    1.2299208096343486,
+    -0.6827525541901487
+  ],
+  "map_base_xy": [
+    1.2652751417840236,
+    -0.7124154158527101
+  ],
+  "position_source": "latest map -> base_link TF after stop",
+  "passed": true
+}

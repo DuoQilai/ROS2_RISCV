@@ -657,3 +657,68 @@ COM260 在没有 build/install 的新工作区，使用固定官方源码和原�
 Campus GUI资源独立安装与检查见[双端课程和练习目录验证](images/ch09/ch09-gui-resources.cast)。Harmonic要求`showTitleBar`属性声明布尔类型，本章使用独立GUI副本；原版和Pico文件保持原样。
 
 最终四个参考包共63个源码与资源文件在本地、COM260和x86逐项SHA-256一致，见[源文件清单](images/ch10/ch10-source-validation.json)。四包共21条编译命令，均为Debug并满足C++17；[编译记录](images/ch10/ch10-compile-commands.json)保留实际命令检查结果。Campus GUI资源的增量安装不改变已验证的C++程序。
+
+<a id="ch16-ch17"></a>
+
+## 第 16～17 章教案：Nav2 组件与全局代价地图
+
+验收批次：`20261108T142740Z-packages`。COM260 运行 9 个 C++17 教学入口，x86 正式 `ch06-nav2` 镜像运行 Nav2 1.1.20、Burger／Museum 与 RViz；两端使用有线 CycloneDDS、Domain 181。Nav2 接口源码固定为 `a097086719c88f781aa59788eca29ac6ca5e56db`。环境、构建、源码和媒体均绑定此批次，完整清单见[运行索引](images/nav2_ch16_ch17/validation-runs.json)。
+
+**第 16～17 章范围内的构建、原用例、负向检查、停止反馈与媒体验收通过。** 本节按教案编号记录，覆盖原第 11 章导航实验的基础部分；完整导航综合实验还涉及后续规划与控制章节。
+
+### 实测结果
+
+| 项目 | 实际结果与证据 |
+| --- | --- |
+| 双端构建 | 板端通过统一 setup 的 `--build-ch16`／`--build-ch17` 构建 7 个实例包，x86 通过 `x86-ch16-ch17.bash build` 构建；两端各 9 个 C++17 Debug 编译单元和可执行文件，ELF 分别为 RISC-V、x86-64。[COM260](images/nav2_ch16_ch17/20261108T142740Z-packages/build-board.cast)、[x86](images/nav2_ch16_ch17/20261108T142740Z-packages/build-x86.cast)、[二进制与编译信息](images/nav2_ch16_ch17/20261108T142740Z-packages/validation-results.json) |
+| 确定输入 | 两端各 12 项代价数值与 31 项 ROS 接口检查通过，包含重复 configure、PGM/YAML 语义、保留地图、无效输入拒绝、激光清除／标记和点云高度过滤。[COM260](images/nav2_ch16_ch17/20261108T142740Z-packages/checks-board.cast)、[x86](images/nav2_ch16_ch17/20261108T142740Z-packages/checks-x86.cast) |
+| 真实地图与传感器 | 11 项检查通过：992×992 Museum 地图的几何和全部像素与 Nav2 Map Server 一致；真实 LaserScan／TF 产生教学栅格，C++ 调试节点收到两张真实代价地图；无效规划器、负取消延时与服务缺失按预期失败。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/live-checks.cast) |
+| 公开规划入口 | C++ `global_planner_client` 从 `(0,0)` 到 `(3,2)` 生成 313 个路径点，退出码 0。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/planner.cast)、[结果](images/nav2_ch16_ch17/20261108T142740Z-packages/board/planner.json) |
+| 原目标 `(3,2,0)` | SUCCEEDED；147.991 秒、2437 条里程计；停稳 TF 为 `(3.1718,2.0013)`，原坐标误差 **0.1719 m ≤ 0.25 m**，尾段停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/original-goal.cast)、[数值与原始里程计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/navigation/goal-3-2.json) |
+| 五点任务 | 五次 SUCCEEDED，每点暂停 3 秒；224.489 秒、3873 条里程计。逐点误差 `0.0832, 0.0971, 0.0970, 0.0985, 0.0978` m，五点均停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/five-goals.cast)、[逐点 TF](images/nav2_ch16_ch17/20261108T142740Z-packages/board/navigation/five-goals.json) |
+| 原行为树序列 | 教学树先到 `(1,0,0)`，自定义树再到目标 `(0,-1,0)`，均 SUCCEEDED；后者 1113 条里程计、尾段停止。0.1 低电量测试输入返回 ABORTED，并停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/original-trees.cast) |
+| 到达后动作 | Wait 实测 **2.00 个仿真秒**；Spin 成功，里程计累计旋转 **6.3057 rad**，对应请求 6.2832 rad。[状态与里程计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/trees/post-arrival.json)、[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/post-arrival.cast) |
+| 取消与退出信号 | 提前取消、SIGINT、SIGTERM 均取得 CANCELED，程序按约定返回 1；分别 169／160／156 条里程计确认尾段停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/cancel-signals.cast) |
+| Action 异常 | 隔离域内目标拒绝、执行中止、取消不响应共 3 项通过；取消不响应约 11.26 秒退出。此项使用可控服务端。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/action-failures.cast) |
+| 动态障碍 | 箱体区域原始最大代价 **0 → 254 → 0**，分别对应加入前、加入后、移除后；箱体已移除。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/costmap.cast)、[原始栅格统计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/costmap/removed.json) |
+| 膨胀与清除 | 系数 1／10 时膨胀栅格代价总和为 5139580／1713890；系数已恢复为 3，全局与局部清除服务返回，地图继续更新 |
+| 配置题与恢复 | 机器人半径 0.3 m、膨胀 0.6 m、分辨率 0.05 m；局部 60×60 栅格对应 3×3 m，update_frequency 参数为 5 Hz。原半径 0.22 m／膨胀 0.55 m 等值均已读回确认恢复；参数频率不作为实际发布率。[配置结果](images/nav2_ch16_ch17/20261108T142740Z-packages/board/exercise-config.json)、[最终读回](images/nav2_ch16_ch17/20261108T142740Z-packages/parameters-final.cast) |
+| 公开入口 | `start`、`exec`、`stop` 和重复 `stop` 通过；本轮课程容器为 0，x86 桌面仍可访问。[启动](images/nav2_ch16_ch17/20261108T142740Z-packages/start.cast)、[停止](images/nav2_ch16_ch17/20261108T142740Z-packages/stop.cast) |
+
+### 终点条件与行为树
+
+原目标 `(3,2)` 处于原始代价 253 区域，规划器可能选择邻近可达终点。独立 [Launch](../course_support/k3_com260_kit/launch/nav2-teaching.launch.py) 将 NavFn 容差设为 0.15 m，目标检查器和 DWB 的 XY 容差均为 0.10 m，减少规划偏移与提前停止的累积误差。进度检测距离为 0.10 m，超时保留 10 秒；旧 0.5 m 平移要求会在末段转向完成前触发失败。原目标、0.25 m 验收阈值、机器人足迹和第 6 章默认参数均保持不变。
+
+自定义树增加 `PipelineSequence` 与 1 Hz 重规划，保留电量阈值、等待 2 秒和旋转 6.2832 rad。验收使用原 `(0,-1,0)`，没有用其他目标的成功替代。电量来自明确发布的 BatteryState 测试消息，不代表物理电池或充电功能。
+
+终点取停止后的 map→base_link TF，同时检查实际 `/odom` 速度。AMCL 消息受更新阈值影响，末条消息可能早于真实停止位置。仿真数值不作为物理机器人定位精度结论。
+
+### 截图与连续录像
+
+本节媒体均来自 `20261108T142740Z-packages` 的实际 Gazebo／RViz 窗口，主机录屏，原速连续保存；[采集时间、格式、派生片段与 SHA-256](images/nav2_ch16_ch17/20261108T142740Z-packages/media-validation.json)分别登记。4 份 MP4 和 3 份 GIF 完成整段解码，关键帧已目检。
+
+![原自定义行为树目标的导航、等待与旋转](images/nav2_ch16_ch17/20261108T142740Z-packages/original-tree-gazebo.gif)
+
+[180 秒 Gazebo 原片](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/original-tree-gazebo.mp4)；GIF 为第 25～100 秒原速片段。
+
+![原目标的末段运动与到达](images/nav2_ch16_ch17/20261108T142740Z-packages/planner-goal-rviz.gif)
+
+[180 秒原目标 RViz 连续录像](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/planner-goal-rviz.mp4)覆盖规划、运动和终点状态；GIF 为第 100～180 秒原速片段。
+
+![原目标完成后的 RViz](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/original-goal-rviz.png)
+
+[360 秒五点 RViz 原片](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/five-goals-rviz.mp4)显示路径、机器人位置及代价地图变化。
+
+![箱体加入后的障碍与膨胀区域](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-added.png)
+
+![箱体移除后的区域](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-removed.png)
+
+[120 秒动态代价地图原片](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-rviz.mp4)、[0～90 秒原速 GIF](images/nav2_ch16_ch17/20261108T142740Z-packages/costmap-rviz.gif)与区域数值配合阅读。近景 RViz 仅调整观察视角，未修改原课程配置。
+
+### 验证来源
+
+[源码指纹](images/nav2_ch16_ch17/20261108T142740Z-packages/source-validation.json)确认本地、COM260 与 x86 的 47 个构建源文件逐项一致，实跑结束后再次核对一致；[结构化结果](images/nav2_ch16_ch17/20261108T142740Z-packages/validation-results.json)、原始终端记录、服务端日志、里程计、验证脚本和媒体均列于[批次清单](images/nav2_ch16_ch17/20261108T142740Z-packages/manifest.json)。Python 仅用于 Launch、采集和验证，教学执行示例为 C++17。
+
+[服务端运行日志](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/nav2.log)保留调度周期超时、RViz GLSL 与粒子云 QoS 提示，以及取消时的 `Failed to get result for follow_path in node halt`。切换观察视角时，原 RViz 在收到 SIGINT 后出现一次退出码 -11；重新启动的 RViz 完成了录像，地图与实际代价变化已目检，粒子云显示不作为本轮验收依据。导航、取消和停车反馈均独立验证。无效规划器与低电量的失败日志对应负向用例。
+
+操作入口见 [Nav2 公共环境](nav2_common_setup.md)；教学内容见[第 16 章](../teaching_docs_k3_com260_kit/ch16_Nav2架构与核心组件.md)和[第 17 章](../teaching_docs_k3_com260_kit/ch17_全局代价地图.md)。

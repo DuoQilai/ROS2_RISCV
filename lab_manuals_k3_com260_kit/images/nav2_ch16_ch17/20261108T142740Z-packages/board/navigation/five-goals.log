@@ -1,0 +1,88 @@
+[INFO] [1794149184.703391415] [bt_navigator_client]: 目标已接受: x=1.00 y=0.00 yaw=0.00
+[INFO] [1794149184.703804997] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149187.666942989] [bt_navigator_client]: 剩余距离: 6.47 m
+[INFO] [1794149190.768076740] [bt_navigator_client]: 剩余距离: 6.15 m
+[INFO] [1794149193.994908400] [bt_navigator_client]: 剩余距离: 5.82 m
+[INFO] [1794149197.001234564] [bt_navigator_client]: 剩余距离: 5.45 m
+[INFO] [1794149199.842149074] [bt_navigator_client]: 剩余距离: 5.35 m
+[INFO] [1794149202.518050806] [bt_navigator_client]: 剩余距离: 5.10 m
+[INFO] [1794149205.152816197] [bt_navigator_client]: 剩余距离: 4.85 m
+[INFO] [1794149207.624040979] [bt_navigator_client]: 剩余距离: 4.60 m
+[INFO] [1794149210.175347193] [bt_navigator_client]: 剩余距离: 4.27 m
+[INFO] [1794149212.790341792] [bt_navigator_client]: 剩余距离: 4.05 m
+[INFO] [1794149215.509657266] [bt_navigator_client]: 剩余距离: 3.75 m
+[INFO] [1794149218.451235473] [bt_navigator_client]: 剩余距离: 3.50 m
+[INFO] [1794149221.469273113] [bt_navigator_client]: 剩余距离: 3.30 m
+[INFO] [1794149224.756854623] [bt_navigator_client]: 剩余距离: 3.05 m
+[INFO] [1794149227.912523368] [bt_navigator_client]: 剩余距离: 2.82 m
+[INFO] [1794149230.933531650] [bt_navigator_client]: 剩余距离: 2.55 m
+[INFO] [1794149233.871332688] [bt_navigator_client]: 剩余距离: 2.32 m
+[INFO] [1794149236.530913304] [bt_navigator_client]: 剩余距离: 2.05 m
+[INFO] [1794149239.165883713] [bt_navigator_client]: 剩余距离: 1.80 m
+[INFO] [1794149242.183080353] [bt_navigator_client]: 剩余距离: 1.52 m
+[INFO] [1794149245.426869534] [bt_navigator_client]: 剩余距离: 1.31 m
+[INFO] [1794149248.785210389] [bt_navigator_client]: 剩余距离: 1.07 m
+[INFO] [1794149251.990363911] [bt_navigator_client]: 剩余距离: 0.85 m
+[INFO] [1794149255.208683883] [bt_navigator_client]: 剩余距离: 0.57 m
+[INFO] [1794149258.355370753] [bt_navigator_client]: 剩余距离: 0.35 m
+[INFO] [1794149261.518600483] [bt_navigator_client]: 剩余距离: 0.17 m
+[INFO] [1794149264.620561714] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149267.499314911] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149270.118790663] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149273.141339242] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149276.060950133] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149277.317561200] [bt_navigator_client]: 导航结果: SUCCEEDED
+[INFO] [1794149277.317688658] [bt_navigator_client]: 到达目标 1/5，暂停 3 秒
+[INFO] [1794149280.318778126] [bt_navigator_client]: 目标已接受: x=1.00 y=-1.00 yaw=-1.57
+[INFO] [1794149280.339376702] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149282.726172658] [bt_navigator_client]: 剩余距离: 0.92 m
+[INFO] [1794149285.923938339] [bt_navigator_client]: 剩余距离: 0.65 m
+[INFO] [1794149288.643372311] [bt_navigator_client]: 剩余距离: 0.40 m
+[INFO] [1794149291.520043979] [bt_navigator_client]: 剩余距离: 0.22 m
+[INFO] [1794149294.706137643] [bt_navigator_client]: 剩余距离: 0.14 m
+[INFO] [1794149297.831229853] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149300.915697312] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149303.794496753] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149305.614218530] [bt_navigator_client]: 导航结果: SUCCEEDED
+[INFO] [1794149305.614330904] [bt_navigator_client]: 到达目标 2/5，暂停 3 秒
+[INFO] [1794149308.615691903] [bt_navigator_client]: 目标已接受: x=2.00 y=-1.00 yaw=0.00
+[INFO] [1794149308.636143228] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149311.150899684] [bt_navigator_client]: 剩余距离: 0.90 m
+[INFO] [1794149314.228584597] [bt_navigator_client]: 剩余距离: 0.75 m
+[INFO] [1794149316.741949244] [bt_navigator_client]: 剩余距离: 0.52 m
+[INFO] [1794149319.338554803] [bt_navigator_client]: 剩余距离: 0.32 m
+[INFO] [1794149322.234237957] [bt_navigator_client]: 剩余距离: 0.18 m
+[INFO] [1794149325.348077858] [bt_navigator_client]: 剩余距离: 0.10 m
+[INFO] [1794149328.673357394] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149330.763709484] [bt_navigator_client]: 导航结果: SUCCEEDED
+[INFO] [1794149330.763840984] [bt_navigator_client]: 到达目标 3/5，暂停 3 秒
+[INFO] [1794149333.765305915] [bt_navigator_client]: 目标已接受: x=0.00 y=-1.00 yaw=3.14
+[INFO] [1794149333.785756282] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149336.954096707] [bt_navigator_client]: 剩余距离: 1.97 m
+[INFO] [1794149339.960186060] [bt_navigator_client]: 剩余距离: 1.97 m
+[INFO] [1794149343.127581128] [bt_navigator_client]: 剩余距离: 1.85 m
+[INFO] [1794149345.847491664] [bt_navigator_client]: 剩余距离: 1.67 m
+[INFO] [1794149348.359655787] [bt_navigator_client]: 剩余距离: 1.35 m
+[INFO] [1794149350.894423180] [bt_navigator_client]: 剩余距离: 1.12 m
+[INFO] [1794149353.433693845] [bt_navigator_client]: 剩余距离: 0.90 m
+[INFO] [1794149356.085003057] [bt_navigator_client]: 剩余距离: 0.66 m
+[INFO] [1794149358.983492020] [bt_navigator_client]: 剩余距离: 0.40 m
+[INFO] [1794149361.998996598] [bt_navigator_client]: 剩余距离: 0.23 m
+[INFO] [1794149365.036770693] [bt_navigator_client]: 剩余距离: 0.14 m
+[INFO] [1794149368.239915614] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149371.405282367] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149372.299740545] [bt_navigator_client]: 导航结果: SUCCEEDED
+[INFO] [1794149372.299871378] [bt_navigator_client]: 到达目标 4/5，暂停 3 秒
+[INFO] [1794149375.301253652] [bt_navigator_client]: 目标已接受: x=0.00 y=0.00 yaw=0.00
+[INFO] [1794149375.321874059] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149377.978868354] [bt_navigator_client]: 剩余距离: 0.90 m
+[INFO] [1794149380.937003175] [bt_navigator_client]: 剩余距离: 0.78 m
+[INFO] [1794149383.654624883] [bt_navigator_client]: 剩余距离: 0.52 m
+[INFO] [1794149386.063540861] [bt_navigator_client]: 剩余距离: 0.32 m
+[INFO] [1794149388.693670066] [bt_navigator_client]: 剩余距离: 0.17 m
+[INFO] [1794149391.694536327] [bt_navigator_client]: 剩余距离: 0.12 m
+[INFO] [1794149394.700539191] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149397.623972171] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149400.522615121] [bt_navigator_client]: 剩余距离: 0.07 m
+[INFO] [1794149402.853382128] [bt_navigator_client]: 导航结果: SUCCEEDED
+[INFO] [1794149402.853491878] [bt_navigator_client]: 到达目标 5/5，暂停 3 秒
