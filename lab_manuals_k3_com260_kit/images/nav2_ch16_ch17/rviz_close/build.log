@@ -1,0 +1,308 @@
+Starting >>> costmap_debugger
+Consolidate compiler generated dependencies of target costmap_debugger
+[100%] Built target costmap_debugger
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/costmap_debugger/lib/costmap_debugger/costmap_debugger
+-- Up-to-date: /workspace/install/costmap_debugger/share/ament_index/resource_index/package_run_dependencies/costmap_debugger
+-- Up-to-date: /workspace/install/costmap_debugger/share/ament_index/resource_index/parent_prefix_path/costmap_debugger
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/environment/path.sh
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/environment/path.dsv
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/local_setup.bash
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/local_setup.sh
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/local_setup.zsh
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/local_setup.dsv
+-- Installing: /workspace/install/costmap_debugger/share/costmap_debugger/package.dsv
+-- Up-to-date: /workspace/install/costmap_debugger/share/ament_index/resource_index/packages/costmap_debugger
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/cmake/costmap_debuggerConfig.cmake
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/cmake/costmap_debuggerConfig-version.cmake
+-- Up-to-date: /workspace/install/costmap_debugger/share/costmap_debugger/package.xml
+Finished <<< costmap_debugger [0.14s]
+Starting >>> costmap_demo
+Consolidate compiler generated dependencies of target inflation_plot
+Consolidate compiler generated dependencies of target costmap_demo
+[ 50%] Built target costmap_demo
+[100%] Built target inflation_plot
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/costmap_demo/lib/costmap_demo/costmap_demo
+-- Up-to-date: /workspace/install/costmap_demo/lib/costmap_demo/inflation_plot
+-- Up-to-date: /workspace/install/costmap_demo/include
+-- Up-to-date: /workspace/install/costmap_demo/include/costmap_demo
+-- Up-to-date: /workspace/install/costmap_demo/include/costmap_demo/costmap.hpp
+-- Up-to-date: /workspace/install/costmap_demo/share/ament_index/resource_index/package_run_dependencies/costmap_demo
+-- Up-to-date: /workspace/install/costmap_demo/share/ament_index/resource_index/parent_prefix_path/costmap_demo
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/environment/path.sh
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/environment/path.dsv
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/local_setup.bash
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/local_setup.sh
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/local_setup.zsh
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/local_setup.dsv
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/package.dsv
+-- Up-to-date: /workspace/install/costmap_demo/share/ament_index/resource_index/packages/costmap_demo
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/cmake/costmap_demoConfig.cmake
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/cmake/costmap_demoConfig-version.cmake
+-- Up-to-date: /workspace/install/costmap_demo/share/costmap_demo/package.xml
+Finished <<< costmap_demo [0.11s]
+Starting >>> custom_nav_component
+Consolidate compiler generated dependencies of target custom_nav_component
+[100%] Built target custom_nav_component
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/custom_nav_component/lib/custom_nav_component/custom_nav_component
+-- Up-to-date: /workspace/install/custom_nav_component/share/ament_index/resource_index/package_run_dependencies/custom_nav_component
+-- Up-to-date: /workspace/install/custom_nav_component/share/ament_index/resource_index/parent_prefix_path/custom_nav_component
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/environment/path.sh
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/environment/path.dsv
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/local_setup.bash
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/local_setup.sh
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/local_setup.zsh
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/local_setup.dsv
+-- Installing: /workspace/install/custom_nav_component/share/custom_nav_component/package.dsv
+-- Up-to-date: /workspace/install/custom_nav_component/share/ament_index/resource_index/packages/custom_nav_component
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/cmake/custom_nav_componentConfig.cmake
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/cmake/custom_nav_componentConfig-version.cmake
+-- Up-to-date: /workspace/install/custom_nav_component/share/custom_nav_component/package.xml
+Finished <<< custom_nav_component [0.11s]
+Starting >>> global_planner_client
+Consolidate compiler generated dependencies of target global_planner_client
+[100%] Built target global_planner_client
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/global_planner_client/lib/global_planner_client/global_planner_client
+-- Up-to-date: /workspace/install/global_planner_client/share/ament_index/resource_index/package_run_dependencies/global_planner_client
+-- Up-to-date: /workspace/install/global_planner_client/share/ament_index/resource_index/parent_prefix_path/global_planner_client
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/environment/path.sh
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/environment/path.dsv
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/local_setup.bash
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/local_setup.sh
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/local_setup.zsh
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/local_setup.dsv
+-- Installing: /workspace/install/global_planner_client/share/global_planner_client/package.dsv
+-- Up-to-date: /workspace/install/global_planner_client/share/ament_index/resource_index/packages/global_planner_client
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/cmake/global_planner_clientConfig.cmake
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/cmake/global_planner_clientConfig-version.cmake
+-- Up-to-date: /workspace/install/global_planner_client/share/global_planner_client/package.xml
+Finished <<< global_planner_client [0.12s]
+Starting >>> map_loader
+Consolidate compiler generated dependencies of target map_loader
+[100%] Built target map_loader
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/map_loader/lib/map_loader/map_loader
+-- Up-to-date: /workspace/install/map_loader/share/ament_index/resource_index/package_run_dependencies/map_loader
+-- Up-to-date: /workspace/install/map_loader/share/ament_index/resource_index/parent_prefix_path/map_loader
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/environment/path.sh
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/environment/path.dsv
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/local_setup.bash
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/local_setup.sh
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/local_setup.zsh
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/local_setup.dsv
+-- Installing: /workspace/install/map_loader/share/map_loader/package.dsv
+-- Up-to-date: /workspace/install/map_loader/share/ament_index/resource_index/packages/map_loader
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/cmake/map_loaderConfig.cmake
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/cmake/map_loaderConfig-version.cmake
+-- Up-to-date: /workspace/install/map_loader/share/map_loader/package.xml
+Finished <<< map_loader [0.12s]
+Starting >>> navigation_client_cpp
+Consolidate compiler generated dependencies of target bt_navigator_client
+Consolidate compiler generated dependencies of target multi_goal_navigation
+[ 50%] Built target multi_goal_navigation
+[100%] Built target bt_navigator_client
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/navigation_client_cpp/lib/navigation_client_cpp/bt_navigator_client
+-- Up-to-date: /workspace/install/navigation_client_cpp/lib/navigation_client_cpp/multi_goal_navigation
+-- Up-to-date: /workspace/install/navigation_client_cpp/include
+-- Up-to-date: /workspace/install/navigation_client_cpp/include/navigation_client_cpp
+-- Up-to-date: /workspace/install/navigation_client_cpp/include/navigation_client_cpp/navigator.hpp
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/behavior_trees
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/behavior_trees/teaching_navigation.xml
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/behavior_trees/custom_navigation.xml
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/ament_index/resource_index/package_run_dependencies/navigation_client_cpp
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/ament_index/resource_index/parent_prefix_path/navigation_client_cpp
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/environment/path.sh
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/environment/path.dsv
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/local_setup.bash
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/local_setup.sh
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/local_setup.zsh
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/local_setup.dsv
+-- Installing: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/package.dsv
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/ament_index/resource_index/packages/navigation_client_cpp
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/cmake/navigation_client_cppConfig.cmake
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/cmake/navigation_client_cppConfig-version.cmake
+-- Up-to-date: /workspace/install/navigation_client_cpp/share/navigation_client_cpp/package.xml
+Finished <<< navigation_client_cpp [0.12s]
+Starting >>> param_demo_cpp
+Consolidate compiler generated dependencies of target speed_ctrl
+Consolidate compiler generated dependencies of target param_demo
+Consolidate compiler generated dependencies of target patrol_driver
+Consolidate compiler generated dependencies of target param_node
+[ 25%] Built target patrol_driver
+[ 50%] Built target param_demo
+[ 75%] Built target speed_ctrl
+[100%] Built target param_node
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/param_demo_cpp/lib/param_demo_cpp/param_demo
+-- Up-to-date: /workspace/install/param_demo_cpp/lib/param_demo_cpp/param_node
+-- Up-to-date: /workspace/install/param_demo_cpp/lib/param_demo_cpp/speed_ctrl
+-- Up-to-date: /workspace/install/param_demo_cpp/lib/param_demo_cpp/patrol_driver
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/launch
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/launch/param_with_yaml.launch.py
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/launch/gazebo_ch06.launch.py
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/launch/combined_sim_nav.launch.py
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/launch/speed.launch.py
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/launch/demo.launch.py
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/config
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/config/speed_params.yaml
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/config/params.yaml
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/config/nav2_params.yaml
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/maps
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/maps/Software_Museum.yaml
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/maps/Software_Museum.pgm
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/rviz
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/rviz/navigation.rviz
+-- Up-to-date: /workspace/install/param_demo_cpp/share/ament_index/resource_index/package_run_dependencies/param_demo_cpp
+-- Up-to-date: /workspace/install/param_demo_cpp/share/ament_index/resource_index/parent_prefix_path/param_demo_cpp
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/environment/path.sh
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/environment/path.dsv
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/local_setup.bash
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/local_setup.sh
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/local_setup.zsh
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/local_setup.dsv
+-- Installing: /workspace/install/param_demo_cpp/share/param_demo_cpp/package.dsv
+-- Up-to-date: /workspace/install/param_demo_cpp/share/ament_index/resource_index/packages/param_demo_cpp
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/cmake/param_demo_cppConfig.cmake
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/cmake/param_demo_cppConfig-version.cmake
+-- Up-to-date: /workspace/install/param_demo_cpp/share/param_demo_cpp/package.xml
+Finished <<< param_demo_cpp [0.11s]
+Starting >>> robot_sim_demo
+Consolidate compiler generated dependencies of target camera_info_publisher
+[  0%] Built target ament_cmake_python_copy_robot_sim_demo
+[100%] Built target camera_info_publisher
+running egg_info
+writing robot_sim_demo.egg-info/PKG-INFO
+writing dependency_links to robot_sim_demo.egg-info/dependency_links.txt
+writing top-level names to robot_sim_demo.egg-info/top_level.txt
+reading manifest file 'robot_sim_demo.egg-info/SOURCES.txt'
+writing manifest file 'robot_sim_demo.egg-info/SOURCES.txt'
+[100%] Built target ament_cmake_python_build_robot_sim_demo_egg
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/robot_sim_demo/lib/robot_sim_demo/camera_info_publisher
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/environment/pythonpath.sh
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/environment/pythonpath.dsv
+-- Up-to-date: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo-0.1.0-py3.10.egg-info
+-- Installing: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo-0.1.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo-0.1.0-py3.10.egg-info/top_level.txt
+-- Installing: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo-0.1.0-py3.10.egg-info/PKG-INFO
+-- Installing: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo-0.1.0-py3.10.egg-info/SOURCES.txt
+-- Up-to-date: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo
+-- Up-to-date: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo/patrol_driver.py
+-- Up-to-date: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo/__init__.py
+-- Up-to-date: /workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo/circle_driver.py
+Listing '/workspace/install/robot_sim_demo/local/lib/python3.10/dist-packages/robot_sim_demo'...
+-- Up-to-date: /workspace/install/robot_sim_demo/lib/robot_sim_demo/circle_driver
+-- Up-to-date: /workspace/install/robot_sim_demo/lib/robot_sim_demo/patrol_driver
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/launch
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/launch/gazebo2.launch.py
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/launch/campus_pucrs.launch.py
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/config/gazebo2_bridge.yaml
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/config/gazebo2_ogre_gui.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/gui
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/gui/capture_minimal.gui.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/gui/museum.gui.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/gui/campus_pucrs.gui.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/rviz
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/rviz/campus_pucrs.rviz
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/rviz/museum.rviz
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/urdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/urdf/campus_patrol_robot.urdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/urdf/turtlebot3_burger.urdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/worlds
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/worlds/museum.sdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/worlds/campus_pucrs.world.sdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/model.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/model.sdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/meshes
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/meshes/ISCAS_museum.dae
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/meshes/zd_031.jpg
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/meshes/zd_021.jpg
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/meshes/zd_041.jpg
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_Museum/meshes/zd_011.jpg
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/model.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/model.sdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/meshes
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/meshes/burger_base.stl
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/meshes/lds.stl
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/meshes/right_tire.stl
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/turtlebot3_burger/meshes/left_tire.stl
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/campus_patrol_robot
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/campus_patrol_robot/model.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/campus_patrol_robot/model.sdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/materials
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/materials/textures
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/materials/textures/ISCAS_groundplane.png
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/materials/textures/flat_heightmap.pgm
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/materials/scripts
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/materials/scripts/ISCAS_groundplane.material
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/model.config
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/model.sdf
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/meshes
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/meshes/ground_plane.mtl
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/meshes/ISCAS_groundplane.png
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/meshes/ground_plane.dae
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/models/ISCAS_groundplane/meshes/ground_plane.obj
+-- Up-to-date: /workspace/install/robot_sim_demo/share/ament_index/resource_index/package_run_dependencies/robot_sim_demo
+-- Up-to-date: /workspace/install/robot_sim_demo/share/ament_index/resource_index/parent_prefix_path/robot_sim_demo
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/environment/path.sh
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/environment/path.dsv
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/local_setup.bash
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/local_setup.sh
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/local_setup.zsh
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/local_setup.dsv
+-- Installing: /workspace/install/robot_sim_demo/share/robot_sim_demo/package.dsv
+-- Up-to-date: /workspace/install/robot_sim_demo/share/ament_index/resource_index/packages/robot_sim_demo
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/cmake/robot_sim_demoConfig.cmake
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/cmake/robot_sim_demoConfig-version.cmake
+-- Up-to-date: /workspace/install/robot_sim_demo/share/robot_sim_demo/package.xml
+Finished <<< robot_sim_demo [0.30s]
+Starting >>> obstacle_layer_processor
+Consolidate compiler generated dependencies of target obstacle_layer_processor
+[100%] Built target obstacle_layer_processor
+-- Install configuration: "Debug"
+-- Up-to-date: /workspace/install/obstacle_layer_processor/lib/obstacle_layer_processor/obstacle_layer_processor
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/ament_index/resource_index/package_run_dependencies/obstacle_layer_processor
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/ament_index/resource_index/parent_prefix_path/obstacle_layer_processor
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/environment/ament_prefix_path.sh
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/environment/ament_prefix_path.dsv
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/environment/path.sh
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/environment/path.dsv
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/local_setup.bash
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/local_setup.sh
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/local_setup.zsh
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/local_setup.dsv
+-- Installing: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/package.dsv
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/ament_index/resource_index/packages/obstacle_layer_processor
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/cmake/obstacle_layer_processorConfig.cmake
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/cmake/obstacle_layer_processorConfig-version.cmake
+-- Up-to-date: /workspace/install/obstacle_layer_processor/share/obstacle_layer_processor/package.xml
+Finished <<< obstacle_layer_processor [0.13s]
+
+Summary: 9 packages finished [1.39s]

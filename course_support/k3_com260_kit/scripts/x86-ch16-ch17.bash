@@ -4,10 +4,10 @@ set -Eeuo pipefail
 trap 'printf "Error: Nav2 teaching command failed at line %s (exit %s).\n" "$LINENO" "$?" >&2' ERR
 die() { printf 'Error: %s\n' "$*" >&2; exit 1; }
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)
-image=localhost/ros2-course-com260:ch06-nav2
+image=localhost/ros2-course-com260:ch16-ch17-nav2
 mode=${1:---help}
 [[ $mode != --help ]] || {
-  echo 'Usage: x86-ch16-ch17.bash build | start RUN_ID | exec RUN_ID COMMAND [ARG ...] | stop RUN_ID'
+  echo 'Usage: x86-ch16-ch17.bash build-image | build | start RUN_ID | exec RUN_ID COMMAND [ARG ...] | stop RUN_ID'
   exit 0
 }
 [[ $(uname -s) == Linux && $EUID -ne 0 ]] || die 'Run as the normal Linux course user.'
@@ -20,17 +20,24 @@ workspace="$HOME/ros2_course_com260_ch16_ch17_humble_ws"
 command -v podman >/dev/null || die 'Prepare rootless Podman as described in chapter 0.'
 [[ $(podman info --format '{{.Host.Security.Rootless}}') == true ]] || die 'Rootless Podman is required.'
 case "$mode" in
+  build-image)
+    [[ $# == 1 ]] || die 'Usage: x86-ch16-ch17.bash build-image'
+    podman image exists localhost/ros2-course-com260:ch06-nav2 || die 'Build the chapter 6 Nav2 image first: x86-ch06.bash build-image'
+    podman build --pull=never -t "$image" \
+      -f "$root/course_support/k3_com260_kit/containers/Containerfile.ch16-ch17" \
+      "$root/course_support/k3_com260_kit/containers"
+    exit 0 ;;
   build)
     [[ $# == 1 ]] || die 'Usage: x86-ch16-ch17.bash build'
     [[ ! -e $workspace || -f "$workspace/.com260-ch16-ch17" ]] || die "Refusing unmarked workspace: $workspace"
     mkdir -p "$workspace"
     touch "$workspace/.com260-ch16-ch17"
-    podman image exists "$image" || die 'Build the chapter 6 Nav2 image first: x86-ch06.bash build-image'
+    podman image exists "$image" || die 'Build the chapter 16/17 image first: x86-ch16-ch17.bash build-image'
     podman run --rm --network none --cap-drop all --security-opt no-new-privileges \
       --volume "$root/src_k3_com260_kit:/course/src_k3_com260_kit:ro" \
       --volume "$root/src_k3_pico_itx/robot_sim_demo:/course/src_k3_pico_itx/robot_sim_demo:ro" \
       --volume "$workspace:/workspace:rw" --workdir /workspace "$image" \
-      bash -c 'source /opt/ros/humble/setup.bash; colcon build --base-paths /course/src_k3_com260_kit/custom_nav_component /course/src_k3_com260_kit/navigation_client_cpp /course/src_k3_com260_kit/global_planner_client /course/src_k3_com260_kit/costmap_demo /course/src_k3_com260_kit/map_loader /course/src_k3_com260_kit/obstacle_layer_processor /course/src_k3_com260_kit/costmap_debugger /course/src_k3_com260_kit/param_demo_cpp /course/src_k3_pico_itx/robot_sim_demo --packages-select custom_nav_component navigation_client_cpp global_planner_client costmap_demo map_loader obstacle_layer_processor costmap_debugger param_demo_cpp robot_sim_demo --executor sequential --event-handlers console_direct+ --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
+      bash -c 'source /opt/ros/humble/setup.bash; colcon build --base-paths /course/src_k3_com260_kit/custom_nav_component /course/src_k3_com260_kit/navigation_client_cpp /course/src_k3_com260_kit/navigation_lab_cpp /course/src_k3_com260_kit/global_planner_client /course/src_k3_com260_kit/costmap_demo /course/src_k3_com260_kit/map_loader /course/src_k3_com260_kit/obstacle_layer_processor /course/src_k3_com260_kit/costmap_debugger /course/src_k3_com260_kit/param_demo_cpp /course/src_k3_pico_itx/robot_sim_demo --packages-select custom_nav_component navigation_client_cpp navigation_lab_cpp global_planner_client costmap_demo map_loader obstacle_layer_processor costmap_debugger param_demo_cpp robot_sim_demo --executor sequential --event-handlers console_direct+ --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON'
     exit 0 ;;
   stop)
     [[ $# == 2 ]] || die 'Usage: x86-ch16-ch17.bash stop RUN_ID'
@@ -44,7 +51,7 @@ case "$mode" in
     [[ $# -ge 3 && "$2" =~ ^[[:alnum:]_-]+$ ]] || die 'Usage: x86-ch16-ch17.bash exec RUN_ID COMMAND [ARG ...]'
     run_id=$2; shift 2
     [[ $(podman inspect --format '{{index .Config.Labels "org.ros2-riscv.run-id"}}' "ros2-com260-$run_id") == "$run_id" ]] || die 'RUN_ID label mismatch.'
-    exec podman exec "ros2-com260-$run_id" bash -c 'source /workspace/install/setup.bash; exec "$@"' bash "$@" ;;
+    exec podman exec "ros2-com260-$run_id" bash -c 'set -e; source /workspace/install/setup.bash; source /opt/rviz-close-fix/local_setup.bash; exec "$@"' bash "$@" ;;
   start) ;;
   *) die 'Unknown mode; see --help.' ;;
 esac
@@ -64,4 +71,4 @@ podman run --detach --rm --name "ros2-com260-$run_id" --network host \
   --volume /tmp/.X11-unix:/tmp/.X11-unix:ro --volume "$auth_file:/tmp/course.xauth:ro" \
   --volume "$root/course_support/k3_com260_kit/launch:/course-launch:ro" \
   --volume "$workspace:/workspace:rw" --workdir /workspace "$image" \
-  bash -c 'source /workspace/install/setup.bash; exec timeout --signal=INT --kill-after=10s 7200s ros2 launch /course-launch/nav2-teaching.launch.py gz_partition:="$1"' bash "$run_id"
+  bash -c 'set -e; source /workspace/install/setup.bash; source /opt/rviz-close-fix/local_setup.bash; exec timeout --signal=INT --kill-after=10s 7200s ros2 launch /course-launch/nav2-teaching.launch.py gz_partition:="$1"' bash "$run_id"

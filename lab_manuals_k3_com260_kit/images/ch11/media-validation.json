@@ -1,0 +1,209 @@
+{
+  "dynamic-gazebo.mp4": {
+    "sha256": "d7cf6dbe02bd5b2888d203ca51ba57d623b4868228c2ee96e4fcad60f0317134",
+    "bytes": 1975563,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "1806"
+        }
+      ],
+      "format": {
+        "duration": "180.600000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "dynamic-gazebo.png": {
+    "sha256": "93f148f1d3aae850eb5aa2cdb62be02cae98893c638442211ed76a1127807c6b",
+    "bytes": 673950
+  },
+  "dynamic-rviz.gif": {
+    "sha256": "1e1a60cb3ec1ed518bbbc4fe665d366319a010f9eaf5c3e59bcdf20772985a89",
+    "bytes": 4085423,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 960,
+          "height": 600,
+          "nb_frames": "200"
+        }
+      ],
+      "format": {
+        "duration": "25.010000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "dynamic-rviz.mp4": {
+    "sha256": "5f9b148acfd0ac4ff81a5ead02c43dd15eaee62b472b0d372ca737958354e734",
+    "bytes": 10780460,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "1808"
+        }
+      ],
+      "format": {
+        "duration": "180.800000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "dynamic-rviz.png": {
+    "sha256": "88b60b4147e2b829d8a26a7dab01275a1789db90b6e676c05dc82cefe416319b",
+    "bytes": 464194
+  },
+  "goals.gif": {
+    "sha256": "01a98c7e2ba8ed9996212b0f4f9c97aa43389c5b6f741a4f07af3a2eb76b9e5c",
+    "bytes": 884058,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 960,
+          "height": 600,
+          "nb_frames": "200"
+        }
+      ],
+      "format": {
+        "duration": "25.010000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "goals.mp4": {
+    "sha256": "60173560d691f7ac2a594222e18786d21b4d05943f6357ee8de70768115fd56e",
+    "bytes": 1145390,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "945"
+        }
+      ],
+      "format": {
+        "duration": "94.500000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "goals.png": {
+    "sha256": "6e4bc07cdeccc0b689f65f7748b4f845f224245dad84dcb1165be02f7736fce0",
+    "bytes": 672650
+  },
+  "patrol.mp4": {
+    "sha256": "f057066f3a424c390daf9591a9bb8ae4291d8c52caf47fc975bbbcbf7e54159e",
+    "bytes": 2088921,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "1881"
+        }
+      ],
+      "format": {
+        "duration": "188.100000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "patrol.png": {
+    "sha256": "a10eae8bc5db27fbbee2f321d93c2cdbf37ca754a786f2895c9933d6d99a1665",
+    "bytes": 674100
+  },
+  "recovery-rviz.mp4": {
+    "sha256": "be91770ecec21cf3420eeb916dafcbdd8803608c925ed627b7ac4b4be2563a6f",
+    "bytes": 4166691,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "766"
+        }
+      ],
+      "format": {
+        "duration": "76.600000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "recovery-rviz.png": {
+    "sha256": "22f10a072422d80bc0d90f73b7e2977d5a9a115748506b932261fb4d91c2f5c5",
+    "bytes": 407735
+  },
+  "recovery.mp4": {
+    "sha256": "2d55c6c66f80a3ad1c31238bf6797427ab65ffe982489c6ab9d16edbd47d1a19",
+    "bytes": 936576,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "764"
+        }
+      ],
+      "format": {
+        "duration": "76.400000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "recovery.png": {
+    "sha256": "1cf6cc14bb68d81f74005c1051204e3a111055012c5604552d0bb1b7b8422bba",
+    "bytes": 652154
+  },
+  "runtime-data.tar.gz": {
+    "sha256": "ff7ea94cc09351a36dad94cbc47f36b2cb2bbb37c32cb21ea9bb8a64964140af",
+    "bytes": 1197595
+  },
+  "validation-results.json": {
+    "sha256": "8be35a2ab2538fb30a72d0c7d3b624d98d8c92aa4f16acaf29987a4a1141e0cd",
+    "bytes": 13295
+  },
+  "waypoints.mp4": {
+    "sha256": "dad91c92ff25e21e79fee167600228e947880773649445a069497a338c2d9894",
+    "bytes": 1082896,
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "width": 1280,
+          "height": 800,
+          "nb_frames": "957"
+        }
+      ],
+      "format": {
+        "duration": "95.700000"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "waypoints.png": {
+    "sha256": "a5fea3a9f6f2d8e1b3d53defe4cbe01dd12a88bce87b14fb55c78d441785cd4e",
+    "bytes": 672698
+  }
+}

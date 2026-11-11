@@ -664,6 +664,8 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 验收批次：`20261108T142740Z-packages`。COM260 运行 9 个 C++17 教学入口，x86 正式 `ch06-nav2` 镜像运行 Nav2 1.1.20、Burger／Museum 与 RViz；两端使用有线 CycloneDDS、Domain 181。Nav2 接口源码固定为 `a097086719c88f781aa59788eca29ac6ca5e56db`。环境、构建、源码和媒体均绑定此批次，完整清单见[运行索引](images/nav2_ch16_ch17/validation-runs.json)。
 
+当前 x86 入口使用独立 `ch16-ch17-nav2` 镜像，包含同版本 RViz 的退出修复；其[启动、使用与退出验收](#rviz-exit)单独记录。上述课程用例的原始记录保持对应原镜像。
+
 **第 16～17 章范围内的构建、原用例、负向检查、停止反馈与媒体验收通过。** 本节按教案编号记录，覆盖原第 11 章导航实验的基础部分；完整导航综合实验还涉及后续规划与控制章节。
 
 ### 实测结果
@@ -695,7 +697,7 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 ### 截图与连续录像
 
-本节媒体均来自 `20261108T142740Z-packages` 的实际 Gazebo／RViz 窗口，主机录屏，原速连续保存；[采集时间、格式、派生片段与 SHA-256](images/nav2_ch16_ch17/20261108T142740Z-packages/media-validation.json)分别登记。4 份 MP4 和 3 份 GIF 完成整段解码，关键帧已目检。
+以下原用例媒体来自 `20261108T142740Z-packages` 的实际 Gazebo／RViz 窗口，主机录屏，原速连续保存；[采集时间、格式、派生片段与 SHA-256](images/nav2_ch16_ch17/20261108T142740Z-packages/media-validation.json)分别登记。4 份 MP4 和 3 份 GIF 完成整段解码，关键帧已目检。
 
 ![原自定义行为树目标的导航、等待与旋转](images/nav2_ch16_ch17/20261108T142740Z-packages/original-tree-gazebo.gif)
 
@@ -719,6 +721,68 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 [源码指纹](images/nav2_ch16_ch17/20261108T142740Z-packages/source-validation.json)确认本地、COM260 与 x86 的 47 个构建源文件逐项一致，实跑结束后再次核对一致；[结构化结果](images/nav2_ch16_ch17/20261108T142740Z-packages/validation-results.json)、原始终端记录、服务端日志、里程计、验证脚本和媒体均列于[批次清单](images/nav2_ch16_ch17/20261108T142740Z-packages/manifest.json)。Python 仅用于 Launch、采集和验证，教学执行示例为 C++17。
 
-[服务端运行日志](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/nav2.log)保留调度周期超时、RViz GLSL 与粒子云 QoS 提示，以及取消时的 `Failed to get result for follow_path in node halt`。切换观察视角时，原 RViz 在收到 SIGINT 后出现一次退出码 -11；重新启动的 RViz 完成了录像，地图与实际代价变化已目检，粒子云显示不作为本轮验收依据。导航、取消和停车反馈均独立验证。无效规划器与低电量的失败日志对应负向用例。
+[服务端运行日志](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/nav2.log)保留调度周期超时、RViz GLSL 与粒子云 QoS 提示，以及取消时的 `Failed to get result for follow_path in node halt`。原 RViz 的退出码 -11 已在[独立镜像中修复并复测](#rviz-exit)。地图与实际代价变化已目检，粒子云显示不作为验收依据；导航、取消和停车反馈均独立验证。无效规划器与低电量的失败日志对应负向用例。
+
+<a id="rviz-exit"></a>
+
+### RViz 启动、使用与退出
+
+批次 `20261108T172828Z-rviz-acceptance` 使用公开 `x86-ch16-ch17.bash` 入口与独立镜像 `ch16-ch17-nav2`。基于 RViz 11.2.28 的[小型补丁](../course_support/k3_com260_kit/containers/rviz-close.patch)在接受窗口关闭时停止渲染，并将显示插件库的释放延后到相关 ROS 对象销毁之后。第 6 章镜像、共享配置与教学 C++ 源码保持原样。
+
+| 检查 | 实际结果 |
+| --- | --- |
+| 构建与启动 | x86 9 个包构建成功；RViz 显示地图、机器人、激光和代价地图，Global Status 为 OK |
+| 交互与导航 | 取消关闭后仍可导航；C++ 客户端目标 `(1,0)` 返回 SUCCEEDED，停稳 TF 误差 0.0971 m，336 条里程计样本确认尾段停止；拖动视角和调整窗口大小正常 |
+| 关闭窗口 | 保存询问选择 Discard，RViz 进程正常结束，退出码 0 |
+| 重启与信号退出 | 分别重新启动并运行约 45 秒，SIGINT、SIGTERM 的进程退出码均为 0；退出后 Nav2 仍为 active |
+| 隔离与清理 | 原镜像 ID、系统软件包清单与 1,846 个原版、Pico 及共享文件哈希未变化；本次容器已停止移除，桌面保持可用 |
+
+![RViz 导航完成并调整视角后的画面](images/nav2_ch16_ch17/rviz_close/navigation.png)
+
+[35 秒连续导航录像](images/nav2_ch16_ch17/rviz_close/navigation.mp4)为本批次实际窗口录制，1280×800、12 fps，整段解码和关键帧目检通过。构建、导航、三种退出的原始日志及源码／媒体 SHA-256 见[验证记录](images/nav2_ch16_ch17/rviz_close/verification.json)。本次专项回归在 x86 完成，COM260 与整章用例沿用上方独立批次；粒子云 QoS 提示仍保留，不计入显示通过项。
 
 操作入口见 [Nav2 公共环境](nav2_common_setup.md)；教学内容见[第 16 章](../teaching_docs_k3_com260_kit/ch16_Nav2架构与核心组件.md)和[第 17 章](../teaching_docs_k3_com260_kit/ch17_全局代价地图.md)。
+
+<a id="ch18-ch19"></a>
+
+## 第 18～19 章：全局路径规划与局部控制
+
+批次 `20261111T042601Z-planning`：COM260 原生 RISC-V C++17，x86 Gazebo / Nav2 / RViz，ROS 2 Humble；使用独立章节工作区与第 16～17 章修复后的 RViz 镜像。入口、实际参数、逐项数值与截图视频见[教案示例运行说明](nav2_planning_setup.md#7-结果与媒体)。
+
+| 验收内容 | 实际结果 |
+|---|---|
+| 构建与一致性 | 两端各 5 项已知输入测试通过；130 个源码和运行配置在本地、COM260、x86 以及运行前后逐项一致 |
+| 第 18 章教学示例 | Dijkstra/A* 等代价 65.9411，57 点；Hybrid-A* 18 点；平滑、修剪、重采样、代价优化已知输入通过 |
+| 自编 A* 真实地图 | `(1,0)` 成功；原默认 `(3,2)` 位于代价 253 栅格，明确拒绝 |
+| 官方全局规划器 | NavFn Dijkstra、NavFn A*、Smac 2D、Smac Hybrid-A* 到同一 `(2,-1)` 均完成规划、代价检查、实际导航及停车 |
+| 控制器对照 | DWB、RPP、MPPI 到同一 `(1,0)` 均成功；终点误差分别 0.0985 / 0.0957 / 0.0977 m |
+| 箱体避让 | DWB（预测 3.0 s）、RPP、自编 DWA 均完成 `(1.5,0)`，最小净距 0.0796 / 0.2690 / 0.1344 m；DWB 默认 1.7 s 未完成该场景，不作为通过配置 |
+| 0.8 m 走廊 | DWB 默认配置完成 `(2.2,0)`，最小墙体净距 0.0683 m，终点误差 0.0977 m，停止通过 |
+| 负向与停止 | 无效速度、无输入超时、SIGINT、SIGTERM、扫描失联符合预期；以真实 `/odom` 停车判断，非零返回值不冒充导航成功 |
+
+[结构化验收结果](images/nav2_ch18_ch19/validation-results.json)、[源码指纹](images/nav2_ch18_ch19/source-sha256.json)、[媒体校验](images/nav2_ch18_ch19/media-validation.json)及[本次原始数据](images/nav2_ch18_ch19/runtime-data.tar.gz)可交叉复核。规划时间分 ROS 时钟与墙钟 Action 往返；净距为已知仿真几何计算结果，跟踪误差参照当时的全局路径。截图、原速 MP4、GIF 和 CAST 均来自对应实跑。
+
+简化 Hybrid-A* 未实现解析 Reeds–Shepp 连接，RPP 数值示例与官方控制插件分别验证；自适应切换保留为设计题。既有 RViz GLSL / 粒子云 QoS 提示仍保留，粒子云显示不计为通过项；退出修复见[专项验证](#rviz-exit)。
+
+<a id="ch11"></a>
+
+## 第 11 章 Nav2 自主导航（教案 16～20 章共用）
+
+使用原六个练习、目标坐标和方向、四航点及两圈巡逻规则。COM260 原生运行 `navigation_lab_cpp` 的六个 C++17 入口，x86 运行 Burger / Humble Nav2。原 XBot-U 场景与地图未随仓库提供，本实验补充独立 `navigation-lab` 场景及与其几何一致的地图；原 Museum 入口继续用于教案示例。
+
+**六个练习通过构建、联动运行、停车及媒体验收。** 教案中的规划器对比和走廊结果仍对应各自示例。
+
+| 原练习 | 实际结果 |
+|---|---|
+| 1. goToPose 四目标 | 四次 `NavigateToPose` 均 SUCCEEDED；位置误差 0.0984 / 0.0965 / 0.0853 / 0.0975 m；2603 条 odom，结束后停稳；反馈含距离及预计时间 |
+| 2. FollowWaypoints 四航点 | 真实 `FollowWaypoints`；`stop_on_failure=false` 和 `true` 分别运行原四航点，反馈索引覆盖 0～3、无遗漏，均退出 0 并停稳。这两次目标均可达，不作为失败分支验证 |
+| 3. 恢复行为与合成 LaserScan | 在原 `(4,0)` 目标处放置方盒并加载对应地图；Nav2 自动 Spin 和 BackUp 均完成，随后移除障碍并恢复正常地图，同一个目标 SUCCEEDED，位置误差 0.0974 m；2225 条 odom、退出 0 并停稳。收到 349 份合成扫描，ROS 时间间隔中位数 0.1 s，坐标系 `laser_link`；反馈含距离、导航时间、预计时间和恢复次数 |
+| 4. 导航过程监控 | 原 C++ 监控节点 15 秒内输出 12 次路径首尾变化、270 条局部路径和 287 条速度记录，正常退出；路径首尾计数不是独立的障碍重规划次数 |
+| 5. 两圈巡逻 | 两次 `FollowWaypoints` 均成功、两圈完成且无遗漏；4652 条 odom，退出 0 并停稳 |
+| 6. 自主巡逻与动态避障 | 按仿真时钟第 5 秒开始注入、第 70 秒停止，保持原 10 Hz 和圆形轨迹；收到 645 份合成扫描，其中 354 份在静态空闲区域测到障碍代价。停止注入后观测位置代价恢复为 0，原两圈均成功、无遗漏；4432 条 odom，退出 0 并停稳 |
+
+真实激光保留 `/scan`，合成数据发布 `/scan_injected`；AMCL 只接收真实激光，代价地图分别缓存两个观测源。注入缓存保留 0.2 ROS 秒，停止后由真实扫描清除残留。恢复方盒与配套地图只用于练习 3；原 C++ 目标、扫描算法和 0.22 m 机器人半径均未改动。
+
+双端构建通过，第 18～19 章的五项算法测试仍通过。本地、COM260、x86 的 20 个本次源码与配置文件逐项 SHA-256 一致；`stop_on_failure=true` 的覆盖值单独登记，测试后恢复 false。原 `start` 入口的 Museum 地图、单目标导航和 RViz 正常退出另有回归记录。
+
+截图与录像见[实验手册](ch11_lab.md#实际运行证据)。7 份 MP4、2 份 GIF 均完整解码，并抽查关键画面；MP4 是实际窗口的连续原速录像，GIF 为原速节选。数值、命令、源码哈希与各次结果见[结构化结果](images/ch11/validation-results.json)，原始日志和里程计见[当前原始数据](images/ch11/runtime-data.tar.gz)，媒体时长及文件哈希见[校验记录](images/ch11/media-validation.json)。

@@ -1,0 +1,153 @@
+{
+  "run_id": "20261108T172828Z-rviz-acceptance",
+  "scope": "x86 RViz startup, navigation display, interaction and shutdown; course C++ unchanged; COM260 not rerun",
+  "image": {
+    "tag": "localhost/ros2-course-com260:ch16-ch17-nav2",
+    "id": "e04e7b89efba6e9b42c71bce646c90b59f30ca57ea2a47d7705ea673bd7a9e91",
+    "base_id": "6f4e27397e362843826493e95cca34d145ab80385009dadede34cfa8e90999a4",
+    "rviz_version": "11.2.28",
+    "source_commit": "fc1a5feaff1d30385d596c6c6422c8167e35a871",
+    "librviz_common_sha256": "348847eccea019b673d902334defa2682c5722a86ac76cdad375b5b467488680",
+    "asan_preload": false
+  },
+  "build": {
+    "packages_finished": 9,
+    "log": "build.log"
+  },
+  "navigation": {
+    "cpp_client_exit": 0,
+    "map_base_xy": [
+      0.90389415840835,
+      -0.013842842712069946
+    ],
+    "position_error_m": 0.09709766774949044,
+    "odom_samples": 336,
+    "stopped": true,
+    "passed": true,
+    "target_xy": [
+      1.0,
+      0.0
+    ],
+    "maximum_error_m": 0.25,
+    "stopped_tail_seconds": 2,
+    "maximum_abs_vx": 0.02,
+    "maximum_abs_wz": 0.03,
+    "client": "navigation_client_cpp/bt_navigator_client",
+    "log": "navigation.log"
+  },
+  "gui_observations": {
+    "global_status": "OK",
+    "map_robot_scan_and_costmaps_visible": true,
+    "cancel_close_then_navigate": true,
+    "drag_view": true,
+    "resize_from": [
+      1280,
+      800
+    ],
+    "resize_to": [
+      1200,
+      760
+    ],
+    "config_changes_saved": false,
+    "particle_cloud_not_accepted": true
+  },
+  "shutdown": {
+    "window": {
+      "exit": 0,
+      "method": "WM_DELETE_WINDOW, then Discard in save dialog",
+      "log": "runtime.log.gz",
+      "log_line": "[INFO] [rviz2-17]: process has finished cleanly [pid 77]"
+    },
+    "sigint": {
+      "run": "acceptance-int",
+      "close": "int",
+      "exit": 0,
+      "duration_s": 45.26458908799941,
+      "log": "rviz-int.log.gz"
+    },
+    "sigterm": {
+      "run": "acceptance-term",
+      "close": "term",
+      "exit": 0,
+      "duration_s": 45.364576789999774,
+      "log": "rviz-term.log.gz"
+    },
+    "nav2_after": "active [3]"
+  },
+  "isolation": {
+    "protected_files_checked": 1846,
+    "changed_files": [],
+    "base_image_unchanged": true,
+    "dpkg_manifest_identical": true,
+    "dpkg_manifest_sha256": "e2e0459606b2a2a9eb3202ec01933ad49738e7e22546273f17e89be3747be436"
+  },
+  "cleanup": {
+    "acceptance_container_removed": true,
+    "course_simulation_containers_running": 0,
+    "x11_desktop_ready": true
+  },
+  "source_sha256": {
+    "course_support/k3_com260_kit/containers/Containerfile.ch16-ch17": "4dcc913765ac80e6bbd85b4c7ca55edc2488c004a756c7a51da9681d7583cd2a",
+    "course_support/k3_com260_kit/containers/rviz-close.patch": "438483868f8e79865831725d1129b58110e53c5b45e7df2a56b1d1d83dab9502",
+    "course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash": "5f6c1991e862e88bd97901f4099b08103cf2801ef3ea02c1d6971ef3940631f9",
+    "course_support/k3_com260_kit/launch/nav2-teaching.launch.py": "87e1d83dd4fbf43e1078cd3d672c427aa31a6d70d1b77453b8f96406a45e5b79"
+  },
+  "media_probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 800,
+        "r_frame_rate": "12/1"
+      }
+    ],
+    "format": {
+      "duration": "35.000000"
+    }
+  },
+  "media_checks": {
+    "mp4_full_decode": true,
+    "sample_frames_seconds": [
+      2,
+      18,
+      33
+    ],
+    "sample_frames_visually_checked": true,
+    "screenshot_visually_checked": true
+  },
+  "files": {
+    "navigation.png": {
+      "sha256": "092af4f244679184bafa3e0f7b5c50721db881af5145082d28102e070cc1a48a",
+      "bytes": 129348
+    },
+    "navigation.mp4": {
+      "sha256": "749c5d31590ec6307a5b86449678055d3e7aedbb67d9fdbb771d6bd2bd68aa3b",
+      "bytes": 1421567
+    },
+    "navigation.log": {
+      "sha256": "9687e818a45545cea914357fe82824c6e3e524831aaf50a837035a8705d7e2f8",
+      "bytes": 614
+    },
+    "build.log": {
+      "sha256": "8f4959c19249ecd1f0ff810b6e1aa642b28bbbe3039f60a4af442e39208d8272",
+      "bytes": 27568
+    },
+    "runtime.log.gz": {
+      "sha256": "2e796e911fe1f39139b5b777ac6e680a7a9c30763d5d671a1e4638155884f61a",
+      "bytes": 5812,
+      "uncompressed_sha256": "02a1e10faf32ed0eaffd6f7d3eecca9e608185357c62597e955eedb906fc0c47"
+    },
+    "rviz-int.log.gz": {
+      "sha256": "4e5da8fa79a14e71da7a5c8b614b1a5a1a8b8203f6579adf9614b9669d35cacb",
+      "bytes": 702,
+      "uncompressed_sha256": "5f9c2c8526e6e9c403334ed5c91021c31ec0cb625b49db94d66e5cf9cfc2200a"
+    },
+    "rviz-term.log.gz": {
+      "sha256": "eab1b9a639dfda0cdab8231fe25ee556e7aed938d049008e11a7fe4a5cb571f2",
+      "bytes": 703,
+      "uncompressed_sha256": "dd21e97520c9dd1134a66d7596a111b15605919a469799c195e22e23430b868c"
+    }
+  }
+}

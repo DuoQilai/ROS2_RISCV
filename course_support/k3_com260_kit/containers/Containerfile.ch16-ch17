@@ -1,0 +1,14 @@
+FROM localhost/ros2-course-com260:ch06-nav2 AS build
+COPY rviz-close.patch /tmp/rviz-close.patch
+RUN test "$(dpkg-query -W -f='${Version}' ros-humble-rviz-common | cut -d- -f1)" = 11.2.28 \
+    && curl -fL --retry 3 https://codeload.github.com/ros2/rviz/tar.gz/fc1a5feaff1d30385d596c6c6422c8167e35a871 -o /tmp/rviz.tar.gz \
+    && echo "8bd38a50bb0f4a98e47c380cb8476fca41c327317a6822fdac75dee68e7b2a26  /tmp/rviz.tar.gz" | sha256sum -c - \
+    && mkdir /tmp/rviz \
+    && tar -xzf /tmp/rviz.tar.gz -C /tmp/rviz --strip-components=1 \
+    && cd /tmp/rviz && patch -p1 < /tmp/rviz-close.patch
+RUN bash -c 'source /opt/ros/humble/setup.bash; CMAKE_BUILD_PARALLEL_LEVEL=2 colcon build --base-paths /tmp/rviz/rviz_common --build-base /tmp/rviz-build --install-base /opt/rviz-close-fix --packages-select rviz_common --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_TESTING=OFF'
+
+FROM localhost/ros2-course-com260:ch06-nav2
+COPY --from=build /opt/rviz-close-fix /opt/rviz-close-fix
+LABEL org.ros2-riscv.component="humble-nav2-ch16-ch17" \
+      org.ros2-riscv.rviz-source="fc1a5feaff1d30385d596c6c6422c8167e35a871"

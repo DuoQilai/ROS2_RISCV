@@ -1,6 +1,6 @@
-# Nav2 公共环境与第 16～17 章操作
+# Nav2 公共环境与第 16～17 章教案示例
 
-本页供教案第 16～17 章使用。它覆盖原第 11 章导航实验的组件、单目标、五点任务与代价地图基础；完整第 11 章还包含后续路径规划、控制、恢复与综合巡逻内容。
+本页供教案第 16～17 章的组件与代价地图示例使用。
 
 ## 1. 双端准备
 
@@ -12,7 +12,7 @@
 
 <a id="packages"></a>
 
-源码按实例和功能组织；第 16 章与第 17 章分别通过总 setup 构建。
+使用 `setup_course_k3_com260_kit.sh` 构建下列示例包。
 
 | 章节 | 源码包 | 可执行文件 |
 |---|---|---|
@@ -23,8 +23,9 @@
 | 17 | [map_loader](../src_k3_com260_kit/map_loader/README.md) | `map_loader` |
 | 17 | [obstacle_layer_processor](../src_k3_com260_kit/obstacle_layer_processor/README.md) | `obstacle_layer_processor` |
 | 17 | [costmap_debugger](../src_k3_com260_kit/costmap_debugger/README.md) | `costmap_debugger` |
+| 实验 | [navigation_lab_cpp](../src_k3_com260_kit/navigation_lab_cpp/README.md) | `go_to_pose_demo` 等，见[实验指导书](ch11_lab.md) |
 
-`navigation_client_cpp` 内的两个程序共享小型 Action 客户端；`obstacle_layer_processor` 复用 `costmap_demo` 的栅格数据结构。x86 的章节脚本负责容器构建、启动与停止。
+`navigation_client_cpp` 内的两个程序共享小型 Action 客户端；`obstacle_layer_processor` 复用 `costmap_demo` 的栅格数据结构。x86 的章节脚本负责容器构建、启动与停止。第 16～17 章使用独立镜像 `localhost/ros2-course-com260:ch16-ch17-nav2`，从第 6 章镜像派生，内置 RViz 11.2.28 的退出修复。
 
 COM260：
 
@@ -43,12 +44,13 @@ x86：
 cd ~/ROS2_RISCV_COM260_CH16_CH17
 export ROS_DOMAIN_ID=181
 export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.172"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build-image
 bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build
 export RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)-nav2"
 bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash start "$RUN_ID"
 ```
 
-此入口启动 Burger／Museum、Nav2 和 RViz。保留当前终端的 `RUN_ID`，停止时使用相同值；每次重新启动生成新编号，日志与媒体按该编号分别保存。仿真运行期间，COM260 各终端先加载本章 `env.bash`，ROS 节点使用 `use_sim_time:=true`。不要同时向 `/cmd_vel` 发送遥控或巡逻指令。
+此入口启动 Burger／Museum、Nav2 和 RViz。保留当前终端的 `RUN_ID`，停止时使用相同值；每次重新启动生成新编号。仿真运行期间，COM260 各终端先加载本章 `env.bash`，ROS 节点使用 `use_sim_time:=true`。不要同时向 `/cmd_vel` 发送遥控或巡逻指令。
 
 ## 2. 组件与生命周期
 
@@ -94,7 +96,7 @@ ros2 run global_planner_client global_planner_client --ros-args -p use_sim_time:
 ros2 run navigation_client_cpp bt_navigator_client --ros-args -p use_sim_time:=true
 ```
 
-默认目标 `(3,2)` 靠近 Museum 的障碍区，NavFn 可选择容差内的可达终点。本章独立启动文件将 `GridBased.tolerance` 设为 0.15 m，并将目标检查器与 DWB 的 `xy_goal_tolerance` 同步设为 0.10 m，减少规划终点偏移与控制器提前停止带来的累积误差；末段进度检测距离使用 0.10 m，超时仍为 10 秒，避免 0.5 m 的旧距离要求在终点转向前过早中止；第 6 章原参数不变。验收仍要求距原目标不超过 0.25 m，并核对 Action 状态和 `/odom` 停止反馈；实际结果见[证据页](runtime_evidence.md#ch16-ch17)。五点练习使用空闲区域：
+默认目标 `(3,2)` 靠近 Museum 的障碍区，NavFn 可选择容差内的可达终点。`GridBased.tolerance` 为 0.15 m，目标检查器与 DWB 的 `xy_goal_tolerance` 均为 0.10 m；末段进度检测距离为 0.10 m，超时为 10 秒。检查实际终点距目标不超过 0.25 m，并核对 Action 状态和 `/odom` 停止反馈；参考结果见[证据页](runtime_evidence.md#ch16-ch17)。五点练习使用空闲区域：
 
 ```bash
 source ~/.config/ros2-course-com260-ch16-ch17/env.bash
@@ -179,7 +181,7 @@ ros2 service call /teaching/load_map nav2_msgs/srv/LoadMap \
 
 ## 5. 结束
 
-先结束 COM260 客户端和观察节点，再在 x86 停止本轮仿真：
+先结束 COM260 客户端和观察节点，再在 x86 停止仿真：
 
 ```bash
 cd ~/ROS2_RISCV_COM260_CH16_CH17
