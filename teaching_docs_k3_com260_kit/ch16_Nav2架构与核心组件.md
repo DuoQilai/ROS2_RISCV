@@ -127,7 +127,7 @@ Condition: 检查条件（是否到达目标等）
 
 ### 16.3.2 Nav2默认行为树
 
-下面是保留 1 Hz 重规划、10 Hz 跟踪节拍的教学树。Humble 实际默认树为 `nav2_bt_navigator/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml`；教学树另存为 `navigation_client_cpp/behavior_trees/teaching_navigation.xml`：
+下面的教学树以 1 Hz 重规划、10 Hz 跟踪。Humble 默认树为 `nav2_bt_navigator/behavior_trees/navigate_to_pose_w_replanning_and_recovery.xml`；教学树位于 `navigation_client_cpp/behavior_trees/teaching_navigation.xml`：
 
 ```xml
 <!-- navigation_nav2/behavior_trees/navigate_to_pose.xml -->
@@ -197,7 +197,7 @@ Condition: 检查条件（是否到达目标等）
 
 ### 16.3.4 自定义行为树
 
-用户可以根据需求创建自定义行为树。本例使用 Humble 已提供的 `IsBatteryLow` 和本章已配置的 `FollowPath`（DWB）；原例的 `BatteryCheck` 不是内置节点，`MPPI` 也需要先配置相应控制器。电量来自 `sensor_msgs/msg/BatteryState.percentage`，运行前应确认已收到有效消息；未收到电池数据不代表电量充足：
+用户可以根据需求创建自定义行为树。本例使用 Humble 已提供的 `IsBatteryLow` 和本章已配置的 `FollowPath`（DWB）；`BatteryCheck` 不是内置节点，`MPPI` 需要先配置相应控制器。电量来自 `sensor_msgs/msg/BatteryState.percentage`，运行前应确认已收到有效消息；未收到电池数据不代表电量充足：
 
 ```xml
 <!-- custom_navigation.xml -->
@@ -232,7 +232,7 @@ Condition: 检查条件（是否到达目标等）
 
 Nav2 官方文档的 Behavior Tree 页面详细说明了三个自定义控制节点：`PipelineSequence`（本章 16.3.2 的骨架，前序分支保持运行、后续分支并发推进）、`RecoveryNode`（包裹"业务节点 + 恢复节点"，业务失败触发恢复后重试）与 `RateController`（限制分支触发频率）。官方导航树把"规划"与"跟踪"放进同一个 PipelineSequence，是为了允许跟踪过程中以 1Hz 重规划——这是理解 16.3.3 执行流程的关键。
 
-此自定义树用 `PipelineSequence` 配合 `RateController`，跟踪期间每秒重新规划，避免一直跟踪旧路径；到达后仍按顺序等待 2 秒并旋转一圈。它没有恢复分支，遇到无法规划或持续无法前进的情况仍会返回失败。电池分支用明确发布的测试消息验证，不代表物理电池检测。
+此自定义树用 `PipelineSequence` 配合 `RateController`，跟踪期间每秒重新规划，避免一直跟踪旧路径；到达后按顺序等待 2 秒并旋转一圈。它没有恢复分支，遇到无法规划或持续无法前进的情况会返回失败。示例中的电量来自测试消息。
 
 此外，`nav2_bt_navigator` 的 XML 可用 BehaviorTree.CPP 的 Groot 工具可视化编辑；`nav2_behavior_tree` 包内置了约 50 个现成节点（`IsPathValid`、`GoalUpdated`、`ClearCostmapService` 等），编写练习第 5 题的充电桩行为树时，可组合 `IsBatteryLow`、`ComputePathToPose`、`FollowPath` 和 `Wait` 等节点；`NavigateToPose` 是导航器对外的 Action，不能假设它是本版已注册的同名 XML 节点。
 
@@ -639,7 +639,7 @@ behavior_server:
 
 ### 16.6.3 Simple Commander API
 
-Nav2 的 Simple Commander 是 Python API。本版保留其“发送目标—读取反馈—检查结果”的教学流程，使用前述 `BTNavigatorClient` 的 C++ Action 客户端完成等价操作；默认目标仍为 `(3.0, 2.0, 0.0)`：
+Nav2 的 Simple Commander 是 Python API。下面使用 `BTNavigatorClient` 的 C++ Action 客户端发送目标、读取反馈并检查结果，默认目标为 `(3.0, 2.0, 0.0)`：
 
 ```cpp
 #include "navigation_client_cpp/navigator.hpp"
@@ -660,7 +660,7 @@ int main(int argc, char ** argv) {
 
 ### 16.6.4 官方要点——Simple Commander 与多目标巡航
 
-Simple Commander 的任务接口包括 `goToPose`、`goThroughPoses`（经过多个目标位姿）和 `followWaypoints`（航点跟随及任务执行器），并提供 `setInitialPose`、`waitUntilNav2Active`、`isTaskComplete` 和 `cancelTask`。本章用 C++ Action 保留目标、反馈、结果和取消流程，五点练习在每次成功后暂停 3 秒。仿真中客户端与导航栈应统一使用仿真时间，避免目标时间戳、TF 和传感器消息采用不同时间基准。
+Simple Commander 的任务接口包括 `goToPose`、`goThroughPoses`（经过多个目标位姿）和 `followWaypoints`（航点跟随及任务执行器），并提供 `setInitialPose`、`waitUntilNav2Active`、`isTaskComplete` 和 `cancelTask`。C++ Action 客户端负责发送目标、处理反馈和结果，以及取消任务；五点练习在每次成功后暂停 3 秒。仿真中客户端与导航栈应统一使用仿真时间，避免目标时间戳、TF 和传感器消息采用不同时间基准。
 
 ## 课后练习
 
@@ -676,7 +676,7 @@ Simple Commander 的任务接口包括 `goToPose`、`goThroughPoses`（经过多
 
 ---
 
-本章运行环境为 COM260／ROS 2 Humble／C++17；Gazebo、Nav2 和 RViz 在 x86 仿真端运行。先完成 [Nav2 公共环境](../lab_manuals_k3_com260_kit/nav2_common_setup.md)。本章与第 17 章对应原第 11 章导航实验的基础部分；完整实验还涉及后续规划与控制章节。
+本章运行环境为 COM260／ROS 2 Humble／C++17；Gazebo、Nav2 和 RViz 在 x86 仿真端运行。先完成 [Nav2 公共环境](../lab_manuals_k3_com260_kit/nav2_common_setup.md)。
 
 ## 仿真结合实例（当前仓库）：查看 Nav2 组件生命周期
 
@@ -697,7 +697,7 @@ ros2 run global_planner_client global_planner_client --ros-args -p use_sim_time:
 ros2 run navigation_client_cpp bt_navigator_client --ros-args -p use_sim_time:=true
 ```
 
-五点练习的参考实现保持每点暂停 3 秒，坐标从 Museum 的空闲区域选取：
+五点练习每到达一个目标点后暂停 3 秒，目标点位于 Museum 的空闲区域：
 
 ```bash
 source ~/.config/ros2-course-com260-ch16-ch17/env.bash
@@ -706,7 +706,7 @@ ros2 run navigation_client_cpp multi_goal_navigation --ros-args -p use_sim_time:
 
 ### 观察结果
 
-分别观察 Action 接受、距离反馈、结束状态以及 `/odom` 停止反馈。原目标 `(3,2)` 位于本场景的内切代价区域；本章 NavFn 的 `tolerance=0.15` 允许搜索附近可达终点。`SUCCEEDED` 不等于精确到达原坐标，应同时核对实际终点、规划终点和控制器容差。实测数值见证据页。
+分别观察 Action 接受、距离反馈、结束状态以及 `/odom` 停止反馈。默认目标 `(3,2)` 位于本场景的内切代价区域；本章 NavFn 的 `tolerance=0.15` 允许搜索附近可达终点。`SUCCEEDED` 不等于精确到达目标坐标，应同时核对实际终点、规划终点和控制器容差。参考数值见证据页。
 
 客户端等待 Action 服务最多 15 秒、等待目标接受最多 10 秒；导航超过 180 秒会请求取消，取消后最多等待 10 秒。可用 `cancel_after` 参数提前取消；SIGINT／SIGTERM 也先请求取消并等待结果。退出码 0 表示成功到达规划终点，1 表示未完成到达（包括主动取消），不要只凭进程退出判断成功。
 
@@ -716,11 +716,11 @@ ros2 run navigation_client_cpp multi_goal_navigation --ros-args -p use_sim_time:
 
 ![COM260 C++ 客户端驱动的 Gazebo 导航与旋转](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/original-tree-gazebo.gif)
 
-GIF 为近景录像的 25～100 秒原速片段，展示原目标 `(0,-1,0)` 的导航、等待与旋转；[180 秒原片](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/original-tree-gazebo.mp4)。
+GIF 为近景录像的 25～100 秒原速片段，展示目标 `(0,-1,0)` 的导航、等待与旋转；[180 秒原片](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/original-tree-gazebo.mp4)。
 
 ![五点任务结束后的 RViz 位置与代价地图](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/five-goals-rviz.png)
 
-[原目标规划与到达的 RViz 连续录像](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/planner-goal-rviz.mp4)记录同一批次的 C++ 规划与导航过程；[末段 GIF](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/planner-goal-rviz.gif)展示到达过程。
+[目标规划与到达的 RViz 连续录像](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/planner-goal-rviz.mp4)展示 C++ 客户端的规划与导航过程；[末段 GIF](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/planner-goal-rviz.gif)展示到达过程。
 
 学习材料：
 - [Nav2 官方文档](https://docs.nav2.org/)
