@@ -1,0 +1,507 @@
+{
+  "run_id": "20261111T042601Z-planning",
+  "files": {
+    "grid-node.cast": {
+      "bytes": 1122,
+      "sha256": "b276498f2901d6bc8839331b73730c1878417aac50ddb88213e2344acde24b7c",
+      "version": 3,
+      "exit": 0
+    },
+    "astar-free.cast": {
+      "bytes": 2515,
+      "sha256": "faba22613104c1930405b88a80f9209bc8abe7ddf6d242e9c1123f212f5f9999",
+      "version": 3,
+      "exit": 0
+    },
+    "hybrid-free.cast": {
+      "bytes": 2363,
+      "sha256": "38cc57b1da3e040a7f248d536385e85039086f1ebede0aaed0c35b88bec9f5b3",
+      "version": 3,
+      "exit": 0
+    },
+    "rpp-box-full.cast": {
+      "bytes": 3123,
+      "sha256": "7674c4b0988227d399a8be6f4f2ee25c25edde91d6ee286131710ffa33a92ed7",
+      "version": 3,
+      "exit": 0
+    },
+    "smac2d-free.cast": {
+      "bytes": 2363,
+      "sha256": "a82edee7217ca221201660462cfae75868c54702e45b4da8cbcc15605340663e",
+      "version": 3,
+      "exit": 0
+    },
+    "dwa-box-gazebo.mp4": {
+      "bytes": 2053903,
+      "sha256": "6e063649ab65156f4f8b1d75621eac048d760f0777952f7859580a003888a26a",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 110.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "rpp-box-full-gazebo.mp4": {
+      "bytes": 2613225,
+      "sha256": "672107d29e4cd1b997ed609812897538fe412a68b052788ef4209b9388a1904d",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 140.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "navfn-free-rviz.mp4": {
+      "bytes": 2928821,
+      "sha256": "7668bcefb7e023b59459f165de9078aecbb4d803c740ff2c2a099f13b8ce58f6",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 65.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "hybrid-free-rviz.mp4": {
+      "bytes": 2567450,
+      "sha256": "f481d84b23b7b80622e98114f2b9000e71176df30f1f9987f3c805f198703225",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 65.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "dwa-stale-gazebo.mp4": {
+      "bytes": 1104563,
+      "sha256": "71ce61a6c856ff85bcef6ece63dec8a36b56ea688630bb257491d04323c50bdf",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 30.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "dwb-corridor.cast": {
+      "bytes": 2445,
+      "sha256": "213bf4ce66448c67cd914706ea2effc33c3726aab6cac96d63700e54fbd6a993",
+      "version": 3,
+      "exit": 0
+    },
+    "mppi-free-gazebo.png": {
+      "bytes": 713093,
+      "sha256": "c26f616168efaff458f38c28d092ba06809ab4c94572f61e479c35800694d456",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "mppi-free-gazebo.mp4",
+        "frame_seconds": 20
+      }
+    },
+    "dwb-box-lookahead-gazebo.mp4": {
+      "bytes": 2761322,
+      "sha256": "3372c9510e962856ff0161ce3ac3ef60b9ca75404cfded850a40aec866e91121",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 140.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "smac2d-free-rviz.png": {
+      "bytes": 519418,
+      "sha256": "3793261cc5cf897db0e9114763fe7fc2be72166c4f4182d786d8d76911e1f759",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "smac2d-free-rviz.mp4",
+        "frame_seconds": 15
+      }
+    },
+    "algorithm-examples.png": {
+      "bytes": 75457,
+      "sha256": "191e0ecc160177ca7027e4228491cfedc631fad8fdcc4ba326cb2c5076c6016f",
+      "width": 1028,
+      "height": 706,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true
+    },
+    "astar.svg": {
+      "bytes": 667,
+      "sha256": "8fc41c2e16348f17a2298d000e398d69fcccc12d536789fe39111df6f227be97"
+    },
+    "rpp-box-full-gazebo.gif": {
+      "bytes": 447883,
+      "sha256": "811b8f982ae8370854d4299ab0889882bb1addf3045128e8dbe89b87fa5c22c5",
+      "width": 960,
+      "height": 600,
+      "duration_seconds": 35.01,
+      "fps": "25/3",
+      "decode_passed": true,
+      "derivation": {
+        "source": "rpp-box-full-gazebo.mp4",
+        "start_seconds": 25,
+        "duration_seconds": 35,
+        "speed": 1,
+        "fps": 8,
+        "width": 960
+      }
+    },
+    "rpp-free-gazebo.png": {
+      "bytes": 714360,
+      "sha256": "2f1f4d8bb038996e617003a7d82d4dced8b5872529ef54548ab9a5d111a5055b",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "rpp-free-gazebo.mp4",
+        "frame_seconds": 20
+      }
+    },
+    "dwb-free-gazebo.png": {
+      "bytes": 717436,
+      "sha256": "12d940b09eedfdbb721a468ed986d3cbb6adec7cc9ceefced8f57ced2bee0e77",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "dwb-free-gazebo.mp4",
+        "frame_seconds": 20
+      }
+    },
+    "smac2d-free-plan.cast": {
+      "bytes": 974,
+      "sha256": "b46752d55dfa99953046558461ed021bb27ba3a1d28671fafe35e5565d4bc845",
+      "version": 3,
+      "exit": 0
+    },
+    "mppi-free.cast": {
+      "bytes": 2046,
+      "sha256": "ca43247955900cc345e59d66100a2c0fa2eefdf7dad2ed8071c81bf930a20af8",
+      "version": 3,
+      "exit": 0
+    },
+    "dwa-box-gazebo.gif": {
+      "bytes": 728723,
+      "sha256": "524a6d33c4310305b5bc86038338ba3de882a39286c1fc093e6143cf00a1b423",
+      "width": 960,
+      "height": 600,
+      "duration_seconds": 35.01,
+      "fps": "25/3",
+      "decode_passed": true,
+      "derivation": {
+        "source": "dwa-box-gazebo.mp4",
+        "start_seconds": 12,
+        "duration_seconds": 35,
+        "speed": 1,
+        "fps": 8,
+        "width": 960
+      }
+    },
+    "astar-free-rviz.png": {
+      "bytes": 516966,
+      "sha256": "567557a5dc476da88a5596ee9e7d1aebff2d98632cc58169cc24a927b6e98632",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "astar-free-rviz.mp4",
+        "frame_seconds": 15
+      }
+    },
+    "dwb-free.cast": {
+      "bytes": 1969,
+      "sha256": "40bb9b64e4288eeb173d844db1b5f284525a9cd99dc3144d988671e1d1d68d30",
+      "version": 3,
+      "exit": 0
+    },
+    "dwa-cancel.cast": {
+      "bytes": 1886,
+      "sha256": "b71d363b0d0844189b0194139dd6d896cff8c870cb8be6c3d9573af41ec62f02",
+      "version": 3,
+      "exit": 0
+    },
+    "rpp-free.cast": {
+      "bytes": 1970,
+      "sha256": "7203f236318f6ee80e1aca79802f2dc539e392200a65c9bf60457d0eb5daab43",
+      "version": 3,
+      "exit": 0
+    },
+    "hybrid-free-plan.cast": {
+      "bytes": 974,
+      "sha256": "b46da86ef5746127f2824f66f2155d93e067e8bebfa55d78f4525380af2b3321",
+      "version": 3,
+      "exit": 0
+    },
+    "source-sha256.json": {
+      "bytes": 17174,
+      "sha256": "8c0f3f0f93d03c51482ceeccae7ab340bf14f4bd4a7c798c4cbcd66d8ef1a3fd"
+    },
+    "navfn-free-rviz.gif": {
+      "bytes": 3576498,
+      "sha256": "85dd339e6574d522a14c6e94c00f1a341e8f8a2efd1d9697960c072edf4637c9",
+      "width": 960,
+      "height": 600,
+      "duration_seconds": 35.01,
+      "fps": "25/3",
+      "decode_passed": true,
+      "derivation": {
+        "source": "navfn-free-rviz.mp4",
+        "start_seconds": 8,
+        "duration_seconds": 35,
+        "speed": 1,
+        "fps": 8,
+        "width": 960
+      }
+    },
+    "corridor-gazebo.png": {
+      "bytes": 681450,
+      "sha256": "629eab9d8ff9a212078edde6b86fceb1d2b8d4cea7763ac9f87ebb3af5c7b72d",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "corridor-gazebo.mp4",
+        "frame_seconds": 30
+      }
+    },
+    "dwb-box-lookahead.cast": {
+      "bytes": 4945,
+      "sha256": "7fad8d290b8f7811df4bbd007ec7a11f248e9732e5b768ba6d7ee02f85d95549",
+      "version": 3,
+      "exit": 0
+    },
+    "dwa-stale.cast": {
+      "bytes": 2022,
+      "sha256": "e970513e12bdf9920e3e40127d99890fcf633d3db4ec64f2f9569f597b314ea9",
+      "version": 3,
+      "exit": 0
+    },
+    "astar-free-rviz.mp4": {
+      "bytes": 2944768,
+      "sha256": "33e2d9fb03ca719a6e190444401ba9b8d026bfc2f19ef9d0ffe4de48ea53671a",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 65.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "astar-free-plan.cast": {
+      "bytes": 958,
+      "sha256": "89c860115a70a6bc12ec1e8c9647d170974f59afa2326f460c9dfd1e51cc1a96",
+      "version": 3,
+      "exit": 0
+    },
+    "rpp-free-gazebo.mp4": {
+      "bytes": 1373557,
+      "sha256": "eaa38fda7df478021a696851c47cbe0126fbdb5757e900f489da6af336d55e08",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 55.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "dwb-free-gazebo.mp4": {
+      "bytes": 1324956,
+      "sha256": "c1e083c8c24c77b81d604b5d2ddbbd139d7bac22b1de3d82b5992ca4504e0fe0",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 55.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "dijkstra.svg": {
+      "bytes": 651,
+      "sha256": "613c584f0eee17431b37e06d62be13aae26bd482dc2191b4fb43e2086198a569"
+    },
+    "validation-results.json": {
+      "bytes": 31669,
+      "sha256": "8817a881a2023eafcb0dd4ccb9a0a441610c83c8ba5e5f502234f99feec1a570"
+    },
+    "corridor-gazebo.mp4": {
+      "bytes": 1811454,
+      "sha256": "7b6d5f8ab0723d6807bf12649053e4ec05e2abb58195e7c5b8b49f47cdb2fdbd",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 65.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "runtime-data.tar.gz": {
+      "bytes": 819979,
+      "sha256": "5a2b925ed72f266804d0b1ecc91a1853157c8b06f90660b70158f1fc0eed414f"
+    },
+    "algorithm-examples.gif": {
+      "bytes": 260704,
+      "sha256": "7917b501e8e6611214329ee21920c56b896460454b3e593e640a854db089ba5b",
+      "width": 1028,
+      "height": 706,
+      "duration_seconds": 24.17,
+      "fps": "20/37",
+      "decode_passed": true
+    },
+    "rpp-box-full-gazebo.png": {
+      "bytes": 716363,
+      "sha256": "3ec36d72d59a30a484cc19135eb2cce3857c5d7860ccf46cecf8880e8d402d89",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "rpp-box-full-gazebo.mp4",
+        "frame_seconds": 55
+      }
+    },
+    "algorithm-examples.cast": {
+      "bytes": 2063,
+      "sha256": "4472c7105c6db1936edab458f0102abbc200f439fce0aa51844a8d2f7fc347d4",
+      "version": 3,
+      "exit": 0
+    },
+    "board-build.cast": {
+      "bytes": 61960,
+      "sha256": "7aaf7ec9c8919399287eeccdceb41a9ab8110688f304c0e3d6ee1174f786b67b",
+      "version": 3,
+      "exit": 0
+    },
+    "dwa-box-gazebo.png": {
+      "bytes": 718099,
+      "sha256": "7bbd5a05b102f18e97fec92267fa2f0d502cd8eb05028646c83422dbeb13b604",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "dwa-box-gazebo.mp4",
+        "frame_seconds": 40
+      }
+    },
+    "dwa-term.cast": {
+      "bytes": 1832,
+      "sha256": "6aea258f4d0ae4ee66d075f22001c760cd4e0d6e43e3dc8c8789e69f372c3d0c",
+      "version": 3,
+      "exit": 0
+    },
+    "x86-build.cast": {
+      "bytes": 42259,
+      "sha256": "d424635b4b2939a47667903f2f54c9f3f048a4d8b4b59c081075a9d128bae582",
+      "version": 3,
+      "exit": 0
+    },
+    "mppi-free-gazebo.mp4": {
+      "bytes": 1329306,
+      "sha256": "daab6348522c4c713102530908695cd4b275983e1b4fcd8c3904ec3695d09b6c",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 50.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "dwa-stale-gazebo.png": {
+      "bytes": 706028,
+      "sha256": "3bbfc178c8af5a6053cfb395c553c912234abd8880e00a9bf180bfc34101e4f0",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "dwa-stale-gazebo.mp4",
+        "frame_seconds": 20
+      }
+    },
+    "hybrid-free-rviz.png": {
+      "bytes": 455645,
+      "sha256": "65966d7dbc5dac2674f77521d2e06517fa5e3667b1c0f72d6ba4729178829944",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "hybrid-free-rviz.mp4",
+        "frame_seconds": 15
+      }
+    },
+    "dwa-box.cast": {
+      "bytes": 3165,
+      "sha256": "01af50ac49b124eb87ef60e3d649c26ad9192904519805963972f8616b4a2432",
+      "version": 3,
+      "exit": 0
+    },
+    "dwb-box-lookahead-gazebo.png": {
+      "bytes": 715570,
+      "sha256": "792180f1dcc9708f90bf6fd2bbe8b5b32e6859701b15b0e79eaca0a60d9a616d",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "dwb-box-lookahead-gazebo.mp4",
+        "frame_seconds": 105
+      }
+    },
+    "smac2d-free-rviz.mp4": {
+      "bytes": 2877693,
+      "sha256": "9ff50f236f0d680b86c01cafda4e285a3654b74c61a705981a110943188943bf",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 65.0,
+      "fps": "12/1",
+      "decode_passed": true
+    },
+    "navfn-free-rviz.png": {
+      "bytes": 516016,
+      "sha256": "99094375eb4226a3e2a700d1ed2a52fc8987244cfb2c75110c1e11bd462dc4a8",
+      "width": 1280,
+      "height": 800,
+      "duration_seconds": 0.0,
+      "fps": "25/1",
+      "decode_passed": true,
+      "derivation": {
+        "source": "navfn-free-rviz.mp4",
+        "frame_seconds": 15
+      }
+    },
+    "navfn-free.cast": {
+      "bytes": 2514,
+      "sha256": "43e907b057485797ea809072fcd46641c9dc0cb20ea1a1470d441b238d4a3d05",
+      "version": 3,
+      "exit": 0
+    },
+    "corridor-gazebo.gif": {
+      "bytes": 747014,
+      "sha256": "040f57d7e86b61a000cd09effb2b0b2b29c29ba30e35505fa087451d454003c0",
+      "width": 960,
+      "height": 600,
+      "duration_seconds": 35.01,
+      "fps": "25/3",
+      "decode_passed": true,
+      "derivation": {
+        "source": "corridor-gazebo.mp4",
+        "start_seconds": 10,
+        "duration_seconds": 35,
+        "speed": 1,
+        "fps": 8,
+        "width": 960
+      }
+    },
+    "navfn-free-plan.cast": {
+      "bytes": 950,
+      "sha256": "f7a8e0b261960625b2bd1ba83082bd06b51e4c7f17da3c1faab275f62731b7d4",
+      "version": 3,
+      "exit": 0
+    }
+  }
+}

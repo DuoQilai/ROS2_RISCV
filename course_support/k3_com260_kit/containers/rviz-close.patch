@@ -1,0 +1,64 @@
+--- a/rviz_common/include/rviz_common/visualization_manager.hpp
++++ b/rviz_common/include/rviz_common/visualization_manager.hpp
+@@ -277,6 +277,9 @@
+   /// Return a factory for creating Display subclasses based on a class id string.
+   DisplayFactory * getDisplayFactory() const override;
+
++  /// Transfer ownership so plugin libraries can outlive the remaining ROS nodes.
++  DisplayFactory * releaseDisplayFactory();
++
+   /// Return the display tree model.
+   properties::PropertyTreeModel * getDisplayTreeModel() const;
+
+--- a/rviz_common/src/rviz_common/visualization_frame.cpp
++++ b/rviz_common/src/rviz_common/visualization_frame.cpp
+@@ -201,6 +201,9 @@
+ void VisualizationFrame::closeEvent(QCloseEvent * event)
+ {
+   if (prepareToExit()) {
++    if (manager_) {
++      manager_->stopUpdate();
++    }
+     event->accept();
+   } else {
+     event->ignore();
+--- a/rviz_common/src/rviz_common/visualizer_app.cpp
++++ b/rviz_common/src/rviz_common/visualizer_app.cpp
+@@ -47,6 +47,7 @@
+ #include "rviz_common/logging.hpp"
+ #include "rviz_rendering/ogre_logging.hpp"
+
++#include "./display_factory.hpp"
+ #include "rviz_common/visualization_frame.hpp"
+ #include "rviz_common/visualization_manager.hpp"
+
+@@ -173,8 +174,13 @@
+ VisualizerApp::~VisualizerApp()
+ {
+   delete continue_timer_;
++  std::unique_ptr<DisplayFactory> display_factory;
++  if (frame_ && frame_->getManager()) {
++    display_factory.reset(frame_->getManager()->releaseDisplayFactory());
++  }
+   ros_client_abstraction_->shutdown();
+   delete frame_;
++  ros_client_abstraction_.reset();
+ }
+
+ void VisualizerApp::startContinueChecker()
+--- a/rviz_common/src/rviz_common/visualization_manager.cpp
++++ b/rviz_common/src/rviz_common/visualization_manager.cpp
+@@ -369,6 +369,13 @@
+   return display_factory_;
+ }
+
++DisplayFactory * VisualizationManager::releaseDisplayFactory()
++{
++  auto * factory = display_factory_;
++  display_factory_ = nullptr;
++  return factory;
++}
++
+ properties::PropertyTreeModel * VisualizationManager::getDisplayTreeModel() const
+ {
+   return display_property_tree_model_;

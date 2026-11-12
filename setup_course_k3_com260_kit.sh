@@ -24,9 +24,9 @@ dependencies=(
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17) ;;
+  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17|--build-ch18|--build-ch19) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17|--build-ch18|--build-ch19' \
       '--dry-run       Resolve chapter 1-8 dependencies without installing them.' \
       '--install-deps  Install chapter 1-8 dependencies; sudo may ask for your password.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
@@ -40,7 +40,9 @@ case "$mode" in
       '--build-ch09    Build chapter 9 sensor_reader in the isolated ch09-ch10 workspace.' \
       '--build-ch10    Build chapter 10 C++ SLAM helpers in the isolated ch09-ch10 workspace.' \
       '--build-ch16    Build the chapter 16 lifecycle, navigation and planning examples.' \
-      '--build-ch17    Build the chapter 17 costmap, map loading and obstacle examples.'
+      '--build-ch17    Build the chapter 17 costmap, map loading and obstacle examples.' \
+      '--build-ch18    Build/test the chapter 18 global planning and path optimization examples.' \
+      '--build-ch19    Build/test the chapter 19 DWA and pure pursuit examples.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -128,10 +130,23 @@ if [[ $mode == --build-ch16 || $mode == --build-ch17 ]]; then
   env_dir="$HOME/.config/ros2-course-com260-ch16-ch17"
   source_root="$root/src_k3_com260_kit"
   chapter=16
-  packages=(custom_nav_component navigation_client_cpp global_planner_client)
+  packages=(custom_nav_component navigation_client_cpp global_planner_client navigation_lab_cpp)
   if [[ $mode == --build-ch17 ]]; then
     chapter=17
-    packages=(costmap_demo map_loader obstacle_layer_processor costmap_debugger)
+    packages=(costmap_demo map_loader obstacle_layer_processor costmap_debugger navigation_lab_cpp)
+  fi
+  [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]] || die 'Prepare the chapter 10 Nav2 interface underlay first.'
+fi
+if [[ $mode == --build-ch18 || $mode == --build-ch19 ]]; then
+  workspace="$HOME/ros2_course_com260_ch18_ch19_ws"
+  workspace_marker=.com260-ch18-ch19
+  env_dir="$HOME/.config/ros2-course-com260-ch18-ch19"
+  source_root="$root/src_k3_com260_kit"
+  chapter=18
+  packages=(costmap_demo grid_path_planner hybrid_astar_planner path_optimizer global_planner_client navigation_client_cpp navigation_lab_cpp)
+  if [[ $mode == --build-ch19 ]]; then
+    chapter=19
+    packages=(costmap_demo grid_path_planner dwa_planner rpp_controller global_planner_client navigation_client_cpp navigation_lab_cpp)
   fi
   [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]] || die 'Prepare the chapter 10 Nav2 interface underlay first.'
 fi
@@ -145,7 +160,7 @@ mkdir -p "$workspace"
 touch "$workspace/$workspace_marker"
 set +u
 source /opt/ros/humble/setup.bash
-if [[ $chapter == 10 || $chapter == 16 || $chapter == 17 ]]; then
+if [[ $chapter == 10 || $chapter == 16 || $chapter == 17 || $chapter == 18 || $chapter == 19 ]]; then
   source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
 fi
 set -u
@@ -162,6 +177,11 @@ if [[ $chapter == 01 || $chapter == 03 ]]; then
   else
     python3 -m colcon test-result --verbose
   fi
+fi
+if [[ $chapter == 18 || $chapter == 19 ]]; then
+  python3 -m colcon test --base-paths "${sources[@]}" --packages-select "${packages[@]}" \
+    --event-handlers console_direct+ --return-code-on-test-failure
+  python3 -m colcon test-result --verbose
 fi
 mkdir -p "$env_dir"
 install -m 0755 "$root/course_support/k3_com260_kit/ide/gdb.bash" "$env_dir/gdb.bash"
@@ -189,6 +209,19 @@ if [[ $chapter == 16 || $chapter == 17 ]]; then
 source /opt/ros/humble/setup.bash
 source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
 source "$HOME/ros2_course_com260_ch16_ch17_ws/install/setup.bash"
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_LOCALHOST_ONLY=0
+EOF
+  printf 'export ROS_DOMAIN_ID=%q\n' "${ROS_DOMAIN_ID:-0}" >>"$env_dir/env.bash"
+  if [[ -n ${CYCLONEDDS_URI:-} ]]; then
+    printf 'export CYCLONEDDS_URI=%q\n' "$CYCLONEDDS_URI" >>"$env_dir/env.bash"
+  fi
+fi
+if [[ $chapter == 18 || $chapter == 19 ]]; then
+  cat >"$env_dir/env.bash" <<'EOF'
+source /opt/ros/humble/setup.bash
+source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
+source "$HOME/ros2_course_com260_ch18_ch19_ws/install/setup.bash"
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export ROS_LOCALHOST_ONLY=0
 EOF

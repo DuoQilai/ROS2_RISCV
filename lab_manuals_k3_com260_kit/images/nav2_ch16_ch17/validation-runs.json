@@ -6,6 +6,13 @@
       "status": "passed",
       "manifest": "20261108T142740Z-packages/manifest.json",
       "manifest_sha256": "ce93b9457b45e7305c5d9be571f5985ef197c4b4fd0077c3656d213132ab4c5a"
+    },
+    {
+      "run_id": "20261108T172828Z-rviz-acceptance",
+      "status": "passed",
+      "scope": "x86 RViz startup, interaction and shutdown",
+      "manifest": "rviz_close/verification.json",
+      "manifest_sha256": "3690d34ff95436bb2cdbed1b7b68e9817a0a46da443201eb0da69078f6de4ed2"
     }
   ]
 }

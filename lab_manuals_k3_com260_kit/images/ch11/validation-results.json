@@ -1,0 +1,424 @@
+{
+  "overall_passed": true,
+  "scope": "原第11章六个练习，供教案16–19章共用",
+  "environment": "COM260 C++17 / Humble; x86 Burger / navigation-lab / Humble Nav2",
+  "source_sha256": {
+    "course_support/k3_com260_kit/config/navigation-lab-map.pgm": "394be822a0fd878fb42e6cd975cf4a6c96839dede2d2cfcbc10b7704144d7de8",
+    "course_support/k3_com260_kit/config/navigation-lab-map.yaml": "816b5007a3ab00f50986f5a9143d86e99a3daa0a014dac0095b8832866867324",
+    "course_support/k3_com260_kit/config/navigation-lab.sdf": "feb9ce0656ac012e93c02919f0a2f7a0f5d95c7ee8c352f5d4aeb61d7e4e4e36",
+    "course_support/k3_com260_kit/config/recovery-map.pgm": "847d39a1e44b1d6ce41f42cec1b2eab87058c3278365b143c55469ea92e7700f",
+    "course_support/k3_com260_kit/config/recovery-map.yaml": "3503367c51525ec9ee40e7f5378b369c3ebb0edab1ae077e5f2fc938c5c59a5e",
+    "course_support/k3_com260_kit/config/recovery-obstacle.sdf": "d4733015d3c1532c6bea4648172412ba2fe49c3073d3b75f584de6e9c7be60ff",
+    "course_support/k3_com260_kit/launch/planning-comparison.launch.py": "39b07dfd42d62de2de9922ae11735082f95445331129782e38b2f8a3765a989f",
+    "course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash": "5becf6f71da201c1f1067940d6a0a605ffd29c08ae97f15073672a64dea78fcb",
+    "setup_course_k3_com260_kit.sh": "de841b555c3dbd2f3788a249f0771692242818f43e7e8027a53038229604460b",
+    "src_k3_com260_kit/navigation_lab_cpp/CMakeLists.txt": "3c8653ba340ad43ef7f38887d7600cef3b6cc6544e5793be4ea7e7b5195103dc",
+    "src_k3_com260_kit/navigation_lab_cpp/README.md": "ea582fac23c3037cee4db18adf95e939a80d13b85425848b0e4209b9efbc2eb8",
+    "src_k3_com260_kit/navigation_lab_cpp/config/navigation_lab.yaml": "e6420637eb82920589d6825c3a5ecceee8fed6d9c649df35f3526c564c65eca8",
+    "src_k3_com260_kit/navigation_lab_cpp/include/navigation_lab_cpp/navigator.hpp": "afaf3d4751db9814f16859c7bfe0541fd8b34a1af7c726c562748a440f1cece6",
+    "src_k3_com260_kit/navigation_lab_cpp/package.xml": "74d595eddff9e950b073b046dd58d87011f879e882e18e47d940f0e08e40dfb5",
+    "src_k3_com260_kit/navigation_lab_cpp/src/follow_waypoints_demo.cpp": "a5cad7b90d039f44b5cb38c74a84c98f66520d01783ff2c93543279e459cadce",
+    "src_k3_com260_kit/navigation_lab_cpp/src/go_to_pose_demo.cpp": "0640ffb9535ff669d66dec9139eaa78fceb930695a3bbad69c3331d8ab8d3684",
+    "src_k3_com260_kit/navigation_lab_cpp/src/nav_monitor.cpp": "5a27d6dd6990809aaf43a4e4968aedac1bae3d9eca446939c0d4da26f0e7ff0c",
+    "src_k3_com260_kit/navigation_lab_cpp/src/recovery_demo.cpp": "08018dc788911d79a7898956cd4c2ca1b93fa79b887d7380007ab4d96cfad277",
+    "src_k3_com260_kit/navigation_lab_cpp/src/scan_injector.cpp": "a4014bb7aebc2dd73eba0d8e31a85edf72e3d4e9092c246b68eb88d1fb299331",
+    "src_k3_com260_kit/navigation_lab_cpp/src/waypoint_patrol.cpp": "7906a8088787f6af0902fbf20b8e83d54815a047fdf349bf46329ff6ff4b4caf"
+  },
+  "source_checks": {
+    "local_board_x86_match": true
+  },
+  "results": {
+    "go_to_pose_demo": {
+      "name": "go_to_pose_demo",
+      "batch": "20261111-gui-acceptance-final",
+      "command": [
+        "ros2",
+        "run",
+        "navigation_lab_cpp",
+        "go_to_pose_demo",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit": 0,
+      "timed_out": false,
+      "duration_s": 89.93600985300145,
+      "odom_samples": 2603,
+      "plan_samples": 83,
+      "local_plan_samples": 1656,
+      "cmd_samples": 1713,
+      "scan_samples": 0,
+      "stopped": true,
+      "end_map_pose": [
+        -0.02970150058742134,
+        0.0928943031905267,
+        -1.338468460040235
+      ],
+      "finished_utc": "2026-11-11T11:06:18.330332+00:00",
+      "synthetic_scan_samples": 0,
+      "simulation_duration_s": 52.044,
+      "run_id": "20261111T110426Z-go_to_pose_demo",
+      "waypoint_feedback": [],
+      "missed_waypoints": [],
+      "actions": [
+        "SUCCEEDED",
+        "SUCCEEDED",
+        "SUCCEEDED",
+        "SUCCEEDED"
+      ],
+      "goal_results": [
+        {
+          "target": [
+            3,
+            0,
+            0
+          ],
+          "pose": [
+            2.9020072696188306,
+            -0.00907677141606979,
+            -0.10410444135855239
+          ],
+          "position_error_m": 0.09841220954178471,
+          "yaw_error_rad": 0.10410444135855239
+        },
+        {
+          "target": [
+            3,
+            2,
+            1.5707963267948966
+          ],
+          "pose": [
+            3.0300587831676715,
+            1.908252191375276,
+            1.7885783025829385
+          ],
+          "position_error_m": 0.09654631444524482,
+          "yaw_error_rad": 0.21778197578804193
+        },
+        {
+          "target": [
+            0,
+            2,
+            3.141592653589793
+          ],
+          "pose": [
+            0.07893016994188626,
+            2.0324530202571855,
+            -2.9022914369985693
+          ],
+          "position_error_m": 0.08534149196532916,
+          "yaw_error_rad": 0.23930121659122452
+        },
+        {
+          "target": [
+            0,
+            0,
+            -1.5707963267948966
+          ],
+          "pose": [
+            -0.02970150058742134,
+            0.0928943031905267,
+            -1.338468460040235
+          ],
+          "position_error_m": 0.09752707676536855,
+          "yaw_error_rad": 0.23232786675466155
+        }
+      ]
+    },
+    "follow_false": {
+      "name": "follow_waypoints_demo",
+      "batch": "20261111-gui-acceptance-final",
+      "command": [
+        "ros2",
+        "run",
+        "navigation_lab_cpp",
+        "follow_waypoints_demo",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit": 0,
+      "timed_out": false,
+      "duration_s": 91.420852362,
+      "odom_samples": 2355,
+      "plan_samples": 82,
+      "local_plan_samples": 1635,
+      "cmd_samples": 1729,
+      "scan_samples": 0,
+      "stopped": true,
+      "end_map_pose": [
+        -0.02581896839171169,
+        0.09243251163850214,
+        -1.331730092655515
+      ],
+      "finished_utc": "2026-11-11T11:08:17.365736+00:00",
+      "synthetic_scan_samples": 0,
+      "simulation_duration_s": 47.114999999999995,
+      "run_id": "20261111T110623Z-follow_false",
+      "waypoint_feedback": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missed_waypoints": [],
+      "actions": [
+        "SUCCEEDED"
+      ],
+      "stop_on_failure": false
+    },
+    "follow_true": {
+      "name": "follow_waypoints_demo",
+      "batch": "20261111-gui-acceptance-final",
+      "command": [
+        "ros2",
+        "run",
+        "navigation_lab_cpp",
+        "follow_waypoints_demo",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit": 0,
+      "timed_out": false,
+      "duration_s": 90.56570414300222,
+      "odom_samples": 2368,
+      "plan_samples": 80,
+      "local_plan_samples": 1617,
+      "cmd_samples": 1711,
+      "scan_samples": 0,
+      "stopped": true,
+      "end_map_pose": [
+        -0.03482671073995103,
+        0.0894517039512564,
+        -1.3343503674602575
+      ],
+      "finished_utc": "2026-11-11T11:10:16.552451+00:00",
+      "synthetic_scan_samples": 0,
+      "simulation_duration_s": 47.348,
+      "run_id": "20261111T110822Z-follow_true",
+      "waypoint_feedback": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missed_waypoints": [],
+      "actions": [
+        "SUCCEEDED"
+      ],
+      "stop_on_failure": true
+    },
+    "patrol": {
+      "name": "waypoint_patrol",
+      "batch": "20261111-gui-acceptance-final",
+      "command": [
+        "ros2",
+        "run",
+        "navigation_lab_cpp",
+        "waypoint_patrol",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit": 0,
+      "timed_out": false,
+      "duration_s": 183.77226564100056,
+      "odom_samples": 4652,
+      "plan_samples": 170,
+      "local_plan_samples": 3409,
+      "cmd_samples": 3576,
+      "scan_samples": 0,
+      "stopped": true,
+      "end_map_pose": [
+        -0.046230665195761245,
+        0.08527755765421774,
+        -1.3270103612441164
+      ],
+      "finished_utc": "2026-11-11T11:04:21.193359+00:00",
+      "synthetic_scan_samples": 0,
+      "simulation_duration_s": 93.042,
+      "run_id": "20261111T110055Z-patrol",
+      "waypoint_feedback": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missed_waypoints": [],
+      "actions": [
+        "SUCCEEDED",
+        "SUCCEEDED"
+      ]
+    },
+    "dynamic_patrol": {
+      "name": "waypoint_patrol",
+      "batch": "20261111-gui-acceptance-final",
+      "command": [
+        "ros2",
+        "run",
+        "navigation_lab_cpp",
+        "waypoint_patrol",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit": 0,
+      "timed_out": false,
+      "duration_s": 176.04124683899863,
+      "odom_samples": 4432,
+      "plan_samples": 163,
+      "local_plan_samples": 3253,
+      "cmd_samples": 3422,
+      "scan_samples": 645,
+      "stopped": true,
+      "end_map_pose": [
+        -0.04393365158127194,
+        0.0861148938863312,
+        -1.3774118442744276
+      ],
+      "finished_utc": "2026-11-11T11:00:49.766556+00:00",
+      "synthetic_scan_samples": 645,
+      "simulation_duration_s": 88.705,
+      "run_id": "20261111T105734Z-dynamic_patrol",
+      "waypoint_feedback": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "missed_waypoints": [],
+      "actions": [
+        "SUCCEEDED",
+        "SUCCEEDED"
+      ],
+      "scan_frame_ids": [
+        "laser_link"
+      ],
+      "injection_events": [
+        {
+          "t": 5.3194928289995005,
+          "sim_elapsed_s": 5.001000000000001,
+          "line": "INJECTION_START"
+        },
+        {
+          "t": 137.44053822799833,
+          "sim_elapsed_s": 70.00099999999999,
+          "line": "INJECTION_STOP"
+        }
+      ],
+      "synthetic_samples_in_static_free_space": 629,
+      "samples_marked_in_static_free_space": 354,
+      "median_scan_ros_interval_s": 0.10000000000000142,
+      "spin_completed": 0,
+      "backup_completed": 0,
+      "recovery_feedback_values": [],
+      "last_injected_point_final_cost": 0
+    },
+    "recovery_scan": {
+      "name": "recovery_demo",
+      "batch": "20261111-gui-recovery-final",
+      "command": [
+        "ros2",
+        "run",
+        "navigation_lab_cpp",
+        "recovery_demo",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit": 0,
+      "timed_out": false,
+      "duration_s": 71.89244768099888,
+      "odom_samples": 2225,
+      "plan_samples": 36,
+      "local_plan_samples": 727,
+      "cmd_samples": 915,
+      "scan_samples": 349,
+      "stopped": true,
+      "end_map_pose": [
+        3.9056645827351786,
+        0.02428078202915005,
+        -0.16137112873466594
+      ],
+      "finished_utc": "2026-11-11T10:56:59.475683+00:00",
+      "synthetic_scan_samples": 349,
+      "simulation_duration_s": 44.506,
+      "run_id": "20261111T105524Z-recovery_scan",
+      "waypoint_feedback": [],
+      "missed_waypoints": [],
+      "actions": [
+        "SUCCEEDED"
+      ],
+      "scan_frame_ids": [
+        "laser_link"
+      ],
+      "injection_events": [
+        {
+          "t": 10.00201596700208,
+          "sim_elapsed_s": 9.093999999999998,
+          "line": "INJECTION_START"
+        }
+      ],
+      "synthetic_samples_in_static_free_space": 259,
+      "samples_marked_in_static_free_space": 60,
+      "median_scan_ros_interval_s": 0.10000000000000142,
+      "spin_completed": 2,
+      "backup_completed": 1,
+      "recovery_feedback_values": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        13,
+        14,
+        15
+      ],
+      "obstacle_removed": {
+        "utc": "2026-11-11T10:56:18.595604+00:00",
+        "after_program_start_wall_s": 35.001278958050534,
+        "trigger": "Observed automatic backup completed successfully after spin"
+      },
+      "position_error_m": 0.09741009868835501
+    }
+  },
+  "monitor": {
+    "exit": 0,
+    "global_plan_lines": 12,
+    "local_plan_lines": 270,
+    "velocity_lines": 287
+  },
+  "acceptance": {
+    "exercise1": "passed",
+    "exercise2": "passed",
+    "exercise3": "passed",
+    "exercise4": "passed",
+    "exercise5": "passed",
+    "exercise6": "passed"
+  },
+  "limits": [
+    "Original XBot-U scene and maps were not supplied; this lab supplies matching Gazebo geometry and occupancy maps while retaining original goals, yaw, loops, scan algorithm and robot footprint.",
+    "Recovery exercise uses a removable obstacle and matching map; Spin and BackUp are triggered automatically by Nav2 before the original map is restored.",
+    "Synthetic scans are sensor-relative observations, not a moving Gazebo entity.",
+    "Video files are continuous real-time GUI recordings; action logs and odometry cover complete C++ runs.",
+    "Planner/controller teaching comparisons retain their Museum scene and are separate from these six lab exercises."
+  ],
+  "museum_regression": {
+    "run_id": "20261111T111111Z-museum-regression",
+    "museum_default_preserved": true,
+    "rviz_clean_exit": true,
+    "bt_navigator_still_active": true,
+    "cpp_exit": 0,
+    "stopped": true,
+    "odom_samples": 417,
+    "end_map_pose": [
+      0.8982506156998594,
+      -0.009857602953059767,
+      0.09372184392534086
+    ]
+  }
+}
