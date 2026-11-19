@@ -1,0 +1,19 @@
+FROM localhost/ros2-course-com260:ch16-ch17-nav2 AS base
+RUN apt-get -o Dir::Etc::sourceparts=- -o Acquire::Retries=1 -o Acquire::http::Timeout=20 update \
+    && apt-get install -y --no-remove --no-upgrade --no-install-recommends libopen3d-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM base AS rviz_plugins
+COPY rviz-image-unsubscribe.patch /tmp/
+RUN test "$(dpkg-query -W -f='${Version}' ros-humble-rviz-default-plugins | cut -d- -f1)" = 11.2.28 \
+    && curl -fL --retry 3 https://codeload.github.com/ros2/rviz/tar.gz/fc1a5feaff1d30385d596c6c6422c8167e35a871 -o /tmp/rviz.tar.gz \
+    && echo "8bd38a50bb0f4a98e47c380cb8476fca41c327317a6822fdac75dee68e7b2a26  /tmp/rviz.tar.gz" | sha256sum -c - \
+    && mkdir /tmp/rviz && tar -xzf /tmp/rviz.tar.gz -C /tmp/rviz --strip-components=1 \
+    && cd /tmp/rviz/rviz_default_plugins && patch -p1 < /tmp/rviz-image-unsubscribe.patch
+RUN bash -ec 'source /opt/ros/humble/setup.bash; source /opt/rviz-close-fix/local_setup.bash; \
+    cmake -S /tmp/rviz/rviz_default_plugins -B /tmp/plugins -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release; \
+    cmake --build /tmp/plugins --target rviz_default_plugins --parallel 4'
+
+FROM base
+COPY --from=rviz_plugins /tmp/plugins/librviz_default_plugins.so /opt/ros/humble/lib/
+COPY --from=rviz_plugins /tmp/rviz/rviz_default_plugins/include/rviz_default_plugins/displays/image/image_transport_display.hpp /opt/ros/humble/include/rviz_default_plugins/rviz_default_plugins/displays/image/

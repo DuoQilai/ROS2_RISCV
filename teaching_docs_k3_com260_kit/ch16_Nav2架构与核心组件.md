@@ -5,7 +5,7 @@
 > **课时**：2 课时（90 分钟）  
 > **教学方式**：讲授 + 演示
 
-COM260 运行本章 C++17 教学节点；Nav2、Gazebo 和 RViz 在 x86 Humble 容器中运行。先阅读 [Nav2 公共环境](../lab_manuals_k3_com260_kit/nav2_common_setup.md)，再执行具体命令。
+先完成[第 16 章环境配置](../lab_manuals_k3_com260_kit/ch00_common_setup.md#ch16)。COM260 运行 C++17 节点，x86 运行 Gazebo、Nav2 和 RViz。
 
 ## 学习目标
 
@@ -73,6 +73,28 @@ Nav2包含以下核心组件：
 | `amcl` | 粒子滤波定位 | amcl |
 | `map_server` | 地图加载与服务 | map_server |
 | `waypoint_follower` | 航点跟随 | - |
+
+在已按[第 16 章环境配置](../lab_manuals_k3_com260_kit/ch00_common_setup.md#ch16)设置好 DDS 的 x86 终端运行以下命令。COM260 的每个新终端先加载本章的 `env.bash`。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH16_CH17
+export RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)-nav2"
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash start "$RUN_ID"
+```
+
+此入口启动 Burger／Museum、Nav2 和 RViz。保留当前终端的 `RUN_ID`，停止时使用相同值；每次重新启动生成新编号。仿真运行期间，COM260 各终端先加载本章 `env.bash`，ROS 节点使用 `use_sim_time:=true`。不要同时向 `/cmd_vel` 发送遥控或巡逻指令。
+
+COM260 查询远端组件：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 node list
+ros2 lifecycle get /map_server
+ros2 lifecycle get /amcl
+ros2 lifecycle get /bt_navigator
+ros2 lifecycle get /global_costmap/global_costmap
+ros2 action list
+```
 
 ### 16.2.3 Nav2 vs move_base
 
@@ -227,6 +249,28 @@ Condition: 检查条件（是否到达目标等）
   </BehaviorTree>
 </root>
 ```
+
+运行上面的电量检查、导航、等待与旋转序列。在 COM260 的一个终端发布模拟电量：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 topic pub /battery_status sensor_msgs/msg/BatteryState '{percentage: 0.8}' -r 2
+```
+
+在另一个 COM260 终端发送目标，行为树文件由 x86 的 Nav2 读取：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 run navigation_client_cpp bt_navigator_client --ros-args \
+  -p use_sim_time:=true -p x:=0.0 -p y:=-1.0 \
+  -p behavior_tree:=/workspace/install/navigation_client_cpp/share/navigation_client_cpp/behavior_trees/custom_navigation.xml
+```
+
+完成后按 Ctrl+C 停止电量发布。若要运行简化树，可将文件名改为 teaching_navigation.xml。
+
+![COM260 C++ 客户端驱动的 Gazebo 导航与旋转](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/original-tree-gazebo.gif)
+
+GIF 为近景录像的 25～100 秒原速片段，展示目标 `(0,-1,0)` 的导航、等待与旋转；[180 秒原片](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/original-tree-gazebo.mp4)。
 
 ### 16.3.5 官方要点——行为树进阶：PipelineSequence 与官方 XML 库
 
@@ -396,6 +440,28 @@ int main(int argc, char ** argv) {
 }
 ```
 
+独立练习状态转换，终端一运行：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 run custom_nav_component custom_nav_component --ros-args -p use_sim_time:=true
+```
+
+终端二依次运行：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 lifecycle set /custom_nav_component configure
+ros2 lifecycle set /custom_nav_component activate
+ros2 lifecycle set /custom_nav_component deactivate
+ros2 lifecycle set /custom_nav_component cleanup
+ros2 lifecycle set /custom_nav_component configure
+ros2 lifecycle set /custom_nav_component activate
+ros2 lifecycle set /custom_nav_component shutdown
+```
+
+Active 时记录激光样本，Inactive 时停止处理；cleanup 后可再次 configure。Finalized 不意味着进程已经退出，结束示例终端可按 Ctrl+C。
+
 ### 16.4.5 官方要点——生命周期节点：ROS 2 管理节点设计
 
 本章 16.4 的机制出自 ROS 2 官方 Managed Nodes 设计文档：生命周期节点把配置资源和启动处理分开。Nav2 在本章使用定位组与导航组两个管理器；节点由 Launch 创建，管理器按各自 `node_names` 顺序执行 configure/activate。两组可以并行启动，导航组件仍需等待地图、定位和 TF 就绪。
@@ -498,6 +564,16 @@ private:
 };
 ```
 
+取消练习应在机器人距目标仍有足够距离时进行：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 run navigation_client_cpp bt_navigator_client --ros-args \
+  -p use_sim_time:=true -p x:=3.0 -p y:=2.0 -p cancel_after:=6.0
+```
+
+看到 CANCELED 后还要检查 `/odom` 速度接近零。Ctrl+C／SIGTERM 走同一取消流程；程序退出码 1 表示没有完成目标，在主动取消场景是预期结果。
+
 ### 16.5.2 Planner Server
 
 全局规划器负责在代价地图上搜索从起点到终点的无碰撞路径：
@@ -556,6 +632,15 @@ int main(int argc, char ** argv) {
   return success ? 0 : 1;
 }
 ```
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 run global_planner_client global_planner_client --ros-args -p use_sim_time:=true
+```
+
+默认目标 `(3,2)` 靠近 Museum 的障碍区，NavFn 可选择容差内的可达终点。`GridBased.tolerance` 为 0.15 m，目标检查器与 DWB 的 `xy_goal_tolerance` 均为 0.10 m；末段进度检测距离为 0.10 m，超时为 10 秒。检查实际终点距目标不超过 0.25 m，并核对 Action 状态和 `/odom` 停止反馈；参考结果见[证据页](../lab_manuals_k3_com260_kit/runtime_evidence.md#ch16)。
+
+[目标规划与到达的 RViz 连续录像](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/planner-goal-rviz.mp4)展示 C++ 客户端的规划与导航过程；[末段 GIF](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/planner-goal-rviz.gif)展示到达过程。
 
 ### 16.5.3 Controller Server
 
@@ -662,6 +747,15 @@ int main(int argc, char ** argv) {
 
 Simple Commander 的任务接口包括 `goToPose`、`goThroughPoses`（经过多个目标位姿）和 `followWaypoints`（航点跟随及任务执行器），并提供 `setInitialPose`、`waitUntilNav2Active`、`isTaskComplete` 和 `cancelTask`。C++ Action 客户端负责发送目标、处理反馈和结果，以及取消任务；五点练习在每次成功后暂停 3 秒。仿真中客户端与导航栈应统一使用仿真时间，避免目标时间戳、TF 和传感器消息采用不同时间基准。
 
+五点练习每到达一个目标点后暂停 3 秒，目标点位于 Museum 的空闲区域：
+
+```bash
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+ros2 run navigation_client_cpp multi_goal_navigation --ros-args -p use_sim_time:=true
+```
+
+![五点任务结束后的 RViz 位置与代价地图](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/five-goals-rviz.png)
+
 ## 课后练习
 
 1. **架构题:** 绘制Nav2的系统架构图，说明各组件之间的数据流和依赖关系。
@@ -676,8 +770,6 @@ Simple Commander 的任务接口包括 `goToPose`、`goThroughPoses`（经过多
 
 ---
 
-本章运行环境为 COM260／ROS 2 Humble／C++17；Gazebo、Nav2 和 RViz 在 x86 仿真端运行。先完成 [Nav2 公共环境](../lab_manuals_k3_com260_kit/nav2_common_setup.md)。
-
 ## 仿真结合实例（当前仓库）：查看 Nav2 组件生命周期
 
 ### 目标与知识点对应
@@ -686,7 +778,7 @@ Simple Commander 的任务接口包括 `goToPose`、`goThroughPoses`（经过多
 
 ### 运行步骤
 
-按 [Nav2 公共环境](../lab_manuals_k3_com260_kit/nav2_common_setup.md)启动仿真后，在 COM260 运行：
+在 16.2.2 节启动的仿真中，从 COM260 查询组件状态并发送目标：
 
 ```bash
 source ~/.config/ros2-course-com260-ch16-ch17/env.bash
@@ -697,30 +789,22 @@ ros2 run global_planner_client global_planner_client --ros-args -p use_sim_time:
 ros2 run navigation_client_cpp bt_navigator_client --ros-args -p use_sim_time:=true
 ```
 
-五点练习每到达一个目标点后暂停 3 秒，目标点位于 Museum 的空闲区域：
-
-```bash
-source ~/.config/ros2-course-com260-ch16-ch17/env.bash
-ros2 run navigation_client_cpp multi_goal_navigation --ros-args -p use_sim_time:=true
-```
-
 ### 观察结果
 
 分别观察 Action 接受、距离反馈、结束状态以及 `/odom` 停止反馈。默认目标 `(3,2)` 位于本场景的内切代价区域；本章 NavFn 的 `tolerance=0.15` 允许搜索附近可达终点。`SUCCEEDED` 不等于精确到达目标坐标，应同时核对实际终点、规划终点和控制器容差。参考数值见证据页。
 
 客户端等待 Action 服务最多 15 秒、等待目标接受最多 10 秒；导航超过 180 秒会请求取消，取消后最多等待 10 秒。可用 `cancel_after` 参数提前取消；SIGINT／SIGTERM 也先请求取消并等待结果。退出码 0 表示成功到达规划终点，1 表示未完成到达（包括主动取消），不要只凭进程退出判断成功。
 
+先结束 COM260 客户端和观察节点，再在 x86 停止仿真：
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH16_CH17
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash stop "$RUN_ID"
+```
+
 ### 源码与证据
 
-源码见 [实例与功能包清单](../lab_manuals_k3_com260_kit/nav2_common_setup.md#packages)，运行过程与实际误差见 [第 16～17 章实测记录](../lab_manuals_k3_com260_kit/runtime_evidence.md#ch16-ch17)。
-
-![COM260 C++ 客户端驱动的 Gazebo 导航与旋转](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/original-tree-gazebo.gif)
-
-GIF 为近景录像的 25～100 秒原速片段，展示目标 `(0,-1,0)` 的导航、等待与旋转；[180 秒原片](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/original-tree-gazebo.mp4)。
-
-![五点任务结束后的 RViz 位置与代价地图](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/five-goals-rviz.png)
-
-[目标规划与到达的 RViz 连续录像](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/x86/planner-goal-rviz.mp4)展示 C++ 客户端的规划与导航过程；[末段 GIF](../lab_manuals_k3_com260_kit/images/nav2_ch16_ch17/20261108T142740Z-packages/planner-goal-rviz.gif)展示到达过程。
+源码见 [实例与功能包清单](../lab_manuals_k3_com260_kit/ch00_common_setup.md#ch16-packages)，运行过程与实际误差见 [第 16 章实测记录](../lab_manuals_k3_com260_kit/runtime_evidence.md#ch16)。
 
 学习材料：
 - [Nav2 官方文档](https://docs.nav2.org/)

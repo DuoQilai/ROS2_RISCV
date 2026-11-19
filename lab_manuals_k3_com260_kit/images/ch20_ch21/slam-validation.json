@@ -1,0 +1,102 @@
+{
+  "run_id": "20261118T033812Z-euroc-vio",
+  "mode": "offline recorded EuRoC V1_01_easy cam0 + IMU",
+  "processed_images": 2912,
+  "tracked_images": 2777,
+  "recorded_imu_samples": 29120,
+  "associated_poses": 2536,
+  "rpe_pairs": 2535,
+  "saved_poses": 2555,
+  "saved_pose_fraction": 0.8774038461538461,
+  "saved_duration_s": 127.70000004768372,
+  "source_image_duration_s": 145.55,
+  "first_pose_timestamp_s": 1403715291.112143,
+  "last_pose_timestamp_s": 1403715418.812143,
+  "active_map_resets": 4,
+  "alignment": "SE(3), no scale correction",
+  "timestamp_tolerance_s": 0.01,
+  "ate_translation_m": {
+    "rmse": 0.05397165641277535,
+    "mean": 0.04814341509905983,
+    "median": 0.04438495221270738,
+    "std": 0.024395722545936038,
+    "min": 0.002080003433916822,
+    "max": 0.15926000069045793,
+    "sse": 7.387215068900478
+  },
+  "rpe_translation_m": {
+    "rmse": 0.011174730748334314,
+    "mean": 0.00503160571006368,
+    "median": 0.0025849730914784415,
+    "std": 0.009977853039417995,
+    "min": 0.0002496578959608267,
+    "max": 0.14928855511319927,
+    "sse": 0.3165571294998428
+  },
+  "rpe_delta": "1 consecutive frame",
+  "ate_info": {
+    "title": "APE w.r.t. translation part (m)\n(with SE(3) Umeyama alignment)",
+    "ref_name": "reference.tum",
+    "est_name": "runs/20261118T033812Z-euroc-vio/trajectory.tum",
+    "label": "APE (m)"
+  },
+  "rpe_info": {
+    "title": "RPE w.r.t. translation part (m)\nfor delta = 1 (frames) using consecutive pairs\n(with SE(3) Umeyama alignment)",
+    "ref_name": "reference.tum",
+    "est_name": "runs/20261118T033812Z-euroc-vio/trajectory.tum",
+    "label": "RPE (m)"
+  },
+  "trajectory_finite_monotonic_unit_quaternions": true,
+  "live_depth_camera_verified": false,
+  "native_exit_code": 0,
+  "rviz_window_close_exit_code": 0,
+  "elapsed_s": 268.297,
+  "input_checks": {
+    "missing_arguments": 1,
+    "missing_imu": 1,
+    "missing_images": 1
+  },
+  "recording": {
+    "source": {
+      "/camera/image_raw": {
+        "count": 2912,
+        "payload_sha256": "188933be07e7f2e511365285ecabc099af8ff473a73882ed1ff31b3d451f33a1"
+      },
+      "/imu": {
+        "count": 29120,
+        "payload_sha256": "f413c8788bff9a08b2b11aa14097e4070b3790f2de2f6caeb75dbd0e3e2b407f"
+      }
+    },
+    "recorded": {
+      "/camera/image_raw": {
+        "count": 2912,
+        "payload_sha256": "188933be07e7f2e511365285ecabc099af8ff473a73882ed1ff31b3d451f33a1"
+      },
+      "/imu": {
+        "count": 29120,
+        "payload_sha256": "f413c8788bff9a08b2b11aa14097e4070b3790f2de2f6caeb75dbd0e3e2b407f"
+      }
+    },
+    "identical": true
+  },
+  "dataset": {
+    "name": "EuRoC V1_01_easy",
+    "official_page": "https://projects.asl.ethz.ch/datasets/euroc-mav/",
+    "download_mirror": "https://huggingface.co/datasets/pepijn223/euroc-mirror",
+    "sha256": "a920fe5b5e69a6ad19b32f1cfaf90ac2f59d45dfd1ca18cc9722e07684ba45fa",
+    "bytes": 1149702102,
+    "cam0_frames": 2912,
+    "imu_samples": 29120,
+    "official_image_timestamps_match": true
+  },
+  "orb_slam3_commit": "4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+  "pangolin_commit": "aff6883c83f3fd7e8268a9715e84266c42e2efe3",
+  "binary_sha256": {
+    "libORB_SLAM3.so": "d89d713116d1bcc9a6a002f99723c78d970249a18244d25f90b096614eaeb4de",
+    "bag_vio": "ef2efafcf56cfac71332c7c04373bd136efe098e74a226051102f1d37cad0750",
+    "EuRoC.yaml": "e046783377b858fedd84eb286ce25ea41958fde43a7578b70f8e9b39228f40ec"
+  },
+  "evo_version": "1.38.1",
+  "input_storage": "sqlite3",
+  "recorded_bag_sha256": "2681e069bde463bc504d6536bc5056140aa704ad78214f8d5141f311d998424b"
+}

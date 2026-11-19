@@ -1,8 +1,6 @@
 # 第14章 AMCL定位
 
-本章为 COM260 Kit 的 C++17 教学副本。课程概念、练习及数值要求沿用原章；实测状态与素材见[实验第10章](../lab_manuals_k3_com260_kit/ch10_lab.md)和[运行证据](../lab_manuals_k3_com260_kit/runtime_evidence.md#ch10)。算法片段展示相应数学步骤，不能代替完整 SLAM 系统。
-
-数值示例和 ROS 已知输入已分别在 COM260 与 x86 构建运行。原始记录：[COM260数值](../lab_manuals_k3_com260_kit/images/ch10/ch10-teaching-numerics.cast)、[COM260 ROS接口](../lab_manuals_k3_com260_kit/images/ch10/ch10-teaching-ros.cast)、[真实仿真传感器](../lab_manuals_k3_com260_kit/images/ch10/ch10-teaching-live-sensors.cast)。这些检查的输入和范围分开记录，不能据此宣称所有教学算法均在真实场景达到定位精度要求。
+配套实验为[第10章 实验指导书：SLAM 建图与定位](../lab_manuals_k3_com260_kit/ch10_lab.md)，本章示例的实测结果见[本章运行证据](../lab_manuals_k3_com260_kit/runtime_evidence.md#ch14)。算法片段展示相应数学步骤，不能代替完整 SLAM 系统。
 
 教学程序位于 [`slam_teaching_cpp`](../src_k3_com260_kit/slam_teaching_cpp/README.md)。COM260 终端先执行：
 
@@ -650,7 +648,7 @@ ros2 launch sim_demo sim_bringup.launch.py \
 另一个 x86 课程容器终端启动定位（先停止原建图节点）：
 
 ```bash
-# x86 课程容器：先按实验第10章建图并保存为 /workspace/output/maps/my_map.yaml
+# x86 课程容器：先按实验 10 建图并保存为 /workspace/output/maps/my_map.yaml
 source /workspace/install/setup.bash
 ros2 launch slam_lab amcl_localization.launch.py \
   map:=/workspace/output/maps/my_map.yaml use_sim_time:=true use_rviz:=true
@@ -684,7 +682,7 @@ RViz 可显示地图、LaserScan 和 AMCL 位姿；用 `set_initial_pose X Y YAW
 
 ### 源码与边界
 
-Nav2 Launch 位于 `src_k3_com260_kit/slam_lab/launch/amcl_localization.launch.py`，初始位姿节点位于 `src_k3_com260_kit/slam_lab/src/initial_pose_setter.cpp`；使用实验第10章实际保存的地图，不借用其他车型地图。
+Nav2 Launch 位于 `src_k3_com260_kit/slam_lab/launch/amcl_localization.launch.py`，初始位姿节点位于 `src_k3_com260_kit/slam_lab/src/initial_pose_setter.cpp`；使用实验 10 实际保存的地图，不借用其他车型地图。
 
 粒子云是否收敛应以本地 RViz 和 `/amcl_pose` 实际输出判断；启动日志本身不等于定位精度验证。
 

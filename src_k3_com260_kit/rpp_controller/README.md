@@ -10,4 +10,4 @@ source ~/.config/ros2-course-com260-ch18-ch19/env.bash
 ros2 run rpp_controller rpp_controller
 ```
 
-构建入口会执行本包 `known_inputs` 测试。示例使用 C++17，栅格类型由 `costmap_demo` 提供。Gazebo 的完整操作、截图和视频见[第 18～19 章教案示例运行说明](../../lab_manuals_k3_com260_kit/nav2_planning_setup.md)。
+构建入口会执行本包 `known_inputs` 测试。示例使用 C++17，栅格类型由 `costmap_demo` 提供。Gazebo 的完整操作、截图和视频见[第 19 章《局部路径规划》](../../teaching_docs_k3_com260_kit/ch19_局部路径规划.md)。

@@ -1,0 +1,223 @@
+--- a/camera_model/CMakeLists.txt
++++ b/camera_model/CMakeLists.txt
+@@ -1,14 +1,14 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(camera_model)
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ add_compile_options(-Wextra -Wpedantic)
+ 
+ find_package(ament_cmake REQUIRED)
+ find_package(rclcpp REQUIRED)
+ find_package(std_msgs REQUIRED)
+ 
+-find_package(Boost REQUIRED COMPONENTS filesystem program_options system)
++find_package(Boost REQUIRED COMPONENTS filesystem program_options)
+ include_directories(${Boost_INCLUDE_DIRS})
+ 
+ find_package(OpenCV 4 REQUIRED)
+--- a/config_pkg/CMakeLists.txt
++++ b/config_pkg/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(config_pkg)
+ 
+ set(CMAKE_BUILD_TYPE "Release")
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ add_compile_options(-Wextra -Wpedantic)
+ 
+ find_package(ament_cmake REQUIRED)
+--- a/feature_tracker/CMakeLists.txt
++++ b/feature_tracker/CMakeLists.txt
+@@ -1,7 +1,7 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(feature_tracker)
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ add_compile_options(-Wextra -Wpedantic)
+ set(CMAKE_BUILD_TYPE Release)
+ 
+@@ -14,6 +14,7 @@
+ find_package(geometry_msgs REQUIRED)
+ find_package(cv_bridge REQUIRED)
+ find_package(camera_model REQUIRED)
++find_package(Ceres REQUIRED)
+ find_package(image_transport REQUIRED)
+ 
+ find_package(OpenCV 4 REQUIRED)
+@@ -33,7 +34,7 @@
+     )
+ 
+ ament_target_dependencies(feature_tracker rclcpp rcpputils std_msgs sensor_msgs geometry_msgs cv_bridge camera_model image_transport)
+-target_link_libraries(feature_tracker ${OpenCV_LIBS})
++target_link_libraries(feature_tracker ${OpenCV_LIBS} Ceres::ceres)
+ 
+ # Install nodes
+ install(
+--- a/pose_graph/CMakeLists.txt
++++ b/pose_graph/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(pose_graph)
+ 
+ set(CMAKE_BUILD_TYPE "Release")
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ add_compile_options(-Wextra -Wpedantic)
+ 
+ find_package(ament_cmake REQUIRED)
+--- a/pose_graph/src/pose_graph.cpp
++++ b/pose_graph/src/pose_graph.cpp
+@@ -21,7 +21,8 @@
+ 
+ PoseGraph::~PoseGraph()
+ {
+-	t_optimization.join();
++	stop_optimization = true;
++    t_optimization.join();
+ }
+ 
+ void PoseGraph::registerPub(rclcpp::Node::SharedPtr n)
+@@ -402,7 +403,7 @@
+ 
+ void PoseGraph::optimize4DoF()
+ {
+-    while(true)
++    while(!stop_optimization)
+     {
+         int cur_index = -1;
+         int first_looped_index = -1;
+--- a/pose_graph/src/pose_graph.h
++++ b/pose_graph/src/pose_graph.h
+@@ -1,6 +1,7 @@
+ #pragma once
+ 
+ #include <thread>
++#include <atomic>
+ #include <mutex>
+ #include <opencv2/opencv.hpp>
+ #include <eigen3/Eigen/Dense>
+@@ -67,7 +68,8 @@
+ 	std::mutex m_optimize_buf;
+ 	std::mutex m_path;
+ 	std::mutex m_drift;
+-	std::thread t_optimization;
++	std::atomic<bool> stop_optimization{false};
++    std::thread t_optimization;
+ 	std::queue<int> optimize_buf;
+ 
+ 	int global_index;
+--- a/pose_graph/src/pose_graph_node.cpp
++++ b/pose_graph/src/pose_graph_node.cpp
+@@ -238,7 +238,7 @@
+     key_odometrys.type = visualization_msgs::msg::Marker::SPHERE_LIST;
+     key_odometrys.action = visualization_msgs::msg::Marker::ADD;
+     key_odometrys.pose.orientation.w = 1.0;
+-    key_odometrys.lifetime = rclcpp::Duration(0);
++    key_odometrys.lifetime = rclcpp::Duration(0, 0);
+ 
+     //static int key_odometrys_id = 0;
+     key_odometrys.id = 0; //key_odometrys_id++;
+@@ -294,7 +294,7 @@
+ {
+     if (!LOOP_CLOSURE)
+         return;
+-    while (true)
++    while (rclcpp::ok())
+     {
+         sensor_msgs::msg::Image::ConstPtr image_msg = NULL;
+         sensor_msgs::msg::PointCloud::ConstPtr point_msg = NULL;
+@@ -430,9 +430,10 @@
+ {
+     if (!LOOP_CLOSURE)
+         return;
+-    while(1)
+-    {
+-        char c = getchar();
++    while(rclcpp::ok())
++    {
++        int c = getchar();
++        if (c == EOF) return;
+         if (c == 's')
+         {
+             m_process.lock();
+@@ -559,6 +560,9 @@
+ 
+ 
+     rclcpp::spin(n);
++    rclcpp::shutdown();
++    measurement_process.join();
++    keyboard_command_process.join();
+ 
+     return 0;
+ }
+--- a/pose_graph/src/utility/CameraPoseVisualization.cpp
++++ b/pose_graph/src/utility/CameraPoseVisualization.cpp
+@@ -83,7 +83,7 @@
+     //  tmp_loop_edge_num = 1;
+     marker.type = visualization_msgs::msg::Marker::LINE_STRIP;
+     marker.action = visualization_msgs::msg::Marker::ADD;
+-    marker.lifetime = rclcpp::Duration(0);
++    marker.lifetime = rclcpp::Duration(0, 0);
+     //marker.scale.x = 0.4;
+     marker.scale.x = 0.02;
+     marker.color.r = 1.0f;
+--- a/vins_estimator/CMakeLists.txt
++++ b/vins_estimator/CMakeLists.txt
+@@ -1,8 +1,8 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.10)
+ project(vins_estimator)
+ 
+ set(CMAKE_BUILD_TYPE "Release")
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ add_compile_options(-Wextra -Wpedantic)
+ 
+ find_package(ament_cmake REQUIRED)
+--- a/vins_estimator/src/estimator_node.cpp
++++ b/vins_estimator/src/estimator_node.cpp
+@@ -210,13 +210,13 @@
+ // thread: visual-inertial odometry
+ void process()
+ {
+-    while (true)
++    while (rclcpp::ok())
+     {
+         std::vector<std::pair<std::vector<sensor_msgs::msg::Imu::SharedPtr>, sensor_msgs::msg::PointCloud::SharedPtr>> measurements;
+         std::unique_lock<std::mutex> lk(m_buf);
+         con.wait(lk, [&]
+                  {
+-            return (measurements = getMeasurements()).size() != 0;
++            return !rclcpp::ok() || !(measurements = getMeasurements()).empty();
+                  });
+ 
+         lk.unlock();
+@@ -361,6 +361,9 @@
+ 
+     std::thread measurement_process{process};
+     rclcpp::spin(n);
++    rclcpp::shutdown();
++    con.notify_all();
++    measurement_process.join();
+ 
+     return 0;
+ }
+--- a/vins_estimator/src/utility/visualization.cpp
++++ b/vins_estimator/src/utility/visualization.cpp
+@@ -192,7 +192,7 @@
+     key_poses.type = visualization_msgs::msg::Marker::SPHERE_LIST;
+     key_poses.action = visualization_msgs::msg::Marker::ADD;
+     key_poses.pose.orientation.w = 1.0;
+-    key_poses.lifetime = rclcpp::Duration(0);
++    key_poses.lifetime = rclcpp::Duration(0, 0);
+ 
+     //static int key_poses_id = 0;
+     key_poses.id = 0; //key_poses_id++;

@@ -1,0 +1,273 @@
+{
+  "scene": "navigation-lab",
+  "simulator": "Gazebo Harmonic",
+  "scheduler": "COM260 C++17 multi_robot_scheduler",
+  "desktop_recording": {
+    "input": "COM260 multi_robot_scheduler; three namespaced Nav2 stacks; single Gazebo Harmonic world",
+    "odometry": "nav_msgs/Odometry",
+    "position": "/world/default/dynamic_pose/info",
+    "pass_criteria": "SUCCEEDED, measured error <0.25 m, movement >1.8 m and stopped for 2 seconds (speed <0.02 m/s and <0.03 rad/s)",
+    "robots": [
+      {
+        "robot": "robot1",
+        "target": [
+          0.8,
+          -1.0
+        ],
+        "start": [
+          -1.3999999999999952,
+          -1.0000000000035452
+        ],
+        "final": [
+          0.6888135333743637,
+          -1.0028007166146413
+        ],
+        "displacement_m": 2.0888154109976806,
+        "error_m": 0.11122173517010638,
+        "result": "SUCCEEDED",
+        "goal_uuid": "afcb3d787c1a01afc4dc387b4e37466e",
+        "stopped_samples": 24,
+        "max_stopped_twist": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "robot": "robot2",
+        "target": [
+          0.8,
+          0.0
+        ],
+        "start": [
+          -1.3999999999999952,
+          -3.5516897948441474e-12
+        ],
+        "final": [
+          0.6504796386880907,
+          -0.016812536888862726
+        ],
+        "displacement_m": 2.0505485632071587,
+        "error_m": 0.1504626194225107,
+        "result": "SUCCEEDED",
+        "goal_uuid": "99181490b144c5e18b3d1f2a7dad819a",
+        "stopped_samples": 24,
+        "max_stopped_twist": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "robot": "robot3",
+        "target": [
+          0.8,
+          1.0
+        ],
+        "start": [
+          -1.3999999999999952,
+          0.9999999999964538
+        ],
+        "final": [
+          0.7322606992649824,
+          0.9743489413310746
+        ],
+        "displacement_m": 2.1324149845751474,
+        "error_m": 0.07243334642901579,
+        "result": "SUCCEEDED",
+        "goal_uuid": "228289df0435157017654f993fb9cd3f",
+        "stopped_samples": 23,
+        "max_stopped_twist": [
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "gazebo_recording": {
+    "input": "COM260 multi_robot_scheduler; three namespaced Nav2 stacks; single Gazebo Harmonic world",
+    "odometry": "nav_msgs/Odometry",
+    "position": "/world/default/dynamic_pose/info",
+    "pass_criteria": "SUCCEEDED, measured error <0.25 m, movement >1.8 m and stopped for 2 seconds (speed <0.02 m/s and <0.03 rad/s)",
+    "robots": [
+      {
+        "robot": "robot1",
+        "target": [
+          0.8,
+          -1.0
+        ],
+        "start": [
+          -1.3999999999999952,
+          -1.0000000000035452
+        ],
+        "final": [
+          0.6967535668848331,
+          -0.9729188306898761
+        ],
+        "displacement_m": 2.096928446555973,
+        "error_m": 0.10673900731320407,
+        "result": "SUCCEEDED",
+        "goal_uuid": "d10f3e3a921d276101f6dab8695f44f1",
+        "stopped_samples": 24,
+        "max_stopped_twist": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "robot": "robot2",
+        "target": [
+          0.8,
+          0.0
+        ],
+        "start": [
+          -1.3999999999999952,
+          -3.5516897948441474e-12
+        ],
+        "final": [
+          0.70474114394106,
+          0.010680888465600813
+        ],
+        "displacement_m": 2.104768244813854,
+        "error_m": 0.09585578248636051,
+        "result": "SUCCEEDED",
+        "goal_uuid": "d758df8fd41327461df579ab8f389f37",
+        "stopped_samples": 24,
+        "max_stopped_twist": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "robot": "robot3",
+        "target": [
+          0.8,
+          1.0
+        ],
+        "start": [
+          -1.3999999999999952,
+          0.9999999999964538
+        ],
+        "final": [
+          0.7241871203814243,
+          0.9725168011442173
+        ],
+        "displacement_m": 2.124364904768825,
+        "error_m": 0.08064067792006185,
+        "result": "SUCCEEDED",
+        "goal_uuid": "f8a50cb32ed51715424334fec01f9e88",
+        "stopped_samples": 24,
+        "max_stopped_twist": [
+          0.0,
+          0.0
+        ]
+      }
+    ]
+  },
+  "media": [
+    {
+      "file": "fleet-arrival.gif",
+      "bytes": 504559,
+      "sha256": "e4dd40d168df09c248f411e1b42277dfa59adc10d2cf97b8ef42bb72606cc1e0",
+      "codec_name": "gif",
+      "width": 600,
+      "height": 514,
+      "nb_frames": "84",
+      "duration_s": 14.0
+    },
+    {
+      "file": "fleet-arrival.mp4",
+      "bytes": 177696,
+      "sha256": "fe739a74c01a3fb911176d701397db81070aef531ef316539c960ac20f86e1ce",
+      "codec_name": "h264",
+      "width": 760,
+      "height": 650,
+      "nb_frames": "228",
+      "duration_s": 19.0
+    },
+    {
+      "file": "fleet-arrival.png",
+      "bytes": 149055,
+      "sha256": "849a6fd1e74bc07d7800ff08ce38cb18c439a1c0fff71ae1d2be7d33ecb89bd0",
+      "codec_name": "png",
+      "width": 760,
+      "height": 650
+    },
+    {
+      "file": "fleet-gazebo.mp4",
+      "bytes": 395892,
+      "sha256": "fdf60e075efb093eaebde955ec4f036ace667db89d50d771ca96694bb6697028",
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 800,
+      "nb_frames": "315",
+      "duration_s": 21.0
+    },
+    {
+      "file": "fleet-gazebo.png",
+      "bytes": 616410,
+      "sha256": "df763eeba94f8e9b09cdf9e762fc6baa3e997984a43644925326582b0dd6205f",
+      "codec_name": "png",
+      "width": 1280,
+      "height": 800
+    }
+  ],
+  "public_workflow": {
+    "source_entry": "course_support/k3_com260_kit/scripts/x86-ch20-ch21.bash start-fleet fleet",
+    "launch": "course_support/k3_com260_kit/launch/multi-robot.launch.py",
+    "tasks": "course_support/k3_com260_kit/config/fleet/tasks.yaml",
+    "workspace": "new x86 colcon workspace and new native COM260 scheduler build",
+    "status_query": "--once --qos-durability transient_local --qos-reliability reliable --qos-depth 1",
+    "stable_stop_s": 3,
+    "stop_exit_code": 0,
+    "pass": true,
+    "robots": {
+      "robot1": {
+        "goal": [
+          0.8,
+          -1.0
+        ],
+        "position": [
+          0.6542750047162603,
+          -1.019353615229016
+        ],
+        "status": 4,
+        "velocity": [
+          0.0,
+          0.0
+        ],
+        "error_m": 0.14700454643608393
+      },
+      "robot2": {
+        "goal": [
+          0.8,
+          0.0
+        ],
+        "position": [
+          0.6696773857002409,
+          -0.0027468785641098993
+        ],
+        "status": 4,
+        "velocity": [
+          0.0,
+          0.0
+        ],
+        "error_m": 0.13035155979032143
+      },
+      "robot3": {
+        "goal": [
+          0.8,
+          1.0
+        ],
+        "position": [
+          0.7065387979061368,
+          0.9548876078633957
+        ],
+        "status": 4,
+        "velocity": [
+          0.0,
+          0.0
+        ],
+        "error_m": 0.103779209002173
+      }
+    }
+  }
+}

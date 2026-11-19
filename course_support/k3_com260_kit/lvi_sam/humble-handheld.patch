@@ -1,0 +1,148 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,0 +43 @@
++find_package(jsoncpp CONFIG REQUIRED)
+@@ -52,2 +53,3 @@
+-find_package(GTSAM REQUIRED QUIET)
+-find_package(Boost REQUIRED COMPONENTS filesystem program_options system)
++find_path(GTSAM_INCLUDE_DIR gtsam/geometry/Pose3.h REQUIRED)
++find_library(GTSAM_LIBRARY gtsam REQUIRED)
++find_package(Boost REQUIRED COMPONENTS filesystem program_options)
+@@ -161 +163 @@
+-target_link_libraries(${PROJECT_NAME}_imuPreintegration ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} gtsam ahrs)
++target_link_libraries(${PROJECT_NAME}_imuPreintegration ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} ${GTSAM_LIBRARY} ahrs)
+@@ -180 +182 @@
+-target_link_libraries(${PROJECT_NAME}_mapOptmization ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} ${OpenMP_CXX_FLAGS} gtsam ahrs yaml-cpp)
++target_link_libraries(${PROJECT_NAME}_mapOptmization ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} ${OpenMP_CXX_FLAGS} ${GTSAM_LIBRARY} ahrs yaml-cpp)
+--- a/config/params_camera_ori.yaml
++++ b/config/params_camera_ori.yaml
+@@ -7,0 +8 @@
++imu_hz: 500
+@@ -17,6 +18,6 @@
+-lidar_to_cam_tx: -0.0199398
+-lidar_to_cam_ty: -0.0336424
+-lidar_to_cam_tz: -0.00642238
+-lidar_to_cam_rx: -1.5708
+-lidar_to_cam_ry: -1.5708
+-lidar_to_cam_rz: 0.0
++lidar_to_cam_tx: -0.052759258726
++lidar_to_cam_ty: 0.067944540757
++lidar_to_cam_tz: 0.070000000000
++lidar_to_cam_rx: 1.570796326795
++lidar_to_cam_ry: -1.530796326795
++lidar_to_cam_rz: 0.000000000000
+--- a/launch/include/module_sam.launch.py
++++ b/launch/include/module_sam.launch.py
+@@ -69 +69 @@
+-        respawn=True,
++        respawn=False,
+@@ -78 +78 @@
+-        respawn=True,
++        respawn=False,
+@@ -87 +87 @@
+-        respawn=True,
++        respawn=False,
+@@ -94,0 +95,4 @@
++        remappings=[
++            ('/lvi_sam/lidar/mapping/cloud_registered', '/lvi_sam/mapping/registered_cloud'),
++            ('/lvi_sam/lidar/mapping/path', '/lvi_sam/odometry/odometry'),
++        ],
+@@ -96 +100 @@
+-        respawn=True,
++        respawn=False,
+@@ -106 +110 @@
+-        respawn=True,
++        respawn=False,
+@@ -115 +119 @@
+-        respawn=True,
++        respawn=False,
+@@ -124 +128 @@
+-        respawn=True,
++        respawn=False,
+--- a/launch/run.launch.py
++++ b/launch/run.launch.py
+@@ -14 +14 @@
+-  use_rviz       — 'true'/'false'  (default: 'true')
++  use_rviz       — 'true'/'false'  (default: 'false')
+@@ -38 +38 @@
+-        default_value=os.path.join(pkg_share, 'config', 'params_lidar.yaml'),
++        default_value=os.path.join(pkg_share, 'config', 'params_lidar_ori.yaml'),
+@@ -43 +43 @@
+-        default_value=os.path.join(pkg_share, 'config', 'params_camera.yaml'),
++        default_value=os.path.join(pkg_share, 'config', 'params_camera_ori.yaml'),
+@@ -53 +53 @@
+-        default_value='true',
++        default_value='false',
+--- a/src/lidar_odometry/imuPreintegration.cpp
++++ b/src/lidar_odometry/imuPreintegration.cpp
+@@ -19 +18,0 @@
+-#include <gtsam_unstable/nonlinear/IncrementalFixedLagSmoother.h>
+--- a/src/visual_odometry/visual_estimator/estimator_node.cpp
++++ b/src/visual_odometry/visual_estimator/estimator_node.cpp
+@@ -13 +13 @@
+-#include <cv_bridge/cv_bridge.hpp>
++#include <cv_bridge/cv_bridge.h>
+@@ -23,0 +24 @@
++bool stopping = false;
+@@ -51,28 +51,0 @@
+-
+-/**
+- * @brief modified
+- *
+- * @param n
+- * @param name
+- */
+-void getParam(rclcpp::Node::SharedPtr &n, const std::string &name)
+-{
+-    std::vector<double> param_vec;
+-    if (!n->get_parameter(name, param_vec))
+-        RCLCPP_ERROR(n->get_logger(), "Failed to get parameter from server.");
+-
+-    for (size_t i = 0, j = 0, k = 0; i < param_vec.size(); ++i)
+-    {
+-        if (param_vec.size() == 9)
+-        {
+-            if (i % 3 == 0 && i != 0)
+-                j++;
+-            k = i % 3;
+-            lidar_Rot_imu(j, k) = param_vec[i];
+-        }
+-        else
+-        {
+-            lidar_Trans_imu(i) = param_vec[i];
+-        }
+-    }
+-}
+@@ -249 +222 @@
+-            return (measurements = getMeasurements()).size() != 0;
++            return stopping || !(measurements = getMeasurements()).empty();
+@@ -250,0 +224,2 @@
++        if (stopping)
++            break;
+@@ -368,0 +344,4 @@
++    lidar_Rot_imu = Eigen::AngleAxisd(L_RZ_I, Eigen::Vector3d::UnitZ())
++                  * Eigen::AngleAxisd(L_RY_I, Eigen::Vector3d::UnitY())
++                  * Eigen::AngleAxisd(L_RX_I, Eigen::Vector3d::UnitX());
++    lidar_Trans_imu = Eigen::Vector3d(L_TX_I, L_TY_I, L_TZ_I);
+@@ -393,0 +373,6 @@
++    {
++        std::lock_guard<std::mutex> lock(m_buf);
++        stopping = true;
++    }
++    con.notify_one();
++    measurement_process.join();
+--- a/src/visual_odometry/visual_feature/parameters.h
++++ b/src/visual_odometry/visual_feature/parameters.h
+@@ -17 +17 @@
+-#include <cv_bridge/cv_bridge.hpp>
++#include <cv_bridge/cv_bridge.h>
+--- a/src/visual_odometry/visual_loop/loop_detection_node.cpp
++++ b/src/visual_odometry/visual_loop/loop_detection_node.cpp
+@@ -338 +338 @@
+-
++    measurement_process.join();
+--- a/src/visual_odometry/visual_loop/parameters.h
++++ b/src/visual_odometry/visual_loop/parameters.h
+@@ -25 +25 @@
+-#include <cv_bridge/cv_bridge.hpp>
++#include <cv_bridge/cv_bridge.h>
