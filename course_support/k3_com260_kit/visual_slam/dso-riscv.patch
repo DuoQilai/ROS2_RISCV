@@ -1,0 +1,198 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ SET(PROJECT_NAME DSO)
+ 
+ PROJECT(${PROJECT_NAME})
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+ #set(CMAKE_VERBOSE_MAKEFILE ON)
+ 
+ 
+@@ -15,7 +15,7 @@
+ # required libraries
+ find_package(SuiteParse REQUIRED)
+ find_package(Eigen3 REQUIRED)
+-find_package(Boost COMPONENTS system thread) 
++find_package(Boost COMPONENTS thread) 
+ 
+ # optional libraries
+ find_package(LibZip QUIET)
+@@ -25,7 +25,7 @@
+ # flags
+ add_definitions("-DENABLE_SSE")
+ set(CMAKE_CXX_FLAGS
+-   "${SSE_FLAGS} -O3 -g -std=c++0x -march=native"
++   "${SSE_FLAGS} -O1 -g0 -std=c++17 -DBOOST_BIND_GLOBAL_PLACEHOLDERS -include boost/bind.hpp"
+ #   "${SSE_FLAGS} -O3 -g -std=c++0x -fno-omit-frame-pointer"
+ )
+ 
+@@ -67,6 +67,7 @@
+ 
+ # decide if we have pangolin
+ if (Pangolin_FOUND)
++    add_definitions(-DDSO_WITH_PANGOLIN)
+ 	message("--- found PANGOLIN, compiling dso_pangolin library.")
+ 	include_directories( ${Pangolin_INCLUDE_DIRS} ) 
+ 	set(dso_pangolin_SOURCE_FILES 
+@@ -122,10 +123,10 @@
+ endif()
+ 
+ # build main executable (only if we have both OpenCV and Pangolin)
+-if (OpenCV_FOUND AND Pangolin_FOUND)
++if (OpenCV_FOUND)
+ 	message("--- compiling dso_dataset.")
+ 	add_executable(dso_dataset ${PROJECT_SOURCE_DIR}/src/main_dso_pangolin.cpp )
+-    target_link_libraries(dso_dataset dso boost_system cxsparse ${BOOST_THREAD_LIBRARY} ${LIBZIP_LIBRARY} ${Pangolin_LIBRARIES} ${OpenCV_LIBS})
++    target_link_libraries(dso_dataset dso cxsparse ${BOOST_THREAD_LIBRARY} ${LIBZIP_LIBRARY} ${Pangolin_LIBRARIES} ${OpenCV_LIBS})
+ else()
+ 	message("--- not building dso_dataset, since either don't have openCV or Pangolin.")
+ endif()
+--- a/src/FullSystem/CoarseInitializer.cpp
++++ b/src/FullSystem/CoarseInitializer.cpp
+@@ -39,7 +39,8 @@
+ 
+ 
+ #if !defined(__SSE3__) && !defined(__SSE2__) && !defined(__SSE1__)
+-#include "SSE2NEON.h"
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse3.h>
+ #endif
+ 
+ namespace dso
+--- a/src/FullSystem/CoarseTracker.cpp
++++ b/src/FullSystem/CoarseTracker.cpp
+@@ -38,7 +38,8 @@
+ #include <algorithm>
+ 
+ #if !defined(__SSE3__) && !defined(__SSE2__) && !defined(__SSE1__)
+-#include "SSE2NEON.h"
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse3.h>
+ #endif
+ 
+ namespace dso
+--- a/src/IOWrapper/OpenCV/ImageRW_OpenCV.cpp
++++ b/src/IOWrapper/OpenCV/ImageRW_OpenCV.cpp
+@@ -34,7 +34,7 @@
+ {
+ MinimalImageB* readImageBW_8U(std::string filename)
+ {
+-	cv::Mat m = cv::imread(filename, CV_LOAD_IMAGE_GRAYSCALE);
++	cv::Mat m = cv::imread(filename, cv::IMREAD_GRAYSCALE);
+ 	if(m.rows*m.cols==0)
+ 	{
+ 		printf("cv::imread could not read image %s! this may segfault. \n", filename.c_str());
+@@ -52,7 +52,7 @@
+ 
+ MinimalImageB3* readImageRGB_8U(std::string filename)
+ {
+-	cv::Mat m = cv::imread(filename, CV_LOAD_IMAGE_COLOR);
++	cv::Mat m = cv::imread(filename, cv::IMREAD_COLOR);
+ 	if(m.rows*m.cols==0)
+ 	{
+ 		printf("cv::imread could not read image %s! this may segfault. \n", filename.c_str());
+@@ -70,7 +70,7 @@
+ 
+ MinimalImage<unsigned short>* readImageBW_16U(std::string filename)
+ {
+-	cv::Mat m = cv::imread(filename, CV_LOAD_IMAGE_UNCHANGED);
++	cv::Mat m = cv::imread(filename, cv::IMREAD_UNCHANGED);
+ 	if(m.rows*m.cols==0)
+ 	{
+ 		printf("cv::imread could not read image %s! this may segfault. \n", filename.c_str());
+@@ -88,7 +88,7 @@
+ 
+ MinimalImageB* readStreamBW_8U(char* data, int numBytes)
+ {
+-	cv::Mat m = cv::imdecode(cv::Mat(numBytes,1,CV_8U, data), CV_LOAD_IMAGE_GRAYSCALE);
++	cv::Mat m = cv::imdecode(cv::Mat(numBytes,1,CV_8U, data), cv::IMREAD_GRAYSCALE);
+ 	if(m.rows*m.cols==0)
+ 	{
+ 		printf("cv::imdecode could not read stream (%d bytes)! this may segfault. \n", numBytes);
+--- a/src/OptimizationBackend/AccumulatedTopHessian.cpp
++++ b/src/OptimizationBackend/AccumulatedTopHessian.cpp
+@@ -28,7 +28,8 @@
+ #include <iostream>
+ 
+ #if !defined(__SSE3__) && !defined(__SSE2__) && !defined(__SSE1__)
+-#include "SSE2NEON.h"
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse3.h>
+ #endif
+ 
+ namespace dso
+--- a/src/OptimizationBackend/EnergyFunctional.cpp
++++ b/src/OptimizationBackend/EnergyFunctional.cpp
+@@ -31,7 +31,8 @@
+ #include "OptimizationBackend/AccumulatedTopHessian.h"
+ 
+ #if !defined(__SSE3__) && !defined(__SSE2__) && !defined(__SSE1__)
+-#include "SSE2NEON.h"
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse3.h>
+ #endif
+ 
+ namespace dso
+--- a/src/OptimizationBackend/EnergyFunctionalStructs.cpp
++++ b/src/OptimizationBackend/EnergyFunctionalStructs.cpp
+@@ -29,7 +29,8 @@
+ #include "FullSystem/Residuals.h"
+ 
+ #if !defined(__SSE3__) && !defined(__SSE2__) && !defined(__SSE1__)
+-#include "SSE2NEON.h"
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse3.h>
+ #endif
+ 
+ namespace dso
+--- a/src/OptimizationBackend/MatrixAccumulators.h
++++ b/src/OptimizationBackend/MatrixAccumulators.h
+@@ -26,7 +26,8 @@
+ #include "util/NumType.h"
+ 
+ #if !defined(__SSE3__) && !defined(__SSE2__) && !defined(__SSE1__)
+-#include "SSE2NEON.h"
++#define SIMDE_ENABLE_NATIVE_ALIASES
++#include <simde/x86/sse3.h>
+ #endif
+ 
+ namespace dso
+--- a/src/main_dso_pangolin.cpp
++++ b/src/main_dso_pangolin.cpp
+@@ -47,7 +47,9 @@
+ 
+ 
+ 
++#ifdef DSO_WITH_PANGOLIN
+ #include "IOWrapper/Pangolin/PangolinDSOViewer.h"
++#endif
+ #include "IOWrapper/OutputWrapper/SampleOutputWrapper.h"
+ 
+ 
+@@ -400,12 +402,14 @@
+ 
+ 
+ 
++#ifdef DSO_WITH_PANGOLIN
+     IOWrap::PangolinDSOViewer* viewer = 0;
+ 	if(!disableAllDisplay)
+     {
+         viewer = new IOWrap::PangolinDSOViewer(wG[0],hG[0], false);
+         fullSystem->outputWrapper.push_back(viewer);
+     }
++#endif
+ 
+ 
+ 
+@@ -564,8 +568,10 @@
+     });
+ 
+ 
++#ifdef DSO_WITH_PANGOLIN
+     if(viewer != 0)
+         viewer->run();
++#endif
+ 
+     runthread.join();
+ 

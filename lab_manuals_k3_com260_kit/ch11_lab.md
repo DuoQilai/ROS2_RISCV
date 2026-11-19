@@ -1,4 +1,4 @@
-# 第11章 实验手册: Nav2 自主导航
+# 第11章 实验指导书：Nav2 自主导航
 
 COM260 运行 C++17 导航程序，x86 运行 Gazebo、Nav2 和 RViz。
 
@@ -29,19 +29,9 @@ ros2 run navigation_client_cpp bt_navigator_client --ros-args \
 
 ## 实际运行证据
 
-Nav2 导航、恢复行为与动态避障的运行示例：
-
 ![COM260 四目标导航过程](images/ch11/goals.gif)
 
-[四目标截图](images/ch11/goals.png)与[完整原速录像（94.5 秒）](images/ch11/goals.mp4)；[四航点截图](images/ch11/waypoints.png)与[完整原速录像（95.7 秒）](images/ch11/waypoints.mp4)；[两圈巡逻截图](images/ch11/patrol.png)与[完整原速录像（188.1 秒）](images/ch11/patrol.mp4)。
-
-![扫描注入期间的 RViz 代价地图与路径变化](images/ch11/dynamic-rviz.gif)
-
-[RViz 截图](images/ch11/dynamic-rviz.png)与[完整原速录像（180.8 秒）](images/ch11/dynamic-rviz.mp4)展示扫描注入、停止注入及两圈巡逻；另见[Gazebo 截图](images/ch11/dynamic-gazebo.png)和[完整原速录像（180.6 秒）](images/ch11/dynamic-gazebo.mp4)。合成障碍显示在 RViz 代价地图中，Gazebo 展示机器人运动。
-
-恢复练习见[障碍截图](images/ch11/recovery.png)、[Gazebo 原速录像（76.4 秒）](images/ch11/recovery.mp4)、[RViz 截图](images/ch11/recovery-rviz.png)及[RViz 原速录像（76.6 秒）](images/ch11/recovery-rviz.mp4)。观察 Spin、BackUp，以及移除障碍并恢复地图后机器人继续向 `(4,0)` 导航的过程。
-
-运行数据见[运行证据](runtime_evidence.md#ch11)、[结构化结果](images/ch11/validation-results.json)、[原始数据](images/ch11/runtime-data.tar.gz)及[媒体校验](images/ch11/media-validation.json)。
+运行数据见[运行证据](runtime_evidence.md#lab11)、[结构化结果](images/ch11/validation-results.json)、[原始数据](images/ch11/runtime-data.tar.gz)及[媒体校验](images/ch11/media-validation.json)。
 
 ## 环境说明
 
@@ -53,7 +43,7 @@ Gazebo 真实激光保留 `/scan`，合成障碍发布到 `/scan_injected`。AMC
 
 ## 准备工作
 
-先完成[公共双端环境](ch00_common_setup.md)及[Nav2 公共环境](nav2_common_setup.md)的依赖准备。将仓库放到两端 `~/ROS2_RISCV_COM260_CH18_CH19`。六个 C++ 程序位于 [navigation_lab_cpp](../src_k3_com260_kit/navigation_lab_cpp/README.md)。
+先完成[公共双端环境中的 Nav2 依赖准备](ch00_common_setup.md#nav2-prerequisites)。将仓库放到两端 `~/ROS2_RISCV_COM260_CH18_CH19`。六个 C++ 程序位于 [navigation_lab_cpp](../src_k3_com260_kit/navigation_lab_cpp/README.md)。
 
 ### COM260
 
@@ -163,6 +153,8 @@ ros2 run navigation_lab_cpp go_to_pose_demo --ros-args -p use_sim_time:=true
   - **工具栏** — 提供初始位姿和目标位姿工具
 - 如果 RViz2 中未自动显示数据, 检查 `Fixed Frame` 是否为 `map`, 以及 Nav2 是否已正常启动
 
+[四目标导航截图](images/ch11/goals.png) · [完整录像（94.5 秒）](images/ch11/goals.mp4)
+
 ### 验收标准
 - [ ] 机器人依次到达 4 个目标点
 - [ ] 终端正确显示 `distance_remaining` 和 `estimated_time_remaining`
@@ -204,6 +196,8 @@ ros2 run navigation_lab_cpp follow_waypoints_demo --ros-args -p use_sim_time:=tr
 ### 观察
 - `current_waypoint` 原始值递增为 0 → 1 → 2 → 3；旁边的 `waypoint` 按 1/4 → 4/4 显示，完成后核对 SUCCEEDED 和没有 `missed_waypoint`
 - RViz2 中观察机器人按顺序通过所有航点
+
+[四航点导航截图](images/ch11/waypoints.png) · [完整录像（95.7 秒）](images/ch11/waypoints.mp4)
 
 ### 验收标准
 - [ ] 机器人按顺序访问所有 4 个航点
@@ -259,16 +253,9 @@ int main(int argc, char ** argv) {
 ros2 run navigation_lab_cpp recovery_demo --ros-args -p use_sim_time:=true
 ```
 
-在启动仿真的 x86 终端用 `podman logs --follow "ros2-com260-$RUN_ID"` 观察 Nav2 日志。确认自动执行的 `spin` 和 `backup` 完成后，按 Ctrl+C 结束日志跟随，再在同一终端移除障碍；服务应返回 `data: true`：
+在启动仿真的 x86 终端用 `podman logs --follow "ros2-com260-$RUN_ID"` 观察 Nav2 日志。预先准备下面两组命令；确认自动执行的 `spin` 和 `backup` 完成后，按 Ctrl+C 结束日志跟随，依次执行。
 
-```bash
-bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash exec "$RUN_ID" \
-  env GZ_PARTITION="$RUN_ID" gz service -s /world/default/remove \
-  --reqtype gz.msgs.Entity --reptype gz.msgs.Boolean --timeout 5000 \
-  --req 'name: "recovery_obstacle" type: MODEL'
-```
-
-随后加载回原地图，同样确认 `result=0`：
+先加载回原地图，确认 `result=0`。这会清除地图文件中的方盒占用区域，Gazebo 中的实体仍由激光感知：
 
 ```bash
 bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash exec "$RUN_ID" \
@@ -277,12 +264,25 @@ bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash exec "$RUN_ID" \
   | grep -o 'result=[0-9]*'
 ```
 
+随后立即移除方盒，服务应返回 `data: true`：
+
+```bash
+bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash exec "$RUN_ID" \
+  env GZ_PARTITION="$RUN_ID" gz service -s /world/default/remove \
+  --reqtype gz.msgs.Entity --reptype gz.msgs.Boolean --timeout 5000 \
+  --req 'name: "recovery_obstacle" type: MODEL'
+```
+
 继续等待同一个 `(4,0)` 导航任务完成，并检查 `/odom` 停止反馈。此方盒仅用于练习 3 的恢复条件；按“准备工作”重启仿真后再进行其他练习。
 
 #### 观察
 - 当机器人在障碍物前卡住时, 自动触发 Spin (原地旋转) 或 BackUp (后退)
 - 终端输出 `number_of_recoveries` 字段 (在 `NavigateToPose` feedback 中)
 - RViz2 中观察代价地图清除和重新规划
+
+对照[障碍物截图](images/ch11/recovery.png)和[RViz 代价地图截图](images/ch11/recovery-rviz.png)，找到阻挡目标的方盒。
+
+观看同一次练习的两段录像。在 [Gazebo 录像（81.4 秒）](images/ch20_ch21/recovery-gazebo.mp4)中观察方盒移除后机器人的运动，在 [RViz 录像（81.7 秒）](images/ch20_ch21/recovery-rviz.mp4)中观察恢复动作、重新规划的路径和到达目标时的位置。
 
 ### 3.2 合成激光扫描注入 (模拟动态障碍物)
 
@@ -427,6 +427,8 @@ ros2 run navigation_lab_cpp nav_monitor --ros-args -p use_sim_time:=true
 - `/local_plan` 的轨迹长度变化 — 反映避障机动
 - `/cmd_vel` 速度指令 — 观察减速转向行为
 
+[导航监控记录](images/ch11/validation-results.json)中的 `monitor` 项给出了路径首尾变化、局部路径和速度消息的计数。
+
 ### 验收标准
 - [ ] 终端显示全局路径重规划事件
 - [ ] 终端显示局部路径姿态数量
@@ -470,6 +472,8 @@ ros2 run navigation_lab_cpp waypoint_patrol --ros-args -p use_sim_time:=true
 - 终端显示 `current_waypoint` 从 0 → 3（对应第 1/4 → 4/4 个航点），然后开始下一圈
 - 如果某圈失败, `passed` 变为 `false`, 循环结束并停止巡逻
 
+[两圈巡逻截图](images/ch11/patrol.png) · [完整录像（188.1 秒）](images/ch11/patrol.mp4)
+
 ### 验收标准
 - [ ] 机器人完成指定圈数的巡逻
 - [ ] 每圈之间终端正确显示圈数信息
@@ -498,6 +502,10 @@ ros2 run navigation_lab_cpp scan_injector --ros-args -p use_sim_time:=true
    - `/local_plan` 局部轨迹调整
    - `/cmd_vel` 速度变化 (减速 + 转向)
 3. 停止 scan_injector 后: 机器人恢复原路径
+
+![扫描注入期间的 RViz 代价地图与路径变化](images/ch11/dynamic-rviz.gif)
+
+[RViz 截图](images/ch11/dynamic-rviz.png)与[录像（180.8 秒）](images/ch11/dynamic-rviz.mp4)显示合成障碍及停止注入后的代价变化。[Gazebo 截图](images/ch11/dynamic-gazebo.png)与[录像（180.6 秒）](images/ch11/dynamic-gazebo.mp4)显示同一练习中机器人的运动。
 
 ### 思考题
 - `followWaypoints` 和循环 `goToPose` 的区别?

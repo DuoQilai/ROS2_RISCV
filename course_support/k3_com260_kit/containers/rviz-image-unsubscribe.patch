@@ -1,0 +1,8 @@
+--- a/include/rviz_default_plugins/displays/image/image_transport_display.hpp
++++ b/include/rviz_default_plugins/displays/image/image_transport_display.hpp
+@@ -150,4 +150,5 @@
+   {
+     subscription_callback_.disconnect();
++    subscription_callback_ = {};
+     subscription_.reset();
+   }

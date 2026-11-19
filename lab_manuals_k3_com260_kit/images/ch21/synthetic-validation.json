@@ -1,0 +1,174 @@
+{
+  "input": "30 s synthetic pinhole monocular camera at 20 Hz, synchronized ideal IMU at 200 Hz. Body and camera centers coincide; truth is used only for evaluation.",
+  "generator": "course_support/k3_com260_kit/visual_slam/synthetic_sequence.py",
+  "generator_versions": {
+    "OpenCV": "5.1.0",
+    "NumPy": "2.5.5",
+    "SciPy": "1.18.1"
+  },
+  "image_sequence_sha256_of_concatenated_binary_sha256": "3505542f6f366f6efffe4240e132ffeff5f5b25232128c5dad76dafadd788ed8",
+  "position_evaluation": "Associate exact camera timestamps, center trajectories and fit a proper rotation. Fit scale only for monocular DSO. Pass requires at least 75% time span and position RMSE below 0.3 m.",
+  "archive": {
+    "file": "synthetic-trajectories.zip",
+    "sha256": "df5b182c572c0fc713f4af9c357654d4141640e4c1eca0fdf9907b5bdd27cba1"
+  },
+  "dso": {
+    "framework": "dso",
+    "poses": 64,
+    "input_images": 601,
+    "input_imu": 0,
+    "first": 1000.4,
+    "last": 1028.55,
+    "sequence_duration_s": 30.0,
+    "coverage": 0.9383333333333326,
+    "alignment": "Sim(3)",
+    "scale": 6.3875120970518235,
+    "ate_rmse_m": 0.0001762952593008649,
+    "max_error_m": 0.00039612543012651616,
+    "pass": true,
+    "source_commit": "7b0c99f01d238f801c625beaff90240bcb007198",
+    "exit_code": 0,
+    "repeat_identical_pose_values": true
+  },
+  "vins_mono": {
+    "framework": "vins",
+    "poses": 287,
+    "input_images": 601,
+    "input_imu": 6001,
+    "first": 1001.3,
+    "last": 1029.9,
+    "sequence_duration_s": 30.0,
+    "coverage": 0.9533333333333379,
+    "alignment": "SE(3)",
+    "scale": 1.0,
+    "ate_rmse_m": 0.018553071750734094,
+    "max_error_m": 0.09467674209352814,
+    "pass": true,
+    "features": 299,
+    "graph": 107,
+    "last_graph_path_length": 90,
+    "images": 601,
+    "imu": 6001,
+    "source_commit": "4c3cf08fa5d9b57f3be9bd49241915e968ee2e1e",
+    "exit_codes": {
+      "feature_tracker": 0,
+      "vins_estimator": 0,
+      "pose_graph": 0
+    }
+  },
+  "media": [
+    {
+      "file": "dso-trajectory.gif",
+      "bytes": 1981047,
+      "sha256": "71a772177442c4d0402b4f8ff62192b452003145c08459452e851c77c84cd4a0",
+      "codec_name": "gif",
+      "width": 512,
+      "height": 264,
+      "nb_frames": "35",
+      "duration_s": 7.0
+    },
+    {
+      "file": "dso-trajectory.mp4",
+      "bytes": 2610523,
+      "sha256": "2aa070020fbe6481cb32f4a9b94417e14254c05441c459c1ecd309fd440481ae",
+      "codec_name": "h264",
+      "width": 1024,
+      "height": 528,
+      "nb_frames": "451",
+      "duration_s": 30.066667
+    },
+    {
+      "file": "dso-trajectory.png",
+      "bytes": 524083,
+      "sha256": "afc27835899823c26f6a5a3bf68115e2524dbc1714caa22d8981d68569203ccf",
+      "codec_name": "png",
+      "width": 1024,
+      "height": 528
+    },
+    {
+      "file": "vins-trajectory.gif",
+      "bytes": 2036234,
+      "sha256": "e56d59a6f5dbc4f10720e41463ee321351234ae3818fab653b77b4ee02797d61",
+      "codec_name": "gif",
+      "width": 512,
+      "height": 264,
+      "nb_frames": "35",
+      "duration_s": 7.0
+    },
+    {
+      "file": "vins-trajectory.mp4",
+      "bytes": 2656154,
+      "sha256": "d9822b7299e9f49c9e98b062b7638f2c45ef404ff827d7ff2a09d718775daf95",
+      "codec_name": "h264",
+      "width": 1024,
+      "height": 528,
+      "nb_frames": "451",
+      "duration_s": 30.066667
+    },
+    {
+      "file": "vins-trajectory.png",
+      "bytes": 445189,
+      "sha256": "c76896f481fc15ce83c6f44360d776c41fe878172ab9a6be3880d013fd217167",
+      "codec_name": "png",
+      "width": 1024,
+      "height": 528
+    }
+  ],
+  "public_workflow": {
+    "build_command": "bash setup_course_k3_com260_kit.sh --build-ch21-frameworks",
+    "workspace": "~/ros2_course_com260_ch21_frameworks",
+    "build_architecture": "riscv64",
+    "clean_source_build_exit_code": 0,
+    "repeated_public_build_exit_code": 0,
+    "course_builds": {
+      "COM260_ch20": 0,
+      "COM260_ch21": 0,
+      "COM260_registered_tests_passed": 5,
+      "x86_registered_tests_passed": 5
+    },
+    "dso": {
+      "poses": 64,
+      "span_s": 28.149999999999977,
+      "scale": 6.3875120970518235,
+      "ate_rmse_m": 0.00017629525930087678,
+      "passed": true
+    },
+    "vins_mono": {
+      "poses": 287,
+      "span_s": 28.600000000000136,
+      "scale": 1.0,
+      "ate_rmse_m": 0.018452917776928205,
+      "passed": true,
+      "features": 299,
+      "graph": 110,
+      "last_graph_path_length": 91,
+      "images": 601,
+      "imu": 6001,
+      "node_exit_codes": [
+        0,
+        0,
+        0
+      ]
+    },
+    "ctrl_c": {
+      "interactive_shell_exit_code": 130,
+      "node_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "remaining_nodes": 0
+    },
+    "source_sha256": {
+      "course_support/k3_com260_kit/visual_slam/build-frameworks.bash": "bec066483233b90036d3e62bedb577fe717c1b2b5f405bb08d18b7c60ba000cd",
+      "course_support/k3_com260_kit/visual_slam/framework-env.bash": "414b03986d6b834012f1ed3d52ec876e2a0315e7b72bc63f7c8a7804319ceed8",
+      "course_support/k3_com260_kit/visual_slam/configure-vins.py": "dbb0855c267576d9f11376155dc54a7f5ce20fdd3cb9df349d349b86c7b1b0de",
+      "course_support/k3_com260_kit/visual_slam/evaluate-synthetic.py": "911ae82a8bd6f06fe6e6c8fa7588d7a5ff5219547f60953e6f96712e307bff5e",
+      "course_support/k3_com260_kit/visual_slam/replay-synthetic.py": "0b06c55db13123eb127ace07361c13666dc6276765c194f85919c664b755c2bd",
+      "course_support/k3_com260_kit/visual_slam/run-vins.bash": "7b353bf04bf5b66509c062385bd776a16f19079e007b37d95ef0ba0c6c7a6df3",
+      "course_support/k3_com260_kit/visual_slam/synthetic_sequence.py": "e88795a60c70092703427def6fcc8b9d3ba33b0dcd0de6a77c05d5dd0183ebae",
+      "course_support/k3_com260_kit/visual_slam/dso-riscv.patch": "a4120f3584be18d3a3d19a4ff0913a3339b63ded6f329a41fd023f6afd00fa38",
+      "course_support/k3_com260_kit/visual_slam/vins-humble.patch": "3c0b8c28f1fda1269c6548e4902cc8934a8ea57d3cfb955a546d10f96bf1d90a"
+    }
+  }
+}

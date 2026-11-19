@@ -1,10 +1,10 @@
 # 第 0 章：COM260 公共双端环境
 
-本版第一至四章已在 COM260 完成构建与运行验证。具体环境、结果与素材见[实际运行证据](runtime_evidence.md)。课程实现使用 C++17／rclcpp，仿真使用 TurtleBot3 Burger 与 Museum。原版及 Pico 版保留。
+COM260 运行 C++17／rclcpp 课程节点，x86 运行 Gazebo 和 RViz。按所学章节的工作区与 DDS 配置启动两端，再打开对应的教案或实验手册。各章的运行结果和素材见[运行证据](runtime_evidence.md)。
 
 ## 设备与职责
 
-| 执行端 | 本轮已核对的环境 | 职责 |
+| 执行端 | 课程环境 | 职责 |
 |---|---|---|
 | 本机访问端 | macOS | 编辑、同步、Remote-SSH 和素材归档 |
 | COM260 板端 | SpacemiT K3 Com260 IFX；Bianbu 4.0.6；riscv64；用户 `com260` | ROS 2 Humble 课程节点、C++ 构建和调试 |
@@ -22,7 +22,10 @@ ssh duomaomao
 
 两台设备分别使用 `~/ROS2_RISCV_COM260` 接收课程文件。板端构建目录是 `~/ros2_course_com260_ws`，x86 构建目录是 `~/ros2_course_com260_humble_ws`。首次使用前检查目录用途，保留已有工作。
 
-## 第一章源码与同步
+<a id="第一章源码与同步"></a>
+<a id="ch01"></a>
+
+## 第 1 章 源码与同步
 
 第一章原样复用仓库中的 `src_k3_pico_itx/lifecycle_demo_cpp` 和 `src_k3_pico_itx/robot_sim_demo`。目录名表示源码来源，不表示 COM260 已通过验证。安装器只指定这两个包，避免递归发现原版与其他版本中的同名包。
 
@@ -77,7 +80,9 @@ Bianbu 4.0.6 的 `python3-colcon-core` 提供模块入口，但不自带单独�
 
 构建入口使用 Debug 配置并生成编译数据库，随后执行测试。构建成功后才生成环境文件与 GDB 包装入口；每个实验终端分别加载环境。板端构建结果以证据索引为准。
 
-## 第二章源码与构建
+<a id="ch02"></a>
+
+## 第 2 章 源码与构建
 
 第二章使用独立的 `src_k3_com260_kit/hello_pkg_cpp` 和 `name_demo_cpp`，仿真继续复用第一章的 `robot_sim_demo`。先完成第一章环境，然后同步本章源码；不会覆盖第一章练习目录。
 
@@ -101,7 +106,9 @@ source ~/.config/ros2-course-com260/env.bash
 
 下方 x86 启动方式相同，第二章将运行编号后缀改为 `com260-ch02`，整章使用同一仿真实例。在容器的独立终端先加载 ROS 环境，再运行 `rqt_graph` 或 `ros2 run rqt_console rqt_console`；本轮基础镜像已安装这两个工具。
 
-## 第三章源码与构建
+<a id="ch03"></a>
+
+## 第 3 章 源码与构建
 
 第三章在 COM260 独立目录提供 `topic_demo_cpp`、`topic_demo_interfaces`、`sensor_interfaces` 和 `sensor_pub_cpp`。先完成上述公共依赖；第三章额外需要 ROSIDL 消息生成器与运行库，更新后的安装器已包含这两项依赖。
 
@@ -134,7 +141,7 @@ source ~/.config/ros2-course-com260/env.bash
 x86 按下一节同步 `robot_sim_demo` 与课程支持目录并构建仿真。本章使用 `start-ch03 RUN_ID` 启动，加载 `ch03_square.rviz`：Fixed Frame 为 `odom`，Odometry 保留运动历史。第一章的 `museum.rviz` 继续保留。GUI 观察终端加载容器环境后运行 `rqt_graph`；选择 `Nodes/Topics (all)`，取消 `Hide: Leaf topics`，点击刷新，可看到 GPS 发布／订阅及 SensorData 话题。CLI 观察节点在 `Hide: Debug` 勾选时会隐藏。
 
 <a id="ch04"></a>
-## 第四章源码与构建
+## 第 4 章 源码与构建
 
 第四章新增七个独立包：`service_demo_interfaces`、`service_demo_cpp`、`service_demo_lab_cpp`、`weather_interfaces`、`weather_srv`、`speed_interfaces`、`speed_control`。先完成第一章环境；板端节点使用 C++17，独立建包练习使用 `~/my_services_com260_ws`。
 
@@ -287,7 +294,7 @@ cp -n course_support/k3_com260_kit/ide/settings.json .vscode/settings.json
 clangd 的编译数据库链接与具体调试步骤见[练习 1.6](ch01_lab.md#练习-16vs-code--ros-2-插件编程约-15-分钟)。本轮 Remote-SSH、clangd 语义补全、GDB 断点及 Watch 0→1 均已实测。RuyiSDK VSCode 扩展版本为 0.1.6；本轮使用板端原生 GCC/GDB，未安装 RuyiSDK CLI，界面中的 `<No RuyiSDK>` 对应这一实际状态。
 
 <a id="ch05"></a>
-## 第五章动作通信环境
+## 第 5 章 动作通信环境
 
 第五章节点在 COM260 执行，Gazebo 在 x86；先完成第一章公共环境。十个独立包如下，两个洗碗接口的字段不同，不混入原版同名包。
 
@@ -314,7 +321,7 @@ source ~/.config/ros2-course-com260/env.bash
 入口显式构建上述十包；动作验收包括反馈、结果、取消、忙碌拒绝与异常停止，不以编译成功替代运行成功。Gazebo 的 `server_gazebo` 与基础计算 `server` 使用相同 `/tracking` 名称，两者只能择一启动。学生建包步骤见[第五章实验](ch05_lab.md)。
 
 <a id="ch06"></a>
-## 第六章参数与 Launch 环境
+## 第 6 章 参数与 Launch 环境
 
 本章的 `param_demo_cpp` 包含 C++ 参数生命周期、参数验证、速度控制和巡航节点。Python 文件仅组织 Launch。COM260 不安装图形界面或 Nav2；含 RViz、Gazebo、Nav2 的 Launch 在 x86 独立容器中运行。
 
@@ -360,7 +367,7 @@ bash "$CH06" stop "$RUN_ID"
 组合启动会同时创建多个 DDS participant。上面的 CycloneDDS 配置将自动分配索引上限设为 100；两端应使用同一设置。若已有自定义配置，也需合并此项并重启相关节点，否则可能出现 `Failed to find a free participant index`，导致部分 Nav2 节点启动失败。第六章脚本未收到自定义配置时采用相同上限和默认网络发现；跨机有线实验仍需显式设置接口和对端地址。
 
 <a id="ch07-ch08"></a>
-## 第七、八章 TF 与建模环境
+## 第 7～8 章 TF 与建模环境
 
 第七章业务节点使用 C++17；第八章为 XML/Xacro、配置和 Python Launch，无需把模型文件转换成 C++。COM260 运行 TF 广播、监听及查询；x86 运行 Xacro、RViz、关节 GUI 和 Gazebo。两章教学模型与 Gazebo 分轮运行，不能同时向同一 DDS 域发布同名机器人 frame。
 
@@ -416,3 +423,394 @@ podman run --rm -it --network host --cap-drop all --security-opt no-new-privileg
 ```
 
 原 XML/Xacro 对照源码在容器 `/course-src/urdf_demo/`。完成后退出容器；再次使用相同挂载可继续之前的练习。公共图形会话要求和有线 DDS 设置沿用前文。
+
+## 第 9～15 章 Gazebo 与 SLAM 环境
+
+[实验 9 的双端准备](ch09_lab.md#双端准备)包含 Gazebo 镜像和工作区配置。在此基础上，按[实验 10](ch10_lab.md)开头的命令启动 SLAM 容器。
+
+<a id="nav2-prerequisites"></a>
+
+## Nav2 与视觉示例的基础依赖
+
+COM260 使用 ROS 2 Humble、C++ 编译器、colcon、`libyaml-cpp-dev`，以及实验 10 安装到 `~/ros2_course_com260_ch09_ch10_deps_ws` 的 `nav2_msgs` 接口。
+
+x86 使用 rootless Podman 和 X11 桌面 `:1`。缺少第 6 章 Nav2 基础镜像时，在仓库根目录执行：
+
+```bash
+bash course_support/k3_com260_kit/scripts/x86-ch06.bash build-image
+```
+
+将仓库放到两台设备上本章命令所示的位置。两端使用同一个 DDS 域，并将命令中的 IP 替换为实际通信地址。COM260 的构建命令将 DDS 设置写入本章环境文件。x86 在设置好 DDS 的同一终端中启动仿真；另开终端时需重新执行本章的两个 `export` 命令。
+
+<a id="ch16-ch17"></a>
+<a id="ch16"></a>
+
+## 第 16 章 Nav2 架构与核心组件环境
+
+首次配置请先准备[基础依赖](#nav2-prerequisites)。
+
+板端同时构建 [navigation_lab_cpp](../src_k3_com260_kit/navigation_lab_cpp/README.md)，用于 [Nav2 自主导航实验](ch11_lab.md)。
+
+<a id="ch16-ch17-packages"></a>
+<a id="ch16-packages"></a>
+
+| 示例包 | 可执行文件 |
+|---|---|
+| [custom_nav_component](../src_k3_com260_kit/custom_nav_component/README.md) | `custom_nav_component` |
+| [navigation_client_cpp](../src_k3_com260_kit/navigation_client_cpp/README.md) | `bt_navigator_client`、`multi_goal_navigation` |
+| [global_planner_client](../src_k3_com260_kit/global_planner_client/README.md) | `global_planner_client` |
+
+**COM260**
+
+在 COM260 构建本章示例。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH16_CH17
+export ROS_DOMAIN_ID=181
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.88"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.172"/></Peers></Discovery></Domain></CycloneDDS>'
+bash setup_course_k3_com260_kit.sh --build-ch16
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+```
+
+**x86**
+
+在 x86 构建 Nav2 仿真环境。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH16_CH17
+export ROS_DOMAIN_ID=181
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.172"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build
+```
+
+x86 工作区为 `~/ros2_course_com260_ch16_ch17_humble_ws`。
+
+<a id="ch17"></a>
+
+## 第 17 章 全局代价地图环境
+
+首次配置请先准备[基础依赖](#nav2-prerequisites)。
+
+板端同时构建 [navigation_lab_cpp](../src_k3_com260_kit/navigation_lab_cpp/README.md)，用于 [Nav2 自主导航实验](ch11_lab.md)。
+
+<a id="ch17-packages"></a>
+
+| 示例包 | 可执行文件 |
+|---|---|
+| [costmap_demo](../src_k3_com260_kit/costmap_demo/README.md) | `costmap_demo`、`inflation_plot` |
+| [map_loader](../src_k3_com260_kit/map_loader/README.md) | `map_loader` |
+| [obstacle_layer_processor](../src_k3_com260_kit/obstacle_layer_processor/README.md) | `obstacle_layer_processor` |
+| [costmap_debugger](../src_k3_com260_kit/costmap_debugger/README.md) | `costmap_debugger` |
+
+**COM260**
+
+在 COM260 构建本章示例。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH16_CH17
+export ROS_DOMAIN_ID=181
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.88"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.172"/></Peers></Discovery></Domain></CycloneDDS>'
+bash setup_course_k3_com260_kit.sh --build-ch17
+source ~/.config/ros2-course-com260-ch16-ch17/env.bash
+```
+
+**x86**
+
+在 x86 构建 Nav2 仿真环境。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH16_CH17
+export ROS_DOMAIN_ID=181
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.172"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build
+```
+
+x86 工作区为 `~/ros2_course_com260_ch16_ch17_humble_ws`。
+
+<a id="ch18-ch19"></a>
+<a id="ch18"></a>
+
+## 第 18 章 全局路径规划环境
+
+首次配置请先准备[基础依赖](#nav2-prerequisites)。
+
+示例使用 `costmap_demo` 的栅格类型和 `global_planner_client`、`navigation_client_cpp` 的 Action 客户端。
+
+| 示例包 | 用途 |
+|---|---|
+| `grid_path_planner` | Dijkstra/A*、SVG、真实代价地图订阅 |
+| `hybrid_astar_planner` | 带朝向和足迹检查的运动基元搜索 |
+| `path_optimizer` | 平滑、修剪、重采样、代价优化 |
+
+**COM260**
+
+在 COM260 构建本章示例并运行已注册的测试。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH18_CH19
+export ROS_DOMAIN_ID=182
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.88"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.172"/></Peers></Discovery></Domain></CycloneDDS>'
+bash setup_course_k3_com260_kit.sh --build-ch18
+source ~/.config/ros2-course-com260-ch18-ch19/env.bash
+```
+
+在 COM260 查看测试结果：`python3 -m colcon test-result --test-result-base ~/ros2_course_com260_ch18_ch19_ws/build --verbose`。
+
+**x86**
+
+在 x86 构建 Museum 地图、Burger 模型和 Nav2 插件使用的仿真环境。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH18_CH19
+export ROS_DOMAIN_ID=182
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.172"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash build
+```
+
+x86 工作区为 `~/ros2_course_com260_ch18_ch19_humble_ws`。
+
+<a id="ch19"></a>
+
+## 第 19 章 局部路径规划环境
+
+首次配置请先准备[基础依赖](#nav2-prerequisites)。
+
+示例使用 `costmap_demo` 的栅格类型和 `global_planner_client`、`navigation_client_cpp` 的 Action 客户端。
+
+| 示例包 | 用途 |
+|---|---|
+| `dwa_planner` | 动态窗口、评分、COM260 闭环控制 |
+| `rpp_controller` | 纯追踪原理、速度与前瞻调参 |
+
+**COM260**
+
+在 COM260 构建本章示例并运行已注册的测试。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH18_CH19
+export ROS_DOMAIN_ID=182
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.88"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.172"/></Peers></Discovery></Domain></CycloneDDS>'
+bash setup_course_k3_com260_kit.sh --build-ch19
+source ~/.config/ros2-course-com260-ch18-ch19/env.bash
+```
+
+在 COM260 查看测试结果：`python3 -m colcon test-result --test-result-base ~/ros2_course_com260_ch18_ch19_ws/build --verbose`。
+
+**x86**
+
+在 x86 构建 Museum 地图、Burger 模型和 Nav2 插件使用的仿真环境。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH18_CH19
+export ROS_DOMAIN_ID=182
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.172"/></Interfaces><AllowMulticast>false</AllowMulticast></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch18-ch19.bash build
+```
+
+x86 工作区为 `~/ros2_course_com260_ch18_ch19_humble_ws`。
+
+<a id="ch20-ch21"></a>
+<a id="ch20"></a>
+
+## 第 20 章 行为树与恢复行为环境
+
+首次配置请先准备[基础依赖](#nav2-prerequisites)。
+
+示例包为 `behavior_tree_demo_cpp`、`recovery_demo_cpp` 和 `multi_robot_scheduler`。
+
+**COM260**
+
+在 COM260 安装依赖，构建本章示例并加载工作区。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+bash setup_course_k3_com260_kit.sh --install-deps-ch20-ch21
+export ROS_DOMAIN_ID=202
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.88"/></Interfaces><AllowMulticast>false</AllowMulticast><MaxMessageSize>1400B</MaxMessageSize><FragmentSize>1280B</FragmentSize></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.4"/></Peers></Discovery></Domain></CycloneDDS>'
+bash setup_course_k3_com260_kit.sh --build-ch20
+source ~/.config/ros2-course-com260-ch20-ch21/env.bash
+```
+
+**x86**
+
+x86 需要 Nav2 镜像 `localhost/ros2-course-com260:ch16-ch17-nav2`。缺少该镜像时，在当前仓库运行 `bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build-image`，再构建本章的仿真环境。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+export ROS_DOMAIN_ID=202
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.4"/></Interfaces><AllowMulticast>false</AllowMulticast><MaxMessageSize>1400B</MaxMessageSize><FragmentSize>1280B</FragmentSize></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch20-ch21.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch20-ch21.bash build
+```
+
+x86 工作区为 `~/ros2_course_com260_ch20_ch21_humble_ws`。
+
+<a id="wired-dds"></a>
+
+### 三车导航与视觉 SLAM 的有线通信
+
+三车导航、RGB-D、EuRoC 与 LVI-SAM 的跨机通信共用有线 IPv6 和 DDS 域 203。在 COM260 运行 `ip -6 addr show dev end1 scope global`，在 x86 运行 `ip -6 addr show dev enx80691a14e68b scope global`。若接口名不同，请换成本机有线接口。各选一个有效、未标记为 temporary 或 deprecated 的全局地址。
+
+在**两台设备上分别**执行以下命令，将两个示例地址替换为实际地址。第一个参数始终填本机，第二个填对端。更换网络或地址后重新执行。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+bash course_support/k3_com260_kit/scripts/configure-vision-dds.bash 2001:db8::1 2001:db8::2
+```
+
+COM260 每个运行这些示例的新终端先加载工作区，再加载通信配置：
+
+```bash
+source ~/.config/ros2-course-com260-ch20-ch21/env.bash
+source ~/.config/ros2-course-com260-ch20-ch21/vision-dds.bash
+```
+
+在 x86 的每个运行这些示例的新终端中加载通信配置：
+
+```bash
+source ~/.config/ros2-course-com260-ch20-ch21/vision-dds.bash
+```
+
+<a id="ch21"></a>
+
+## 第 21 章 视觉 SLAM 导论环境
+
+首次配置请先准备[基础依赖](#nav2-prerequisites)。
+
+本章的相机、ORB 特征、直接法、RGB-D 和 IMU 数值示例使用域 202。RGB-D 建图、EuRoC 轨迹显示和 LVI-SAM 另用域 203，配置见[有线 DDS 配置](#wired-dds)。
+
+**COM260**
+
+在 COM260 安装依赖，构建本章示例并加载工作区。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+bash setup_course_k3_com260_kit.sh --install-deps-ch20-ch21
+export ROS_DOMAIN_ID=202
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.88"/></Interfaces><AllowMulticast>false</AllowMulticast><MaxMessageSize>1400B</MaxMessageSize><FragmentSize>1280B</FragmentSize></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.4"/></Peers></Discovery></Domain></CycloneDDS>'
+bash setup_course_k3_com260_kit.sh --build-ch21
+source ~/.config/ros2-course-com260-ch20-ch21/env.bash
+```
+
+**x86**
+
+x86 需要 Nav2 镜像 `localhost/ros2-course-com260:ch16-ch17-nav2`。缺少该镜像时，在当前仓库运行 `bash course_support/k3_com260_kit/scripts/x86-ch16-ch17.bash build-image`，再构建本章的仿真环境。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+export ROS_DOMAIN_ID=202
+export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface address="192.168.1.4"/></Interfaces><AllowMulticast>false</AllowMulticast><MaxMessageSize>1400B</MaxMessageSize><FragmentSize>1280B</FragmentSize></General><Discovery><ParticipantIndex>auto</ParticipantIndex><MaxAutoParticipantIndex>100</MaxAutoParticipantIndex><Peers><Peer Address="127.0.0.1"/><Peer Address="192.168.1.88"/></Peers></Discovery></Domain></CycloneDDS>'
+bash course_support/k3_com260_kit/scripts/x86-ch20-ch21.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch20-ch21.bash build
+```
+
+x86 工作区为 `~/ros2_course_com260_ch20_ch21_humble_ws`。
+
+上述配置将 UDP 负载限制为 1400 B、DDS 分片设为 1280 B；两端使用相同配置，图像保持原始分辨率。参数含义见 [CycloneDDS 配置说明](https://cyclonedds.io/docs/cyclonedds/latest/config/config_file_reference.html)。
+
+<a id="ch21-vision"></a>
+
+### 第 21 章 RGB-D 建图与 EuRoC 轨迹显示
+
+在 COM260 准备依赖并构建：
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+source ~/.config/ros2-course-com260-ch20-ch21/env.bash
+bash setup_course_k3_com260_kit.sh --prepare-ch21-slam
+bash setup_course_k3_com260_kit.sh --build-ch21-slam
+source ~/.config/ros2-course-com260-ch20-ch21/env.bash
+```
+
+依赖准备使用固定版本的 ORB-SLAM3 与 Pangolin，下载到 `~/ros2_course_com260_ch21_slam`；Boost 等补充库解包到该目录的 `sysroot`，不替换系统库。首次原生编译需要较长时间。`visual_slam_eval` 使用 C++17，读取 rosbag 的原始图像时间戳以及两帧之间的 IMU 样本，调用 ORB-SLAM3 的视觉惯性接口。
+
+跨机显示先完成[有线 DDS 配置](#wired-dds)。
+
+<a id="ch21-frameworks"></a>
+
+### 第 21 章完整 DSO 与 VINS-Mono 环境
+
+先完成 COM260 的[第 21 章基础依赖](#ch21)。两个框架使用独立工作区 `~/ros2_course_com260_ch21_frameworks`。构建脚本下载固定版本源码，应用课程补丁，在工作区内解包依赖并编译 Ceres 2.1、DSO 和 VINS-Mono。
+
+**COM260**　在课程仓库根目录执行。首次构建需要下载源码和依赖，保持联网，等待命令正常返回。
+
+```bash
+sudo apt-get install --no-install-recommends --no-remove --no-upgrade \
+  bubblewrap curl patch python3-numpy python3-opencv
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+bash setup_course_k3_com260_kit.sh --build-ch21-frameworks
+```
+
+如果板端下载较慢，可在电脑的课程仓库根目录执行以下命令，将同版本源码放入 COM260 的 `~/Downloads/`，构建脚本会读取缓存。括号内的目录切换仅在子 shell 中生效。
+
+```bash
+(
+  mkdir -p /tmp/com260-framework-sources
+  cd /tmp/com260-framework-sources
+  curl -fL --retry 3 https://api.github.com/repos/dongbo19/VINS-MONO-ROS2/tarball/4c3cf08fa5d9b57f3be9bd49241915e968ee2e1e \
+    -o vins-4c3cf08fa5d9b57f3be9bd49241915e968ee2e1e.tar.gz
+  curl -fL --retry 3 https://api.github.com/repos/ceres-solver/ceres-solver/tarball/2.1.0 \
+    -o ceres-2.1.0.tar.gz
+  ssh com260 'mkdir -p ~/Downloads'
+  rsync -av *.tar.gz com260:Downloads/
+)
+```
+
+**电脑端**　从课程仓库根目录生成相机和 IMU 数据。以下工具在电脑端运行，生成的图像、标定和时间戳传给 COM260。
+
+```bash
+python3 -m venv /tmp/com260-synthetic-tools
+/tmp/com260-synthetic-tools/bin/python -m pip install numpy scipy opencv-python-headless
+/tmp/com260-synthetic-tools/bin/python \
+  course_support/k3_com260_kit/visual_slam/synthetic_sequence.py /tmp/com260-synthetic-sequence
+rsync -av /tmp/com260-synthetic-sequence/ com260:ros2_course_com260_ch21_frameworks/sequence/
+```
+
+生成目录须为空目录路径。重复生成时换一个目录名即可。数据包括 601 张 640×480 单目图像、6001 条 IMU、相机标定、时间戳和相机中心的世界坐标真值。相机中心与 IMU 原点重合。具体运行与导出步骤见第 21 章的 DSO 和 VINS-Mono 示例。
+
+<a id="ch21-lvi"></a>
+
+### 第 21 章 LVI-SAM 与手持录包
+
+先完成上方的[双端有线 DDS 配置](#wired-dds)，并准备好第 21 章的 x86 工作区。LVI-SAM 的七个 C++ 节点在 COM260 上运行，RViz 使用 x86 的课程容器。
+
+**准备录包。** 在能访问下载站的电脑上，从课程仓库根目录执行。需要 Python 3.10 或更高版本。以下命令从[原作者的 handheld 录包](https://github.com/TixiaoShan/LVI-SAM)下载前约 60 秒的完整数据块，转换时会校验 SHA-256，保留原始传感器时间戳。
+
+```bash
+data="$HOME/ros2_course_data"
+mkdir -p "$data"
+curl -fL --retry 3 --range 0-388342707 --max-filesize 388342708 \
+  'https://drive.usercontent.google.com/download?id=1lE32SwMqvLpAI39zIlGe1QzLqS3d0CTA&export=download&confirm=t' \
+  -o "$data/handheld-first60.part"
+python3 -m venv "$data/lvi-tools"
+"$data/lvi-tools/bin/python" -m pip install 'rosbags==0.11.9' 'Pillow>=10'
+"$data/lvi-tools/bin/python" course_support/k3_com260_kit/lvi_sam/prepare-handheld.py \
+  "$data/handheld-first60.part" "$data/handheld"
+ssh com260 'mkdir -p ~/ros2_course_data'
+scp -r "$data/handheld" com260:ros2_course_data/
+```
+
+**在 COM260 构建。** 脚本获取[固定版本的 ROS 2 源码](https://github.com/M-MohsinKhan/LVI-SAM-ROS2/tree/12187f80d8c955241d0f28f03d567a5092af2703)，校验后应用 Humble 适配。Bianbu 依赖解包到用户工作区，构建和运行均使用 Bubblewrap 的只读系统挂载。
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH20_CH21
+bash setup_course_k3_com260_kit.sh --build-ch21-lvi
+~/ros2_course_com260_ch21_lvi/run ros2 bag info ~/ros2_course_data/handheld
+```
+
+话题列表应包含 596 帧 `/points_raw`、1,802 帧 `/camera/image_raw`、30,039 条 `/imu_raw` 和 30,040 条 `/imu_correct`。本例使用 `/imu_raw`，按录包标定与激光、相机对齐。
+
+若板端下载源码较慢，可在联网电脑预取同一文件，再执行上述构建命令：
+
+```bash
+data="$HOME/ros2_course_data"
+revision=12187f80d8c955241d0f28f03d567a5092af2703
+archive="lvi-sam-$revision.tar.gz"
+curl -fL --retry 3 "https://api.github.com/repos/M-MohsinKhan/LVI-SAM-ROS2/tarball/$revision" -o "$data/$archive"
+ssh com260 'mkdir -p ~/Downloads'
+scp "$data/$archive" com260:Downloads/
+```

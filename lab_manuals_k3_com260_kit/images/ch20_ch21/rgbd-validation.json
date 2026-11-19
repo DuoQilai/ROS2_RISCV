@@ -1,0 +1,305 @@
+{
+  "scope": "Live Gazebo RGB-D software-chain validation on COM260; original exercise 4 D415 hardware not tested",
+  "session": {
+    "run_id": "20261118T064757Z-rgbd-museum",
+    "start_utc": "2026-11-18T06:47:57.298354+00:00",
+    "mode": "Gazebo Museum live RGB-D; COM260 C++ ORB-SLAM3",
+    "d415_hardware_verified": false,
+    "native_command": "ssh -tt -o BatchMode=yes -o ConnectTimeout=10 com260 'bash ~/ros2_course_com260_ch21_slam/rgbd-check/run-rgbd.bash 20261118T064757Z-rgbd-museum'",
+    "tracking_ready_utc": "2026-11-18T06:48:32.354387+00:00",
+    "motion_completed_utc": "2026-11-18T06:50:24.499499+00:00",
+    "recording_exits": [
+      0,
+      0
+    ],
+    "native_exit": 0,
+    "rviz_window_close_exit": 0,
+    "end_utc": "2026-11-18T06:50:35.158553+00:00"
+  },
+  "implementation": {
+    "language": "C++17",
+    "architecture": "riscv64",
+    "entry": "orbslam3/rgbd",
+    "upstream": "ORB-SLAM3 4452a3c4ab75b1cde34e5505a36ec3f9edcdc4c4",
+    "source_sha256": "3ee77729526264a71ae4cce4949d657d2b766e0749eb5c9fa9ef37279f1f049a",
+    "binary_sha256": "c38da92299f03db5b22910ec8f20887e20381b6d7d015d361375f01691fa8895",
+    "build_exit": 0
+  },
+  "simulation": {
+    "world": "Museum",
+    "robot": "TurtleBot3 Burger",
+    "initial_yaw_deg": 45,
+    "resolution": [
+      640,
+      480
+    ],
+    "camera_fx_fy_cx_cy": [
+      615,
+      615,
+      320,
+      240
+    ],
+    "depth_encoding": "32FC1",
+    "depth_units": "m",
+    "source_sim_update_rate_hz": 30,
+    "DDS_domain": 203,
+    "transport": "CycloneDDS UDP6 over wired interfaces; PNG RGB and compressedDepth"
+  },
+  "tracking": {
+    "processed_frames": 555,
+    "tracked_frames": 555,
+    "states": [
+      2
+    ],
+    "active_map_resets": 0,
+    "processing_ms_median": 67.259,
+    "processing_ms_p95": 81.742,
+    "processing_ms_max": 87.982,
+    "processed_wall_hz": 4.7658060404062725,
+    "input_sim_duration_s": 19.338,
+    "current_tracked_map_points_range": [
+      300,
+      783
+    ]
+  },
+  "motion": {
+    "command_forward_m_s": 0.05,
+    "command_forward_sim_s": 6,
+    "command_turn_rad_s": 0.08,
+    "command_turn_sim_s": 4,
+    "odom_samples": 804,
+    "odom_travel_m": 0.30029999996428014,
+    "odom_turn_rad": 0.3194399999687021,
+    "stop_tail_samples": 101,
+    "stop_max_abs_vx": 0.0,
+    "stop_max_abs_wz": 0.0,
+    "estimated_pose_samples": 476,
+    "note": "Wheel odometry checks motion and stopping; it is not trajectory ground truth."
+  },
+  "trajectories": {
+    "trajectory.tum": {
+      "rows": 555,
+      "finite_monotonic_unit_quaternions": true,
+      "start_stamp": 7.162,
+      "end_stamp": 26.5,
+      "final_pose": [
+        -0.068551667,
+        0.003975662,
+        0.302004009,
+        0.000898824,
+        -0.149989262,
+        0.001314869,
+        0.988686383
+      ]
+    },
+    "keyframes.tum": {
+      "rows": 17,
+      "finite_monotonic_unit_quaternions": true,
+      "start_stamp": 7.162,
+      "end_stamp": 22.177,
+      "final_pose": [
+        -0.0702993,
+        0.0056817,
+        0.3039851,
+        0.0012913,
+        -0.1476594,
+        0.0016338,
+        0.9890361
+      ]
+    }
+  },
+  "files": {
+    "keyframes.tum": {
+      "bytes": 1405,
+      "sha256": "c3b08415639d9916d9d31ce35eda4e23fb6056067138c3fdcdc4abf6e06322d5"
+    },
+    "rgbd-map.osa": {
+      "bytes": 2443203,
+      "sha256": "45adc49a7f3537f7c9990375475364f9a091ced1681d7723f69b90544459e478"
+    },
+    "trajectory.tum": {
+      "bytes": 53535,
+      "sha256": "2aefb9f82c767b28dc8acbeb018672fd696ae7fba74fd081023daa738cc68d09"
+    },
+    "runtime.log": {
+      "bytes": 71764,
+      "sha256": "993fddf0ac3b4bf2eaa8d8bfe4863935f6e07f3d979bbdf40a71a5b9ca66c202"
+    },
+    "exit-code.txt": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    }
+  },
+  "negative_cases": [
+    {
+      "case": "missing-arguments",
+      "exit": 1,
+      "passed": true,
+      "reject_warnings": 0
+    },
+    {
+      "case": "existing-output",
+      "exit": 1,
+      "passed": true,
+      "reject_warnings": 0
+    },
+    {
+      "case": "no-input",
+      "exit": 1,
+      "passed": true,
+      "reject_warnings": 0
+    },
+    {
+      "case": "invalid-pairs",
+      "exit": 1,
+      "passed": true,
+      "reject_warnings": 3
+    }
+  ],
+  "regression": {
+    "com260": {
+      "math_tests_passed": 5,
+      "build_passed": true
+    },
+    "x86": {
+      "math_tests_passed": 5,
+      "build_passed": true
+    },
+    "source_identity": {
+      "x86_files": 162,
+      "com260_applicable_files": 113,
+      "all_equal": true
+    }
+  },
+  "original_camera": {
+    "mode": "unchanged start-camera drive=true",
+    "rgb_samples": 50,
+    "first_rgb": [
+      320,
+      180,
+      "rgb8",
+      11.0
+    ],
+    "last_rgb": [
+      320,
+      180,
+      "rgb8",
+      23.25
+    ],
+    "camera_info_samples": 54,
+    "camera_info": [
+      320,
+      180,
+      [
+        277.1273455955935,
+        0.0,
+        159.5,
+        0.0,
+        277.1273455955935,
+        89.5,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "odom_samples": 622,
+    "odom_travel_m": 40.77159356484073,
+    "rgbd_topics": [],
+    "passed": true
+  },
+  "transport_check": {
+    "run_id": "20261118-rgbd-v6-probe",
+    "scope": "Separate static scene capture, raw on x86 versus decoded on COM260; unchanged stopped pose, different timestamps",
+    "comparison": {
+      "rgb_pixels_exact": true,
+      "depth_valid_mask_equal": true,
+      "depth_max_error_m": 0.0009560585021972656,
+      "depth_mean_error_m": 0.0001913989955210127,
+      "pixels": 307200
+    },
+    "decoded": {
+      "rgb": {
+        "count": 98,
+        "first_wall": 101282.848381648,
+        "first_stamp": 160.81,
+        "encoding": "rgb8",
+        "width": 640,
+        "height": 480,
+        "frame": "camera_optical_frame",
+        "monotonic": true,
+        "last_wall": 101302.420511347,
+        "last_stamp": 164.01,
+        "distinct_images": 1,
+        "wall_hz": 4.956026834677335,
+        "sim_hz": 30.312500000000107
+      },
+      "depth": {
+        "count": 98,
+        "first_wall": 101282.863158959,
+        "first_stamp": 160.843,
+        "encoding": "32FC1",
+        "width": 640,
+        "height": 480,
+        "frame": "camera_optical_frame",
+        "monotonic": true,
+        "last_wall": 101302.464770196,
+        "last_stamp": 164.044,
+        "finite_positive_fraction": 1.0,
+        "min_m": 0.32869043946266174,
+        "max_m": 3.168130397796631,
+        "distinct_images": 1,
+        "wall_hz": 4.948572789610311,
+        "sim_hz": 30.303030303030095
+      },
+      "camera_info": {
+        "count": 98,
+        "k": [
+          614.9999999999999,
+          0.0,
+          320.0,
+          0.0,
+          615.0,
+          240.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "width": 640,
+        "height": 480,
+        "frame": "camera_optical_frame"
+      },
+      "clock": {
+        "time": 164.111
+      },
+      "odom": {
+        "position": [
+          0.16354999998221637,
+          5.2056367479904e-13
+        ],
+        "velocity": [
+          0.0,
+          0.0
+        ]
+      },
+      "exact_matching_stamps": 97
+    }
+  },
+  "simulation_software_chain_passed": true,
+  "d415_hardware_verified": false,
+  "limits": [
+    "Tracking success refers to the received and processed pairs, not every Gazebo source frame.",
+    "The simulation is slower than real time; no 30 Hz wall-clock performance or SLAM accuracy claim.",
+    "D415 driver, USB, physical depth accuracy and hardware real-time behavior remain unverified."
+  ],
+  "known_startup_message": {
+    "text": "SubscriberPlugin::subscribeImpl with five arguments has not been overridden",
+    "count": 1,
+    "image_transport_version": "3.1.12-1jammybb1",
+    "compressed_depth_image_transport_version": "2.5.4-1jammybb1",
+    "behavior": "Installed subscriber_plugin.hpp fallback invokes the four-argument subscription; decoded depth and live tracking verified. No system dependency was modified."
+  },
+  "cleanup": {
+    "rgbd_processes": 0,
+    "course_simulation_containers": 0
+  }
+}

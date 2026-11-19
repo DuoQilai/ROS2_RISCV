@@ -968,14 +968,14 @@ ros2 topic echo /odom --once
 ros2 run tf2_ros tf2_echo odom base_link
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-inputs.png)
+![激光与里程计输入](images/ch10/ch10-inputs.png)
 
 ```bash
 ros2 topic echo /scan --once --field header
 ros2 run tf2_tools view_frames
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-tf.png)
+![激光坐标系与 TF 关系](images/ch10/ch10-tf.png)
 
 ### slam_toolbox 参数
 
@@ -1075,7 +1075,7 @@ source ~/my_slam_com260_ws/install/setup.bash
 ros2 run slam_lab slam_monitor --ros-args -p use_sim_time:=true
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-monitor.png)
+![COM260 地图监控节点输出](images/ch10/ch10-monitor.png)
 
 ---
 
@@ -1134,7 +1134,7 @@ ros2 topic info /map --verbose
 ros2 topic echo /map --once --field info
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-amcl-lifecycle.png)
+![地图服务器与 AMCL 的生命周期状态](images/ch10/ch10-amcl-lifecycle.png)
 
 ### 启动 RViz2 并设置初始位姿
 
@@ -1176,7 +1176,7 @@ rviz2 -d /opt/ros/humble/share/nav2_bringup/rviz/nav2_default_view.rviz \
 4. 点击 `2D Pose Estimate`，在地图中点击机器人位置并拖动箭头指定朝向；
 5. 添加 `nav2_rviz_plugins/ParticleCloud`，Topic 设为 `/particle_cloud`，Reliability 设为 `Best Effort`；其消息为 `nav2_msgs/msg/ParticleCloud`，不能用 `PoseArray` 显示项。观察粒子云是否逐渐收敛到机器人附近。
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-amcl-rviz.png)
+![RViz 中的地图与 AMCL 粒子云](images/ch10/ch10-amcl-rviz.png)
 
 ```bash
 # COM260
@@ -1200,7 +1200,7 @@ ros2 topic echo /particle_cloud --once
 ros2 run tf2_ros tf2_echo map base_link
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-amcl-output.png)
+![AMCL 位姿和粒子云输出](images/ch10/ch10-amcl-output.png)
 
 Nav2 AMCL 的粒子话题是 `/particle_cloud`。移动机器人后可观察频率：
 
@@ -1226,7 +1226,7 @@ ros2 service list | grep reinitialize
 ros2 service call /reinitialize_global_localization std_srvs/srv/Empty "{}"
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-amcl-relocalize.png)
+![AMCL 全局重定位](images/ch10/ch10-amcl-relocalize.png)
 
 ---
 
@@ -1481,7 +1481,7 @@ test -d "$BAG_DIR"
 ros2 bag info "$BAG_DIR"
 ```
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-bag-info.png)
+![录包的话题与消息数量](images/ch10/ch10-bag-info.png)
 
 ### 回放数据并建图
 
@@ -1542,7 +1542,7 @@ rviz2 -d "/workspace/output/slam_view.rviz" \
 
 RViz2 的 `Fixed Frame` 设为 `map`，添加 `/map`、`/scan` 和 `TF`。地图消息更新与 RViz 显示分别检查：若 RViz 有持续着色器错误，先恢复可用图形环境，不能只凭日志声称显示通过。
 
-![COM260 Kit 第 10 章实测](images/ch10/ch10-bag-map.png)
+![半速回放生成的地图](images/ch10/ch10-bag-map.png)
 
 回放过程中打开终端4验证数据来源、地图和 TF：
 
@@ -1596,4 +1596,4 @@ cd ~/ROS2_RISCV_COM260_CH09_CH10
 bash course_support/k3_com260_kit/scripts/x86-ch09-ch10.bash stop ch10
 ```
 
-各算法、独立练习工作区、地图文件和素材的验收记录见[运行证据](runtime_evidence.md#ch10)。Cartographer 两轮均为同一 Museum 的独立二维建图，不代表真实多楼层三维重建。
+各算法、独立练习工作区、地图文件和素材的验收记录见[实验 10 运行证据](runtime_evidence.md#lab10)。Cartographer 两轮均为同一 Museum 的独立二维建图，不代表真实多楼层三维重建。

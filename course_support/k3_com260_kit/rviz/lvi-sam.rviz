@@ -1,0 +1,72 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Enabled: true
+      Name: Grid (1 m)
+      Cell Size: 1
+      Alpha: 0.22
+      Plane Cell Count: 100
+      Plane: XY
+      Reference Frame: <Fixed Frame>
+    - Class: rviz_default_plugins/Path
+      Enabled: true
+      Name: LVI-SAM trajectory
+      Topic:
+        Value: /lvi_sam/odometry/odometry
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        Depth: 1
+      Color: 30; 180; 255
+      Line Style: Billboards
+      Line Width: 0.22
+      Buffer Length: 1
+    - Class: rviz_default_plugins/PointCloud2
+      Enabled: true
+      Name: Registered LiDAR cloud
+      Topic:
+        Value: /lvi_sam/mapping/registered_cloud
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        Depth: 1
+      Style: Points
+      Size (Pixels): 2
+      Decay Time: 1.2
+      Color Transformer: FlatColor
+      Color: 255; 200; 80
+    - Class: rviz_default_plugins/Image
+      Enabled: true
+      Name: Handheld camera
+      Topic:
+        Value: /camera/image_raw
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        Depth: 1
+  Enabled: true
+  Global Options:
+    Background Color: 35; 38; 44
+    Fixed Frame: odom
+    Frame Rate: 15
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 59
+      Focal Point:
+        X: 24
+        Y: -10
+        Z: 0
+      Name: Current View
+      Pitch: 1.23
+      Target Frame: odom
+      Yaw: 0.8
+Window Geometry:
+  Height: 800
+  Width: 1280
+  X: 0
+  Y: 0

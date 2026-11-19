@@ -1,10 +1,10 @@
 # SLAM C++17 教学示例
 
-对应 COM260 教案第10～15章。Eigen 数值示例展示原课程数学步骤；ROS 节点提供传感器、扫描、地图及定位观测。它们与实验第10章实际使用的 `slam_lab`、官方 slam_toolbox、Cartographer、Nav2 AMCL 分别登记。
+对应 COM260 教案第10～15章。Eigen 数值示例展示原课程数学步骤；ROS 节点提供传感器、扫描、地图及定位观测。它们与实验 10 实际使用的 `slam_lab`、官方 slam_toolbox、Cartographer、Nav2 AMCL 分别登记。
 
 ## 构建与运行
 
-使用[第10章实验](../../lab_manuals_k3_com260_kit/ch10_lab.md)的独立环境和构建入口。依赖包括 Eigen3、rclcpp、TF2、标准消息、Humble Nav2 1.1.20 的 `nav2_msgs` 与固定版本的 `cartographer_ros_msgs`。包中程序统一使用 C++17，两个 Python 文件仅作为 Launch。
+使用[实验 10](../../lab_manuals_k3_com260_kit/ch10_lab.md)的独立环境和构建入口。依赖包括 Eigen3、rclcpp、TF2、标准消息、Humble Nav2 1.1.20 的 `nav2_msgs` 与固定版本的 `cartographer_ros_msgs`。包中程序统一使用 C++17，两个 Python 文件仅作为 Launch。
 
 COM260：
 
@@ -51,4 +51,4 @@ ros2 run slam_teaching_cpp sensor_monitor --ros-args -p use_sim_time:=true
 
 原教案中的 `CartographerCore` 缺少历史子图约束及时间状态实现；`GlobalSLAM` 原回环引用产生自环；多传感器AMCL缺少扫描/里程计回调；自动恢复缺少可靠地图位姿的定义。这些保留为明确的流程/设计练习，未包装为完整产品。FastSLAM、gmapping与LocalSLAM类也保留各自简化范围，详见对应教案说明。数学和接口修正与原程序差异逐项写在代码旁的正文中。
 
-目标平台构建与运行结果统一见[第10章运行证据](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch10)。
+各示例的实测结果见[第 10 章贝叶斯框架](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch10)、[第 11 章扫描匹配](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch11)、[第 12 章 Hector](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch12)、[第 13 章粒子滤波](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch13)、[第 14 章 AMCL](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch14)、[第 15 章 Cartographer](../../lab_manuals_k3_com260_kit/runtime_evidence.md#ch15)。
