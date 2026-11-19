@@ -1,0 +1,4 @@
+tasks:
+  - {robot: robot1, x: 0.8, y: -1.0, recovery_strategy: aggressive}
+  - {robot: robot2, x: 0.8, y: 0.0, recovery_strategy: default}
+  - {robot: robot3, x: 0.8, y: 1.0, recovery_strategy: default}

@@ -1,0 +1,1605 @@
+{
+  "scope": "Original chapter 20/21 teaching examples ported to native C++17 on COM260; original Nav2 six-exercise regression. No new standalone chapter 21 lab.",
+  "network": {
+    "board": "192.168.1.88 wired",
+    "x86": "192.168.1.4 Wi-Fi",
+    "rmw": "CycloneDDS",
+    "domain": 202,
+    "max_message_size_bytes": 1400,
+    "fragment_size_bytes": 1280
+  },
+  "build": {
+    "com260": {
+      "architecture": "riscv64",
+      "cxx_standard": 17,
+      "math_tests_passed": 5
+    },
+    "x86": {
+      "architecture": "x86_64",
+      "cxx_standard": 17,
+      "math_tests_passed": 5
+    }
+  },
+  "acceptance": {
+    "spin_target_rad": 1.57,
+    "spin_tolerance_rad": 0.15,
+    "backup_travel_m": [
+      0.12,
+      0.2
+    ],
+    "navigation_amcl_error_m_less_than": 0.2,
+    "stopped_tail_s": 2,
+    "stop_abs_vx_less_than": 0.02,
+    "stop_abs_wz_less_than": 0.03
+  },
+  "behavior_session": {
+    "run_id": "20261117-com260-behavior-running",
+    "network": "CycloneDDS bound to wired COM260 192.168.1.88 and Wi-Fi x86 192.168.1.4",
+    "start_utc": "2026-11-17T07:46:39.830440+00:00",
+    "cases_exit": 0,
+    "recorder_exits": [
+      0,
+      0
+    ],
+    "rviz_exit": "[INFO] [rviz2-17]: process has finished cleanly [pid 61]\n",
+    "nav_after_rviz": "active [3]\n",
+    "end_utc": "2026-11-17T07:51:00.477656+00:00"
+  },
+  "motion": {
+    "backup": {
+      "mode": "backup",
+      "start_utc": "2026-11-17T07:47:18.531102+00:00",
+      "end_utc": "2026-11-17T07:47:28.402511+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "backup_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 270,
+      "travelled_m": 0.15485000229060117,
+      "rotation_rad": 2.865707671162454e-12,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": null,
+      "target_xy": null
+    },
+    "battery-0.1": {
+      "mode": "negative-tree",
+      "start_utc": "2026-11-17T07:48:43.964333+00:00",
+      "end_utc": "2026-11-17T07:48:48.264795+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "custom_behavior_tree",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "x:=0.0",
+        "-p",
+        "y:=0.0"
+      ],
+      "exit_code": 0,
+      "odom_samples": 107,
+      "travelled_m": 0.0,
+      "rotation_rad": 0.0,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": null,
+      "target_xy": null
+    },
+    "battery-0.2": {
+      "mode": "negative-tree",
+      "start_utc": "2026-11-17T07:48:54.222467+00:00",
+      "end_utc": "2026-11-17T07:48:58.493312+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "custom_behavior_tree",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "x:=0.0",
+        "-p",
+        "y:=0.0"
+      ],
+      "exit_code": 0,
+      "odom_samples": 106,
+      "travelled_m": 0.0,
+      "rotation_rad": 0.0,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": null,
+      "target_xy": null
+    },
+    "battery-0.8": {
+      "mode": "tree",
+      "start_utc": "2026-11-17T07:49:25.953124+00:00",
+      "end_utc": "2026-11-17T07:49:54.339767+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "custom_behavior_tree",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "x:=0.0",
+        "-p",
+        "y:=0.0"
+      ],
+      "exit_code": 0,
+      "odom_samples": 606,
+      "travelled_m": 0.9678579444832072,
+      "rotation_rad": 4.126438420252615,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": 0.04946975275447079,
+      "target_xy": [
+        0.0,
+        0.0
+      ]
+    },
+    "battery-missing": {
+      "mode": "negative-tree",
+      "start_utc": "2026-11-17T07:50:00.260514+00:00",
+      "end_utc": "2026-11-17T07:50:09.333979+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "custom_behavior_tree",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 192,
+      "travelled_m": 0.0,
+      "rotation_rad": 0.0,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": null,
+      "target_xy": null
+    },
+    "cancel-int": {
+      "mode": "cancel-int",
+      "start_utc": "2026-11-17T07:47:45.509606+00:00",
+      "end_utc": "2026-11-17T07:47:52.019862+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "spin_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "target_yaw:=6.28",
+        "-p",
+        "time_allowance:=30.0"
+      ],
+      "exit_code": 1,
+      "odom_samples": 144,
+      "travelled_m": 1.0447093478399801e-12,
+      "rotation_rad": 1.0419999992131461,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": 1.0087624651409623,
+      "target_xy": null
+    },
+    "cancel-term": {
+      "mode": "cancel-term",
+      "start_utc": "2026-11-17T07:47:56.544235+00:00",
+      "end_utc": "2026-11-17T07:48:02.599173+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "spin_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "target_yaw:=6.28",
+        "-p",
+        "time_allowance:=30.0"
+      ],
+      "exit_code": -15,
+      "odom_samples": 132,
+      "travelled_m": 1.2225365491256079e-12,
+      "rotation_rad": 1.0100000004709186,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": 1.0319576995439157,
+      "target_xy": null
+    },
+    "invalid-speed": {
+      "mode": "negative",
+      "start_utc": "2026-11-17T07:48:07.105787+00:00",
+      "end_utc": "2026-11-17T07:48:10.994754+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "backup_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "speed:=0.0"
+      ],
+      "exit_code": 1,
+      "odom_samples": 85,
+      "travelled_m": 0.0,
+      "rotation_rad": 0.0,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": null,
+      "target_xy": null
+    },
+    "spin": {
+      "mode": "spin",
+      "start_utc": "2026-11-17T07:47:05.972775+00:00",
+      "end_utc": "2026-11-17T07:47:14.039345+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "spin_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 214,
+      "travelled_m": 7.406741962600027e-12,
+      "rotation_rad": 1.6188320066082718,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": 1.0057990745743484,
+      "target_xy": null
+    },
+    "spin-repeat-1": {
+      "mode": "spin",
+      "start_utc": "2026-11-17T07:50:13.854566+00:00",
+      "end_utc": "2026-11-17T07:50:21.935441+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "spin_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 184,
+      "travelled_m": 7.11408103910243e-12,
+      "rotation_rad": 1.6170203338446818,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": 0.9451566077600634,
+      "target_xy": null
+    },
+    "spin-repeat-2": {
+      "mode": "spin",
+      "start_utc": "2026-11-17T07:50:26.461891+00:00",
+      "end_utc": "2026-11-17T07:50:34.589633+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "spin_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 186,
+      "travelled_m": 7.514452637387297e-12,
+      "rotation_rad": 1.6182830441819915,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": 0.9065061925796929,
+      "target_xy": null
+    },
+    "spin-repeat-3": {
+      "mode": "spin",
+      "start_utc": "2026-11-17T07:50:39.083290+00:00",
+      "end_utc": "2026-11-17T07:50:47.085826+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "spin_recovery",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 182,
+      "travelled_m": 4.8460751061343576e-12,
+      "rotation_rad": 1.6194710102048688,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": 0.9394914416138005,
+      "target_xy": null
+    },
+    "strategy": {
+      "mode": "spin",
+      "start_utc": "2026-11-17T07:47:32.890450+00:00",
+      "end_utc": "2026-11-17T07:47:41.022448+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "recovery_demo_cpp",
+        "recovery_strategy",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true"
+      ],
+      "exit_code": 0,
+      "odom_samples": 204,
+      "travelled_m": 1.5695697370355508e-12,
+      "rotation_rad": 1.6326665633594182,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": 1.0341688462220289,
+      "target_xy": null
+    },
+    "tree-cancel-int": {
+      "mode": "cancel-tree-int",
+      "start_utc": "2026-11-17T07:49:04.452045+00:00",
+      "end_utc": "2026-11-17T07:49:10.916986+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "custom_behavior_tree",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "x:=0.0",
+        "-p",
+        "y:=0.0"
+      ],
+      "exit_code": 0,
+      "odom_samples": 138,
+      "travelled_m": 7.393093881944452e-12,
+      "rotation_rad": 0.8897107893845444,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": 0.946585683550309,
+      "target_xy": null
+    },
+    "tree-cancel-term": {
+      "mode": "cancel-tree-term",
+      "start_utc": "2026-11-17T07:49:15.412917+00:00",
+      "end_utc": "2026-11-17T07:49:21.448922+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "custom_behavior_tree",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "x:=0.0",
+        "-p",
+        "y:=0.0"
+      ],
+      "exit_code": -15,
+      "odom_samples": 130,
+      "travelled_m": 0.04920835955805497,
+      "rotation_rad": 0.9709381575502094,
+      "stopped": true,
+      "signal_sent": true,
+      "passed": true,
+      "amcl_goal_error_m": 0.9404835806661149,
+      "target_xy": null
+    },
+    "tree-xml": {
+      "mode": "navigate",
+      "start_utc": "2026-11-17T07:48:15.480278+00:00",
+      "end_utc": "2026-11-17T07:48:39.416046+00:00",
+      "command": [
+        "ros2",
+        "run",
+        "behavior_tree_demo_cpp",
+        "bt_client",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "x:=1.0",
+        "-p",
+        "y:=0.0",
+        "-p",
+        "behavior_tree:=/workspace/install/navigation_client_cpp/share/navigation_client_cpp/behavior_trees/teaching_navigation.xml"
+      ],
+      "exit_code": 0,
+      "odom_samples": 515,
+      "travelled_m": 1.0937226059697036,
+      "rotation_rad": 1.2910526313457709,
+      "stopped": true,
+      "signal_sent": false,
+      "passed": true,
+      "amcl_goal_error_m": 0.1074590628162202,
+      "target_xy": [
+        1.0,
+        0.0
+      ]
+    }
+  },
+  "known_inputs": {
+    "com260": {
+      "behavior": {
+        "scope": "known-input ROS action and service fixtures; no robot motion",
+        "tests": [
+          {
+            "case": "spin",
+            "received": [
+              {
+                "action": "spin",
+                "yaw": 1.5700000524520874,
+                "seconds": 5
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.9536804719973588,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "backup",
+            "received": [
+              {
+                "action": "backup",
+                "x": -0.15,
+                "speed": 0.05000000074505806,
+                "seconds": 3
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.9454149390003295,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "strategy-False",
+            "received": [
+              {
+                "action": "spin",
+                "yaw": 1.5700000524520874,
+                "seconds": 5
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.9919772640023439,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "strategy-True",
+            "received": [
+              {
+                "action": "spin",
+                "yaw": 1.5700000524520874,
+                "seconds": 5
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 1.996377431001747,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "tree-goal",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 2.0,
+                "frame": "map",
+                "tree": "/fixture/tree.xml"
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.9958675519992539,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-high",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 1.4211656339975889,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-low",
+            "received": [],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 1.1204581659985706,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-threshold",
+            "received": [],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 1.11829366800157,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-missing",
+            "received": [],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 6.076778734000982,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "navigate-retry",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              },
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              }
+            ],
+            "clear_calls": 1,
+            "exit_code": 0,
+            "duration_s": 1.7205537669979094,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "navigate-fails",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              },
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              }
+            ],
+            "clear_calls": 1,
+            "exit_code": 0,
+            "duration_s": 1.7242227210008423,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "camera": {
+        "scope": "known RGB-D and ORB inputs; no physical depth camera or SLAM run",
+        "tests": [
+          {
+            "case": "four-points",
+            "expected": [
+              [
+                -0.5,
+                -0.5,
+                1.0
+              ],
+              [
+                0.0,
+                -1.0,
+                2.0
+              ],
+              [
+                -1.5,
+                0.0,
+                3.0
+              ],
+              [
+                0.0,
+                0.0,
+                4.0
+              ]
+            ],
+            "actual": [
+              [
+                -0.5,
+                -0.5,
+                1.0
+              ],
+              [
+                0.0,
+                -1.0,
+                2.0
+              ],
+              [
+                -1.5,
+                0.0,
+                3.0
+              ],
+              [
+                0.0,
+                0.0,
+                4.0
+              ]
+            ],
+            "bgr": [
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                10,
+                20,
+                30
+              ]
+            ],
+            "passed": true
+          },
+          {
+            "case": "invalid-depth",
+            "expected": [
+              [
+                0.0,
+                0.0,
+                2.0
+              ]
+            ],
+            "actual": [
+              [
+                0.0,
+                0.0,
+                2.0
+              ]
+            ],
+            "bgr": [
+              [
+                10,
+                20,
+                30
+              ]
+            ],
+            "passed": true
+          },
+          {
+            "case": "depth-limit",
+            "expected": [
+              [
+                0.0,
+                0.0,
+                5.0
+              ]
+            ],
+            "actual": [
+              [
+                0.0,
+                0.0,
+                5.0
+              ]
+            ],
+            "bgr": [
+              [
+                10,
+                20,
+                30
+              ]
+            ],
+            "passed": true
+          },
+          {
+            "case": "orb-identical-frames",
+            "outputs": 3,
+            "keypoints_matches": [
+              [
+                "814",
+                "814"
+              ],
+              [
+                "814",
+                "814"
+              ]
+            ],
+            "passed": true
+          }
+        ],
+        "exit_codes": [
+          0,
+          0
+        ],
+        "passed": true
+      },
+      "scheduler": {
+        "scope": "known-input action interface fixture; no multi-robot motion",
+        "tests": [
+          {
+            "case": "accepted",
+            "received": [
+              {
+                "robot": "robot1",
+                "x": 1.0,
+                "y": 0.0,
+                "tree": "aggressive_recovery.xml"
+              },
+              {
+                "robot": "robot2",
+                "x": 2.0,
+                "y": 1.0,
+                "tree": "default_navigation.xml"
+              },
+              {
+                "robot": "robot3",
+                "x": 0.0,
+                "y": 2.0,
+                "tree": "default_navigation.xml"
+              }
+            ],
+            "exit_code": 0,
+            "passed": true
+          },
+          {
+            "case": "rejected",
+            "received": [
+              {
+                "robot": "robot1",
+                "x": 1.0,
+                "y": 0.0,
+                "tree": "aggressive_recovery.xml"
+              },
+              {
+                "robot": "robot2",
+                "x": 2.0,
+                "y": 1.0,
+                "tree": "default_navigation.xml"
+              },
+              {
+                "robot": "robot3",
+                "x": 0.0,
+                "y": 2.0,
+                "tree": "default_navigation.xml"
+              }
+            ],
+            "exit_code": 1,
+            "passed": true
+          }
+        ],
+        "passed": true
+      }
+    },
+    "x86": {
+      "behavior": {
+        "scope": "known-input ROS action and service fixtures; no robot motion",
+        "tests": [
+          {
+            "case": "spin",
+            "received": [
+              {
+                "action": "spin",
+                "yaw": 1.5700000524520874,
+                "seconds": 5
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.35511296801269054,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "backup",
+            "received": [
+              {
+                "action": "backup",
+                "x": -0.15,
+                "speed": 0.05000000074505806,
+                "seconds": 3
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.371704479039181,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "strategy-False",
+            "received": [
+              {
+                "action": "spin",
+                "yaw": 1.5700000524520874,
+                "seconds": 5
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.3716839820262976,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "strategy-True",
+            "received": [
+              {
+                "action": "spin",
+                "yaw": 1.5700000524520874,
+                "seconds": 5
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 1.426370115019381,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "tree-goal",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 2.0,
+                "frame": "map",
+                "tree": "/fixture/tree.xml"
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.3784178530331701,
+            "status_seen": false,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-high",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              }
+            ],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.8533438089652918,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-low",
+            "received": [],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.5043991699931212,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-threshold",
+            "received": [],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 0.45516775001306087,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "battery-missing",
+            "received": [],
+            "clear_calls": 0,
+            "exit_code": 0,
+            "duration_s": 5.442606351047289,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "navigate-retry",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              },
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              }
+            ],
+            "clear_calls": 1,
+            "exit_code": 0,
+            "duration_s": 1.1552024129778147,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          },
+          {
+            "case": "navigate-fails",
+            "received": [
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              },
+              {
+                "action": "navigate",
+                "x": 1.0,
+                "y": 0.0,
+                "frame": "map",
+                "tree": ""
+              }
+            ],
+            "clear_calls": 1,
+            "exit_code": 0,
+            "duration_s": 1.1628690949873999,
+            "status_seen": true,
+            "timed_out": false,
+            "passed": true
+          }
+        ],
+        "passed": true
+      },
+      "camera": {
+        "scope": "known RGB-D and ORB inputs; no physical depth camera or SLAM run",
+        "tests": [
+          {
+            "case": "four-points",
+            "expected": [
+              [
+                -0.5,
+                -0.5,
+                1.0
+              ],
+              [
+                0.0,
+                -1.0,
+                2.0
+              ],
+              [
+                -1.5,
+                0.0,
+                3.0
+              ],
+              [
+                0.0,
+                0.0,
+                4.0
+              ]
+            ],
+            "actual": [
+              [
+                -0.5,
+                -0.5,
+                1.0
+              ],
+              [
+                0.0,
+                -1.0,
+                2.0
+              ],
+              [
+                -1.5,
+                0.0,
+                3.0
+              ],
+              [
+                0.0,
+                0.0,
+                4.0
+              ]
+            ],
+            "bgr": [
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                10,
+                20,
+                30
+              ],
+              [
+                10,
+                20,
+                30
+              ]
+            ],
+            "passed": true
+          },
+          {
+            "case": "invalid-depth",
+            "expected": [
+              [
+                0.0,
+                0.0,
+                2.0
+              ]
+            ],
+            "actual": [
+              [
+                0.0,
+                0.0,
+                2.0
+              ]
+            ],
+            "bgr": [
+              [
+                10,
+                20,
+                30
+              ]
+            ],
+            "passed": true
+          },
+          {
+            "case": "depth-limit",
+            "expected": [
+              [
+                0.0,
+                0.0,
+                5.0
+              ]
+            ],
+            "actual": [
+              [
+                0.0,
+                0.0,
+                5.0
+              ]
+            ],
+            "bgr": [
+              [
+                10,
+                20,
+                30
+              ]
+            ],
+            "passed": true
+          },
+          {
+            "case": "orb-identical-frames",
+            "outputs": 3,
+            "keypoints_matches": [
+              [
+                "814",
+                "814"
+              ],
+              [
+                "814",
+                "814"
+              ]
+            ],
+            "passed": true
+          }
+        ],
+        "exit_codes": [
+          0,
+          0
+        ],
+        "passed": true
+      }
+    }
+  },
+  "camera_session": {
+    "run_id": "20261117T090610Z-camera-moving",
+    "start_utc": "2026-11-17T09:06:19.424442+00:00",
+    "network": "COM260 wired 192.168.1.88; x86 Wi-Fi 192.168.1.4",
+    "cases_exit": 0,
+    "recorder_exits": [
+      0,
+      0
+    ],
+    "end_utc": "2026-11-17T09:07:45.145123+00:00"
+  },
+  "camera_scene_view": {
+    "run_id": "20261117T093149Z-camera-motion",
+    "start_utc": "2026-11-17T09:31:49.328017+00:00",
+    "network": "COM260 wired 192.168.1.88; x86 Wi-Fi 192.168.1.4",
+    "cases_exit": 0,
+    "recorder_exits": [
+      0,
+      0
+    ],
+    "end_utc": "2026-11-17T09:33:31.276748+00:00"
+  },
+  "live_camera": {
+    "orb-output": {
+      "unique_images": 40,
+      "odom_samples": 498,
+      "odom_travel_m": 33.0417773697352,
+      "scope": "live Gazebo RGB input, CameraInfo, TF and C++ ORB output; no depth camera or full SLAM",
+      "mode": "orb",
+      "warmup_s": 0.06665291599711054,
+      "start_utc": "2026-11-17T09:07:14.479789+00:00",
+      "end_utc": "2026-11-17T09:07:29.480775+00:00",
+      "counts": {
+        "info": 45,
+        "matches": 40
+      },
+      "metadata": {
+        "info": {
+          "width": 320,
+          "height": 180,
+          "frame": "camera_optical_frame",
+          "stamp_first": 32.597,
+          "stamp_last": 42.368,
+          "K": [
+            277.1273455955935,
+            0.0,
+            159.5,
+            0.0,
+            277.1273455955935,
+            89.5,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        "matches": {
+          "width": 640,
+          "height": 180,
+          "frame": "camera_optical_frame",
+          "stamp_first": 32.5,
+          "stamp_last": 42.25,
+          "encoding": "bgr8"
+        }
+      },
+      "transform": {
+        "parent": "base_link",
+        "child": "camera_link",
+        "translation": [
+          0.045,
+          0.0,
+          0.12
+        ]
+      },
+      "passed": true
+    },
+    "rgb-inputs": {
+      "unique_images": 41,
+      "odom_samples": 512,
+      "odom_travel_m": 31.788809242433686,
+      "scope": "live Gazebo RGB input, CameraInfo, TF and C++ ORB output; no depth camera or full SLAM",
+      "mode": "rgb",
+      "warmup_s": 0.5778278039979341,
+      "start_utc": "2026-11-17T09:06:40.122555+00:00",
+      "end_utc": "2026-11-17T09:06:55.124631+00:00",
+      "counts": {
+        "info": 45,
+        "rgb": 41
+      },
+      "metadata": {
+        "rgb": {
+          "width": 320,
+          "height": 180,
+          "frame": "camera_optical_frame",
+          "stamp_first": 10.0,
+          "stamp_last": 20.0,
+          "encoding": "rgb8"
+        },
+        "info": {
+          "width": 320,
+          "height": 180,
+          "frame": "camera_optical_frame",
+          "stamp_first": 10.12,
+          "stamp_last": 20.187,
+          "K": [
+            277.1273455955935,
+            0.0,
+            159.5,
+            0.0,
+            277.1273455955935,
+            89.5,
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "transform": {
+        "parent": "base_link",
+        "child": "camera_link",
+        "translation": [
+          0.045,
+          0.0,
+          0.12
+        ]
+      },
+      "passed": true
+    }
+  },
+  "camera_nodes": [
+    {
+      "case": "camera_processor",
+      "rgb_log_count": 5,
+      "intrinsics_log_count": 5,
+      "passed": true
+    },
+    {
+      "case": "camera_processor-exit",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "case": "orb_feature_extractor-exit",
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "original_lab_regression": {
+    "go_to_pose_demo": {
+      "exit": 0,
+      "timed_out": false,
+      "stopped": true,
+      "odom_samples": 2597,
+      "end_map_pose": [
+        -0.05631554622267378,
+        0.07958716494132309,
+        -1.3561493694146702
+      ],
+      "monitor_exit": 0,
+      "waypoints": [],
+      "successful_actions": 4,
+      "laps_complete": [],
+      "missed_waypoints_reported": false,
+      "goal_position_errors_m": [
+        0.09764164652567604,
+        0.0975072461078315,
+        0.09714487696130905,
+        0.09749644901100488
+      ],
+      "monitor_lines": {
+        "Global plan": 84,
+        "Local plan": 1842,
+        "Cmd vel": 1906
+      }
+    },
+    "follow_false": {
+      "exit": 0,
+      "timed_out": false,
+      "stopped": true,
+      "odom_samples": 2297,
+      "end_map_pose": [
+        -0.025380835142092537,
+        0.09335600277770256,
+        -1.3234129278433693
+      ],
+      "monitor_exit": null,
+      "waypoints": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "successful_actions": 1,
+      "laps_complete": [],
+      "missed_waypoints_reported": false
+    },
+    "follow_true": {
+      "exit": 0,
+      "timed_out": false,
+      "stopped": true,
+      "odom_samples": 2351,
+      "end_map_pose": [
+        -0.035292407895959554,
+        0.08796903994271993,
+        -1.364935217280035
+      ],
+      "monitor_exit": null,
+      "waypoints": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "successful_actions": 1,
+      "laps_complete": [],
+      "missed_waypoints_reported": false
+    },
+    "patrol": {
+      "exit": 0,
+      "timed_out": false,
+      "stopped": true,
+      "odom_samples": 4532,
+      "end_map_pose": [
+        -0.021215780594369016,
+        0.09443393021599694,
+        -1.32052597344612
+      ],
+      "monitor_exit": null,
+      "waypoints": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "successful_actions": 2,
+      "laps_complete": [
+        "1",
+        "2"
+      ],
+      "missed_waypoints_reported": false
+    },
+    "dynamic_patrol": {
+      "exit": 0,
+      "timed_out": false,
+      "stopped": true,
+      "odom_samples": 4464,
+      "end_map_pose": [
+        -0.050537615469324615,
+        0.08468431657767991,
+        -1.3365988262164188
+      ],
+      "monitor_exit": null,
+      "waypoints": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "successful_actions": 2,
+      "laps_complete": [
+        "1",
+        "2"
+      ],
+      "missed_waypoints_reported": false,
+      "injection_events": [
+        {
+          "t": 6.676792235000903,
+          "sim_elapsed_s": 5.001999999999999,
+          "line": "INJECTION_START"
+        },
+        {
+          "t": 143.17140553900026,
+          "sim_elapsed_s": 70.001,
+          "line": "INJECTION_STOP"
+        }
+      ],
+      "synthetic_scans": 646,
+      "median_scan_period_ros_s": 0.10000000000000142,
+      "occupied_samples_in_static_free_space": 478,
+      "final_injected_point_cost": 0
+    },
+    "recovery_scan": {
+      "exit": 0,
+      "timed_out": false,
+      "stopped": true,
+      "odom_samples": 2188,
+      "end_map_pose": [
+        3.901035719511024,
+        -0.025302106370340978,
+        -0.11805510894955389
+      ],
+      "goal_position_error_m": 0.10214756678196885,
+      "synthetic_scans": 345,
+      "median_scan_period_ros_s": 0.10000000000000142,
+      "automatic_spin": true,
+      "automatic_backup": true,
+      "obstacle_removed_after_backup": true,
+      "public_commands": true,
+      "operation_order": [
+        "load_map",
+        "remove_obstacle"
+      ],
+      "reaction_delay_s": 2
+    }
+  },
+  "limits": [
+    "The x86 wired carrier was unstable; these final runs use x86 Wi-Fi. Concurrent raw image subscribers can receive no RGB. Sequential original examples passed; concurrency is not fixed.",
+    "Scheduler fixtures cover request fields and acceptance/rejection. The two three-robot Gazebo navigation runs are recorded in ../ch20/fleet-validation.json.",
+    "The original camera entry supplies RGB only. The separate Gazebo RGB-D entry is validated in rgbd-validation.json; the small ICP, TSDF and IMU examples use known inputs.",
+    "The original direct method has no photometric Jacobian; the original VINS example has no visual optimization.",
+    "D415 hardware remains unvalidated. Full DSO and independent VINS-Mono simulation results are in ../ch21/synthetic-validation.json. The handheld LVI-SAM replay is documented in ../ch21/lvi-validation.json. Gazebo RGB-D software-chain results are in rgbd-validation.json; offline EuRoC recording, native COM260 ORB-SLAM3 and EVO evaluation are in slam-validation.json. Neither verifies D415 hardware."
+  ],
+  "rgbd_simulation": {
+    "results": "rgbd-validation.json",
+    "software_chain_passed": true,
+    "d415_hardware_verified": false,
+    "run_id": "20261118T064757Z-rgbd-museum"
+  },
+  "slow_recovery": {
+    "run_id": "20261118T073829Z-slow-recovery",
+    "gazebo_real_time_factor": 0.16,
+    "platform": "COM260 clients and x86 Gazebo/Nav2 on a private X display",
+    "stop_observation": "Final two wall-clock seconds of odometry after each action",
+    "cases": [
+      {
+        "case": "slow-spin",
+        "wall_s": 13.549729842998204,
+        "simulation_s": 2.1679999999999993,
+        "odom_samples": 141,
+        "travel_m": 7.001585189267641e-12,
+        "rotation_rad": 1.5950716511216851,
+        "exit": 0,
+        "signal_sent": false,
+        "tail_samples": 16,
+        "tail_max_vx": 0.0,
+        "tail_max_wz": 0.0,
+        "action_result": "SUCCEEDED",
+        "passed": true
+      },
+      {
+        "case": "slow-backup",
+        "wall_s": 22.0148114659969,
+        "simulation_s": 3.5229999999999997,
+        "odom_samples": 209,
+        "travel_m": 0.1512000022366082,
+        "rotation_rad": 2.8981261834815086e-12,
+        "exit": 0,
+        "signal_sent": false,
+        "tail_samples": 16,
+        "tail_max_vx": 0.0,
+        "tail_max_wz": 0.0,
+        "action_result": "SUCCEEDED",
+        "passed": true
+      },
+      {
+        "case": "cancel-spin",
+        "wall_s": 7.133073905002675,
+        "simulation_s": 1.1420000000000012,
+        "odom_samples": 90,
+        "travel_m": 3.5682680584628015e-13,
+        "rotation_rad": 0.7199999999226796,
+        "exit": 1,
+        "signal_sent": true,
+        "tail_samples": 16,
+        "tail_max_vx": 9.367506770274758e-15,
+        "tail_max_wz": 1.1709383462843448e-13,
+        "action_result": "CANCELED",
+        "passed": true
+      },
+      {
+        "case": "cancel-backup",
+        "wall_s": 9.68527060499764,
+        "simulation_s": 1.549999999999999,
+        "odom_samples": 111,
+        "travel_m": 0.05840000086388457,
+        "rotation_rad": 3.083755473198835e-12,
+        "exit": 1,
+        "signal_sent": true,
+        "tail_samples": 16,
+        "tail_max_vx": 0.0,
+        "tail_max_wz": 0.0,
+        "action_result": "CANCELED",
+        "passed": true
+      }
+    ]
+  },
+  "euroc_rviz": {
+    "run_id": "20261118T150255Z-close-fix-euroc",
+    "transport": "CycloneDDS UDPv6, domain 203",
+    "fresh_terminals": true,
+    "processed_images": 2912,
+    "tracked_images": 2781,
+    "imu_samples": 29120,
+    "saved_poses": 2718,
+    "exit_code": 0,
+    "rviz_received": [
+      "/orb_slam3/image",
+      "/orb_slam3/trajectory"
+    ],
+    "screenshot": "euroc-dds-rviz.png",
+    "video": "euroc-dds-rviz.mp4",
+    "rviz_window_close_exit_code": 0,
+    "empty_viewer_clean_exits": 7,
+    "ate_translation_rmse_m": 0.053939,
+    "rpe_translation_rmse_m": 0.016474,
+    "rviz_plugin_sha256": "51c2aca9d470c13fc524781092950037b9b4d53d8d12d8003aaa607bffa6317c",
+    "verified_x86_image_id": "1db7723fcfe1a372f06e031427aa4af030cdbae2867c9639953017d649034e06"
+  },
+  "rgbd_rviz": {
+    "run_id": "20261118T074120Z-fresh-rgbd",
+    "transport": "CycloneDDS UDPv6, domain 203",
+    "fresh_terminals": true,
+    "processed_frames": 38,
+    "tracked_frames": 38,
+    "cloud_width": 769,
+    "trajectory_frame": "map",
+    "map_subscriber": "rgbd_rviz",
+    "board_exit_code": 0,
+    "d415_hardware_verified": false
+  }
+}

@@ -24,11 +24,13 @@ dependencies=(
 )
 mode=${1:---help}
 case "$mode" in
-  --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17|--build-ch18|--build-ch19) ;;
+  --prepare-ch21-slam|--build-ch21-slam|--build-ch21-lvi|--build-ch21-frameworks) ;;
+  --dry-run|--install-deps|--install-deps-ch20-ch21|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17|--build-ch18|--build-ch19|--build-ch20|--build-ch21) ;;
   --help)
-    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17|--build-ch18|--build-ch19' \
+    printf '%s\n' 'Usage: bash setup_course_k3_com260_kit.sh --dry-run|--install-deps|--install-deps-ch20-ch21|--build|--build-ch02|--build-ch03|--build-ch04|--build-ch05|--build-ch06|--build-ch07|--build-ch08|--build-ch09|--build-ch10|--build-ch16|--build-ch17|--build-ch18|--build-ch19|--build-ch20|--build-ch21|--prepare-ch21-slam|--build-ch21-slam|--build-ch21-lvi|--build-ch21-frameworks' \
       '--dry-run       Resolve chapter 1-8 dependencies without installing them.' \
       '--install-deps  Install chapter 1-8 dependencies; sudo may ask for your password.' \
+      '--install-deps-ch20-ch21  Install BehaviorTree.CPP, OpenCV and Open3D dependencies.' \
       '--build         Build/test the two chapter 1 packages in ~/ros2_course_com260_ws.' \
       '--build-ch02    Build the two chapter 2 packages in the same course workspace.' \
       '--build-ch03    Build/test the four chapter 3 packages in the same course workspace.' \
@@ -42,7 +44,13 @@ case "$mode" in
       '--build-ch16    Build the chapter 16 lifecycle, navigation and planning examples.' \
       '--build-ch17    Build the chapter 17 costmap, map loading and obstacle examples.' \
       '--build-ch18    Build/test the chapter 18 global planning and path optimization examples.' \
-      '--build-ch19    Build/test the chapter 19 DWA and pure pursuit examples.'
+      '--build-ch19    Build/test the chapter 19 DWA and pure pursuit examples.' \
+      '--build-ch20    Build the behavior-tree and recovery examples.' \
+      '--build-ch21    Build/test the camera and visual SLAM teaching examples.' \
+      '--prepare-ch21-slam  Build pinned ORB-SLAM3 dependencies in the user directory.' \
+      '--build-ch21-slam    Build the C++ RGB-D node and bag trajectory evaluator.' \
+      '--build-ch21-lvi     Build LVI-SAM and its private libraries for the handheld dataset.' \
+      '--build-ch21-frameworks  Build isolated native DSO and VINS-Mono frameworks.'
     exit 0 ;;
   *) printf 'Unknown option: %s\n' "$mode" >&2; exit 2 ;;
 esac
@@ -58,6 +66,24 @@ model=$(tr -d '\0' </proc/device-tree/model)
 [[ $model == *K3*Com260* ]] || die 'This installer requires a SpacemiT K3 COM260 board.'
 printf 'MODEL=%s OS=%s ROS=humble WORKSPACE=%s\n' "$model" "$VERSION_ID" "$workspace"
 
+if [[ $mode == --build-ch21-lvi ]]; then
+  exec bash "$root/course_support/k3_com260_kit/lvi_sam/build.bash"
+fi
+
+if [[ $mode == --prepare-ch21-slam ]]; then
+  exec bash "$root/course_support/k3_com260_kit/scripts/prepare-visual-slam.bash"
+fi
+
+if [[ $mode == --build-ch21-frameworks ]]; then
+  exec bash "$root/course_support/k3_com260_kit/visual_slam/build-frameworks.bash"
+fi
+if [[ $mode == --install-deps-ch20-ch21 ]]; then
+  dependencies=(libopencv-dev libopen3d-dev ros-humble-cv-bridge
+    ros-humble-image-transport-plugins ros-humble-behaviortree-cpp-v3)
+  apt-get --simulate --no-remove --no-upgrade --no-install-recommends install "${dependencies[@]}"
+  sudo apt-get install -y --no-remove --no-upgrade --no-install-recommends "${dependencies[@]}"
+  exit 0
+fi
 if [[ $mode == --dry-run ]]; then
   apt-get --simulate --no-remove --no-install-recommends install "${dependencies[@]}"
   exit 0
@@ -150,6 +176,24 @@ if [[ $mode == --build-ch18 || $mode == --build-ch19 ]]; then
   fi
   [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]] || die 'Prepare the chapter 10 Nav2 interface underlay first.'
 fi
+if [[ $mode == --build-ch20 || $mode == --build-ch21 || $mode == --build-ch21-slam ]]; then
+  workspace="$HOME/ros2_course_com260_ch20_ch21_ws"
+  workspace_marker=.com260-ch20-ch21
+  env_dir="$HOME/.config/ros2-course-com260-ch20-ch21"
+  source_root="$root/src_k3_com260_kit"
+  chapter=20
+  packages=(recovery_demo_cpp behavior_tree_demo_cpp multi_robot_scheduler navigation_client_cpp navigation_lab_cpp)
+  if [[ $mode == --build-ch21 ]]; then
+    chapter=21
+    packages=(camera_geometry camera_processor orb_feature_extractor direct_image_alignment rgbd_slam vins_mono)
+  fi
+  if [[ $mode == --build-ch21-slam ]]; then
+    chapter=21
+    packages=(orbslam3 visual_slam_eval)
+    [[ -r "$HOME/ros2_course_com260_ch21_slam/env.bash" ]] || die 'Run --prepare-ch21-slam first.'
+  fi
+  [[ -r "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash" ]] || die 'Prepare the chapter 10 Nav2 interface underlay first.'
+fi
 sources=()
 for package in "${packages[@]}"; do
   [[ -f "$source_root/$package/package.xml" ]] || die "Missing package source: $source_root/$package; sync the chapter files first."
@@ -160,7 +204,10 @@ mkdir -p "$workspace"
 touch "$workspace/$workspace_marker"
 set +u
 source /opt/ros/humble/setup.bash
-if [[ $chapter == 10 || $chapter == 16 || $chapter == 17 || $chapter == 18 || $chapter == 19 ]]; then
+if [[ $mode == --build-ch21-slam ]]; then
+  source "$HOME/ros2_course_com260_ch21_slam/env.bash"
+fi
+if [[ $chapter == 10 || $chapter == 16 || $chapter == 17 || $chapter == 18 || $chapter == 19 || $chapter == 20 || $chapter == 21 ]]; then
   source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
 fi
 set -u
@@ -178,10 +225,16 @@ if [[ $chapter == 01 || $chapter == 03 ]]; then
     python3 -m colcon test-result --verbose
   fi
 fi
-if [[ $chapter == 18 || $chapter == 19 ]]; then
+if [[ $chapter == 18 || $chapter == 19 || $chapter == 20 || $chapter == 21 ]]; then
   python3 -m colcon test --base-paths "${sources[@]}" --packages-select "${packages[@]}" \
     --event-handlers console_direct+ --return-code-on-test-failure
-  python3 -m colcon test-result --verbose
+  if [[ $chapter == 20 || $chapter == 21 ]]; then
+    for package in "${packages[@]}"; do
+      python3 -m colcon test-result --test-result-base "build/$package" --verbose
+    done
+  else
+    python3 -m colcon test-result --verbose
+  fi
 fi
 mkdir -p "$env_dir"
 install -m 0755 "$root/course_support/k3_com260_kit/ide/gdb.bash" "$env_dir/gdb.bash"
@@ -229,6 +282,28 @@ EOF
   if [[ -n ${CYCLONEDDS_URI:-} ]]; then
     printf 'export CYCLONEDDS_URI=%q\n' "$CYCLONEDDS_URI" >>"$env_dir/env.bash"
   fi
+fi
+if [[ $chapter == 20 || $chapter == 21 ]]; then
+  cat >"$env_dir/env.bash" <<'EOF'
+source /opt/ros/humble/setup.bash
+source "$HOME/ros2_course_com260_ch09_ch10_deps_ws/install/setup.bash"
+source "$HOME/ros2_course_com260_ch20_ch21_ws/install/setup.bash"
+if [[ -r "$HOME/ros2_course_com260_ch21_slam/env.bash" ]]; then
+  source "$HOME/ros2_course_com260_ch21_slam/env.bash"
+fi
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export ROS_LOCALHOST_ONLY=0
+EOF
+  printf 'export ROS_DOMAIN_ID=%q\n' "${ROS_DOMAIN_ID:-0}" >>"$env_dir/env.bash"
+  if [[ -n ${CYCLONEDDS_URI:-} ]]; then
+    printf 'export CYCLONEDDS_URI=%q\n' "$CYCLONEDDS_URI" >>"$env_dir/env.bash"
+  fi
+  cat >"$env_dir/gdb.bash" <<'EOF'
+#!/usr/bin/env bash
+set -e
+source "$(dirname "${BASH_SOURCE[0]}")/env.bash"
+exec /usr/bin/gdb "$@"
+EOF
 fi
 set +u
 source "$env_dir/env.bash"

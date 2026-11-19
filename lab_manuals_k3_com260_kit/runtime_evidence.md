@@ -2,9 +2,21 @@
 
 本版结果来自 COM260 当前环境，原版和 Pico 结果仅作参考。环境准备见[公共双端环境](ch00_common_setup.md)。
 
+<a id="chapters"></a>
+
+**按教案章节查阅运行证据**
+
+[1 概述](#ch01) · [2 核心编程](#ch02) · [3 话题](#ch03) · [4 服务](#ch04) · [5 动作](#ch05) · [6 参数与 Launch](#ch06) · [7 TF2](#ch07) · [8 URDF/Xacro](#ch08) · [9 Gazebo](#ch09)
+
+[10 贝叶斯框架](#ch10) · [11 ICP 与 PLICP](#ch11) · [12 Hector SLAM](#ch12) · [13 粒子滤波](#ch13) · [14 AMCL](#ch14) · [15 Cartographer](#ch15)
+
+[16 Nav2 架构](#ch16) · [17 全局代价地图](#ch17) · [18 全局路径规划](#ch18) · [19 局部路径规划](#ch19) · [20 行为树与恢复行为](#ch20) · [21 视觉 SLAM](#ch21)
+
+共用实验记录见[实验 10 · SLAM 建图与定位](#lab10)和[实验 11 · Nav2 自主导航](#lab11)。
+
 <a id="ch01"></a>
 
-## 第一章：COM260 实测通过
+## 第 1 章 ROS 2 概述与架构设计
 
 验证日期：2026-09-16；源码基线：`96d9c90490573aeb8e06c8c32bf421a40544f3a5`。章节入口：[实验手册](ch01_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch01_ROS2概述与架构.md)。
 
@@ -64,7 +76,7 @@ RViz 前后图来自同一仿真实例，按顺序采集；为保证 Gazebo 录�
 
 <a id="ch02"></a>
 
-## 第二章：COM260 实测通过
+## 第 2 章 ROS 2 核心编程基础
 
 验证日期：2026-09-16；章节入口：[实验手册](ch02_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch02_核心编程基础.md)。课程内容、练习编号与输入值沿用原章，节点采用 C++17／rclcpp。新增两个包位于 `src_k3_com260_kit/`，仿真继续原样复用 `src_k3_pico_itx/robot_sim_demo`。
 
@@ -176,7 +188,7 @@ RViz 前后图来自同一仿真实例，按顺序采集；为保证 Gazebo 录�
 
 <a id="ch03"></a>
 
-## 第三章：COM260 实测通过
+## 第 3 章 话题通信（Topics）
 
 2026-09-21 完成第三章 C++17／rclcpp 适配与实测。入口为[实验手册](ch03_lab.md)和[教师教案](../teaching_docs_k3_com260_kit/ch03_话题通信.md)。新增四包位于 `src_k3_com260_kit/`；仿真原样复用 `src_k3_pico_itx/robot_sim_demo`，本章另用 `ch03_square.rviz` 观察轨迹。
 
@@ -246,7 +258,7 @@ RViz 前后图来自同一仿真实例，按顺序采集；为保证 Gazebo 录�
 
 <a id="ch04"></a>
 
-## 第四章：COM260 实测通过
+## 第 4 章 服务通信（Services）
 
 2026-09-22 在 COM260 与 x86 Humble 容器完成服务通信实测。章节入口：[实验手册](ch04_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch04_服务通信.md)。
 
@@ -314,11 +326,11 @@ Greeting 使用真实 C++ `server`／`client` 双向跨机运行，固定请求 
 
 <a id="ch03-ch04-validation"></a>
 
-## 第三、四章：建包、停止行为与有线运动验证
+### 第 3、4 章联合验证：建包、停止行为与有线运动
 
 验证日期：2026-09-22；运行记录：`20260922T-review-fixes`。检查范围包括从空目录按手册逐步建包、运动中止后的返回值与零速度反馈，以及有线连接下的完整方形运动和速度服务。
 
-### 建包、源码与中止行为
+#### 建包、源码与中止行为
 
 | 检查 | 本次实际结果 |
 |---|---|
@@ -338,7 +350,7 @@ Greeting 使用真实 C++ `server`／`client` 双向跨机运行，固定请求 
 
 ![真实 Gazebo 中止与停止反馈结果](images/ch04/ch03-ch04-validation-gazebo-interrupt.png)
 
-### 有线路径下的正常运动
+#### 有线路径下的正常运动
 
 无线链路的 25 次 ping 平均约 266 ms、最大约 743 ms，方形轨迹未达到跨度门槛。有线连接平均约 0.331 ms、最大约 0.386 ms，按相同轨迹阈值验证通过。两端课程进程显式绑定有线地址，配置方法见[多网卡选择有线路径](ch00_common_setup.md#dds-wired)。
 
@@ -368,7 +380,7 @@ Greeting 使用真实 C++ `server`／`client` 双向跨机运行，固定请求 
 
 [速度原速 MP4](images/ch04/ch04-speed-wired.mp4) · [同轮请求与里程计 CAST](images/ch04/ch04-speed-wired.cast) · [停止画面](images/ch04/ch04-speed-wired.png)。原片从 05:28:01.654 UTC 开始，保留前 33 秒连续画面；GIF 为同段 2 倍速、约 16.5 秒。两组请求均在录像内完成。
 
-### 验证素材与统计范围
+#### 验证素材与统计范围
 
 | 内容 | 原始记录 |
 |---|---|
@@ -384,7 +396,7 @@ Greeting 使用真实 C++ `server`／`client` 双向跨机运行，固定请求 
 
 <a id="ch05"></a>
 
-## 第五章：动作通信与 Gazebo 导航
+## 第 5 章 动作通信（Actions）
 
 验证日期：2026-09-22；记录组 `20260922T103700Z`。章节入口：[实验手册](ch05_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch05_动作通信.md)。动作服务与客户端在 COM260（riscv64／Bianbu 4.0.6／ROS 2 Humble）运行，Gazebo Burger/Museum 在 x86 Humble 容器运行。
 
@@ -421,7 +433,7 @@ Greeting 使用真实 C++ `server`／`client` 双向跨机运行，固定请求 
 
 <a id="ch06"></a>
 
-## 第六章：参数、Launch 与动态调速
+## 第 6 章 参数系统与 Launch 文件
 
 验证日期：2026-09-22；记录组 `20260922T103700Z`。章节入口：[实验手册](ch06_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch06_参数与Launch.md)。参数与速度节点使用 C++17；Python 仅用于 Launch 和验收工具。
 
@@ -494,7 +506,7 @@ COM260 课程与学生工作区分别在 Domain 198／199 重跑 48 项参数检
 
 <a id="ch07"></a>
 
-## 第七章：TF2 双端实测
+## 第 7 章 TF2 坐标变换系统
 
 验证日期：2026-10-04；运行组 `20261004T061759Z-ch07-ch08`；章节入口：[实验手册](ch07_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch07_TF2坐标变换.md)。本组基于 `1e59d17` 的独立 COM260 源码目录验证，C++17／Humble，业务节点运行于 COM260；可视化运行于 x86。
 
@@ -532,7 +544,7 @@ COM260 课程与学生工作区分别在 Domain 198／199 重跑 48 项参数检
 
 <a id="ch08"></a>
 
-## 第八章：URDF／Xacro 与关节实测
+## 第 8 章 URDF/Xacro 机器人建模
 
 章节入口：[实验手册](ch08_lab.md)、[教师教案](../teaching_docs_k3_com260_kit/ch08_URDF机器人建模.md)。验证日期及运行组同第七章。模型资源为 XML／Xacro，启动编排保留 Python Launch；本章业务状态发布使用 ROS 标准节点。建模练习使用原课程的 5 kg 双轮与 10 kg 四轮教学模型，Gazebo 运动仿真使用 Burger。
 
@@ -583,7 +595,7 @@ COM260 课程与学生工作区分别在 Domain 198／199 重跑 48 项参数检
 
 <a id="ch09"></a>
 
-## 第九章：Gazebo 与 ros2_control
+## 第 9 章 Gazebo 仿真
 
 运行编号 `20261004T063929Z`。COM260 运行 C++17 课程节点，x86 独立 Humble / Harmonic 容器运行 Burger、Gazebo 和官方控制器；原版、Pico 和其他章节的仿真资源保持独立。图形采集使用同一课程镜像的派生采集镜像及独立 Xvfb 桌面，画面来自实际 Gazebo/RViz 窗口。
 
@@ -606,9 +618,18 @@ Campus 的[场景截图](images/ch09/ch09-campus.png)来自实际 Gazebo 窗口�
 
 <a id="ch10"></a>
 
-## 第十章：SLAM 综合实验与第 10～15 章教案
+## 第 10 章 SLAM 基本概念与贝叶斯框架
 
-本章延续同一运行编号。仿真激光为独立的 360 点／360° profile；slam_toolbox、AMCL、Cartographer 和回放按顺序运行，每次切换退出上一套地图发布者。教材中的简化 ICP、Hector、粒子滤波和图优化示例用于展示算法结构；数值样例及真实输入接入分别记录，不能据此推断定位精度或生产环境稳定性。
+在教案给定的预测和观测输入下，C++ `bayes_demo` 得到后验均值 `(0.110476, 0.000000, 0.025238)`，三个协方差对角项均为 `0.052381`。[COM260 输出](images/ch10/ch10-teaching-numerics.cast)和 [x86 输出](images/ch10/ch10-teaching-x86-numerics.txt)均可按程序名查阅。
+
+接入 Gazebo 后，COM260 的 `sensor_monitor` 读到一帧 360 个有效激光点，静止时 IMU 的 z 轴加速度为 9.80 m/s²，节点退出码为 0。[传感器记录](images/ch10/ch10-teaching-live-sensors.cast)
+
+<a id="lab10"></a>
+<a id="第-1015-章-slam-建图与定位"></a>
+
+### 实验 10 · SLAM 建图与定位（第 10～15 章共用）
+
+配套实验为[第10章 实验指导书：SLAM 建图与定位](ch10_lab.md)。实验运行编号为 `20261004T063929Z`。仿真激光为独立的 360 点／360° profile；slam_toolbox、AMCL、Cartographer 和回放按顺序运行，每次切换退出上一套地图发布者。教材中的简化 ICP、Hector、粒子滤波和图优化示例用于展示算法结构；数值样例及真实输入接入分别记录，不能据此推断定位精度或生产环境稳定性。
 
 | 项目 | 实际结果 |
 | --- | --- |
@@ -632,11 +653,7 @@ Campus 的[场景截图](images/ch09/ch09-campus.png)来自实际 Gazebo 窗口�
 
 真实输入接入另见 [传感器](images/ch10/ch10-teaching-live-sensors.cast)、[TF 与地图](images/ch10/ch10-teaching-live-mapping.cast)、[巡航停止](images/ch10/ch10-teaching-live-patrol.cast)、[AMCL](images/ch10/ch10-teaching-live-amcl.cast)、[Cartographer](images/ch10/ch10-teaching-live-cartographer.cast)。Cartographer 地图含中间占据概率，原教案按严格等于 0／100 分类时两者可能均为 0%；这不等同于地图没有已知区域，其已知覆盖率实际为 33.5%。
 
-[Cartographer纯定位](images/ch10/ch10-teaching-pure-localization.cast)加载已保存pbstream后，旧轨迹0为FROZEN、新轨迹1为ACTIVE，地图TF可查询；仅证明入口和状态切换，不代表全局重定位精度通过。
-
-[简化Hector真实输入](images/ch10/ch10-teaching-hector-live.cast)收到37次地图、97次位姿与780次里程计消息。静止输入期间仍出现位置漂移，记录仅证明教材算法接入成功；[结果](images/ch10/ch10-teaching-hector-result.json)保留实际数值，不将其作为定位性能验收。
-
-### 录包与半速回放
+#### 录包与半速回放
 
 实际录制使用 `--use-sim-time`，话题为 `/scan /odom /tf /tf_static`。SQLite 包包含 3615 条消息、28.981 秒仿真时间：scan 231、odom 1450、tf 1933、tf_static 1。`ros2 bag info` 的 1970 日期是相对仿真时钟的格式化显示，实际采集身份由运行编号和 CAST 的 UTC 时间戳记录。
 
@@ -646,7 +663,7 @@ Campus 的[场景截图](images/ch09/ch09-campus.png)来自实际 Gazebo 窗口�
 
 ![单源回放生成的真实地图](images/ch10/ch10-bag-map.png)
 
-### 构建与复现边界
+#### 构建与复现边界
 
 COM260 在没有 build/install 的新工作区，使用固定官方源码和原样公开 `prepare-ch09-ch10-interfaces.bash` 构建三个接口包成功；96份安装接口与已验证版本逐项一致，随后13项原生C++已知输入复测通过。Cartographer源码在板端直接获取；Nav2直连下载中途停滞，保留失败记录后改用访问端获取的固定提交Git源码缓存，编译仍在COM260完成。因此这里验证通过的是源码缓存恢复路径，不能视为板端直连下载全部成功。[构建与回归CAST](images/ch10/ch10-interface-bootstrap.cast)、[结构化结果](images/ch10/ch10-interface-bootstrap.json)及[源码获取恢复检查](images/ch10/ch10-interface-recovery.json)分别记录实际结果。
 
@@ -658,23 +675,55 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 最终四个参考包共63个源码与资源文件在本地、COM260和x86逐项SHA-256一致，见[源文件清单](images/ch10/ch10-source-validation.json)。四包共21条编译命令，均为Debug并满足C++17；[编译记录](images/ch10/ch10-compile-commands.json)保留实际命令检查结果。Campus GUI资源的增量安装不改变已验证的C++程序。
 
+<a id="ch11"></a>
+
+## 第 11 章 ICP 与 PLICP 扫描匹配
+
+C++ `icp_demo` 在无噪声已知输入上的误差为 0。100 点带噪样本中，ICP 迭代 21 次后停在局部极小值，最近邻误差为 0.453940 m。结构化墙面样本中，PLICP 迭代 5 次，平移误差为 0.004886 m，角度误差为 0.018187°。[COM260 数值输出](images/ch10/ch10-teaching-numerics.cast) · [x86 数值输出](images/ch10/ch10-teaching-x86-numerics.txt)
+
+给 `scan_matcher` 输入静止扫描序列，两端的 `scan_matcher_stationary` 用例均通过。[COM260 接口记录](images/ch10/ch10-teaching-ros.cast) · [x86 接口记录](images/ch10/ch10-teaching-x86-ros.txt)
+
+<a id="ch12"></a>
+
+## 第 12 章 Hector SLAM
+
+C++ `hector_demo` 的双线性插值结果为 0.15。栅格更新后，占据格、空闲格和未知格的概率分别为 0.993307、0.182426 和 0.5。[COM260 数值输出](images/ch10/ch10-teaching-numerics.cast) · [x86 数值输出](images/ch10/ch10-teaching-x86-numerics.txt)
+
+简化 Hector 节点接入 Gazebo 后，记录到 37 条地图消息、97 条位姿消息和 780 条里程计消息。机器人静止期间估计位姿仍有漂移。[运行记录](images/ch10/ch10-teaching-hector-live.cast) · [位姿与里程计数据](images/ch10/ch10-teaching-hector-result.json)
+
+<a id="ch13"></a>
+
+## 第 13 章 gmapping 粒子滤波 SLAM
+
+C++ `particle_demo` 在 4 个粒子权重均匀时得到有效粒子数 4，权重集中在一个粒子时得到 1。重采样示例输出 8 个粒子。[COM260 数值输出](images/ch10/ch10-teaching-numerics.cast) · [x86 数值输出](images/ch10/ch10-teaching-x86-numerics.txt)
+
+教案的仿真实例检查激光、里程计与 TF 输入。共用实验录到 231 条扫描、1450 条里程计、1933 条动态 TF 和 1 条静态 TF。该次建图回放使用 slam_toolbox，完整 gmapping 建图未实测。[录包与回放结果](images/ch10/ch10-bag-play-result.json) · [回放记录](images/ch10/ch10-bag-play.cast)
+
+<a id="ch14"></a>
+
+## 第 14 章 AMCL 定位
+
+COM260 上的教学节点接收到仿真粒子云。运动与停止测试获得 456 条里程计消息，末次粒子云有 731 个粒子。以停稳后的位姿对照 Gazebo 真值，位置误差为 0.117 m，偏航误差为 8.83°。全局重定位另行检查了服务调用和粒子重置，收敛精度未单独测量。[教学节点输出](images/ch10/ch10-teaching-live-amcl.cast) · [误差记录](images/ch10/ch10-amcl.cast) · [RViz 截图](images/ch10/ch10-amcl-rviz.png) · [RViz 连续录像](images/ch10/ch10-amcl.mp4)
+
+<a id="ch15"></a>
+
+## 第 15 章 Cartographer 图优化 SLAM
+
+C++ `graph_demo` 的图优化误差由 21.992503610 降至显示精度下的 0，优化后的第二个位姿为 `(2, 0, 0)`。[COM260 数值输出](images/ch10/ch10-teaching-numerics.cast) · [x86 数值输出](images/ch10/ch10-teaching-x86-numerics.txt)
+
+在纯定位模式下加载已保存的 pbstream，轨迹 0 为 `FROZEN`，新轨迹 1 为 `ACTIVE`，可查询从 `map` 到 `base_link` 的变换。两轮二维建图与导出数据见[实验 10](#lab10)。[纯定位运行记录](images/ch10/ch10-teaching-pure-localization.cast) · [轨迹状态与 TF](images/ch10/ch10-teaching-pure-localization-result.json)
+
 <a id="ch16-ch17"></a>
+<a id="ch16"></a>
 
-## 第 16～17 章教案：Nav2 组件与全局代价地图
+## 第 16 章 Nav2 架构与核心组件
 
-验收批次：`20261108T142740Z-packages`。COM260 运行 9 个 C++17 教学入口，x86 正式 `ch06-nav2` 镜像运行 Nav2 1.1.20、Burger／Museum 与 RViz；两端使用有线 CycloneDDS、Domain 181。Nav2 接口源码固定为 `a097086719c88f781aa59788eca29ac6ca5e56db`。环境、构建、源码和媒体均绑定此批次，完整清单见[运行索引](images/nav2_ch16_ch17/validation-runs.json)。
+[第 16 章教案](../teaching_docs_k3_com260_kit/ch16_Nav2架构与核心组件.md)、[双端环境](ch00_common_setup.md#ch16)。配套实验见[实验 11 的六个练习](#lab11)。
 
-当前 x86 入口使用独立 `ch16-ch17-nav2` 镜像，包含同版本 RViz 的退出修复；其[启动、使用与退出验收](#rviz-exit)单独记录。上述课程用例的原始记录保持对应原镜像。
-
-**第 16～17 章范围内的构建、原用例、负向检查、停止反馈与媒体验收通过。** 本节按教案编号记录，覆盖原第 11 章导航实验的基础部分；完整导航综合实验还涉及后续规划与控制章节。
-
-### 实测结果
+### 规划、导航与行为树
 
 | 项目 | 实际结果与证据 |
 | --- | --- |
-| 双端构建 | 板端通过统一 setup 的 `--build-ch16`／`--build-ch17` 构建 7 个实例包，x86 通过 `x86-ch16-ch17.bash build` 构建；两端各 9 个 C++17 Debug 编译单元和可执行文件，ELF 分别为 RISC-V、x86-64。[COM260](images/nav2_ch16_ch17/20261108T142740Z-packages/build-board.cast)、[x86](images/nav2_ch16_ch17/20261108T142740Z-packages/build-x86.cast)、[二进制与编译信息](images/nav2_ch16_ch17/20261108T142740Z-packages/validation-results.json) |
-| 确定输入 | 两端各 12 项代价数值与 31 项 ROS 接口检查通过，包含重复 configure、PGM/YAML 语义、保留地图、无效输入拒绝、激光清除／标记和点云高度过滤。[COM260](images/nav2_ch16_ch17/20261108T142740Z-packages/checks-board.cast)、[x86](images/nav2_ch16_ch17/20261108T142740Z-packages/checks-x86.cast) |
-| 真实地图与传感器 | 11 项检查通过：992×992 Museum 地图的几何和全部像素与 Nav2 Map Server 一致；真实 LaserScan／TF 产生教学栅格，C++ 调试节点收到两张真实代价地图；无效规划器、负取消延时与服务缺失按预期失败。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/live-checks.cast) |
 | 公开规划入口 | C++ `global_planner_client` 从 `(0,0)` 到 `(3,2)` 生成 313 个路径点，退出码 0。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/planner.cast)、[结果](images/nav2_ch16_ch17/20261108T142740Z-packages/board/planner.json) |
 | 原目标 `(3,2,0)` | SUCCEEDED；147.991 秒、2437 条里程计；停稳 TF 为 `(3.1718,2.0013)`，原坐标误差 **0.1719 m ≤ 0.25 m**，尾段停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/original-goal.cast)、[数值与原始里程计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/navigation/goal-3-2.json) |
 | 五点任务 | 五次 SUCCEEDED，每点暂停 3 秒；224.489 秒、3873 条里程计。逐点误差 `0.0832, 0.0971, 0.0970, 0.0985, 0.0978` m，五点均停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/five-goals.cast)、[逐点 TF](images/nav2_ch16_ch17/20261108T142740Z-packages/board/navigation/five-goals.json) |
@@ -682,10 +731,6 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 | 到达后动作 | Wait 实测 **2.00 个仿真秒**；Spin 成功，里程计累计旋转 **6.3057 rad**，对应请求 6.2832 rad。[状态与里程计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/trees/post-arrival.json)、[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/post-arrival.cast) |
 | 取消与退出信号 | 提前取消、SIGINT、SIGTERM 均取得 CANCELED，程序按约定返回 1；分别 169／160／156 条里程计确认尾段停止。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/cancel-signals.cast) |
 | Action 异常 | 隔离域内目标拒绝、执行中止、取消不响应共 3 项通过；取消不响应约 11.26 秒退出。此项使用可控服务端。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/action-failures.cast) |
-| 动态障碍 | 箱体区域原始最大代价 **0 → 254 → 0**，分别对应加入前、加入后、移除后；箱体已移除。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/costmap.cast)、[原始栅格统计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/costmap/removed.json) |
-| 膨胀与清除 | 系数 1／10 时膨胀栅格代价总和为 5139580／1713890；系数已恢复为 3，全局与局部清除服务返回，地图继续更新 |
-| 配置题与恢复 | 机器人半径 0.3 m、膨胀 0.6 m、分辨率 0.05 m；局部 60×60 栅格对应 3×3 m，update_frequency 参数为 5 Hz。原半径 0.22 m／膨胀 0.55 m 等值均已读回确认恢复；参数频率不作为实际发布率。[配置结果](images/nav2_ch16_ch17/20261108T142740Z-packages/board/exercise-config.json)、[最终读回](images/nav2_ch16_ch17/20261108T142740Z-packages/parameters-final.cast) |
-| 公开入口 | `start`、`exec`、`stop` 和重复 `stop` 通过；本轮课程容器为 0，x86 桌面仍可访问。[启动](images/nav2_ch16_ch17/20261108T142740Z-packages/start.cast)、[停止](images/nav2_ch16_ch17/20261108T142740Z-packages/stop.cast) |
 
 ### 终点条件与行为树
 
@@ -695,9 +740,7 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 终点取停止后的 map→base_link TF，同时检查实际 `/odom` 速度。AMCL 消息受更新阈值影响，末条消息可能早于真实停止位置。仿真数值不作为物理机器人定位精度结论。
 
-### 截图与连续录像
-
-以下原用例媒体来自 `20261108T142740Z-packages` 的实际 Gazebo／RViz 窗口，主机录屏，原速连续保存；[采集时间、格式、派生片段与 SHA-256](images/nav2_ch16_ch17/20261108T142740Z-packages/media-validation.json)分别登记。4 份 MP4 和 3 份 GIF 完成整段解码，关键帧已目检。
+### 导航截图与录像
 
 ![原自定义行为树目标的导航、等待与旋转](images/nav2_ch16_ch17/20261108T142740Z-packages/original-tree-gazebo.gif)
 
@@ -711,13 +754,22 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 [360 秒五点 RViz 原片](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/five-goals-rviz.mp4)显示路径、机器人位置及代价地图变化。
 
-![箱体加入后的障碍与膨胀区域](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-added.png)
+<a id="nav2-build-checks"></a>
 
-![箱体移除后的区域](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-removed.png)
+### 双端构建与联合检查
 
-[120 秒动态代价地图原片](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-rviz.mp4)、[0～90 秒原速 GIF](images/nav2_ch16_ch17/20261108T142740Z-packages/costmap-rviz.gif)与区域数值配合阅读。近景 RViz 仅调整观察视角，未修改原课程配置。
+批次 `20261108T142740Z-packages` 同时覆盖本章和[第 17 章代价地图](#ch17)。COM260 运行 9 个 C++17 教学入口，x86 正式 `ch06-nav2` 镜像运行 Nav2 1.1.20、Burger／Museum 与 RViz；两端使用有线 CycloneDDS、Domain 181。Nav2 接口源码固定为 `a097086719c88f781aa59788eca29ac6ca5e56db`。环境、构建、源码和媒体均绑定此批次，完整清单见[运行索引](images/nav2_ch16_ch17/validation-runs.json)。
 
-### 验证来源
+当前 x86 入口使用独立 `ch16-ch17-nav2` 镜像，包含同版本 RViz 的退出修复；其[启动、使用与退出验收](#rviz-exit)单独记录。上述课程用例的原始记录保持对应原镜像。
+
+| 项目 | 实际结果与证据 |
+| --- | --- |
+| 双端构建 | 板端通过统一 setup 的 `--build-ch16`／`--build-ch17` 构建 7 个实例包，x86 通过 `x86-ch16-ch17.bash build` 构建；两端各 9 个 C++17 Debug 编译单元和可执行文件，ELF 分别为 RISC-V、x86-64。[COM260](images/nav2_ch16_ch17/20261108T142740Z-packages/build-board.cast)、[x86](images/nav2_ch16_ch17/20261108T142740Z-packages/build-x86.cast)、[二进制与编译信息](images/nav2_ch16_ch17/20261108T142740Z-packages/validation-results.json) |
+| 确定输入 | 两端各 12 项代价数值与 31 项 ROS 接口检查通过，包含重复 configure、PGM/YAML 语义、保留地图、无效输入拒绝、激光清除／标记和点云高度过滤。[COM260](images/nav2_ch16_ch17/20261108T142740Z-packages/checks-board.cast)、[x86](images/nav2_ch16_ch17/20261108T142740Z-packages/checks-x86.cast) |
+| 真实地图与传感器 | 11 项检查通过：992×992 Museum 地图的几何和全部像素与 Nav2 Map Server 一致；真实 LaserScan／TF 产生教学栅格，C++ 调试节点收到两张真实代价地图；无效规划器、负取消延时与服务缺失按预期失败。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/live-checks.cast) |
+| 公开入口 | `start`、`exec`、`stop` 和重复 `stop` 通过；本轮课程容器为 0，x86 桌面仍可访问。[启动](images/nav2_ch16_ch17/20261108T142740Z-packages/start.cast)、[停止](images/nav2_ch16_ch17/20261108T142740Z-packages/stop.cast) |
+
+两章的课程媒体来自 `20261108T142740Z-packages` 的实际 Gazebo／RViz 窗口，主机录屏，原速连续保存；[采集时间、格式、派生片段与 SHA-256](images/nav2_ch16_ch17/20261108T142740Z-packages/media-validation.json)分别登记。4 份 MP4 和 3 份 GIF 完成整段解码，关键帧已目检。
 
 [源码指纹](images/nav2_ch16_ch17/20261108T142740Z-packages/source-validation.json)确认本地、COM260 与 x86 的 47 个构建源文件逐项一致，实跑结束后再次核对一致；[结构化结果](images/nav2_ch16_ch17/20261108T142740Z-packages/validation-results.json)、原始终端记录、服务端日志、里程计、验证脚本和媒体均列于[批次清单](images/nav2_ch16_ch17/20261108T142740Z-packages/manifest.json)。Python 仅用于 Launch、采集和验证，教学执行示例为 C++17。
 
@@ -741,32 +793,9 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 
 [35 秒连续导航录像](images/nav2_ch16_ch17/rviz_close/navigation.mp4)为本批次实际窗口录制，1280×800、12 fps，整段解码和关键帧目检通过。构建、导航、三种退出的原始日志及源码／媒体 SHA-256 见[验证记录](images/nav2_ch16_ch17/rviz_close/verification.json)。本次专项回归在 x86 完成，COM260 与整章用例沿用上方独立批次；粒子云 QoS 提示仍保留，不计入显示通过项。
 
-操作入口见 [Nav2 公共环境](nav2_common_setup.md)；教学内容见[第 16 章](../teaching_docs_k3_com260_kit/ch16_Nav2架构与核心组件.md)和[第 17 章](../teaching_docs_k3_com260_kit/ch17_全局代价地图.md)。
+<a id="lab11"></a>
 
-<a id="ch18-ch19"></a>
-
-## 第 18～19 章：全局路径规划与局部控制
-
-批次 `20261111T042601Z-planning`：COM260 原生 RISC-V C++17，x86 Gazebo / Nav2 / RViz，ROS 2 Humble；使用独立章节工作区与第 16～17 章修复后的 RViz 镜像。入口、实际参数、逐项数值与截图视频见[教案示例运行说明](nav2_planning_setup.md#7-结果与媒体)。
-
-| 验收内容 | 实际结果 |
-|---|---|
-| 构建与一致性 | 两端各 5 项已知输入测试通过；130 个源码和运行配置在本地、COM260、x86 以及运行前后逐项一致 |
-| 第 18 章教学示例 | Dijkstra/A* 等代价 65.9411，57 点；Hybrid-A* 18 点；平滑、修剪、重采样、代价优化已知输入通过 |
-| 自编 A* 真实地图 | `(1,0)` 成功；原默认 `(3,2)` 位于代价 253 栅格，明确拒绝 |
-| 官方全局规划器 | NavFn Dijkstra、NavFn A*、Smac 2D、Smac Hybrid-A* 到同一 `(2,-1)` 均完成规划、代价检查、实际导航及停车 |
-| 控制器对照 | DWB、RPP、MPPI 到同一 `(1,0)` 均成功；终点误差分别 0.0985 / 0.0957 / 0.0977 m |
-| 箱体避让 | DWB（预测 3.0 s）、RPP、自编 DWA 均完成 `(1.5,0)`，最小净距 0.0796 / 0.2690 / 0.1344 m；DWB 默认 1.7 s 未完成该场景，不作为通过配置 |
-| 0.8 m 走廊 | DWB 默认配置完成 `(2.2,0)`，最小墙体净距 0.0683 m，终点误差 0.0977 m，停止通过 |
-| 负向与停止 | 无效速度、无输入超时、SIGINT、SIGTERM、扫描失联符合预期；以真实 `/odom` 停车判断，非零返回值不冒充导航成功 |
-
-[结构化验收结果](images/nav2_ch18_ch19/validation-results.json)、[源码指纹](images/nav2_ch18_ch19/source-sha256.json)、[媒体校验](images/nav2_ch18_ch19/media-validation.json)及[本次原始数据](images/nav2_ch18_ch19/runtime-data.tar.gz)可交叉复核。规划时间分 ROS 时钟与墙钟 Action 往返；净距为已知仿真几何计算结果，跟踪误差参照当时的全局路径。截图、原速 MP4、GIF 和 CAST 均来自对应实跑。
-
-简化 Hybrid-A* 未实现解析 Reeds–Shepp 连接，RPP 数值示例与官方控制插件分别验证；自适应切换保留为设计题。既有 RViz GLSL / 粒子云 QoS 提示仍保留，粒子云显示不计为通过项；退出修复见[专项验证](#rviz-exit)。
-
-<a id="ch11"></a>
-
-## 第 11 章 Nav2 自主导航（教案 16～20 章共用）
+### 实验 11 · Nav2 自主导航（第 16～20 章共用）
 
 使用原六个练习、目标坐标和方向、四航点及两圈巡逻规则。COM260 原生运行 `navigation_lab_cpp` 的六个 C++17 入口，x86 运行 Burger / Humble Nav2。原 XBot-U 场景与地图未随仓库提供，本实验补充独立 `navigation-lab` 场景及与其几何一致的地图；原 Museum 入口继续用于教案示例。
 
@@ -786,3 +815,266 @@ Campus GUI资源独立安装与检查见[双端课程和练习目录验证](imag
 双端构建通过，第 18～19 章的五项算法测试仍通过。本地、COM260、x86 的 20 个本次源码与配置文件逐项 SHA-256 一致；`stop_on_failure=true` 的覆盖值单独登记，测试后恢复 false。原 `start` 入口的 Museum 地图、单目标导航和 RViz 正常退出另有回归记录。
 
 截图与录像见[实验手册](ch11_lab.md#实际运行证据)。7 份 MP4、2 份 GIF 均完整解码，并抽查关键画面；MP4 是实际窗口的连续原速录像，GIF 为原速节选。数值、命令、源码哈希与各次结果见[结构化结果](images/ch11/validation-results.json)，原始日志和里程计见[当前原始数据](images/ch11/runtime-data.tar.gz)，媒体时长及文件哈希见[校验记录](images/ch11/media-validation.json)。
+
+<a id="ch17"></a>
+
+## 第 17 章 全局代价地图
+
+[第 17 章教案](../teaching_docs_k3_com260_kit/ch17_全局代价地图.md)、[双端环境](ch00_common_setup.md#ch17)。构建、已知输入以及 Museum 地图和激光的跨机检查见[双端构建与联合检查](#nav2-build-checks)。配套实验见[实验 11 的六个练习](#lab11)。
+
+### 障碍物、膨胀层与参数恢复
+
+| 项目 | 实际结果与证据 |
+| --- | --- |
+| 动态障碍 | 箱体区域原始最大代价 **0 → 254 → 0**，分别对应加入前、加入后、移除后；箱体已移除。[CAST](images/nav2_ch16_ch17/20261108T142740Z-packages/costmap.cast)、[原始栅格统计](images/nav2_ch16_ch17/20261108T142740Z-packages/board/costmap/removed.json) |
+| 膨胀与清除 | 系数 1／10 时膨胀栅格代价总和为 5139580／1713890；系数已恢复为 3，全局与局部清除服务返回，地图继续更新 |
+| 配置题与恢复 | 机器人半径 0.3 m、膨胀 0.6 m、分辨率 0.05 m；局部 60×60 栅格对应 3×3 m，update_frequency 参数为 5 Hz。原半径 0.22 m／膨胀 0.55 m 等值均已读回确认恢复；参数频率不作为实际发布率。[配置结果](images/nav2_ch16_ch17/20261108T142740Z-packages/board/exercise-config.json)、[最终读回](images/nav2_ch16_ch17/20261108T142740Z-packages/parameters-final.cast) |
+
+### RViz 代价地图
+
+![箱体加入后的障碍与膨胀区域](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-added.png)
+
+![箱体移除后的区域](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-removed.png)
+
+[120 秒动态代价地图原片](images/nav2_ch16_ch17/20261108T142740Z-packages/x86/costmap-rviz.mp4)、[0～90 秒原速 GIF](images/nav2_ch16_ch17/20261108T142740Z-packages/costmap-rviz.gif)与区域数值配合阅读。近景 RViz 仅调整观察视角，未修改原课程配置。
+
+<a id="ch18-ch19"></a>
+<a id="ch18"></a>
+
+## 第 18 章 全局路径规划
+
+[第 18 章教案](../teaching_docs_k3_com260_kit/ch18_全局路径规划.md)、[双端环境](ch00_common_setup.md#ch18)。配套实验见[实验 11 的六个练习](#lab11)。
+
+### 栅格搜索与 Nav2 规划器
+
+| 验收内容 | 实际结果 |
+|---|---|
+| 第 18 章教学示例 | Dijkstra/A* 等代价 65.9411，57 点；Hybrid-A* 18 点；平滑、修剪、重采样、代价优化已知输入通过 |
+| 自编 A* 真实地图 | `(1,0)` 成功；原默认 `(3,2)` 位于代价 253 栅格，明确拒绝 |
+| 官方全局规划器 | NavFn Dijkstra、NavFn A*、Smac 2D、Smac Hybrid-A* 到同一 `(2,-1)` 均完成规划、代价检查、实际导航及停车 |
+
+简化 Hybrid-A* 未实现解析 Reeds–Shepp 连接。规划时间分别记录 ROS 时钟耗时与墙钟 Action 往返时间。
+
+![NavFn 规划路径与 RViz 中的代价地图](images/nav2_ch18_ch19/navfn-free-rviz.png)
+
+[65 秒 RViz 原速录像](images/nav2_ch18_ch19/navfn-free-rviz.mp4)展示同一目标的规划与执行。
+
+<a id="planning-build-checks"></a>
+
+### 双端构建与原始数据
+
+批次 `20261111T042601Z-planning` 同时覆盖本章和[第 19 章局部控制](#ch19)。COM260 原生运行 RISC-V C++17，x86 运行 ROS 2 Humble、Gazebo、Nav2 和 RViz。RViz 镜像的[退出验证](#rviz-exit)单独记录。
+
+| 验收内容 | 实际结果 |
+|---|---|
+| 构建与一致性 | [COM260 构建](images/nav2_ch18_ch19/board-build.cast)与 [x86 构建](images/nav2_ch18_ch19/x86-build.cast)分别通过 5 项已知输入测试；采集时 130 个源码和运行配置在本地、COM260、x86 以及运行前后逐项一致 |
+
+[结构化验收结果](images/nav2_ch18_ch19/validation-results.json)、[源码指纹](images/nav2_ch18_ch19/source-sha256.json)、[媒体校验](images/nav2_ch18_ch19/media-validation.json)及[本次原始数据](images/nav2_ch18_ch19/runtime-data.tar.gz)可交叉复核。截图、原速 MP4、GIF 和 CAST 均来自对应实跑。
+
+<a id="ch19"></a>
+
+## 第 19 章 局部路径规划
+
+[第 19 章教案](../teaching_docs_k3_com260_kit/ch19_局部路径规划.md)、[双端环境](ch00_common_setup.md#ch19)。两端构建、源码指纹、媒体校验与里程计原始数据见[同批次构建记录](#planning-build-checks)。配套实验见[实验 11 的六个练习](#lab11)。
+
+### 控制器对比与停车
+
+| 验收内容 | 实际结果 |
+|---|---|
+| 控制器对照 | DWB、RPP、MPPI 到同一 `(1,0)` 均成功；终点误差分别 0.0985 / 0.0957 / 0.0977 m |
+| 箱体避让 | DWB（预测 3.0 s）、RPP、自编 DWA 均完成 `(1.5,0)`，最小净距 0.0796 / 0.2690 / 0.1344 m；DWB 默认 1.7 s 未完成该场景，不作为通过配置 |
+| 0.8 m 走廊 | DWB 默认配置完成 `(2.2,0)`，最小墙体净距 0.0683 m，终点误差 0.0977 m，停止通过 |
+| 负向与停止 | 无效速度、无输入超时、SIGINT、SIGTERM、扫描失联符合预期；以真实 `/odom` 停车判断，非零返回值不冒充导航成功 |
+
+净距按已知仿真几何计算，跟踪误差参照当时的全局路径。RPP 数值示例与官方控制插件分别验证，自适应切换为设计题。RViz 有 GLSL 和粒子云 QoS 提示，粒子云显示未计入通过项。
+
+![DWB 通过净宽 0.8 m 的走廊](images/nav2_ch18_ch19/corridor-gazebo.png)
+
+[65 秒 Gazebo 原速录像](images/nav2_ch18_ch19/corridor-gazebo.mp4)展示 DWB 通过走廊的过程。
+
+<a id="ch20-ch21"></a>
+<a id="ch20"></a>
+
+## 第 20 章 行为树与恢复行为
+
+[第 20 章教案](../teaching_docs_k3_com260_kit/ch20_行为树与恢复行为.md)、[双端环境](ch00_common_setup.md#ch20)。原六个练习见 [Nav2 实验手册](ch11_lab.md)，共用实验记录见[实验 11](#lab11)。
+
+### 行为树与恢复动作
+
+批次 `20261117-com260-behavior-running` 的 16 项实际动作检查通过。条件树以有状态节点保留 RUNNING，主循环每 0.1 s tick；停止树时取消当前 Action 并等待结果。
+
+| 检查 | 实际结果 |
+|---|---|
+| Spin / BackUp | 原 1.57 rad 指令测得 1.6188 rad；原 0.15 m 后退指令测得 0.15485 m，均完成并停稳 |
+| 恢复策略 | 原六步顺序，第一步 Spin 成功即结束，实测 1.6327 rad |
+| 重复旋转 | 三次分别为 1.6170 / 1.6183 / 1.6195 rad，均满足 1.57±0.15 rad 且停稳 |
+| 指定 XML | 到 `(1,0)` 返回 SUCCEEDED，末次 AMCL 位置误差 0.1075 m，515 条 odom 确认运动及停车 |
+| 条件树 | 电量 0.1、0.2 和缺失输入均 FAILURE 且无运动；0.8 导航到 `(0,0)`，RUNNING→SUCCESS，位置误差 0.0495 m，606 条 odom |
+| 取消与非法输入 | Spin 和条件树分别以 SIGINT / SIGTERM 请求取消，实际 CANCELED 并停稳；速度 0 被拒绝且不运动 |
+| RViz | 正常退出，Nav2 的 bt_navigator 仍为 active；继承的退出修复有效 |
+
+Gazebo 实时倍率设为 0.16 后，COM260 的两个客户端均按仿真时钟完成动作。实测批次为 `20261118T073829Z-slow-recovery`，x86 在独立显示会话中运行课程场景。墙钟和仿真耗时均从启动客户端计至返回。
+
+| 动作 | 墙钟 / 仿真耗时 | 里程计运动量 | Action 结果 |
+|---|---|---|---|
+| Spin | 13.55 / 2.17 s | 1.5951 rad | SUCCEEDED |
+| BackUp | 22.01 / 3.52 s | 0.1512 m | SUCCEEDED |
+| 运动中取消 Spin | 7.13 / 1.14 s | 0.7200 rad | CANCELED |
+| 运动中取消 BackUp | 9.69 / 1.55 s | 0.0584 m | CANCELED |
+
+四项均在返回后继续采集 `/odom`。每项末尾 2 s 各收到 16 条反馈，线速度与角速度绝对值分别小于 0.02 m/s 和 0.03 rad/s。
+
+共用六练习在本章独立工作区重新运行：四目标误差为 0.0976 / 0.0975 / 0.0971 / 0.0975 m；两种 `stop_on_failure` 配置均覆盖航点 0～3、无遗漏；自动 Spin、BackUp 后，按手册先加载原地图、再移除障碍，同一个 `(4,0)` 目标成功，误差 0.1021 m；2188 条 odom 确认运动及停车。监控节点记录 84 次路径首尾变化、1842 条局部路径和 1906 条速度，正常退出。普通与动态障碍巡逻均完成两圈并停稳；动态扫描 646 份，ROS 间隔中位数 0.1 s，其中 478 份在静态空闲区测到障碍代价，停止注入后观测位置代价恢复为 0。每次 RViz 均正常退出，Nav2 仍为 active。
+
+练习 3 的公开命令在批次 `20261117T091049Z-recovery-public-repeat` 验证，恢复完成后等待 2 s 再执行，未使用预连接服务客户端。同一次练习的 [RViz 局部动图](images/ch20_ch21/recovery-rviz.gif)取自原片第 8～48 秒，包含 Spin、BackUp 和恢复导航。[Gazebo 原片](images/ch20_ch21/recovery-gazebo.mp4)与 [RViz 原片](images/ch20_ch21/recovery-rviz.mp4)均持续到机器人到达目标并停车。
+
+![恢复后到达原目标](images/ch20_ch21/recovery-rviz.png)
+
+原始 Action / Service 已知输入另有两端各 11 项通过，覆盖发送字段、20% 边界、清图重试和持续失败。三机器人另用一个 Gazebo Harmonic 世界和三套 Nav2 完成两轮端到端导航。COM260 运行原 C++ 调度器，每轮向三个命名空间各发一个目标。两轮均收到三个 `SUCCEEDED`，并通过里程计核对停车。
+
+| 仿真机器人 | 目标 (x, y)，单位 m | 实时测量录像中的到达误差 | Gazebo 窗口录像中的到达误差 |
+|---|---|---|---|
+| robot1 | (0.8, −1.0) | 0.111 m | 0.107 m |
+| robot2 | (0.8, 0.0) | 0.150 m | 0.096 m |
+| robot3 | (0.8, 1.0) | 0.072 m | 0.081 m |
+
+误差取自 Gazebo 世界坐标。每台车从 x = −1.4 m 出发，两轮均独立核对了目标 UUID、实际移动和停车后的持续速度。[三车测量结果](images/ch20/fleet-validation.json) · [实时状态录像](images/ch20/fleet-arrival.mp4) · [Gazebo 窗口录像](images/ch20/fleet-gazebo.mp4)
+
+使用公开的 `start-fleet`、`tasks.yaml` 和两份行为树 XML，在新 x86 工作区及新编译的 COM260 调度器上运行。三车最终状态均为 4，Gazebo 世界坐标误差分别为 0.147、0.130、0.104 m，随后连续 3 s 线速度与角速度为 0。按教案从新终端查询三个结果均返回 `status: 4`，`stop fleet` 退出码为 0。结果记入上述三车测量文件的 `public_workflow`。
+
+![同一 Gazebo 世界中的三辆仿真车](images/ch20/fleet-gazebo.png)
+
+![COM260 行为树接口已知输入结果](images/ch20_ch21/ch20-interfaces.png)
+
+![实际导航与恢复场景](images/ch20_ch21/behavior-gazebo.png)
+
+[Gazebo 连续原速录像](images/ch20_ch21/behavior-gazebo.mp4)、[RViz 连续原速录像](images/ch20_ch21/behavior-rviz.mp4)和[真实 SSH 终端记录](images/ch20_ch21/behavior.cast)对应同一批次。
+
+行为树与恢复动作使用 COM260 有线 `.88`、x86 Wi-Fi `.4` 和 CycloneDDS 域 202。动作结果同时核对里程计的转角或位移及停车反馈。两章共用的源码指纹与采集文件见[双端构建记录](#behavior-vision-build)。
+
+<a id="ch21"></a>
+
+## 第 21 章 视觉 SLAM 导论
+
+[第 21 章教案](../teaching_docs_k3_com260_kit/ch21_视觉SLAM导论.md)、[双端环境](ch00_common_setup.md#ch21)。COM260 运行 C++17 视觉节点，x86 提供仿真图像、RViz 显示及离线数据回放。
+
+### 相机、ORB 与数学步骤
+
+批次 `20261117T090610Z-camera-moving` 按 RGB 输入检查、相机处理、ORB 的顺序运行原独立示例。相机启动保留原版 `drive:=true` 及默认巡航参数；输入为 Gazebo RGB。
+
+| 检查 | 实际结果 |
+|---|---|
+| RGB / CameraInfo / TF | 15 s 内 41 帧 RGB、45 份内参，41 张图像内容不同，320×180 / rgb8，时间戳递增；fx=fy=277.1273、cx=159.5、cy=89.5；base_link→camera_link 为 `(0.045,0,0.12)` |
+| 相机 C++ 节点 | 持续处理图像与内参，记录 5 次 RGB 与 5 次内参输出，正常退出 0 |
+| ORB C++ 节点 | 15 s 内 40 帧匹配图、45 份内参，40 张输出内容不同，640×180 / bgr8，时间戳递增；节流日志采样为 0～19 个特征、0～7 个匹配，正常退出 0 |
+| 两端已知输入 | 各五项数学/算法测试通过；四点 RGB-D 坐标及颜色、无效深度、5 m 边界、相同图像 ORB 匹配四项接口检查通过 |
+| 数学结果 | 投影 `(627.5,393.75)`、反投影误差 0、重投影误差 5 px；已知 RGB-D 的 8480 个 TSDF 点及 ICP；IMU 示例位置 0.5、速度 1 |
+
+![COM260 的针孔相机、直接法步骤、RGB-D 与 IMU 已知输入](images/ch20_ch21/ch21-math.png)
+
+![RGB-D 与 ORB 已知输入接口检查](images/ch20_ch21/ch21-interfaces.png)
+
+![Gazebo 中的 Burger 相机场景](images/ch20_ch21/camera-gazebo.png)
+
+[30 秒原速 Gazebo 录像节选](images/ch20_ch21/camera-gazebo.mp4)来自同配置的独立观察批次 `20261117T093149Z-camera-motion`，镜头跟随机器人；与下方匹配录像分别录制。原固定巡航会遇到墙体，里程计增量不能直接作为真实位移；低纹理画面中 ORB 可以输出 0 个特征或匹配。
+
+![COM260 处理并由 x86 显示的 ORB 匹配图](images/ch20_ch21/orb-matches.png)
+
+[20 秒原速匹配图录像节选](images/ch20_ch21/orb-matches.mp4)、[12 秒 GIF 节选](images/ch20_ch21/orb-matches.gif)、[真实相机示例终端记录](images/ch20_ch21/camera.cast)及[已知输入终端记录](images/ch20_ch21/known-inputs.cast)可交叉核对。
+
+<a id="behavior-vision-build"></a>
+
+### 双端构建记录
+
+两端各五项 CTest 与接口测试均有当前记录。第 20、21 章共核对 164 个源码、包说明及构建配置文件，采集时本地与 x86 的指纹逐项一致；其中 COM260 使用的 113 个文件同样一致，另 51 个为 x86 侧核对的仿真和镜像文件。详见[结构化结果](images/ch20_ch21/validation-results.json)、[源码指纹](images/ch20_ch21/source-sha256.json)、[媒体校验](images/ch20_ch21/media-validation.json)及[当前原始数据](images/ch20_ch21/runtime-data.tar.gz)。
+
+### RGB-D 仿真建图
+
+批次 `20261118T064757Z-rgbd-museum` 使用 x86 Gazebo 的 Museum / Burger RGB-D 相机，COM260 原生运行 C++17 `orbslam3/rgbd`。两端通过有线 IPv6、CycloneDDS / Domain 203 通信，彩色图采用 PNG，深度采用 `compressedDepth`。此结果验证第 21 章第 4 题的仿真软件链路，**D415 实机未验证**。
+
+| 检查 | 实际结果 |
+|---|---|
+| 输入 | 配准的 640×480 RGB / 深度；fx=fy=615、cx=320、cy=240；深度为米制 `32FC1`，相机仿真更新率设置为 30 Hz |
+| 跟踪 | 收到并处理 555 对图像，555 对均为 `state=2`，未发生地图重置；不表示 Gazebo 发布的每帧均已接收 |
+| 处理速度 | 回调耗时中位数 67.259 ms、P95 81.742 ms、最大 87.982 ms；处理输出平均 4.766 帧/墙钟秒，仿真慢于实时 |
+| 运动与停车 | 前进指令 0.05 m/s × 6 个仿真秒，转向 0.08 rad/s × 4 个仿真秒；804 条 odom 测得累计 0.30030 m、0.31944 rad，末段 101 条速度均为 0 |
+| 轨迹与地图 | 保存 555 个轨迹位姿、17 个关键帧及 2443203 字节 Atlas；轨迹数值有限、时间递增、四元数为单位长度；显示的当前跟踪地图点为 300～783 个 |
+| 退出 | C++ 节点退出 0；RViz 关闭窗口并在布局提示中选择 Discard 后退出 0；两路录制均退出 0，仿真容器正常停止 |
+| 异常输入 | 缺少参数、已有输出、无输入均退出 1；尺寸不一致、错误深度编码和重复时间戳被拒绝，不生成有效轨迹 |
+| 旧入口回归 | 原 `start-camera` 仍为 320×180 RGB / `drive:=true`，收到 50 帧图像、54 份内参和 622 条 odom，无新增 RGB-D 话题；两端各五项数学测试通过 |
+
+单独的静止场景传输检查 `20261118-rgbd-v6-probe` 比较 x86 原始图像与 COM260 解码图像：RGB 像素完全一致，深度有效掩码一致，深度量化误差最大 0.956 mm、平均 0.191 mm。该检查与上方运动录像分开进行。
+
+![RGB-D 输入、估计相机轨迹和稀疏地图](images/ch20_ch21/rgbd-rviz.png)
+
+[约 108 秒 RViz 连续原速录像](images/ch20_ch21/rgbd-rviz.mp4)与 [12 秒原速 GIF 节选](images/ch20_ch21/rgbd-rviz.gif)显示图像变化、轨迹增长和地图点更新；GIF 对应录像第 58～70 秒。
+
+![Gazebo 中的 RGB-D 仿真机器人](images/ch20_ch21/rgbd-gazebo.png)
+
+[约 108 秒 Gazebo 连续原速录像](images/ch20_ch21/rgbd-gazebo.mp4)与[真实 SSH 终端记录](images/ch20_ch21/rgbd.cast)对应同轮 COM260 运行。[结构化结果](images/ch20_ch21/rgbd-validation.json)与[当前原始数据](images/ch20_ch21/rgbd-runtime-data.tar.gz)包含运动反馈、轨迹、地图及退出状态。
+
+里程计用于确认运动与停车，不作为视觉轨迹真值；此短程建图未评估定位精度、回环或 30 Hz 墙钟实时性能。D415 的驱动、USB、实际深度误差和真实场景性能仍需连接设备验证。
+
+板端 `image_transport 3.1.12` / `compressed_depth_image_transport 2.5.4` 启动时记录了一次五参数 `subscribeImpl` 未覆盖提示。安装头文件的兼容实现随后调用四参数订阅；该运行实际完成深度解码和 555 对图像跟踪。此提示未被隐藏，保留在终端及原始日志中。
+
+两端从新终端加载有线视觉配置后，Gazebo 彩色图与深度图到达 COM260，38 对输入全部跟踪。x86 收到 `map` 坐标系的轨迹及含 769 个点的一帧点云，RViz 已订阅地图点，板端正常退出。批次为 `20261118T074120Z-fresh-rgbd`。
+
+### 录包与轨迹评估
+
+批次 `20261118T033812Z-euroc-vio` 使用 EuRoC V1_01_easy 的真实单目图像、IMU 与机体参考轨迹。x86 执行 ROS 2 回放与录制，COM260 的 C++17 `visual_slam_eval/bag_vio` 读取实际录包并运行 ORB-SLAM3，x86 使用 EVO 1.38.1 评估保存后的机体轨迹。
+
+| 检查 | 实际结果 |
+|---|---|
+| 回放与录制 | 2912 条图像、29120 条 IMU；录制前后两话题的序列化内容和数量一致 |
+| COM260 原生运行 | 处理全部 2912 帧，正常退出 0，耗时 268.297 s；这是离线处理结果 |
+| 保存轨迹 | 2555 个位姿，占输入图像数的 87.74%，覆盖 127.70 s；输入图像跨度 145.55 s，初始化期间发生 4 次活动地图重置 |
+| 轨迹有效性 | 数值有限、时间戳递增、四元数为单位长度；EVO 关联 2536 个位姿，RPE 使用 2535 对相邻帧 |
+| ATE / RPE | 平移 ATE RMSE 0.053972 m；平移 RPE RMSE 0.011175 m，间隔为连续 1 帧 |
+| 评估条件 | SE(3) 刚体对齐，不拟合尺度；时间匹配容差 0.01 s，参考与估计均为 IMU 机体轨迹 |
+| 输入检查 | 缺少参数、缺少 IMU、缺少图像均退出 1，不生成轨迹文件 |
+| RViz | 实际显示输入图像与估计相机路径；正常关闭窗口退出 0，容器已结束 |
+
+误差仅适用于成功关联的轨迹段，不能据此认为全部图像均连续跟踪成功。运行中统计的 2777 帧有效跟踪包含初始化阶段，与最终保存并优化的 2555 个位姿不是同一统计量。
+
+![ORB-SLAM3 输入图像与估计路径](images/ch20_ch21/slam-rviz.gif)
+
+[60 秒连续原速录像](images/ch20_ch21/slam-rviz.mp4)、[RViz 截图](images/ch20_ch21/slam-rviz.png)与[真实 SSH 终端记录](images/ch20_ch21/slam.cast)来自同一次运行；GIF 为录像第 20～30 秒的原速节选。
+
+两端从新终端加载有线 IPv6 / Domain 203 配置后，COM260 处理了 2912 帧图像和 29120 条 IMU 数据，保存 2718 个位姿。x86 RViz 显示输入图像和蓝色轨迹。关闭窗口后，RViz 容器与板端程序均以 0 退出。该次轨迹的平移 ATE RMSE 为 0.053939 m，RPE RMSE 为 0.016474 m。见[窗口截图](images/ch20_ch21/euroc-dds-rviz.png)和[12 秒原速录像](images/ch20_ch21/euroc-dds-rviz.mp4)，批次为 `20261118T150255Z-close-fix-euroc`。
+
+![EVO 平移 ATE](images/ch20_ch21/slam-ate.png)
+
+[平移 RPE 图](images/ch20_ch21/slam-rpe.png)与[对齐后的轨迹图](images/ch20_ch21/slam-trajectory.png)展示相同关联数据。输入来源、版本、二进制哈希和完整数值见[SLAM 结果](images/ch20_ch21/slam-validation.json)；录包检查、轨迹、EVO 结果与退出状态见[SLAM 原始数据](images/ch20_ch21/slam-runtime-data.tar.gz)。
+
+<a id="ch21-lvi"></a>
+
+### 手持录包的视觉、激光与 IMU 融合
+
+COM260 原生构建 LVI-SAM，在有线 DDS 域 203 以 0.5 倍速回放 handheld 录包的前 60.078 秒。录包中有 596 帧激光、1,802 帧相机图像和 30,039 条原始 IMU 消息。课程 RViz 在 x86 已登录的 X11 桌面上运行，显示相机图像、配准点云和估计轨迹。
+
+| 观察项 | 本次结果 |
+|---|---|
+| 配准点云 | `odom` 坐标系，收到 297 帧，末帧 5,411 个点 |
+| 轨迹 | 末条路径含 71 个位姿，相对起点的最大位移 64.87 m |
+| 视觉与激光融合 | 收到 1,177 条视觉里程计消息，1,162 帧中共 33,464 个视觉特征获得激光深度 |
+| 退出 | 录包自然结束，关闭 RViz 并在布局保存提示中选择 Discard，Ctrl+C 后七个融合节点和 robot_state_publisher 全部正常退出 |
+
+[窗口截图](images/ch21/lvi-fusion.png)、[32 秒连续录像](images/ch21/lvi-fusion.mp4)和[8 秒 GIF 节选](images/ch21/lvi-fusion.gif)来自同一次回放。录包消息数、订阅实收数及媒体验证见[结构化结果](images/ch21/lvi-validation.json)。本例使用公开手持录包，未评估定位精度。
+
+### 验证范围
+
+原 RGB 相机示例使用 COM260 有线 `.88`、x86 Wi-Fi `.4` 和 CycloneDDS 域 202。顺序运行通过，多路原始图像并发订阅仍会缺图。RGB-D 仿真使用有线 IPv6、域 203 和图像压缩。
+
+第 21 章第 5 题已完成公开传感器数据的离线录包、COM260 原生 ORB-SLAM3 与 EVO 评估。第 4 题的 Gazebo RGB-D 软件链路通过，RealSense D415 实机未验证；仿真和离线数据均不能替代相机硬件验收。
+
+#### 单目 DSO 与视觉惯性里程计
+
+课程中的直接法和 IMU 小示例分别用于观察光度残差和状态传播。框架验证使用同一段 30 s 的无噪声仿真运动。单目相机以 20 Hz 拍摄不同深度的纹理平面，IMU 以 200 Hz 采样，两个传感器使用同一时钟。生成的世界坐标真值仅用于事后比较。[模拟输入生成程序](../course_support/k3_com260_kit/visual_slam/synthetic_sequence.py)
+
+在 COM260 上运行原生 C++ DSO，输入 601 张图像，保存 64 个关键帧，首末时间相差 28.15 s。用相同时间的仿真真值做 Sim(3) 对齐后，位置均方根误差为 0.00018 m。该数值对应理想光照和无噪声仿真。两次原生运行输出的关键帧时间与位姿完全相同。[DSO 源码版本](https://github.com/JakobEngel/dso/tree/7b0c99f01d238f801c625beaff90240bcb007198) · [RISC-V 构建补丁](../course_support/k3_com260_kit/visual_slam/dso-riscv.patch) · [实际轨迹回放](images/ch21/dso-trajectory.mp4)
+
+独立 VINS-Mono 在 COM260 的同一隔离环境原生运行特征跟踪、滑动窗口估计和位姿图三个 C++ 节点。输入全部 601 张图像及 6001 条 IMU，记录到 299 条特征消息、287 个优化位姿和 107 条位姿图路径消息，最后一条路径含 90 个位姿。估计轨迹覆盖 28.60 s，按 SE(3) 对齐、尺度固定为 1 后，位置均方根误差为 0.01855 m。三个节点退出码均为 0。[VINS-Mono 移植源码版本](https://github.com/dongbo19/VINS-MONO-ROS2/tree/4c3cf08fa5d9b57f3be9bd49241915e968ee2e1e) · [Humble 构建补丁](../course_support/k3_com260_kit/visual_slam/vins-humble.patch) · [特征与轨迹回放](images/ch21/vins-trajectory.mp4)
+
+公开入口 `--build-ch21-frameworks` 在新的隔离工作区完成源码构建；随后按教案执行 DSO 和 VINS-Mono 的回放、轨迹导出及电脑端取回命令。DSO 导出 64 个关键帧，覆盖 28.15 s，Sim(3) 对齐 RMSE 为 0.00018 m；VINS-Mono 导出 287 个位姿，覆盖 28.60 s，SE(3) 对齐 RMSE 为 0.01845 m，三个节点正常退出。交互终端中按 Ctrl+C 返回 130，三个节点退出码均为 0，无残留节点。第 20、21 章公开构建入口也在新工作区通过，板端和 x86 各 5 项注册测试通过。具体数值与源码哈希见 [公开命令验收记录](images/ch21/synthetic-validation.json)中的 `public_workflow`。
+
+[两种框架的测量结果](images/ch21/synthetic-validation.json)及[原始估计轨迹、仿真真值与标定](images/ch21/synthetic-trajectories.zip)可用于复核。两个视频均从本轮输入和板端测量回放生成。

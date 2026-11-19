@@ -1,0 +1,111 @@
+{
+  "run_id": "20261119T021451Z-ch21-lvi",
+  "platform": "COM260 riscv64, ROS 2 Humble",
+  "source_revision": "12187f80d8c955241d0f28f03d567a5092af2703",
+  "display": "desktop X11",
+  "ros_domain_id": 203,
+  "dataset": {
+    "name": "LVI-SAM handheld",
+    "prefix_sha256": "8bc81930f249cf5e5d3559b418504f260ebec65e704e08f72aada34550f52578",
+    "duration_s": 60.078005512,
+    "rate": 0.5,
+    "messages": {
+      "/imu_correct": 30040,
+      "/imu_raw": 30039,
+      "/camera/image_raw": 1802,
+      "/points_raw": 596
+    }
+  },
+  "observed_messages": {
+    "/imu_raw": 24399,
+    "/camera/image_raw": 1802,
+    "/points_raw": 596,
+    "/lvi_sam/vins/feature/feature": 1199,
+    "/lvi_sam/mapping/registered_cloud": 297,
+    "/lvi_sam/odometry/odometry": 297,
+    "/lvi_sam/vins/odometry/odometry": 1177
+  },
+  "observed_path": {
+    "frame": "odom",
+    "stamp": 1594310539.257275,
+    "first_xyz": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "poses": 71,
+    "last_xyz": [
+      63.10576248168945,
+      -14.972838401794434,
+      1.331183910369873
+    ],
+    "max_displacement": 64.87137426326717
+  },
+  "last_registered_cloud_points": 5411,
+  "frames_with_lidar_depth": 1162,
+  "visual_features_with_lidar_depth": 33464,
+  "exit": {
+    "ros2_launch": 0,
+    "ros2_bag_play": 0,
+    "rviz": 0
+  },
+  "checks": {
+    "inputs_received": true,
+    "camera_resolution": true,
+    "registered_cloud": true,
+    "trajectory": true,
+    "lidar_depth_in_visual_features": true,
+    "visual_odometry": true,
+    "stable_estimators": true,
+    "process_shutdown": true,
+    "normal_exit": true,
+    "window_close": true
+  },
+  "media": {
+    "lvi-fusion.png": {
+      "sha256": "a36f814e43ba2e88bc21ef1a406b0cc351c021bcdba949bcb61c5911e604b961",
+      "codec_name": "png",
+      "width": 1280,
+      "height": 800,
+      "avg_frame_rate": "25/1"
+    },
+    "lvi-fusion.gif": {
+      "sha256": "c0e5d4f4f81c19582238476b400259747d107c7b528c5d548027ae44a63c94b1",
+      "codec_name": "gif",
+      "width": 720,
+      "height": 450,
+      "avg_frame_rate": "10/1",
+      "duration": "8.000000"
+    },
+    "lvi-fusion.mp4": {
+      "sha256": "12347b353eda206f4d784b2a9053e7df15769f79539f53709aa7b771d0424fab",
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 800,
+      "avg_frame_rate": "12/1",
+      "duration": "32.000000"
+    }
+  },
+  "com260_sha256": {
+    "setup_course_k3_com260_kit.sh": "fd55e8e3e34c12cb73ceffd0c7beef01dc5fbd0867e7f82126d5f8f9a45dc2d9",
+    "course_support/k3_com260_kit/lvi_sam/build.bash": "9d7344ca1da9e6e74879d0a901979a3ebaf5d851b0c3d558c7891895385eb181",
+    "course_support/k3_com260_kit/lvi_sam/humble-handheld.patch": "5f0a7d56b0496e8290e44ffec9f0aa64d427644485a217bc9c60ceef64308902",
+    "course_support/k3_com260_kit/lvi_sam/prepare-handheld.py": "f9349077f81190c555c58cc4ae8cf65743db49cd43cf02fb3e3f9e5c2e8f892e",
+    "course_support/k3_com260_kit/lvi_sam/run.bash": "d7deef701d23923a0a19d87dfa320b302884a282b97d11f6355dc05a5268bb3f",
+    "lvi_sam_featureExtraction": "34af4d4290a9692695cad413fdcaf4efbf72ab6261447c257ddf18ccf88e74c0",
+    "lvi_sam_imageProjection": "6813481298dcbb5b36ca3c03680bd5e25ec59d1af90e97dc8f1495a7eae6d979",
+    "lvi_sam_imuPreintegration": "5dfe43a80e5caf1c491c54368f2932a9521597cf31e2d43812afab7bedcb3f6a",
+    "lvi_sam_mapOptmization": "7d508861c479ff57a85859d114c3558cfdb8b938249b61adea854ab03437e0d4",
+    "lvi_sam_visual_feature": "dd05e5e0be31dea62ff5bc935cb144fd4088b444b2ce8a00fa6e40a9322ff80a",
+    "lvi_sam_visual_loop": "cb72fee16d360d10ffbf39becdbb6f67a3326ec4d18cec58f863a8c6b63d4e59",
+    "lvi_sam_visual_odometry": "07f6c2d766f2648d9cfd000dd004f3e06e39a37269cb42b2120c16d2df438be7"
+  },
+  "x86_sha256": {
+    "course_support/k3_com260_kit/scripts/x86-ch20-ch21.bash": "87d3a667406294f06c1b7a08e8a1f0e79b08d9b9ab65caf3603d72a9a02a94d8",
+    "course_support/k3_com260_kit/rviz/lvi-sam.rviz": "f23fd6cabc7faff1c6c63dc1447de159986a4ed3ae5c1c46c139c77ea524a254"
+  },
+  "rviz_close": {
+    "window_closed": true,
+    "layout_prompt_choice": "Discard"
+  }
+}

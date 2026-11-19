@@ -1,0 +1,653 @@
+[
+  {
+    "file": "behavior-gazebo.mp4",
+    "bytes": 4275124,
+    "sha256": "d3463c0f27fbc21b6f8d2e0a54dbbb8c1721515f3162259e636268a905559957",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "2801"
+        }
+      ],
+      "format": {
+        "duration": "233.416667"
+      }
+    },
+    "decode_ok": true
+  },
+  {
+    "file": "behavior-gazebo.png",
+    "bytes": 754440,
+    "sha256": "c8692985a15a3dfe6231dff4e5334df8ec004bae2045d18a4641b8923f681747",
+    "width": 1280,
+    "height": 800
+  },
+  {
+    "file": "behavior-rviz.mp4",
+    "bytes": 11891018,
+    "sha256": "96334099aedda38c2366d4d0d46998be2c1bfe824f7b71f030a5a82c0a1871b9",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "2801"
+        }
+      ],
+      "format": {
+        "duration": "233.416667"
+      }
+    },
+    "decode_ok": true
+  },
+  {
+    "file": "behavior-rviz.png",
+    "bytes": 101819,
+    "sha256": "5f8f6ff00f45d478e80853505722b0ad18e426fb51da7610703c00b20d2cab50",
+    "width": 1280,
+    "height": 800
+  },
+  {
+    "file": "behavior.cast",
+    "bytes": 13805,
+    "sha256": "a69b449faadddc8e439471c9a09a3aa1df3dc14ad8daa9b54db5b5e3851eae2a",
+    "cast_exit": 0
+  },
+  {
+    "file": "camera-gazebo.mp4",
+    "bytes": 2553891,
+    "sha256": "69770d18bd24cf00d50b97d62c7317de9b57beeaebd6e813f6e99a2a47508fdd",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "360"
+        }
+      ],
+      "format": {
+        "duration": "30.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261117T093149Z-camera-motion",
+      "recording": "camera-gazebo.mp4",
+      "start_s": 0,
+      "duration_s": 30,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "camera-gazebo.png",
+    "bytes": 641493,
+    "sha256": "de42d39bf693119c388880a7989f5b146460a52e0bcc28e3dee3e113d9cfaec9",
+    "width": 1280,
+    "height": 800,
+    "source": {
+      "run_id": "20261117T093149Z-camera-motion",
+      "recording": "camera-gazebo.mp4",
+      "start_s": 15,
+      "duration_s": null,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "camera.cast",
+    "bytes": 4003,
+    "sha256": "00db966456141c81fa367a8d5ff04f6a51eb840659366b61499ef07d88dcf9ac",
+    "cast_exit": 0,
+    "source": {
+      "run_id": "20261117T090610Z-camera-moving",
+      "recording": "camera.cast",
+      "start_s": 0,
+      "duration_s": null,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "ch20-interfaces.png",
+    "bytes": 60548,
+    "sha256": "1b50e05fd60cd282e850065b2aeb20aa58b13b6b79db019c06a47a58b17a3119",
+    "width": 1291,
+    "height": 829
+  },
+  {
+    "file": "ch21-interfaces.png",
+    "bytes": 44373,
+    "sha256": "54f0592861daa6730f618c281f8b60ff489aa9d69793ffc041d42553797c15e8",
+    "width": 1291,
+    "height": 829
+  },
+  {
+    "file": "ch21-math.png",
+    "bytes": 63092,
+    "sha256": "f1741f2591fe25be1a4bf8458ea92d9309b68a3428fb103d9e26a3adc2b36ccd",
+    "width": 1291,
+    "height": 829
+  },
+  {
+    "file": "euroc-dds-rviz.mp4",
+    "bytes": 2548331,
+    "sha256": "d16e72ecc42c5c9a59d9272ced1e4b4e1303bf49147fe770b6b248ac3e698a27",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "12.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261118T150255Z-close-fix-euroc",
+      "recording": "euroc-dds-rviz.mp4",
+      "playback_speed": 1,
+      "note": "continuous live RViz window recording"
+    }
+  },
+  {
+    "file": "euroc-dds-rviz.png",
+    "bytes": 173619,
+    "sha256": "728068399738014f444ed496fa2016bd2b9bc05024f9cdd2d1945fdd3812e0df",
+    "width": 1280,
+    "height": 800,
+    "source": {
+      "run_id": "20261118T150255Z-close-fix-euroc",
+      "recording": "euroc-dds-rviz.mp4",
+      "playback_speed": 1,
+      "note": "RViz window captured at end of recording"
+    }
+  },
+  {
+    "file": "known-inputs.cast",
+    "bytes": 2974,
+    "sha256": "eb992343179787ce1b440a1e6cdab1c55f01209afd6fee0544a22ef2faba115e",
+    "cast_exit": 0
+  },
+  {
+    "file": "orb-matches.gif",
+    "bytes": 858087,
+    "sha256": "13dcf0d6b576be9af5afc16f6b3f3b6b8cf248fa11910d059468637d5b09a862",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 488,
+          "r_frame_rate": "12/1",
+          "nb_frames": "144"
+        }
+      ],
+      "format": {
+        "duration": "12.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261117T090610Z-camera-moving",
+      "recording": "camera-rqt.mp4",
+      "start_s": 49,
+      "duration_s": 12,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "orb-matches.mp4",
+    "bytes": 173640,
+    "sha256": "645e0594e06f6ef82008b0f4c471b03a3b78a15d9d9932a58953d89c8dd1cbd2",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 650,
+          "r_frame_rate": "12/1",
+          "nb_frames": "240"
+        }
+      ],
+      "format": {
+        "duration": "20.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261117T090610Z-camera-moving",
+      "recording": "camera-rqt.mp4",
+      "start_s": 43,
+      "duration_s": 20,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "orb-matches.png",
+    "bytes": 81610,
+    "sha256": "aef71ebe956702c9782ddbc2d54dbeca2289ecaf9d268414db3c5f838b1bd4d4",
+    "width": 1280,
+    "height": 650,
+    "source": {
+      "run_id": "20261117T090610Z-camera-moving",
+      "recording": "camera-rqt.mp4",
+      "start_s": 56,
+      "duration_s": null,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "recovery-gazebo.mp4",
+    "bytes": 775570,
+    "sha256": "412724c1b1c0b54a6cb4b3495759100501089bb68d29d361869a8de908913fec",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "10/1",
+          "nb_frames": "814"
+        }
+      ],
+      "format": {
+        "duration": "81.400000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261117T091049Z-recovery-public-repeat",
+      "recording": "recovery_scan-gazebo.mp4",
+      "start_s": 0,
+      "duration_s": null,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "recovery-rviz.gif",
+    "bytes": 4895143,
+    "sha256": "8d45b1ed2ce05699fe5718e5f4f441eafa565b1e3177090caccb53319a5d862d",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 720,
+          "height": 450,
+          "r_frame_rate": "10/1",
+          "nb_frames": "400"
+        }
+      ],
+      "format": {
+        "duration": "40.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261117T091049Z-recovery-public-repeat",
+      "recording": "recovery-rviz.mp4",
+      "start_s": 8,
+      "duration_s": 40,
+      "playback_speed": 1,
+      "crop": {
+        "x": 460,
+        "y": 214,
+        "width": 720,
+        "height": 450
+      }
+    }
+  },
+  {
+    "file": "recovery-rviz.mp4",
+    "bytes": 1700378,
+    "sha256": "3ef3f22efe4b0d2572a3ffc06300a08914e9016587e2932379df02c36f985e1d",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "10/1",
+          "nb_frames": "817"
+        }
+      ],
+      "format": {
+        "duration": "81.700000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261117T091049Z-recovery-public-repeat",
+      "recording": "recovery_scan-rviz.mp4",
+      "start_s": 0,
+      "duration_s": null,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "recovery-rviz.png",
+    "bytes": 391922,
+    "sha256": "84698766defd9bb3516baf26a1cacb63605072b5f9ec416f82527d4bbe37e47d",
+    "width": 1280,
+    "height": 800,
+    "source": {
+      "run_id": "20261117T091049Z-recovery-public-repeat",
+      "recording": "recovery_scan-rviz.mp4",
+      "start_s": 75,
+      "duration_s": null,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "rgbd-gazebo.mp4",
+    "bytes": 1078411,
+    "sha256": "029b230cd7d9542fe500bb8be03a270cd21f9e7ebf254699b218b0560b039c09",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "1298"
+        }
+      ],
+      "format": {
+        "duration": "108.166016"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261118T064757Z-rgbd-museum",
+      "recording": "rgbd-gazebo.mp4",
+      "start_s": 0,
+      "duration_s": null,
+      "playback_speed": 1,
+      "note": "continuous live GUI recording"
+    }
+  },
+  {
+    "file": "rgbd-gazebo.png",
+    "bytes": 662501,
+    "sha256": "7b3c933501eff4fab12b1c707dc44c6ad781e8c54ebb303528388e3165501111",
+    "width": 1280,
+    "height": 800,
+    "source": {
+      "run_id": "20261118T064757Z-rgbd-museum",
+      "recording": "rgbd-gazebo.mp4",
+      "start_s": 108,
+      "duration_s": null,
+      "playback_speed": 1,
+      "note": "PNG captured at the end of the same recording"
+    }
+  },
+  {
+    "file": "rgbd-runtime-data.tar.gz",
+    "bytes": 1022746,
+    "sha256": "0631bfd7afcf5d2a168cebd400e7df9dcd9f7c05e310e85c394e388b009b9150",
+    "archive_members": 28
+  },
+  {
+    "file": "rgbd-rviz.gif",
+    "bytes": 1756099,
+    "sha256": "f2c8cdd08ec55924d9f358d223985988b7ed66aeaf90dec4da52a9010c7be2e5",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "10/1",
+          "nb_frames": "120"
+        }
+      ],
+      "format": {
+        "duration": "12.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261118T064757Z-rgbd-museum",
+      "recording": "rgbd-rviz.mp4",
+      "start_s": 58,
+      "duration_s": 12,
+      "playback_speed": 1,
+      "note": "continuous live GUI recording"
+    }
+  },
+  {
+    "file": "rgbd-rviz.mp4",
+    "bytes": 1530455,
+    "sha256": "20feac1be662daaa93e4723511db0901ae0b3c4a39930041e804c6422030c8d0",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "1297"
+        }
+      ],
+      "format": {
+        "duration": "108.083008"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261118T064757Z-rgbd-museum",
+      "recording": "rgbd-rviz.mp4",
+      "start_s": 0,
+      "duration_s": null,
+      "playback_speed": 1,
+      "note": "continuous live GUI recording"
+    }
+  },
+  {
+    "file": "rgbd-rviz.png",
+    "bytes": 87688,
+    "sha256": "39f8ee2674304810d971be96756559965b4ab65b8505d9225471c7afd28d5169",
+    "width": 1280,
+    "height": 800,
+    "source": {
+      "run_id": "20261118T064757Z-rgbd-museum",
+      "recording": "rgbd-rviz.mp4",
+      "start_s": 108,
+      "duration_s": null,
+      "playback_speed": 1,
+      "note": "PNG captured at the end of the same recording"
+    }
+  },
+  {
+    "file": "rgbd-validation.json",
+    "bytes": 8095,
+    "sha256": "cb859c3991867f773b66faeacc032b67a55614f79baea909a0f7bb182a6e6d01"
+  },
+  {
+    "file": "rgbd.cast",
+    "bytes": 84227,
+    "sha256": "96ebe6878fe841f2155b5b47e0e6d3f8bdd3e08b128760cddc2c28204b2243c1",
+    "cast_exit": 0,
+    "source": {
+      "run_id": "20261118T064757Z-rgbd-museum",
+      "recording": "rgbd.cast",
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "runtime-data.tar.gz",
+    "bytes": 1562068,
+    "sha256": "a829ce43d6e858b43b59235d548cfe8667cbf096ac391941aa16fc787feee48c"
+  },
+  {
+    "file": "slam-ate.png",
+    "bytes": 92480,
+    "sha256": "f29bbd4e5971a7ddf3e8aa6f39089112d81f16713ee6ef611b22d55360e689af",
+    "width": 1011,
+    "height": 1011,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio",
+      "file": "evo/ate_raw.png"
+    }
+  },
+  {
+    "file": "slam-rpe.png",
+    "bytes": 81284,
+    "sha256": "d50ecdda86502de57ffb5c35920016a6ba5c20456efbf39f43383b8d70fb8a2d",
+    "width": 1011,
+    "height": 1011,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio",
+      "file": "evo/rpe_raw.png"
+    }
+  },
+  {
+    "file": "slam-runtime-data.tar.gz",
+    "bytes": 363602,
+    "sha256": "da095af90b067b30d4ab9502c49d827c74d45ac960af19d2a608c78d3940034b",
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio"
+    }
+  },
+  {
+    "file": "slam-rviz.gif",
+    "bytes": 2564253,
+    "sha256": "235360a977314454dd929abd38712f4a37ef191e6cc6482ea12c6cece7c24147",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "12/1",
+          "nb_frames": "120"
+        }
+      ],
+      "format": {
+        "duration": "10.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio",
+      "recording": "x86/slam-rviz.mp4",
+      "start_s": 20,
+      "duration_s": 10,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "slam-rviz.mp4",
+    "bytes": 1793046,
+    "sha256": "d9ebdf9449c6a1b200c5018d801d8cc9b4c8537beaea33e689bc89485542145b",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1",
+          "nb_frames": "720"
+        }
+      ],
+      "format": {
+        "duration": "60.000000"
+      }
+    },
+    "decode_ok": true,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio",
+      "recording": "x86/slam-rviz.mp4",
+      "start_s": 0,
+      "duration_s": 60,
+      "playback_speed": 1
+    }
+  },
+  {
+    "file": "slam-rviz.png",
+    "bytes": 167517,
+    "sha256": "48175133db18e0e70919546e3be66918d03bb67c6f61ffeb142241b5f4bdb22e",
+    "width": 1280,
+    "height": 800,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio",
+      "recording": "x86/slam-rviz.png"
+    }
+  },
+  {
+    "file": "slam-trajectory.png",
+    "bytes": 152647,
+    "sha256": "1ede3077b3cbed114582cf377967335b518a182ac5ce333fa9cd040dd297b69c",
+    "width": 1011,
+    "height": 1011,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio",
+      "file": "evo/trajectory_trajectories.png"
+    }
+  },
+  {
+    "file": "slam-validation.json",
+    "bytes": 3571,
+    "sha256": "d929fc9b2b7d5640472bd97579715f4381a8e65c0ef00c1f8d3d1a7a3632e63f",
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio"
+    }
+  },
+  {
+    "file": "slam.cast",
+    "bytes": 9205,
+    "sha256": "b09f7361281fadef717ae994d9a3213654858bc99744e25422097367fd57e569",
+    "cast_exit": 0,
+    "source": {
+      "run_id": "20261118T033812Z-euroc-vio"
+    }
+  },
+  {
+    "file": "source-sha256.json",
+    "bytes": 25827,
+    "sha256": "1406432709b328b5e0c62cc787ae4e789a0ff494424d5ed17cf3d2e204fc883f"
+  },
+  {
+    "file": "validation-results.json",
+    "bytes": 41075,
+    "sha256": "850ae75c99443d2da2375d82eb69fc9b52195569e38256e7f8cc49e51483abdc"
+  }
+]
