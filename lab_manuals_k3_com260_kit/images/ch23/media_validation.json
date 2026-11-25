@@ -1,0 +1,507 @@
+{
+  "date": "2026-11-25",
+  "files": [
+    {
+      "file": "ch13-slam-motion.gif",
+      "bytes": 1380203,
+      "sha256": "b957e6248431bd48734fdd8267da7f13bf87d2118d1c48d51c1114fd8f173827",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "22.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch13-slam-motion.mp4",
+      "bytes": 189283,
+      "sha256": "d9f517da8cc92f053b57bb0259dd295d3d2e97cbada6ef8da2665e613bd04991",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "30.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch13-slam-motion.png",
+      "bytes": 50898,
+      "sha256": "b69fb53904cb41c1500fe27969ed95a80a8bdb1aff8f2e0944db902d24de843b",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch14-cancel.gif",
+      "bytes": 4660706,
+      "sha256": "eb69e89cbc3c362b4adad9d1253d0027e9019a4d168601678047e3e5c5bee52d",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "24.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch14-cancel.mp4",
+      "bytes": 683917,
+      "sha256": "92cdd84b242e94caef01af37717776c308dbf77bdef223323f534e548849350c",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "35.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch14-cancel.png",
+      "bytes": 139738,
+      "sha256": "6e6f01830c349d493b8061df750d91fdc97c2da5eb406e3ff12dc0a914dcd53e",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch14-nav-rviz.gif",
+      "bytes": 3157201,
+      "sha256": "b5df67e1ffd8817a00fa4ee4c341a2ca82274241199c05fdaae6a44f8cccf67d",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "24.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch14-nav-rviz.mp4",
+      "bytes": 3368038,
+      "sha256": "f00d4781dcad9df822cec6177d39b6c28933c02c57565bb9cc74bd2ca3ba83e7",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "138.666016"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch14-nav-rviz.png",
+      "bytes": 135208,
+      "sha256": "dc0e1c2dfa7701ec0283d1098acf8ddca0bb96e7f50f100bed1821d8b4c54ece",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-cartographer.gif",
+      "bytes": 2149520,
+      "sha256": "ba90054a10672d2c07100ce242d5465adef601f8c3d282b133370057842bba2a",
+      "full_decode_exit": 0,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "24.010000"
+      }
+    },
+    {
+      "file": "ch23-cartographer.mp4",
+      "bytes": 242375,
+      "sha256": "8d8f3c7b565654e206fa406a2ba06a72a61a88aa06184580df552cfcdb525dbe",
+      "full_decode_exit": 0,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "30.000000"
+      }
+    },
+    {
+      "file": "ch23-cartographer.png",
+      "bytes": 64510,
+      "sha256": "cd9da192c94bde64f72a092cc0984ed69b1464e4346e034ef3e78b065dcef1c1",
+      "full_decode_exit": 0,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {}
+    },
+    {
+      "file": "ch23-explorer.cast",
+      "bytes": 53555,
+      "sha256": "788e342286df30441b982be2dbb527143d63fa5366bc29001cfc1a1ff266759d",
+      "format": "asciinema-v3",
+      "exit": 0,
+      "duration": 1048.069
+    },
+    {
+      "file": "ch23-explorer.gif",
+      "bytes": 910451,
+      "sha256": "8e39dd9a5b883b90b55c8cdb17d45deee3925ad2730b964cc8e0f0227d03fe20",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "30.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-explorer.mp4",
+      "bytes": 1326418,
+      "sha256": "5f77c541b374a596916fc4ecfd27f26663ffbda64a85779a8f266a99663b198c",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "494.625000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-explorer.png",
+      "bytes": 48758,
+      "sha256": "45434ae16c5ae3ce86d862e0629637a9589317a9868ddc75806c4b001ecc0a63",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-fleet.cast",
+      "bytes": 1543,
+      "sha256": "c928ae3d6227265906925c4e432f9077fb050748e61540df744261c892fa32b6",
+      "format": "asciinema",
+      "version": 3,
+      "last_event": [
+        0.002,
+        "x",
+        "0"
+      ]
+    },
+    {
+      "file": "ch23-fleet.gif",
+      "bytes": 1127619,
+      "sha256": "36543a36593a761bd4bbbf5bf207078d309e1807e5bec51ce41caebd49657048",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "18.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-fleet.mp4",
+      "bytes": 576687,
+      "sha256": "2d0b33cdd259b1ff59e2643229ff6ae5de7c7b859cf694f17c2bd28bbac744b8",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "45.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-fleet.png",
+      "bytes": 670847,
+      "sha256": "e808d9da815392f7493134c301c2666fb54dfced207f825cedb503bca975d058",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-map-after.png",
+      "bytes": 7036,
+      "sha256": "84ad8734494b24133b4a59fe66662a0f37e90836efe0f1dd25ac2a79889113b9",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 561,
+          "height": 652,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-map-before.png",
+      "bytes": 9784,
+      "sha256": "e7ef880717afcbbe594951d8280c3b0d8453c618f801daccd00eb31c549881e4",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 561,
+          "height": 652,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-map-tools.cast",
+      "bytes": 679,
+      "sha256": "764bb6a1e035809a41b8df78ce44384de253e8f5d1add5e8d95c69444dd9396a",
+      "format": "asciinema-v3",
+      "exit": 0,
+      "duration": 5.243
+    },
+    {
+      "file": "ch23-map-tools.gif",
+      "bytes": 26103,
+      "sha256": "b5a52034b3bc1604f506abea7eb1b81993af22e96f4ff8d287677904ca3e9115",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 1223,
+          "height": 291,
+          "r_frame_rate": "10/1"
+        }
+      ],
+      "format": {
+        "duration": "8.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-project-navigation.cast",
+      "bytes": 16529,
+      "sha256": "319c15e9235a5a03aa497cb956f96432d2660cf171e0ee38d8e31c2c5ed3ef5f",
+      "format": "asciinema-v3",
+      "exit": 0,
+      "duration": 199.098
+    },
+    {
+      "file": "ch23-project-navigation.gif",
+      "bytes": 4802325,
+      "sha256": "fd5e5f6befc9c8311cce397f9df8d4a252458093c77380341121c040f25148a0",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "28.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-project-navigation.mp4",
+      "bytes": 4516259,
+      "sha256": "1df589b51a95e94b4908b8dc97b4f7576706f74c7a510794aef8193a183cda4f",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "10/1"
+        }
+      ],
+      "format": {
+        "duration": "210.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-project-navigation.png",
+      "bytes": 132102,
+      "sha256": "f2ed705bac3aed678f5b163ec3a765982f7406612a98955dacce5495ce9252c8",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-project-scene.png",
+      "bytes": 150162,
+      "sha256": "e452a32135fbfa6061f6b144548b587620a565984f5cedda0bce500f8e76af72",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch23-saved-map.zip",
+      "bytes": 16014,
+      "sha256": "51332e387a0c6e07b0c745b19d2148ca2e52e0614968bb16b4052af8d2705063",
+      "entries": [
+        "20261125_full_map.pgm",
+        "20261125_full_map.yaml",
+        "20261125_full_processed.pgm",
+        "20261125_full_processed.yaml"
+      ]
+    }
+  ]
+}

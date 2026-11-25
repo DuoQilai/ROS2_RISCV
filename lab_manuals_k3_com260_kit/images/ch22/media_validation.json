@@ -1,0 +1,291 @@
+{
+  "date": "2026-11-25",
+  "files": [
+    {
+      "file": "ch12-highres.png",
+      "bytes": 67398,
+      "sha256": "566f4a56dcc8f4b8852dfa7691f22c3a938c991b5886ff9c4477f1ed2e6ae46c",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch12-rgbd-motion.gif",
+      "bytes": 2290273,
+      "sha256": "94bf2f957f83593595d19bc3b88b7da8631b6c5aa9928019f349c900c6541061",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 600,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "24.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch12-rgbd-motion.mp4",
+      "bytes": 423102,
+      "sha256": "379bf8b6e240264446db67916670e530b6c08d5bfcde05cdb8810bbb527ba4c1",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "40.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch12-rgbd.png",
+      "bytes": 106850,
+      "sha256": "a386327508127a49625a90fad2db665fd76b260ba24dd1859c7b96e58cad1736",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1280,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch12-rqt-color.png",
+      "bytes": 197923,
+      "sha256": "7c9ad516809f83e4cfc6d74c985dde01ee5aebd50a596a4e5809abab7e1b946a",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 840,
+          "height": 620,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch12-rqt-depth.png",
+      "bytes": 24039,
+      "sha256": "c4832bde9a25d68343c342d5af3ffaebeadac2cee51d632a770588c830bf37e4",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 840,
+          "height": 620,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-ekf-motion.gif",
+      "bytes": 1792367,
+      "sha256": "4a8b65cbaa75e74eb2a4b4d8dd0a5c00c6bc21bfcbcd522483815f52de0b227b",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "24.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-ekf-motion.mp4",
+      "bytes": 315777,
+      "sha256": "6edc8411101fba003e0e1b706278cdd72b8f7ec4c91a121a74ece4ecd40e4ea4",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "45.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-ekf-motion.png",
+      "bytes": 73254,
+      "sha256": "0e6909d4050fd1125529ae511ab857fb90d8a1eb2ae5b652cfef40be373b2115",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-fusion-math.cast",
+      "bytes": 868,
+      "sha256": "eee968e1764039e64729bbbe974829ae09c836ab43c7f15beae574bede40f1fe",
+      "format": "asciinema-v3",
+      "exit": 0,
+      "duration": 3.502
+    },
+    {
+      "file": "ch22-fusion-math.gif",
+      "bytes": 21578,
+      "sha256": "2234c4d1559a5295db74cd4325a1ef188df843a2c1f311693234de656034f59b",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 790,
+          "height": 560,
+          "r_frame_rate": "100/1"
+        }
+      ],
+      "format": {
+        "duration": "8.490000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-fusion-replay.gif",
+      "bytes": 1414538,
+      "sha256": "b8696a1662ab4d5554409310ca99edc749b1d473923f8e904c0ac3ef33e424bf",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 960,
+          "height": 640,
+          "r_frame_rate": "8/1"
+        }
+      ],
+      "format": {
+        "duration": "24.010000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-fusion-replay.mp4",
+      "bytes": 469424,
+      "sha256": "4a1dbbfae9bdc1ed83fa2c2162c0e8d6e112bf41c8577db450098ad6b9c8e600",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "12/1"
+        }
+      ],
+      "format": {
+        "duration": "85.000000"
+      },
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-fusion-replay.png",
+      "bytes": 62937,
+      "sha256": "866e000d89f68aa8e289f24cd3ac6f1a5777a31dff988fc43848ee2a828baaa5",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "png",
+          "width": 1200,
+          "height": 800,
+          "r_frame_rate": "25/1"
+        }
+      ],
+      "format": {},
+      "full_decode_exit": 0
+    },
+    {
+      "file": "ch22-replay.cast",
+      "bytes": 2322,
+      "sha256": "6f1753c77272af29bf0e83a47069d5eff6a48d5bb0f1ead6fd1f64b604112bbf",
+      "format": "asciinema",
+      "version": 3,
+      "last_event": [
+        0.002,
+        "x",
+        "0"
+      ]
+    },
+    {
+      "file": "ch22-sensor-sync.cast",
+      "bytes": 1864,
+      "sha256": "d8b605542c0e76093c4df61a7df2e1153bfac48c41b7d41c8f806246533baaed",
+      "format": "asciinema",
+      "version": 3,
+      "last_event": [
+        0.002,
+        "x",
+        "0"
+      ]
+    },
+    {
+      "file": "ch22-sensor-sync.gif",
+      "bytes": 78024,
+      "sha256": "8e4e6890069175aba96b7c58f9ba4b82cf8b4d04d03fd310148c98bbd85fa757",
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "gif",
+          "width": 1322,
+          "height": 832,
+          "r_frame_rate": "86/3"
+        }
+      ],
+      "format": {
+        "duration": "18.200000"
+      },
+      "full_decode_exit": 0
+    }
+  ]
+}

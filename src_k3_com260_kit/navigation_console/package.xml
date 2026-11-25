@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>navigation_console</name><version>0.1.0</version>
+  <description>Waypoint patrol, mission loading and navigation evaluation.</description>
+  <maintainer email="duoqilai@outlook.com">DuoQilai</maintainer><license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend><depend>rclcpp_action</depend><depend>nav2_msgs</depend>
+  <depend>nav_msgs</depend><depend>geometry_msgs</depend><depend>yaml-cpp</depend>
+  <export><build_type>ament_cmake</build_type></export>
+  <exec_depend>nav2_bringup</exec_depend><exec_depend>robot_sim_demo</exec_depend>
+  <exec_depend>launch_ros</exec_depend><exec_depend>param_demo_cpp</exec_depend>
+</package>

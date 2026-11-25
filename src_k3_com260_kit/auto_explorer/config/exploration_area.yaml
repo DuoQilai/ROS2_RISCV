@@ -1,0 +1,6 @@
+image: exploration_area.pgm
+resolution: 0.05
+origin: [-16, -18, 0]
+area_m2: 691.732500
+robot_radius: 0.22
+scale_xy: 1.5

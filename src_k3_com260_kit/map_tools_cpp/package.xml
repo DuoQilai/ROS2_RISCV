@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>map_tools_cpp</name><version>0.1.0</version>
+  <description>SLAM course example for COM260.</description>
+  <maintainer email="duoqilai@outlook.com">DuoQilai</maintainer><license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>libopencv-dev</depend>
+  <depend>yaml-cpp</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>
