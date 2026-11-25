@@ -134,6 +134,8 @@ COM260 Kit 教案第 9～15 章（配套实验 9、10）：[Gazebo 实验](lab_m
 | 第 19 章 | [局部路径规划](teaching_docs_k3_com260_kit/ch19_局部路径规划.md) | [环境配置](lab_manuals_k3_com260_kit/ch00_common_setup.md#ch19) | [第11章 实验指导书：Nav2 自主导航](lab_manuals_k3_com260_kit/ch11_lab.md) | [实测记录](lab_manuals_k3_com260_kit/runtime_evidence.md#ch19) |
 | 第 20 章 | [行为树与恢复行为](teaching_docs_k3_com260_kit/ch20_行为树与恢复行为.md) | [环境配置](lab_manuals_k3_com260_kit/ch00_common_setup.md#ch20) | [第11章 实验指导书：Nav2 自主导航](lab_manuals_k3_com260_kit/ch11_lab.md) | [实测记录](lab_manuals_k3_com260_kit/runtime_evidence.md#ch20) |
 | 第 21 章 | [视觉 SLAM 导论](teaching_docs_k3_com260_kit/ch21_视觉SLAM导论.md) | [环境配置](lab_manuals_k3_com260_kit/ch00_common_setup.md#ch21) | 见教案示例与课后练习 | [实测记录](lab_manuals_k3_com260_kit/runtime_evidence.md#ch21) |
+| 第 22 章 | [多传感器融合 SLAM](teaching_docs_k3_com260_kit/ch22_多传感器融合SLAM.md) | [环境配置](lab_manuals_k3_com260_kit/ch00_common_setup.md#ch22) | [第12章 实验指导书：RealSense 数据采集](lab_manuals_k3_com260_kit/ch12_lab.md) | [实测记录](lab_manuals_k3_com260_kit/runtime_evidence.md#ch22) |
+| 第 23 章 | [SLAM 与导航综合实训](teaching_docs_k3_com260_kit/ch23_SLAM与导航综合实训.md) | [环境配置](lab_manuals_k3_com260_kit/ch00_common_setup.md#ch23) | [第13章 实验指导书：建图](lab_manuals_k3_com260_kit/ch13_lab.md)、[第14章 实验指导书：导航](lab_manuals_k3_com260_kit/ch14_lab.md) | [实测记录](lab_manuals_k3_com260_kit/runtime_evidence.md#ch23) |
 
 ---
 

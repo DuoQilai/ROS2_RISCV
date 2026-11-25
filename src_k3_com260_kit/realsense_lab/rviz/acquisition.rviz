@@ -1,0 +1,60 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: odom
+    Background Color: 35; 35; 35
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+    - Class: rviz_default_plugins/PointCloud2
+      Name: RGB-D PointCloud
+      Enabled: true
+      Topic:
+        Value: /camera/color/points
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 2
+      Style: Points
+      Size (Pixels): 2
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+    - Class: rviz_default_plugins/Image
+      Name: Color
+      Enabled: true
+      Topic:
+        Value: /camera/color/image_raw
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 2
+    - Class: rviz_default_plugins/Image
+      Name: Depth
+      Enabled: true
+      Normalize Range: false
+      Min Value: 0
+      Max Value: 5
+      Median window: 5
+      Topic:
+        Value: /camera/depth/image_rect_raw
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 2
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 8
+      Focal Point: {X: 1.0, Y: 0.0, Z: 0.5}
+      Pitch: 0.5
+      Yaw: 3.8
+Window Geometry:
+  Width: 1280
+  Height: 800

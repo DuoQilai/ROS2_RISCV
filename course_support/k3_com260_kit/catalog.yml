@@ -253,6 +253,30 @@ chapters:
       x86:
         zh:
           lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch21_%E8%A7%86%E8%A7%89SLAM%E5%AF%BC%E8%AE%BA.md
+  - id: ch22
+    title:
+      zh: 多传感器融合SLAM
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch22_%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch12_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch22_%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88SLAM.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch12_lab.md
+  - id: ch23
+    title:
+      zh: SLAM与导航综合实训
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch23_SLAM%E4%B8%8E%E5%AF%BC%E8%88%AA%E7%BB%BC%E5%90%88%E5%AE%9E%E8%AE%AD.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch13_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch23_SLAM%E4%B8%8E%E5%AF%BC%E8%88%AA%E7%BB%BC%E5%90%88%E5%AE%9E%E8%AE%AD.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch13_lab.md
 introduction_source: https://github.com/DuoQilai/ROS2_RISCV/blob/master/README.md
 editions:
   riscv:

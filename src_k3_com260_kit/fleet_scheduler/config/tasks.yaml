@@ -1,0 +1,4 @@
+tasks:
+  - {robot: robot1, x: 0.8, y: -1.0, yaw: 0.0, priority: 2}
+  - {robot: robot2, x: 0.8, y: 0.0, yaw: 0.0, priority: 1}
+  - {robot: robot3, x: 0.8, y: 1.0, yaw: 0.0, priority: 0}

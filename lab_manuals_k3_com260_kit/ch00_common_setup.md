@@ -814,3 +814,80 @@ curl -fL --retry 3 "https://api.github.com/repos/M-MohsinKhan/LVI-SAM-ROS2/tarba
 ssh com260 'mkdir -p ~/Downloads'
 scp "$data/$archive" com260:Downloads/
 ```
+
+<a id="ch22"></a>
+
+## 第 22 章 多传感器融合环境
+
+本章对应[第12章实验指导书](ch12_lab.md)。COM260 运行 C++ 示例，x86 的独立课程容器运行 RGB-D、IMU、Gazebo、Cartographer 和 RViz。先完成[基础依赖](#nav2-prerequisites)以及第 9～10、20～21 章的镜像准备。
+
+两端都使用包含本章内容的仓库副本 `~/ROS2_RISCV_COM260_CH22_CH23`。COM260 需要 Eigen、OpenCV、`message_filters`、`image_transport` 和 PNG 传输插件；第21章基础依赖已包含这些包。COM260 的构建入口为：
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH22_CH23
+bash setup_course_k3_com260_kit.sh --build-ch22
+```
+
+x86 使用普通用户构建课程容器：
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH22_CH23
+bash course_support/k3_com260_kit/scripts/x86-ch22-ch23.bash build-image
+bash course_support/k3_com260_kit/scripts/x86-ch22-ch23.bash build
+```
+
+镜像基于 `localhost/ros2-course-com260:ch09-ch10`，并使用 `ch20-ch21` 的 RViz 关闭支持。两者缺失时分别执行 `x86-ch09-ch10.bash build-image`、`x86-ch20-ch21.bash build-image`。x86 工作区为 `~/ros2_course_com260_ch22_ch23_humble_ws`，COM260 工作区为 `~/ros2_course_com260_ch22_ch23_ws`。
+
+两端接有线网络。按[有线地址的检查方法](#wired-dds)选取有效的 IPv6 地址，然后在两端分别运行配置脚本；第一个参数为本机地址，第二个为对端地址。以下文档示例地址需要替换：
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH22_CH23
+bash course_support/k3_com260_kit/scripts/configure-acquisition-dds.bash 2001:db8::1 2001:db8::2
+```
+
+**COM260 每个新终端：**
+
+```bash
+source ~/.config/ros2-course-com260-ch22-ch23/env.bash
+source ~/.config/ros2-course-com260-ch22-ch23/dds.bash
+```
+
+**x86 每个新终端：**
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH22_CH23
+source ~/.config/ros2-course-com260-ch22-ch23/dds.bash
+```
+
+DDS 域为 222，两端使用 CycloneDDS 和有线 IPv6 单播。更换地址后重新生成配置，并重启使用旧配置的节点和容器。x86 需保持 X11 桌面登录；启动脚本检查 `:1` 显示会话。可访问 Intel 渲染设备时使用硬件渲染，否则使用软件渲染。
+
+彩色、深度与点云在 x86 本地观察。COM260 同步示例接收无损 PNG 彩色图，避免百兆链路上原始 RGB-D 和点云堵塞其他传感器。不要把小于实时速度的 Gazebo 墙钟帧率当作相机标称采样率。
+
+<a id="ch23"></a>
+
+## 第 23 章 SLAM 与导航综合实训环境
+
+本章依次使用[第13章建图实验](ch13_lab.md)和[第14章导航实验](ch14_lab.md)。先完成[第22章双端环境](#ch22)，再在 COM260 构建：
+
+```bash
+cd ~/ROS2_RISCV_COM260_CH22_CH23
+bash setup_course_k3_com260_kit.sh --build-ch23
+source ~/.config/ros2-course-com260-ch22-ch23/env.bash
+source ~/.config/ros2-course-com260-ch22-ch23/dds.bash
+```
+
+C++ 包包括 `slam_bringup_lab`、`nav_bringup_lab`、`auto_explorer`、`map_tools_cpp`、`navigation_console` 和 `fleet_scheduler`。x86 的 `build` 入口同时构建这些包；后续更新源码后重跑同一入口即可。
+
+教案综合项目的 `start-explore` 和 `start-project` 使用扩大后的 Museum 场景；建图与导航实验的 `start-slam`、`start-nav` 使用原尺寸场景。场景与地图必须配套，切换入口前先停止上一容器。
+
+每次仿真指定一个 `RUN_ID`，例如 `ch13`。x86 新终端通过下列命令进入该容器；容器自动加载 ROS、工作区和 DDS 环境：
+
+```bash
+bash course_support/k3_com260_kit/scripts/x86-ch22-ch23.bash exec ch13 bash
+```
+
+容器内 `/workspace` 对应 x86 的 `~/ros2_course_com260_ch22_ch23_humble_ws`，`/maps` 对应 x86 的 `~/maps`。所有地图、录包和输出都应写入这两个持久目录。不同仿真入口共用话题和 TF，切换前先停止当前容器：
+
+```bash
+bash course_support/k3_com260_kit/scripts/x86-ch22-ch23.bash stop ch13
+```

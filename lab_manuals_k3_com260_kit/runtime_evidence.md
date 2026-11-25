@@ -10,7 +10,7 @@
 
 [10 贝叶斯框架](#ch10) · [11 ICP 与 PLICP](#ch11) · [12 Hector SLAM](#ch12) · [13 粒子滤波](#ch13) · [14 AMCL](#ch14) · [15 Cartographer](#ch15)
 
-[16 Nav2 架构](#ch16) · [17 全局代价地图](#ch17) · [18 全局路径规划](#ch18) · [19 局部路径规划](#ch19) · [20 行为树与恢复行为](#ch20) · [21 视觉 SLAM](#ch21)
+[16 Nav2 架构](#ch16) · [17 全局代价地图](#ch17) · [18 全局路径规划](#ch18) · [19 局部路径规划](#ch19) · [20 行为树与恢复行为](#ch20) · [21 视觉 SLAM](#ch21) · [22 多传感器融合](#ch22) · [23 综合实训](#ch23)
 
 共用实验记录见[实验 10 · SLAM 建图与定位](#lab10)和[实验 11 · Nav2 自主导航](#lab11)。
 
@@ -1078,3 +1078,52 @@ COM260 原生构建 LVI-SAM，在有线 DDS 域 203 以 0.5 倍速回放 handhel
 公开入口 `--build-ch21-frameworks` 在新的隔离工作区完成源码构建；随后按教案执行 DSO 和 VINS-Mono 的回放、轨迹导出及电脑端取回命令。DSO 导出 64 个关键帧，覆盖 28.15 s，Sim(3) 对齐 RMSE 为 0.00018 m；VINS-Mono 导出 287 个位姿，覆盖 28.60 s，SE(3) 对齐 RMSE 为 0.01845 m，三个节点正常退出。交互终端中按 Ctrl+C 返回 130，三个节点退出码均为 0，无残留节点。第 20、21 章公开构建入口也在新工作区通过，板端和 x86 各 5 项注册测试通过。具体数值与源码哈希见 [公开命令验收记录](images/ch21/synthetic-validation.json)中的 `public_workflow`。
 
 [两种框架的测量结果](images/ch21/synthetic-validation.json)及[原始估计轨迹、仿真真值与标定](images/ch21/synthetic-trajectories.zip)可用于复核。两个视频均从本轮输入和板端测量回放生成。
+
+<a id="ch22"></a>
+
+## 第 22 章 多传感器融合 SLAM
+
+教案：[多传感器融合 SLAM](../teaching_docs_k3_com260_kit/ch22_多传感器融合SLAM.md)；实验：[第12章 实验指导书](ch12_lab.md)。验证日期：2026-11-24～25。
+
+COM260 运行 C++17 数据同步、预积分和融合节点，x86 运行 Gazebo RGB-D、Cartographer 与显示工具。相机数据来自仿真；D415/D435 驱动、标定和硬件同步未实测。
+
+| 项目 | 实际结果 |
+|---|---|
+| RGB-D 与点云 | 640×480 彩色图、32FC1 深度图、相机内参与彩色点云可显示；[截图](images/ch22/ch12-rgbd.png)、[运动 GIF](images/ch22/ch12-rgbd-motion.gif)、[连续 RViz 录像](images/ch22/ch12-rgbd-motion.mp4) |
+| RGB-D 数据集录制 | 按实验 12 命令录到 5.635 ROS 秒；彩色、深度和两路内参各 171 条，共 684 条，Ctrl+C 后 recorder 退出 0；原始录包保留在 x86 验证工作区 |
+| 高分辨率档位 | 1280×720；图像时间戳约 15.15 Hz，本次墙钟接收频率约 14.64/14.64 Hz；关闭点云后没有点云发布，RViz 中只显示彩色与深度图；[高分辨率截图](images/ch22/ch12-highres.png) |
+| 三传感器时间同步 | IMU、激光和 PNG 图像跨机匹配；正式记录中时间差 3–15 ms，低于 50 ms 上限；[终端记录](images/ch22/ch22-sensor-sync.cast)、[GIF](images/ch22/ch22-sensor-sync.gif)，进程正常退出 |
+| 数值示例 | 两端构建通过；静止重力抵消、恒加速度、90° 旋转、GPS 更新、协方差、健康超时及恢复、曲率特征分类和空点云处理共 9 项检查通过；[COM260 记录](images/ch22/ch22-fusion-math.cast)、[GIF](images/ch22/ch22-fusion-math.gif) |
+| 激光里程计与 IMU EKF | 前进、转弯与停车通过；轮式、激光、融合净位移分别为 1.396、1.398、1.398 m；融合终点相对轮式位置差约 0.010 m、航向差约 0.009 rad。310 条融合消息有限且时间戳递增；[截图](images/ch22/ch22-ekf-motion.png)、[GIF](images/ch22/ch22-ekf-motion.gif)、[连续录像](images/ch22/ch22-ekf-motion.mp4)。该比较不代表真值定位精度 |
+| Cartographer 录包回放 | 含前进、转弯和停车的录包共 38.953 ROS 秒、12950 条消息；0.5 倍速回放、融合建图、轨迹结束、状态保存和 PGM/YAML 导出通过；[截图](images/ch22/ch22-fusion-replay.png)、[GIF](images/ch22/ch22-fusion-replay.gif)、[85 秒连续录像](images/ch22/ch22-fusion-replay.mp4)、[终端记录](images/ch22/ch22-replay.cast) |
+
+FAST-LIO2、紧耦合视觉惯性和因子图示意代码用于说明算法结构；完整第三方框架性能不由上述数值示例证明。练习 5 的可执行算法入口为 Cartographer。
+
+`rqt_image_view` 的彩色与深度窗口均显示实际图像，关闭窗口后退出码为 0。两端源码核对与当前结果见[结构化记录](images/ch22/validation.json)，素材信息见[媒体校验](images/ch22/media_validation.json)。
+
+<a id="ch23"></a>
+
+## 第 23 章 SLAM 与导航综合实训
+
+教案：[SLAM 与导航综合实训](../teaching_docs_k3_com260_kit/ch23_SLAM与导航综合实训.md)；实验依次为[第13章 实验指导书](ch13_lab.md)、[第14章 实验指导书](ch14_lab.md)。验证日期：2026-11-24～25。
+
+| 项目 | 实际结果 |
+|---|---|
+| 双端构建 | COM260 与 x86 的六个 C++ 功能包构建通过，目标区域占用与释放检查通过 |
+| 建图实验 | 正式录像对应 4 次地图更新、已知栅格增加 2536、位移 0.205 m；达到原验收条件并停车；[截图](images/ch23/ch13-slam-motion.png)、[GIF](images/ch23/ch13-slam-motion.gif)、[连续录像](images/ch23/ch13-slam-motion.mp4) |
+| Cartographer 实时建图 | 激光、IMU、轮式里程计融合，前进、转弯与停车期间收到 39 次地图更新，已知栅格从 10381 增至 15184；轨迹结束、状态保存及 PGM/YAML 导出成功；[截图](images/ch23/ch23-cartographer.png)、[GIF](images/ch23/ch23-cartographer.gif)、[30 秒连续录像](images/ch23/ch23-cartographer.mp4) |
+| 四目标导航实验 | 起点 `(5,0,-2)`，原四目标全部返回 SUCCEEDED；耗时分别为 11.5、37.5、32.9、23.8 s；独立里程计末值为零；[截图](images/ch23/ch14-nav-rviz.png)、[GIF](images/ch23/ch14-nav-rviz.gif)、[连续录像](images/ch23/ch14-nav-rviz.mp4) |
+| 导航取消与停车 | 第一目标完成后取消第二目标，返回 CANCELED，节点按用户中断退出 130；独立里程计最后 100 个样本线速度、角速度均为 0；[截图](images/ch23/ch14-cancel.png)、[GIF](images/ch23/ch14-cancel.gif)、[35 秒连续录像](images/ch23/ch14-cancel.mp4) |
+| 地图处理与评估 | 关闭建图容器后通过 `offline` 处理本次实际地图；两端通过像素、原点、单栅格墙线保留、未知栅格阈值和自比较检查。扩大场景的处理图为 561×652、0.05 m/格，图像矩形内已知栅格比例 85.5339%；后处理前场内覆盖率 95.132%；无同坐标系真值图，accuracy 为 unmeasured。[处理前](images/ch23/ch23-map-before.png)、[处理后](images/ch23/ch23-map-after.png)、[终端记录](images/ch23/ch23-map-tools.cast)、[GIF](images/ch23/ch23-map-tools.gif)、[PGM/YAML](images/ch23/ch23-saved-map.zip) |
+| 三车调度 | 三个任务均返回 SUCCEEDED；独立里程计路径长为 2.112、2.108、2.098 m，末值线速度与角速度均为 0；[截图](images/ch23/ch23-fleet.png)、[GIF](images/ch23/ch23-fleet.gif)、[连续录像](images/ch23/ch23-fleet.mp4)、[COM260 终端](images/ch23/ch23-fleet.cast) |
+| 教案四航点两轮巡逻 | 使用本次保存并后处理的地图，`BaseObstacle.scale=0.02`，8 次目标均返回 SUCCEEDED；[结束截图](images/ch23/ch23-project-navigation.png)、[运动 GIF](images/ch23/ch23-project-navigation.gif)、[完整连续 RViz 录像](images/ch23/ch23-project-navigation.mp4)、[COM260 终端](images/ch23/ch23-project-navigation.cast) |
+| 航点、任务文件与测试 | 同一地图上，FollowWaypoints 完成 4 点且无 missed_waypoints；YAML 任务完成 9 次导航；测试模式 4/4 成功、平均耗时 7.82 s。四条公开命令顺序运行并正常退出，合计轮式里程 30.272 m，最后 100 个里程计样本速度为零 |
+| 自动探索 | 场地水平放大 1.5 倍，固定可探索面积 691.7325 m²；COM260 根据实时地图选择边界，114 个导航目标完成，达到 95.101% 后取消当前目标、停车并自动保存，节点退出 0。55,047 个里程计样本，累计轮式路径 125.711 m，最后 100 个样本速度为零。[全场截图](images/ch23/ch23-explorer.png)、[Gazebo 场景](images/ch23/ch23-project-scene.png)、[30 秒 GIF](images/ch23/ch23-explorer.gif)、[后半段连续 RViz 录像，494.67 秒](images/ch23/ch23-explorer.mp4)、[完整 COM260 终端记录](images/ch23/ch23-explorer.cast) |
+
+无桌面检查在移除 `DISPLAY`、`XAUTHORITY` 后启动原尺寸建图入口；收到 4 次地图更新，已知栅格增加 1867，位移 0.202 m，节点退出 0。扩大场景探索末段另采集 1744 个 Gazebo 世界位姿，最后 20 个样本位置不变。导航成功率按 Nav2 Action 结果统计，不代表厘米级定位精度。
+
+固定区域由场景碰撞几何、机器人安全边界和出生点连通性确定，不提供给边界选点或 Nav2。COM260 自动保存图独立核算为 263138/276693＝95.101%；停车后 x86 保存的最新图为 263223/276693＝95.132%，两者均通过至少 500 m²、覆盖率超过 95% 的检查。地图后处理、重新加载、定位和四种导航入口均通过；不将后处理填出的像素计入观测覆盖率。两端的六项边界选点检查、五项覆盖率边界检查通过，包括“恰好 95%”及“面积不足 500 m²”必须失败。 无桌面的扩大场景中，Ctrl+C 取消后节点退出 130，独立采样 1024 条里程计，最后 100 条速度为零；隔离的激光断流检查也确认取消 Action 并发送零速度。
+
+按先结束建图 Launch、再停止仿真容器的顺序，Cartographer、RViz 和 Launch 均正常退出，退出码为 0；该退出检查为独立批次 `20261124-ch22-close-check`。
+
+第 23 章各次运行与源码核对见[结构化记录](images/ch23/validation.json)，素材信息见[媒体校验](images/ch23/media_validation.json)。

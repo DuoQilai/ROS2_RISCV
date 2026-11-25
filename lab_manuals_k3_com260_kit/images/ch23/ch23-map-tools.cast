@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":125,"rows":32},"timestamp":1795589881,"command":"bash run-full-map-tools.sh","env":{"SHELL":"/bin/zsh"}}
+[0.242, "o", "RUN_ID=20261125-ch23-full-map-tools\r\n"]
+[0.002, "o", "Wed Nov 25 06:58:01 UTC 2026\r\n"]
+[2.258, "o", "area_m2=691.733 coverage=95.1318% known=263223 total=276693 pass=true\r\n"]
+[1.330, "o", "地图已保存: /maps/20261125_full_processed.pgm, /maps/20261125_full_processed.yaml\r\n"]
+[1.323, "o", "known_grid_ratio=85.5339% clarity=0.0260654 total_cells=365772 accuracy=unmeasured\r\n"]
+[0.084, "o", "tools_exit=0\r\nWed Nov 25 06:58:06 UTC 2026\r\n"]
+[0.001, "o", "Connection to 192.168.1.172 closed.\r\r\n"]
+[0.003, "x", "0"]

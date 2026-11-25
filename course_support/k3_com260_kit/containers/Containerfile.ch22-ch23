@@ -1,0 +1,12 @@
+FROM localhost/ros2-course-com260:ch20-ch21 AS rviz_fixed
+FROM localhost/ros2-course-com260:ch09-ch10
+RUN curl -fL --retry 3 --connect-timeout 15 --max-time 120 \
+    http://packages.ros.org/ros2/ubuntu/pool/main/r/ros-humble-teleop-twist-keyboard/ros-humble-teleop-twist-keyboard_2.4.1-1jammy.20261105.224453_amd64.deb \
+    -o /tmp/teleop.deb \
+    && echo "d6867ddb2d6cc85a14f5c7b2940ef16eede6249de37f1853011bc8497fc8af77  /tmp/teleop.deb" | sha256sum -c - \
+    && dpkg -i /tmp/teleop.deb && rm /tmp/teleop.deb
+RUN test "$(dpkg-query -W -f='${Version}' ros-humble-rviz-common | cut -d- -f1)" = 11.2.28 \
+    && test "$(dpkg-query -W -f='${Version}' ros-humble-rviz-default-plugins | cut -d- -f1)" = 11.2.28
+COPY --from=rviz_fixed /opt/rviz-close-fix /opt/rviz-close-fix
+COPY --from=rviz_fixed /opt/ros/humble/lib/librviz_default_plugins.so /opt/ros/humble/lib/
+COPY --from=rviz_fixed /opt/ros/humble/include/rviz_default_plugins/rviz_default_plugins/displays/image/image_transport_display.hpp /opt/ros/humble/include/rviz_default_plugins/rviz_default_plugins/displays/image/
