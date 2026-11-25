@@ -1,0 +1,12 @@
+{"version":3,"term":{"cols":80,"rows":24},"timestamp":1795520193,"command":"ssh -tt -o BatchMode=yes com260 \"source ~/.config/ros2-course-com260-ch22-ch23/env.bash; source ~/.config/ros2-course-com260-ch22-ch23/dds.bash; timeout --preserve-status -s INT 12s ros2 run sensor_fusion_cpp sensor_sync --ros-args -p use_sim_time:=true -p sync_queue_size:=100 -r /camera/image_raw/compressed:=/camera/color/image_raw/compressed\"","env":{"SHELL":"/bin/zsh"}}
+[3.751, "o", "\u001b[0m[INFO] [1795520197.502444612] [sensor_sync]: 传感器同步: IMU=44.875 LiDAR=44.875 Camera=44.880 spread=5.000ms\u001b[0m\r\n"]
+[1.426, "o", "\u001b[0m[INFO] [1795520198.928766796] [sensor_sync]: 传感器同步: IMU=45.875 LiDAR=45.875 Camera=45.871 spread=4.000ms\u001b[0m\r\n"]
+[1.577, "o", "\u001b[0m[INFO] [1795520200.505426317] [sensor_sync]: 传感器同步: IMU=46.995 LiDAR=47.000 Camera=46.993 spread=7.000ms\u001b[0m\r\n"]
+[1.463, "o", "\u001b[0m[INFO] [1795520201.904029423] [sensor_sync]: 传感器同步: IMU=48.000 LiDAR=48.000 Camera=48.015 spread=15.000ms\u001b[0m\r\n"]
+[1.502, "o", "\u001b[0m[INFO] [1795520203.468677320] [sensor_sync]: 传感器同步: IMU=49.125 LiDAR=49.125 Camera=49.137 spread=12.000ms\u001b[0m\r\n"]
+[1.543, "o", "\u001b[0m[INFO] [1795520205.012931679] [sensor_sync]: 传感器同步: IMU=50.250 LiDAR=50.250 Camera=50.259 spread=9.000ms\u001b[0m\r\n"]
+[1.528, "o", "\u001b[0m[INFO] [1795520206.528095919] [sensor_sync]: 传感器同步: IMU=51.375 LiDAR=51.375 Camera=51.381 spread=6.000ms\u001b[0m\r\n"]
+[1.411, "o", "\u001b[0m[INFO] [1795520207.952689515] [sensor_sync]: 传感器同步: IMU=52.375 LiDAR=52.375 Camera=52.372 spread=3.000ms\u001b[0m\r\n"]
+[0.669, "o", "\u001b[0m[INFO] [1795520208.621928220] [rclcpp]: signal_handler(SIGINT/SIGTERM)\u001b[0m\r\n"]
+[0.332, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]

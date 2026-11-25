@@ -1,0 +1,4 @@
+{"version":3,"term":{"cols":80,"rows":24},"timestamp":1795583110,"command":"ssh -tt -o BatchMode=yes com260 'source ~/.config/ros2-course-com260-ch22-ch23/env.bash; source ~/.config/ros2-course-com260-ch22-ch23/dds.bash; ros2 run sensor_fusion_cpp fusion_math_demo'","title":"COM260 chapter 22: IMU, EKF, sensor health and lidar features","env":{"SHELL":"/bin/zsh"}}
+[3.492, "o", "静止 IMU 重力抵消: PASS\r\n1 秒恒加速度积分: PASS\r\n1 秒 90 度旋转: PASS\r\nGPS Kalman 增益: PASS\r\n融合协方差正定: PASS\r\n警告: imu 故障 (超时0.21s)\r\n故障处理: 切换到轮式里程计+激光模式，降低动态性能\r\nIMU 超时检测: PASS\r\n恢复: imu 已恢复\r\nIMU 恢复检测: PASS\r\n曲率分位数特征提取: PASS\r\n空点云特征提取: PASS\r\n"]
+[0.008, "o", "Connection to 192.168.1.88 closed.\r\r\n"]
+[0.002, "x", "0"]

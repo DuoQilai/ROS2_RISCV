@@ -1,0 +1,402 @@
+{
+  "date": "2026-11-25",
+  "baseline": "b68917b",
+  "platforms": [
+    "COM260 Bianbu ROS 2 Humble C++17",
+    "x86 Humble container Gazebo Harmonic"
+  ],
+  "source_verification": {
+    "date": "2026-11-25",
+    "files": 72,
+    "com260_mismatches": [],
+    "x86_mismatches": []
+  },
+  "source_sha256": {
+    "course_support/k3_com260_kit/containers/Containerfile.ch22-ch23": "a4f6a668a4c51a44dbe54b5098b76998f0d49eb719db1671539931c95eea70df",
+    "course_support/k3_com260_kit/scripts/configure-acquisition-dds.bash": "b043d3543d76ebb3104dab51a25ae77d8d84eb39fb91dc1abf32196ddd496f17",
+    "course_support/k3_com260_kit/scripts/nav2_bringup.sh": "2a195db8e6e869c033b316218710b3528dda2952d32d125fb3b6afa4d6b7e953",
+    "course_support/k3_com260_kit/scripts/realsense_launch.sh": "c8bcd9b66efa04a0dbfa267964f59ace6769425f4fbe03006066962b3f925fdb",
+    "course_support/k3_com260_kit/scripts/slam_bringup.sh": "d8650a71f0ea83f221039646043358763687ea501d2e0af22033d9b4b38d58f8",
+    "course_support/k3_com260_kit/scripts/x86-ch22-ch23.bash": "2d6d951fd81ce0f64def70dea5bb37a50dc419cc6145505d3e4831379e23deba",
+    "setup_course_k3_com260_kit.sh": "1ae8b89d1ae3f1387af2575b1326ff3220298137b9fa0f001a776d3bcc426537",
+    "src_k3_com260_kit/auto_explorer/CMakeLists.txt": "213da18c07e8e96beed446dbf713846ea76cb3f3594db293856b7103fc657a64",
+    "src_k3_com260_kit/auto_explorer/README.md": "f2cf076f5489487337ed182a62ee2898e791f9b908f6a611735b2e898238ef77",
+    "src_k3_com260_kit/auto_explorer/config/exploration.rviz": "a09daf5e81633ff156b9d691f662cf9c78afdae424fc76aafb59f6a23436a20c",
+    "src_k3_com260_kit/auto_explorer/config/exploration_area.pgm": "08c9fb99e9fb5b35de4e47060c5313d41c6691ddfb34c0fe0fd36949a0c88908",
+    "src_k3_com260_kit/auto_explorer/config/exploration_area.yaml": "373f69a44e13edd39355249bd0aa77a5b1c6966d1981d1ec8a8beabc1dd54ac9",
+    "src_k3_com260_kit/auto_explorer/config/project.gui.config": "2b153c52fa9729799800e68aa28c9b91805174bc766103494fa641c2f8a77925",
+    "src_k3_com260_kit/auto_explorer/config/project_museum.sdf": "7088df79089fbd5b5346310185cb195d387e7f66ec98366281d34b6e246d602e",
+    "src_k3_com260_kit/auto_explorer/include/auto_explorer/frontiers.hpp": "7071640fb9ab964d3403f1faf89a095e3f28def78896ffaed021e69992e6736c",
+    "src_k3_com260_kit/auto_explorer/launch/exploration.launch.py": "a5b7036a69e8ec6b22d28d257d3d756bc7230b70edec2a2b8f430307d830473e",
+    "src_k3_com260_kit/auto_explorer/package.xml": "a5c89d71b7756de5cf4a5be6c34a0422c74c878965aa31783b6bd33cd5856500",
+    "src_k3_com260_kit/auto_explorer/scripts/prepare_museum.py": "e9c41a93219736a67185e0cdc3aae98fdc5080c72d79dac4261bdfc7bbd39b11",
+    "src_k3_com260_kit/auto_explorer/src/auto_explorer.cpp": "acf67c5e21afb726b910119b3180303b2c5e3c3e6b410926bcc4d31e2e20f527",
+    "src_k3_com260_kit/auto_explorer/test/frontiers_test.cpp": "dbd8af1667e7f6fc0d3d4a05f8c246860e7b8669dc70b4fd90dd13a6014acda6",
+    "src_k3_com260_kit/fleet_scheduler/CMakeLists.txt": "2e811db7bf48b9785f4903ad880b7757e62b1630678375d18504f9419b688a3d",
+    "src_k3_com260_kit/fleet_scheduler/README.md": "6b581f17db027ac5ef8396498cfc192f88ec484ce00d1da232b7ad9559193ae1",
+    "src_k3_com260_kit/fleet_scheduler/config/tasks.yaml": "bcb77a9fceefe189d7f3abbf0eafb4192ed354c6fcaa55a8671b06930b7eb057",
+    "src_k3_com260_kit/fleet_scheduler/include/fleet_scheduler/conflict_resolver.hpp": "286feaeaea77497a72a8794b8cef8327d847d4ff73181d17cf31aacea7f6168a",
+    "src_k3_com260_kit/fleet_scheduler/package.xml": "28be1fd50fc71ed2ed2d4f01c3d8dc07e4f942fef5d41fa30cfdff8d45028f93",
+    "src_k3_com260_kit/fleet_scheduler/src/conflict_demo.cpp": "09f3d3a9ebd222127c7c32b28dca560d676ba7a9116e43802dc6efa7bce760f4",
+    "src_k3_com260_kit/fleet_scheduler/src/fleet_scheduler.cpp": "cc0f7f55fa1ca90ff358cecec8a87bcd0ccf361bcf2e49a17a607a0888607e02",
+    "src_k3_com260_kit/map_tools_cpp/CMakeLists.txt": "df3d0dc562d89c419c0fc882379b921438ac34e3b50031d08aa7b30ec6fecb04",
+    "src_k3_com260_kit/map_tools_cpp/README.md": "bb3b868f307e6ba11cf17bf61281613ba251d0ea5dbfbee258fb0b76edaf614d",
+    "src_k3_com260_kit/map_tools_cpp/package.xml": "9704deb84f07deb9c412ca35e37408d5e6c1648bf1e9bcab1db3a0e1f261cb54",
+    "src_k3_com260_kit/map_tools_cpp/src/map_coverage.cpp": "c31d6a37257af02c29303da6e51d1bbadaa7cd02423ed573d22cf9aa42912feb",
+    "src_k3_com260_kit/map_tools_cpp/src/map_evaluator.cpp": "a9922e34dbcf1346557d64df6094c217e9871bf518e1156fc4b01ecd61bd7cd2",
+    "src_k3_com260_kit/map_tools_cpp/src/map_postprocessor.cpp": "a1b80af733f9b02cf0a83ecee9640ce80a149b4a8b57f2bb6b4eec37023e6012",
+    "src_k3_com260_kit/nav_bringup_lab/CMakeLists.txt": "93d4d38d73f34facf09763c017690586b36373fff482d5bf1ddbf79dcd8a6cdc",
+    "src_k3_com260_kit/nav_bringup_lab/README.md": "df68c67f21f2e3b65ef6dd775e2907a5bf730732f5b3221af54d6ecdef1e05ed",
+    "src_k3_com260_kit/nav_bringup_lab/launch/nav_bringup.launch.py": "5917913695b653ec41edcd5ee963a4de0118e1c57e8b45b23673f1db4b10d869",
+    "src_k3_com260_kit/nav_bringup_lab/package.xml": "fd3c2856b0c9cf2327a924ffb2c5f9c104d2af6568d4da7b01318134ae8003bf",
+    "src_k3_com260_kit/nav_bringup_lab/src/nav_goal_runner.cpp": "2e960547cd34e86617c0c1ad3838611a7a36e9cb31420688f0e57f1b249b565f",
+    "src_k3_com260_kit/navigation_console/CMakeLists.txt": "6fac9e5bbdcbd798c1911d0ccf82cbbb82d0001be23e86b4ddcc673967f0cfca",
+    "src_k3_com260_kit/navigation_console/README.md": "1163eeaddf7ce88a5d15c64482483cb8d224fc656ced1fe2108802ac3cd24122",
+    "src_k3_com260_kit/navigation_console/config/mission.yaml": "6c2e38ed7d71a06b8aa7fc130356d4b9be2664d1d75b0ea1a6abaef3b7138bae",
+    "src_k3_com260_kit/navigation_console/config/nav2_params.yaml": "63dae87eaac977b155549d057a6de3f4695585fcdb26f3e530c46a340fa9fef4",
+    "src_k3_com260_kit/navigation_console/launch/project_navigation.launch.py": "b5eda17d8771410f1c67e605b2f27370c1f7b80823532f33bcf558553fc1881e",
+    "src_k3_com260_kit/navigation_console/package.xml": "d761e63ee8b4a27597622903bf35ab615370223f0256a3263f50d128624980a7",
+    "src_k3_com260_kit/navigation_console/src/navigation_console.cpp": "5293ade4ed69c0351abe4a86b8386df4d5a1c5ab6e549fcf8e20c2c2fffd8879",
+    "src_k3_com260_kit/realsense_lab/CMakeLists.txt": "e0c9836f1da5657bd18aaf14d9ee50b116426e48333e72aa303c953a108f3ed4",
+    "src_k3_com260_kit/realsense_lab/README.md": "0737d52d355d170bf2152912a596474573449976a776b1913d0f27e9072ed425",
+    "src_k3_com260_kit/realsense_lab/launch/realsense.launch.py": "014cc284eca95f6aee84f447adb533662449c0b1720e3388a9dedeaecb7ffecb",
+    "src_k3_com260_kit/realsense_lab/launch/rgbd_sim.launch.py": "8e4463186ed2daa5afab29f637dc35775f41e2e0e5906c8d2442bf2559cf1109",
+    "src_k3_com260_kit/realsense_lab/package.xml": "53e9380ff46ec46055d3d216984c31ab1b724fdd81ac48b78fed881d0e32f3ae",
+    "src_k3_com260_kit/realsense_lab/rviz/acquisition.rviz": "821b4077712bdad4090cf8796051def0614cc49f143b9b1954efefaef9998fab",
+    "src_k3_com260_kit/sensor_fusion_cpp/CMakeLists.txt": "7c28563db7d314ca87c3757bad7a196562d8bff3706a4f8dcae61d5d9e42b6fa",
+    "src_k3_com260_kit/sensor_fusion_cpp/README.md": "6f91b70c174a5a704518890e7c114e51e09180806c787b90be7b1c25208235ef",
+    "src_k3_com260_kit/sensor_fusion_cpp/config/fusion_2d.lua": "89832723c2bb979aadfcd21e8e2fff86245c39de46ba66ed71226b4aaa98d9c0",
+    "src_k3_com260_kit/sensor_fusion_cpp/config/lidar_2d.lua": "fa8bc7ee3eb954bdee4c1b1754df8529bf5d9e50803ae9171f618959f940c739",
+    "src_k3_com260_kit/sensor_fusion_cpp/include/sensor_fusion_cpp/imu_preintegration.hpp": "4675c3f6d1f356d326e463a3173270e83f52b6b774b3ac345c3632d67cb39c34",
+    "src_k3_com260_kit/sensor_fusion_cpp/include/sensor_fusion_cpp/lidar_features.hpp": "8a6bae3bef1597919697e79bb10f94454d86f053df73fd232b6cdaa6a018b152",
+    "src_k3_com260_kit/sensor_fusion_cpp/include/sensor_fusion_cpp/multi_sensor_ekf.hpp": "9bcc3156af3f0eb087e01d4b83738b85863b20e3cedcb18b6c11acb2a5c9030e",
+    "src_k3_com260_kit/sensor_fusion_cpp/include/sensor_fusion_cpp/sensor_health.hpp": "9b125805b055f2508b64b7b5ce8ba860a2488fb0a7fa7822b427e1c54671a9de",
+    "src_k3_com260_kit/sensor_fusion_cpp/launch/fusion_mapping.launch.py": "bad5f341cd4a85f76b34065d3c880432f67a4a6b2645b5a8e2b8a39191e3ee84",
+    "src_k3_com260_kit/sensor_fusion_cpp/launch/replay.launch.py": "32de34318fd5ecc0039ab4bde520910de3e3f7cd07c7936806e694150c85a639",
+    "src_k3_com260_kit/sensor_fusion_cpp/package.xml": "5bc6f77b864537aae8fc72c167b370422b2169d775f40390fc1c9388176e15ff",
+    "src_k3_com260_kit/sensor_fusion_cpp/rviz/fusion.rviz": "af6eed7adaf005a9581a595082c85cd266d9768643b0ef417fd906d96b09093e",
+    "src_k3_com260_kit/sensor_fusion_cpp/src/fusion_math_demo.cpp": "372bd3144d20ccc35187c9c6d496830aa31c67d34895e97fec8731e70b83318d",
+    "src_k3_com260_kit/sensor_fusion_cpp/src/imu_odom_fusion.cpp": "4cd806c5905f6e72621048549953b931312cdc04a3ce8799c52dd88fd62d8cce",
+    "src_k3_com260_kit/sensor_fusion_cpp/src/lidar_pose_to_odom.cpp": "f40c75d864d5bfec40832b5015d4884e77eddc8da87dcb7095a9904a0f836c4b",
+    "src_k3_com260_kit/sensor_fusion_cpp/src/sensor_sync.cpp": "e459ca044bf9c3dd398109f67289f67b69ba03265fc742f914b6e289dc19d287",
+    "src_k3_com260_kit/slam_bringup_lab/CMakeLists.txt": "885f5dffaffcd8d9fc05ae85a206a9fb5c52e7862817ae189b5efe7c9352f90d",
+    "src_k3_com260_kit/slam_bringup_lab/README.md": "4a3bf505e2259ecc3e26612e84e84bb04538dcb4ac80d41ee32d0f51f4a253a9",
+    "src_k3_com260_kit/slam_bringup_lab/launch/slam_bringup.launch.py": "4a5ad5d6d61a442fe0b67515f122390ba0deb1a5f087195c4f840510f29e1171",
+    "src_k3_com260_kit/slam_bringup_lab/package.xml": "f315a5f563a7c6c79dc156d851b3ceb571c46c1cd6685b29fab8618617a9de46",
+    "src_k3_com260_kit/slam_bringup_lab/src/slam_map_runner.cpp": "31193ba50ca94529298219bd9c32546ea1cba703e4f18e228c16ec0761a3b7c4"
+  },
+  "chapter": 23,
+  "status": "simulation_acceptance_passed",
+  "lab13": {
+    "run_id": "20261124-ch23-slam",
+    "map_updates": 4,
+    "known_cells_growth": 2536,
+    "displacement_m": 0.205
+  },
+  "lab14": {
+    "run_id": "20261124-ch23-nav",
+    "goals": [
+      [
+        3,
+        -1,
+        -2
+      ],
+      [
+        2,
+        1.5,
+        1.57
+      ],
+      [
+        5,
+        0.5,
+        0
+      ],
+      [
+        1,
+        -0.5,
+        3.14
+      ]
+    ],
+    "successes": 4,
+    "goal_elapsed_s": [
+      11.5,
+      37.5,
+      32.9,
+      23.8
+    ],
+    "stopped": true
+  },
+  "fleet": {
+    "run_id": "20261124-ch23-fleet-final",
+    "action_successes": 3,
+    "feedback": {
+      "robot1": {
+        "samples": 2232,
+        "first": [
+          28.6,
+          1.4495961183156197e-22,
+          -7.753666123153863e-36,
+          -1.8744704562866947e-21,
+          6.928664446990963e-20
+        ],
+        "last": [
+          73.22,
+          2.1114148187816753,
+          0.004350938817197692,
+          0.0,
+          0.0
+        ],
+        "path": 2.1117352037225667,
+        "max_speed": 0.25999999995408585
+      },
+      "robot2": {
+        "samples": 2232,
+        "first": [
+          28.6,
+          5.314493456650825e-20,
+          -7.756064323934521e-36,
+          8.900756330550091e-22,
+          7.80098673136442e-21
+        ],
+        "last": [
+          73.22,
+          2.1076384795978518,
+          -0.02266519545891428,
+          0.0,
+          0.0
+        ],
+        "path": 2.1082515594015176,
+        "max_speed": 0.2599999999492508
+      },
+      "robot3": {
+        "samples": 2232,
+        "first": [
+          28.62,
+          6.145823175548578e-20,
+          -7.733055323769074e-36,
+          3.1513026953198443e-21,
+          7.111380770555966e-20
+        ],
+        "last": [
+          73.24,
+          2.096858569988444,
+          -0.00776614303306131,
+          0.0,
+          0.0
+        ],
+        "path": 2.098453595044643,
+        "max_speed": 0.2599999999554181
+      }
+    }
+  },
+  "pending": [],
+  "lab14_cancel": {
+    "run_id": "20261124-ch23-cancel-final",
+    "first_goal_result": "SUCCEEDED",
+    "second_goal_result": "CANCELED",
+    "node_exit": 130,
+    "exit_meaning": "expected user interrupt",
+    "odom_samples": 1904,
+    "path_m": 2.1104442936920087,
+    "max_linear_speed_m_s": 0.25999999998156803,
+    "last_odom": {
+      "ros_time": 56.919,
+      "x": 1.7006406858115326,
+      "y": -1.1950564497225828,
+      "yaw": -0.8814986839544681,
+      "vx": 0.0,
+      "wz": 0.0
+    },
+    "final_100_samples_stopped": true,
+    "map_samples": 1,
+    "first_map": {
+      "stamp": 0.0,
+      "width": 992,
+      "height": 992,
+      "resolution": 0.05000000074505806,
+      "known": 140977,
+      "occupied": 5240
+    },
+    "last_map": {
+      "stamp": 0.0,
+      "width": 992,
+      "height": 992,
+      "resolution": 0.05000000074505806,
+      "known": 140977,
+      "occupied": 5240
+    }
+  },
+  "auto_explorer": {
+    "run_id": "20261125-ch23-frontier",
+    "area_m2": 691.7325,
+    "coverage_percent": 95.10106869346171,
+    "known": 263138,
+    "area_cells": 276693,
+    "node_exit": 0,
+    "duration_cast_s": 1048.069,
+    "goal_requests": 115,
+    "goal_successes": 114,
+    "odom_samples": 55047,
+    "path_length_m": 125.71120204859912,
+    "last_100_stopped": true,
+    "map_updates": 1148,
+    "last_map": {
+      "stamp": 1255.625,
+      "width": 561,
+      "height": 652,
+      "resolution": 0.05000000074505806,
+      "known": 300830,
+      "occupied": 8634
+    },
+    "saved_map_independent_coverage_percent": 95.10106869346171,
+    "x86_later_saved_map": {
+      "known": 263223,
+      "coverage_percent": 95.13178866107924,
+      "area_cells": 276693
+    },
+    "raw_geometry_scale_xy": 1.5,
+    "world_pose_tail_stationary": true,
+    "world_pose_samples": 1744,
+    "frontier_known_input_checks": 6,
+    "coverage_boundary_checks_per_host": 5,
+    "stale_scan_mock_action_cancelled": true,
+    "mock_sigint_exit": 130,
+    "media": {
+      "rviz_original": "frontier-overview.mp4",
+      "source_duration_s": 494.666667,
+      "source_start_utc": "2026-11-25T06:49:05.481219+00:00",
+      "gif_source_start_s": 414,
+      "gif_duration_s": 30,
+      "contains": "continuous latter part of the same autonomous run, including stop"
+    },
+    "actual_cancel": {
+      "run_id": "20261125-ch23-cancel-headless",
+      "node_exit": 130,
+      "samples": 1024,
+      "path_m": 1.0918243854407865,
+      "last_100_stopped": true
+    }
+  },
+  "mission_wait": {
+    "wait_s": 2.0,
+    "elapsed_wall_s_including_startup": 2.71,
+    "use_sim_time": true,
+    "clock_available": false,
+    "exit": 0
+  },
+  "cartographer_live": {
+    "run_id": "20261124-ch22-bag",
+    "configuration": "fusion_2d.lua",
+    "path_m": 1.4537863476831514,
+    "final_100_samples_stopped": true,
+    "map_updates": 39,
+    "first_map": {
+      "stamp": 81.903,
+      "width": 182,
+      "height": 182,
+      "resolution": 0.05000000074505806,
+      "known": 10381,
+      "occupied": 196
+    },
+    "last_map": {
+      "stamp": 118.103,
+      "width": 185,
+      "height": 186,
+      "resolution": 0.05000000074505806,
+      "known": 15184,
+      "occupied": 302
+    },
+    "finish_trajectory_status": 0,
+    "write_state_status": 0,
+    "export_exit": 0
+  },
+  "cartographer_normal_shutdown": {
+    "run_id": "20261124-ch22-close-check",
+    "method": "SIGINT to mapping launch before stopping sensor container",
+    "cartographer_node_exit": 0,
+    "rviz_exit": 0,
+    "launch_exit": 0
+  },
+  "map_processing": {
+    "run_id": "20261125-ch23-full-map-tools",
+    "source_map": "20261125_full_map",
+    "processed_map": "20261125_full_processed",
+    "dimensions": [
+      561,
+      652
+    ],
+    "resolution_m": 0.05,
+    "explorable_area_m2": 691.7325,
+    "observed_area_coverage_percent": 95.13178866107924,
+    "processed_image_known_grid_ratio_percent": 85.5339,
+    "accuracy": "unmeasured without aligned ground truth",
+    "offline_after_container_stop": true,
+    "map_integrity_checks_per_host": 5,
+    "area_boundary_checks_per_host": 5,
+    "preserve_observed_walls": true,
+    "free_thresh": 0.196
+  },
+  "headless": {
+    "original_scene_run_id": "20261125-ch13-regression",
+    "display_unset": true,
+    "xauthority_unset": true,
+    "gui": false,
+    "rviz": false,
+    "map_checks_passed": true,
+    "enlarged_scene_run_id": "20261125-ch23-cancel-headless",
+    "navigation_cancel_stopped": true
+  },
+  "public_project_navigation": {
+    "run_id": "20261125-ch23-full-project",
+    "modes": {
+      "patrol": {
+        "successes": 8,
+        "exit": 0
+      },
+      "waypoints": {
+        "successes": 1,
+        "exit": 0
+      },
+      "mission": {
+        "successes": 9,
+        "exit": 0
+      },
+      "test": {
+        "successes": 4,
+        "exit": 0
+      }
+    },
+    "test_mean_wall_s": 7.82,
+    "test_successes": 4,
+    "test_total": 4,
+    "duration_cast_s": 199.098,
+    "odom_samples": 13225,
+    "path_length_m": 30.271646608672,
+    "last_100_stopped": true,
+    "last_map": {
+      "stamp": 0.0,
+      "width": 561,
+      "height": 652,
+      "resolution": 0.05000000074505806,
+      "known": 312859,
+      "occupied": 36802
+    },
+    "media": {
+      "source_video": "full-project-navigation.mp4",
+      "source_start_s": 34,
+      "duration_s": 210,
+      "gif_source_start_s": 52,
+      "gif_duration_s": 28
+    }
+  },
+  "lab13_regression": {
+    "run_id": "20261125-ch13-regression",
+    "original_scene": true,
+    "gui": false,
+    "rviz": false,
+    "map_updates": 4,
+    "known_cell_growth": 1867,
+    "displacement_m": 0.202,
+    "exit": 0
+  }
+}
